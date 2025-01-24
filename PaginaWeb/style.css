@@ -1,0 +1,424 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: arial;
+}
+
+body {
+    background:linear-gradient(to bottom,#c4b586,#a8d08d2d,white,white,#c4b586) ;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(163, 139, 58);
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    background-image: url('Imagenes/banner3.jpg');
+}
+
+.desplaza {
+    display: none;
+    background-color: rgb(161, 139, 44);
+    transform: scale(3);
+}
+
+header h1 {
+    margin-left: 25px;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+p {
+    margin-bottom: 25px;
+}
+
+h1 {
+    min-width: 200px;
+}
+
+h1 i {
+    transform: scale(2);
+    margin-left: 30px;
+    margin-right: 15px;
+    padding: 15px;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+}
+
+header a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    padding: 40px 50px;
+}
+
+a:hover {
+    cursor: pointer;
+    background-color: rgba(255, 235, 175, 0.329);
+}
+
+#contenido1 {
+    background-image: url('Imagenes/back2.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 80vh; 
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta1 {
+    background-color: rgba(219, 197, 168, 0.973);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 50%; 
+    max-width: 600px; 
+    text-align: center;
+    border: 2px solid #a67c52; 
+}
+
+.tarjeta1 p {
+    margin-top: 20px;
+}
+
+#contenido2 {
+    background-image: url('Imagenes/back3.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 80vh; 
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contenido2 {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+  
+.tarjetas-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    width: 100%;
+}
+  
+.tarjeta2, .tarjeta3, .tarjeta4, .tarjeta5, .tarjeta6, .tarjeta7 {
+    background-color: rgb(245, 228, 205);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+  
+.tarjeta2:hover, .tarjeta3:hover, .tarjeta4:hover, .tarjeta5:hover, .tarjeta6:hover, .tarjeta7:hover {
+    transform: translateY(-10px);
+}
+  .tarjeta-imagen {
+    width: 100%;
+    height: 125px; 
+    object-fit: cover;
+} 
+  
+.descripcion {
+    padding: 5px;  /* Reducción del padding */
+}
+
+.descripcion h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;  /* Reducir el margen inferior */
+    color: #333;
+    text-align: center;
+}
+
+.descripcion p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 1px;
+    text-align: center;
+}
+
+.descripcion i {
+    margin-right: 5px;
+}
+
+#contenido3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('https://www.hotelescenter.es/wp-content/blogs.dir/1601/files/home//02_corporativa_home_corporativa_02_granada.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px; /* Espacio adicional para evitar que el contenido quede pegado a los bordes */
+}
+
+.Reservation-form {
+    margin-top: 95px;
+    background-color: rgba(206, 187, 161, 0.966);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box; /* Incluye el padding y el borde en el cálculo del ancho */
+}
+
+.Reservation-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+.form-group input[type="submit"] {
+    background-color: #793e0e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #533c11;
+}
+
+@media (max-width: 768px) {
+    .Reservation-form {
+        max-width: 100%; 
+        padding: 15px;
+    }
+}
+
+footer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    bottom: 0px;
+    background-color: #362921fd;
+    color: white;
+    padding: 20px 0px;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    padding: 25px;
+}
+
+footer a:hover{
+    background-color: #663e2759;
+}
+
+footer i{
+    padding: 5px;
+}
+
+@media (min-width:1024px) {
+    #menu {
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto;
+    }
+
+    .tarjeta:nth-child(1) {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .tarjeta:nth-child(2) {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .tarjeta:nth-child(3) {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    .tarjeta:nth-child(4) {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+}
+
+@media (min-width:600px) and (max-width: 1024px) {
+    header a {
+        padding: 40px 10px;
+    }
+
+    #menu {
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+    }
+
+    .tarjeta:nth-child(1) {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .tarjeta:nth-child(2) {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .tarjeta:nth-child(3) {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .tarjeta:nth-child(4) {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+
+}
+
+@media (max-width:600px) {
+    nav {
+        display: none;
+        transform: scale(0.5);
+    }
+
+    label.desplaza {
+        display: block;
+        position: absolute;
+        text-align: center;
+        left: 60px;
+        top: 45px;
+    }
+
+    i {
+        transition-duration: 0.3s;
+    }
+
+    input[type=checkbox]:checked~nav {
+        position: absolute;
+        display: flex;
+        top: -8px;
+        left: -40px;
+        animation-duration: 0.6s;
+        animation-name: slide-in;
+        opacity: 0.8;
+    }
+
+    input[type=checkbox]:checked~i {
+        transition-duration: 0.6s;
+        transform: rotate(90deg);
+    }
+
+    @keyframes slide-in {
+        from {
+            top: -20px;
+            opacity: 0;
+        }
+
+        to {
+            top: -8px;
+            opacity: 0.8;
+        }
+    }
+
+    header {
+        background-image: url('Imagenes/banner3.jpg');
+        flex-direction: column;
+    }
+
+    h1 {
+        padding: 32px 0;
+        background-image: url('Imagenes/banner3.jpg');
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        background-color: rgba(83, 52, 11, 0.808);
+    }
+
+    nav a {
+        padding: 5px 15px;
+    }
+
+    #tarjetas {
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    .tarjeta:nth-child(1) {
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .tarjeta:nth-child(2) {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .tarjeta:nth-child(3) {
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    .tarjeta:nth-child(4) {
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+}
