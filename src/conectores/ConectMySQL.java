@@ -2,6 +2,8 @@ package conectores;
 
 import java.sql.*;
 
+import model.Cliente;
+
 public class ConectMySQL {
 
 	//Conexion
@@ -71,11 +73,13 @@ public class ConectMySQL {
 	
 	/*
 	 * DEBUGG DE CLASE
-	 * 
+	 */ 
 	public static void main(String[] args) {
 		conectar();
 		conectarAdm();
+		Cliente nuevo = new Cliente("", "", "", 0, "", false, "");
+		System.out.print(nuevo.getTarifa().toString());
 	}
-	*/
+	
 	
 }
