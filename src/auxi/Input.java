@@ -1,4 +1,4 @@
-package auxi;
+package Auxi;
 
 import java.util.Scanner;
 
@@ -53,7 +53,7 @@ public class Input {
 	}
 	
 	public static Cliente.tarifas inTarifa() {
-		System.out.println("Tarifas disponibles ");
+		System.out.println("|Tarifas disponibles |");
 		System.out.println("1. estandar");
 		System.out.println("2. descuento trabajador");
 		System.out.println("3. descuento 5 euros");

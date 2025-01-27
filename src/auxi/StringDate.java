@@ -1,4 +1,4 @@
-package auxi;
+package Auxi;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
