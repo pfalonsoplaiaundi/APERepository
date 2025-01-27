@@ -3,7 +3,6 @@ package main;
 import java.util.Scanner;
 
 import auxi.Input;
-import conectores.ConectMySQL;
 
 public class Login {
 
@@ -11,7 +10,6 @@ public class Login {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("~~~ Bienvenido a APE ~~~");
-		ConectMySQL.conectar();
 		System.out.print("\n¿Quieres crear tu cuenta? (Si/No) ");
 		String respuesta = scanner.nextLine().trim().toLowerCase();
 		
