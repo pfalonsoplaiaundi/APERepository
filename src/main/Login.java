@@ -2,7 +2,7 @@ package main;
 
 import java.util.Scanner;
 
-import Auxi.Input;
+import auxi.Input;
 
 public class Login {
 
