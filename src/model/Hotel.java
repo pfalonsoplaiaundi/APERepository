@@ -2,7 +2,6 @@ package model;
 
 public class Hotel {
 
-	//ATRIBUTOS
 	private int ID;
     private String nombre;
     private String ciudad;
