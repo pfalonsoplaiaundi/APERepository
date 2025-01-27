@@ -10,7 +10,7 @@ public class Login {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("~~~ Bienvenido a APE ~~~");
-		System.out.print("¿Quieres crear tu cuenta? (Si/No) ");
+		System.out.print("\n¿Quieres crear tu cuenta? (Si/No) ");
 		String respuesta = scanner.nextLine().trim().toLowerCase();
 		
 		if (respuesta.equals("si")) { //SOLICITAR DATOS AL USER
