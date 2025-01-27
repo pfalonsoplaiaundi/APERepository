@@ -1,6 +1,6 @@
 package conectores;
 
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.ArrayList;
 
 import model.*;
@@ -17,19 +17,24 @@ public class RepoCliente {
 				);
 		
 		// Eliminar
-		SQLScripts.add( ""
+		SQLScripts.add( "DELETE cliente"
+				+ "WHERE DNI = ?"
 				);
 		
 		// Modificar		
-		SQLScripts.add( ""
+		SQLScripts.add( "UPDATE cliente"
+				+ "SET DNI = ?, nom = ?, ape = ?, tlfno = ?, email = ?, bTrabajador = ?, tarifa = ?, pass = ?"
+				+ "WHERE DNI = ?, nom = ?, ape = ?, tlfno = ?, email = ?, bTrabajador = ?, tarifa = ?, pass = ?"
 				);
 		
 		// Comprobar existencia	
-		SQLScripts.add( ""
+		SQLScripts.add( "SELECT * FROM Cliente"
+				+ "WHERE DNI = ?"
 				);
 		
 		// Traer informarcion		
-		SQLScripts.add( ""
+		SQLScripts.add( "SELECT * FROM Cliente"
+				+ "WHERE DNI = ?"
 				);
 		
 		// Otros		
