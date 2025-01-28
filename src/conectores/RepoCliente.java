@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import model.*;
+import model.Cliente.tarifas;
 
 public class RepoCliente {
 
@@ -133,15 +134,24 @@ public class RepoCliente {
 			inicializarArray();
 		}
 		
+		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
+		Cliente original = new Cliente( "", "", "", 0, "", false, "");
+		
+		// Copruebo que me han pasado el DNI correcto
 		if (!modificaciones.getDNI().equals("")) {
-			Cliente original = get(modificaciones.getDNI());
+			
+			// Meto los datos del cliente original en el cliente creado anterior
+			original = get(modificaciones.getDNI());
+			
+			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
 			if (!modificaciones.getNombre().equals("")) original.setNombre(modificaciones.getNombre());
-			if (!modificaciones.getApellidos().equals("")) original.setApellidos(modificaciones.getNombre());
-			if (!(modificaciones.getTelefono() == 0)) original.setTelefono(modificaciones.getNombre());
-			if (!modificaciones.getEmail().equals("")) original.setEmail(modificaciones.getNombre());
-			if (!modificaciones.getTarifa().toString().equals("")) original.setTarifa(modificaciones.getNombre());
-			if (!modificaciones.isbTrabajador()) original.setNombre(modificaciones.getNombre());
-			if (!modificaciones.getPass().equals("")) original.setNombre(modificaciones.getNombre());
+			if (!modificaciones.getApellidos().equals("")) original.setApellidos(modificaciones.getApellidos());
+			if (!(modificaciones.getTelefono() == 0)) original.setTelefono(modificaciones.getTelefono());
+			if (!modificaciones.getEmail().equals("")) original.setEmail(modificaciones.getEmail());
+			if (!modificaciones.getTarifa().toString().equals("estandar")) original.setTarifa(modificaciones.getTarifa());
+			if (!modificaciones.getPass().equals("")) original.setPass(modificaciones.getPass());
+		
+		// En caso de no tener el DNI correcto devuelvo error
 		} else {
 			System.out.println("Error al insertar el DNI");
 			return false;
@@ -151,7 +161,7 @@ public class RepoCliente {
 		if(check(original)) {
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
 		        preparedStatement.setString(1, original.getDNI());
 		        preparedStatement.setString(2, original.getNombre());
 		        preparedStatement.setString(3, original.getApellidos());
@@ -162,12 +172,12 @@ public class RepoCliente {
 		        preparedStatement.setString(8, original.getPass());
 		        preparedStatement.executeUpdate();
 		        
-		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
-		        return !check(original);
+		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
+		        return !checkEquals(original);
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al eliminar el cliente");
+				System.out.println("Error al actualizar el cliente");
 				return false;
 			}
 		}
@@ -175,13 +185,17 @@ public class RepoCliente {
 		//Si el cliente existe antes de la insercion devuelve false. 
 		return false;
 	}
-	}
+	
 
-	public boolean check(Cliente objeto) {
+	public boolean check(Cliente cliente) {
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
+		return false;
+	}
+	
+	public boolean checkEquals(Cliente cliente) {
 		return false;
 	}
 
