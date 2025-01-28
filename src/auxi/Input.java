@@ -145,4 +145,10 @@ public class Input {
 		System.out.print("Contraseña: ");
 		return scn.nextLine();
 	}
+	
+	public static int inOpc() {
+		int opc = scn.nextInt();
+		scn.nextLine();
+		return opc;
+	}
 }
