@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ReservaXSLT.xsl"?>
+<reservas>
+    <reserva>
+        <codigo>12345</codigo>
+        <nombre>Luis</nombre>
+        <apellido>Gonzalez</apellido>
+        <tipo_habitacion>Individual</tipo_habitacion>
+        <fecha_inicio>2025-01-28</fecha_inicio>
+        <fecha_fin>2025-02-03</fecha_fin>
+    </reserva>
+    <reserva>
+        <codigo>12346</codigo>
+        <nombre>Jorge</nombre>
+        <apellido>Perez</apellido>
+        <tipo_habitacion>Suite</tipo_habitacion>
+        <fecha_inicio>2025-03-14</fecha_inicio>
+        <fecha_fin>2025-03-23</fecha_fin>
+    </reserva>
+    <reserva>
+        <codigo>12347</codigo>
+        <nombre>Lucas</nombre>
+        <apellido>Martinez</apellido>
+        <tipo_habitacion>Apartamento</tipo_habitacion>
+        <fecha_inicio>2025-02-04</fecha_inicio>
+        <fecha_fin>2025-08-26</fecha_fin>
+    </reserva>
+</reservas>

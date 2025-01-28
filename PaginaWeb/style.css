@@ -8,6 +8,11 @@ body {
     background:linear-gradient(to bottom,#c4b586,#a8d08d2d,white,white,#c4b586) ;
 }
 
+#logo1 {
+    height: 155px;
+    width: 152px;
+}
+
 header {
     position: fixed;
     width: 100%;
@@ -166,7 +171,7 @@ a:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 20px; /* Espacio adicional para evitar que el contenido quede pegado a los bordes */
+    padding: 20px; 
 }
 
 .Reservation-form {
@@ -177,7 +182,7 @@ a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 100%;
-    box-sizing: border-box; /* Incluye el padding y el borde en el cálculo del ancho */
+    box-sizing: border-box; 
 }
 
 .Reservation-form h2 {
@@ -226,6 +231,68 @@ a:hover {
         padding: 15px;
     }
 }
+
+#contenido5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('Imagenes/back51.webp'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px; 
+}
+
+table {
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto; 
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+th {
+    background-color: #533c11;
+    color: rgb(245, 228, 205);
+    font-weight: bold;
+}
+
+td {
+    background-color: rgb(245, 228, 205);
+    color: #333;
+}
+
+tr:nth-child(even) td {
+    background-color: rgb(245, 228, 205);
+}
+
+tr:hover td {
+    background-color: rgb(245, 228, 205);
+    cursor: pointer;
+}
+
+table caption {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
 
 footer{
     width: 100%;

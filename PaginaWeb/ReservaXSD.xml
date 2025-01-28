@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Reserva">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Codigo" type="xs:int"/>
+                <xs:element name="Nombre" type="xs:string"/>
+                <xs:element name="Apellido" type="xs:string"/>
+                <xs:element name="Tipo">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Habitacion" maxOccurs="unbounded">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Doble"/>
+                                        <xs:enumeration value="Individual"/>
+                                        <xs:enumeration value="Familiar"/>
+                                        <xs:enumeration value="Suite"/>
+                                        <xs:enumeration value="Apartamento"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="FecIni" type="xs:date"/>
+                <xs:element name="FecFin" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
