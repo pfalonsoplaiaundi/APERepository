@@ -30,6 +30,16 @@ public class Cliente {
 	//-----------------------------------------------------------------------
 	
 	// Constructor/es
+	/**
+	 * 	
+	 * @param DNI
+	 * @param nombre
+	 * @param apellidos
+	 * @param telefono
+	 * @param email
+	 * @param bTrabajador
+	 * @param pass
+	 */
 	public Cliente(String DNI, String nombre, String apellidos, int telefono, String email,
 			boolean bTrabajador, String pass) {
 		super();
@@ -205,7 +215,7 @@ public class Cliente {
         return tieneNumeros(pass) && tieneMayus(pass) && tieneMinus(pass);
     }
 		
-	public static boolean verificacionExistencia(String DNI) {
+	public static boolean verificacionExistencia() {
 		/*
 		 * WIP
 		 * 

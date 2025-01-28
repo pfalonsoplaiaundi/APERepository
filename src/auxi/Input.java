@@ -39,7 +39,6 @@ public class Input {
 		System.out.print("Telefono: ");
 		String tlfnoT = scn.nextLine();
 		int tlfno = Integer.parseInt(tlfnoT);
-		scn.next();
 		return tlfno;
 	}
 	
@@ -150,5 +149,15 @@ public class Input {
 		int opc = scn.nextInt();
 		scn.nextLine();
 		return opc;
+	}
+
+	public static boolean inYesNo() {
+		System.out.print("(Si/No) ");
+		String r = scn.nextLine();
+		if (r.equalsIgnoreCase("Si")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
