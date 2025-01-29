@@ -13,8 +13,8 @@ public class RepoCliente {
 	private void inicializarArray() {
 		
 		// Insertar	
-		SQLScripts.add( "INSERT cliente"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, SHA2(pass = ?, 256))"
+		SQLScripts.add( "INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VALUES\r\n"
+				+ "(?, ?, ?, ?, ?, ?, ?, SHA2(?, 256))"
 				);
 		
 		// Eliminar
@@ -65,7 +65,7 @@ public class RepoCliente {
 		        preparedStatement.setInt(4, nuevo.getTelefono());
 		        preparedStatement.setString(5, nuevo.getEmail());
 		        preparedStatement.setBoolean(6, nuevo.isbTrabajador());
-		        preparedStatement.setString(9, nuevo.getTarifa().toString());
+		        preparedStatement.setString(7, nuevo.getTarifa().toString());
 		        preparedStatement.setString(8, nuevo.getPass());
 		        preparedStatement.executeUpdate();
 		        
@@ -192,10 +192,18 @@ public class RepoCliente {
 			inicializarArray();
 		}
 		
+		/*
+		 * WIP
+		 */
+		
 		return false;
 	}
 	
 	public boolean checkEquals(Cliente cliente) {
+		/*
+		 * WIP
+		 */
+		
 		return false;
 	}
 
@@ -203,6 +211,10 @@ public class RepoCliente {
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
+		
+		/*
+		 * WIP
+		 */
 		
 		return null;
 	}

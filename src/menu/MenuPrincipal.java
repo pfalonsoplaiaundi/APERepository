@@ -1,17 +1,21 @@
-package main;
+package menu;
 
 import java.util.Scanner;
 
 public class MenuPrincipal {
     private boolean esAdmin;
+    
+    /* Why?! No es un objeto.
+    
     private String nombreUsuario;
 
     public MenuPrincipal(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
         //this.esAdmin = 
     }
-
-    public void print() {
+	*/
+	
+    public static void print() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
@@ -58,6 +62,10 @@ public class MenuPrincipal {
     
     }
 
+    /* No es necesario hacer un main por clase. Una clase puede no tener nada
+     * Ademas, el nombre de usuario se lo deberias pedir en el login.
+     * 
+     * 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce tu nombre de usuario: ");
@@ -69,4 +77,5 @@ public class MenuPrincipal {
         scanner.close();
         
     }
+    */
 }

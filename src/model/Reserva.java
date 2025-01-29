@@ -4,13 +4,16 @@ import java.util.Date;
 
 public class Reserva {
 	
+	//Atributos
 	private int ID;
 	private Date fecIni;
 	private Date fecFin;
 	private Cliente cliente;
     private Sala sala;
 	
-	//CONSTRUCTOR
+	//-----------------------------------------------------------------------
+    
+	//Constructor
     public Reserva(int iD, Date fecIni, Date fecFin, Cliente cliente, Sala sala) {
 		super();
 		ID = iD;
@@ -20,7 +23,9 @@ public class Reserva {
 		this.sala = sala;
 	}
     
-	//GETTER & SETTERS
+	//-----------------------------------------------------------------------
+    
+	//Getters & setters
     public int getID() {
 		return ID;
 	}
