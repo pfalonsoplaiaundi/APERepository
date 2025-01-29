@@ -15,17 +15,27 @@ FROM habitacion h natural join sala s natural join reserva r
 where s.id = 1 and r.fecfin > current_date() and r.fecini < current_date()
 Group by h.tipohab;
 
+Select *
+From habitacion h
+	natural join sala s
+    natural join reserva r
+Where (? not between r.fecini and r.fenfin) and h.TipoHab = ?;
+
+Select s.id, s.num, s.capacidad, s.tlfno, s.pvp, h.tipohab
+From habitacion h
+	natural join sala s
+    natural join reserva r
+Where ("2025-01-30" not between r.fecini and r.fecfin) and h.TipoHab = "doble" and h.id = 1;
+
 SELECT h.tipohab, min(case 
 	when current_date() between r.fecini and r.fecfin then r.fecfin
     else current_date()
-    end) "Fecha mas cercana"
+    end),
 FROM habitacion h natural join sala s natural join reserva r
-where s.id = 1 and r.fecfin > current_date()
+where s.id = ? and r.fecfin > current_date()
 group by h.tipohab;
-;
 
-WHERE current_date() between r.fecini and r.fecfin
-
+SELECT id FROM hotel WHERE nom = "Hotel Central";
 
 SELECT h.tipohab, r.fecfin, r.fecini
 FROM habitacion h natural join sala s natural join reserva r
@@ -35,3 +45,7 @@ Group by h.tipohab
 select current_date();
 
 */
+
+SELECT c.dni, c.pass
+from cliente c
+where c.dni = ? and c.pass = sha2(?, 256);
