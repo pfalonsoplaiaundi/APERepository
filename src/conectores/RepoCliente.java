@@ -39,7 +39,9 @@ public class RepoCliente {
 				);
 		
 		// Otros		
-		SQLScripts.add( ""
+		SQLScripts.add( "SELECT c.dni, c.pass\r\n"
+				+ "from cliente c\r\n"
+				+ "where c.dni = ? and c.pass = sha2(?, 256);"
 				);
 	}
 	
@@ -216,7 +218,18 @@ public class RepoCliente {
 		 * WIP
 		 */
 		
-		return null;
+		//Debug
+		Cliente c = new Cliente("04627062Z", "Pablo", "Fernandez Alonso", 626140551, "pfalonso@gmail.com",
+			false, "pepe" );
+		return c;
+	}
+
+	public boolean checkCreden(String userS, String pass) {
+		if (userS.equalsIgnoreCase("04627062Z") && pass.equalsIgnoreCase("pepe")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 

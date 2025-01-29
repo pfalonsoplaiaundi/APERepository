@@ -6,3 +6,8 @@ public class RepoReserva {
 
 	
 }
+
+	public int getNewID() {
+		// TODO Auto-generated method stub
+		return 0;
+	}

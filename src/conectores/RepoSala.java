@@ -64,6 +64,8 @@ public class RepoSala {
 				+ "FROM habitacion h natural join sala s natural join reserva r\r\n"
 				+ "where s.id = ? and r.fecfin > current_date()\r\n"
 				+ "group by h.tipohab;");
+		
+		SQLScripts.add("");
 	
 	}
 
@@ -81,6 +83,11 @@ public class RepoSala {
 	    } catch (SQLException e) {
 	    	e.printStackTrace();
 	    }
+		return null;
+	}
+
+	public Sala getByTypeAndFirstDate(String tipoDeHab) {
+		
 		return null;
 	}
 

@@ -1,5 +1,6 @@
 package auxi;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.Scanner;
 
@@ -27,7 +28,7 @@ public class Input {
 		if(Cliente.verificacionDNI(DNI)) {
 			return DNI;
 		} else {
-			return null;
+			return "00000000A";
 		}
 	}
 	
@@ -143,8 +144,21 @@ public class Input {
 	
 	public static String inPass() {
 		System.out.print("Contraseña: ");
-		return scn.nextLine();
-	}
+        StringBuilder pass = new StringBuilder();
+        try {
+            while (true) {
+                char ch = (char) System.in.read();
+                if (ch == '\n' || ch == '\r') {
+                    break;
+                }
+                pass.append(ch);
+                System.out.print("*");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return pass.toString();
+    }
 	
 	public static int inOpc() {
 		int opc = scn.nextInt();

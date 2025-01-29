@@ -10,7 +10,7 @@ import model.Cliente;
 
 public class Login {
 	
-	public static String user;
+	public static Cliente user;
 
 	public static void main(String[] args) {
 		ConectMySQL.conectar();		
@@ -21,9 +21,17 @@ public class Login {
 		boolean respuesta = Input.inYesNo();
 		if (!respuesta) crearCuenta();
 		
-		System.out.print("\n~~~ Identificate ~~~\n");
-		user = Input.inDNI();
-		String pass = Input.inPass();
+		do {
+			System.out.print("\n~~~ Identificate ~~~\n");
+			RepoCliente rC = new RepoCliente();
+			String DNI = Input.inDNI();
+			if (rC.checkCreden(DNI, Input.inPass())) {
+				user = rC.get(DNI);
+				System.out.print("\\n\\n>>> IDENTIFICACION CORRECTA <<<\\n\\n");
+			} else {
+				System.out.print("\n\n>>> ERROR EN LA IDENTIFICACION <<<\n\n");
+			}
+		}while (user == null);
 		
 		MenuPrincipal.print();
 		
