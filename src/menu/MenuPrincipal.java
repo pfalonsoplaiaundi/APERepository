@@ -1,9 +1,36 @@
 package menu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import auxi.*;
+import conectores.*;
+
 public class MenuPrincipal {
-    private boolean esAdmin;
+   
+	public static void print() {
+		System.out.print(
+				"\n\n~~~ Menu principal ~~~\n"
+				+ "------------------------------\n"
+				);
+		RepoHotel rH = new RepoHotel();
+		ArrayList<String> hoteles = rH.getMenuPrincipal();
+		for(int i = 0; i < hoteles.size(); i++) {
+			System.out.print((i+1) + ". " + hoteles.get(i) + "\n");
+		}
+		System.out.print("-----------------------------\n"
+				+ "Seleccione el hotel que desea: ");
+		int opc = Input.inOpc();
+		MenuProductos.print(rH.getPKByName(hoteles.get(opc-1)));
+		
+	}
+	
+	
+	
+	
+	
+	/*
+	private boolean esAdmin;
     
     /* Why?! No es un objeto.
     
@@ -13,7 +40,7 @@ public class MenuPrincipal {
         this.nombreUsuario = nombreUsuario;
         //this.esAdmin = 
     }
-	*/
+	
 	
     public static void print() {
         Scanner scanner = new Scanner(System.in);

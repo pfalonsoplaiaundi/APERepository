@@ -9,6 +9,8 @@ import conectores.RepoHotel;
 import model.Cliente;
 
 public class Login {
+	
+	public static String user;
 
 	public static void main(String[] args) {
 		ConectMySQL.conectar();		
@@ -20,7 +22,7 @@ public class Login {
 		if (!respuesta) crearCuenta();
 		
 		System.out.print("\n~~~ Identificate ~~~\n");
-		String user = Input.inDNI();
+		user = Input.inDNI();
 		String pass = Input.inPass();
 		
 		MenuPrincipal.print();

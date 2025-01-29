@@ -103,6 +103,22 @@ public class Habitacion extends Sala{
 			+ "----------------------------";
 	}
 	
+	public static tipoHab tipoHabStringToEnum(String tipoDeHab) {
+		if (tipoDeHab.equalsIgnoreCase("individual")) {
+			return tipoHab.individual;
+		} else if (tipoDeHab.equalsIgnoreCase("doble")) {
+			return tipoHab.doble;
+		} else if (tipoDeHab.equalsIgnoreCase("familiar")) {
+			return tipoHab.familiar;
+		} else if (tipoDeHab.equalsIgnoreCase("suite")) {
+			return tipoHab.suite;
+		} else if (tipoDeHab.equalsIgnoreCase("apartamento")) {
+			return tipoHab.apartamento;
+		} else {
+			return null;
+		}
+	}
+	
 	
 }
 

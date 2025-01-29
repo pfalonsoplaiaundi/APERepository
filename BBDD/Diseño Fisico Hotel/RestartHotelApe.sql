@@ -93,7 +93,8 @@ ALTER TABLE SalaReuniones
 
 ALTER TABLE Reserva
 	ADD CONSTRAINT Reserva_IDnum_fk FOREIGN KEY (ID, num) REFERENCES Sala(ID, num) ON UPDATE CASCADE ON DELETE CASCADE,
-   	ADD CONSTRAINT Reserva_DNI_fk FOREIGN KEY (DNI) REFERENCES Cliente(DNI) ON UPDATE CASCADE ON DELETE CASCADE;
+   	ADD CONSTRAINT Reserva_DNI_fk FOREIGN KEY (DNI) REFERENCES Cliente(DNI) ON UPDATE CASCADE ON DELETE CASCADE,
+    ADD CONSTRAINT Reserva_Fec CHECK (fecini <= fecfin);
     
 ALTER TABLE Sala 
 	ADD CONSTRAINT Sala_ID_fk FOREIGN KEY (ID) REFERENCES Hotel(ID) ON UPDATE CASCADE ON DELETE CASCADE;
@@ -114,6 +115,17 @@ INSERT INTO Sala (ID, num, capacidad, tlfno, pvp, subtipo) VALUES
 (1, 3, 4, 911111113, 120.00, 'Habitacion'),
 (1, 4, 50, 911111114, 300.00, 'SalaReuniones'),
 (1, 5, 20, 911111115, 150.00, 'EspaciosComunes'),
+(1, 6, 2, 911111111, 80.00, 'Habitacion'),
+(1, 7, 2, 911111112, 85.00, 'Habitacion'),
+(1, 8, 4, 911111113, 120.00, 'Habitacion'),
+(1, 9, 1, 911111114, 300.00,  'Habitacion'),
+(1, 10, 1, 911111115, 150.00,  'Habitacion'),
+(1, 11, 2, 911111111, 80.00, 'Habitacion'),
+(1, 12, 2, 911111112, 85.00, 'Habitacion'),
+(1, 13, 4, 911111113, 120.00, 'Habitacion'),
+(1, 14, 3, 911111114, 300.00,  'Habitacion'),
+(1, 15, 3, 911111115, 150.00,  'Habitacion'),
+
 
 -- Salas para Hotel Sur (ID = 2)
 (2, 1, 1, 950111111, 70.00, 'Habitacion'),
@@ -148,6 +160,16 @@ INSERT INTO Habitacion (ID, num, TipoHab) VALUES
 (1, 1, 'doble'),
 (1, 2, 'doble'),
 (1, 3, 'apartamento'),
+(1, 6, 'doble'),
+(1, 7, 'suite'),
+(1, 8, 'apartamento'),
+(1, 9, 'individual'),
+(1, 10, 'individual'),
+(1, 11, 'apartamento'),
+(1, 12, 'doble'),
+(1, 13, 'familiar'),
+(1, 14, 'familiar'),
+(1, 15, 'familiar'),
 (2, 1, 'individual'),
 (2, 2, 'doble'),
 (2, 3, 'familiar'),
@@ -193,11 +215,22 @@ INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VAL
 -- Tabla Reserva
 INSERT INTO Reserva (DNI, ID, num, fecini, fecfin) VALUES
 -- Reservas para llenar el Hotel Central del 28-01-2025 al 20-02-2025
-('12345678A', 1, 1, '2025-01-28', '2025-02-20'),
+('12345678A', 1, 1, '2025-02-28', '2025-03-20'),
 ('23456789B', 1, 2, '2025-01-28', '2025-02-20'),
-('34567890C', 1, 3, '2025-01-28', '2025-02-20'),
+('34567890C', 1, 3, '2025-02-02', '2025-02-20'),
 ('45678901D', 1, 4, '2025-01-28', '2025-02-20'),
-('56789012E', 1, 5, '2025-01-28', '2025-02-20'),
+('56789012E', 1, 5, '2025-01-13', '2025-01-29'),
+('12345678A', 1, 6, '2025-02-28', '2025-03-20'),
+('23456789B', 1, 7, '2025-01-28', '2025-02-20'),
+('34567890C', 1, 8, '2025-04-20', '2025-05-20'),
+('45678901D', 1, 9, '2025-01-28', '2025-02-20'),
+('56789012E', 1, 10, '2025-01-28', '2025-02-20'),
+('12345678A', 1, 11, '2025-02-28', '2025-03-20'),
+('23456789B', 1, 12, '2025-01-28', '2025-02-20'),
+('34567890C', 1, 13, '2025-01-28', '2025-02-20'),
+('45678901D', 1, 14, '2025-01-28', '2025-02-20'),
+('56789012E', 1, 15, '2025-01-28', '2025-02-20'),
+
 
 -- Reservas para otros hoteles en las mismas fechas y adicionales
 ('67890123F', 2, 1, '2025-02-01', '2025-02-05'),

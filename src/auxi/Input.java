@@ -1,5 +1,6 @@
 package auxi;
 
+import java.sql.Date;
 import java.util.Scanner;
 
 import model.Cliente;
@@ -159,5 +160,19 @@ public class Input {
 		} else {
 			return false;
 		}
+	}
+	
+	public static Date inFecIni() {
+		System.out.print("Fecha inicial: ");
+		String fecIniS = scn.nextLine();
+		Date fecIni = Date.valueOf(fecIniS);
+		return fecIni;
+	}
+	
+	public static Date inFecFin() {
+		System.out.print("Fecha final: ");
+		String fecFinS = scn.nextLine();
+		Date fecFin = Date.valueOf(fecFinS);
+		return fecFin;
 	}
 }
