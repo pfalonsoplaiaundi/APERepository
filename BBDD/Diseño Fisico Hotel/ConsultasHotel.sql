@@ -49,3 +49,10 @@ select current_date();
 SELECT c.dni, c.pass
 from cliente c
 where c.dni = ? and c.pass = sha2(?, 256);
+
+select * from cliente;
+delete from cliente where dni = "04627062Z";
+
+SELECT dni FROM Cliente WHERE DNI = '01234567J';
+
+Select dni, pass, Sha2("Pepe6", 256) from cliente where dni = "04627062Z";
