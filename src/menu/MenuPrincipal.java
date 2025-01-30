@@ -9,18 +9,25 @@ import conectores.*;
 public class MenuPrincipal {
    
 	public static void print() {
+		
 		System.out.print(
-				"\n\n~~~ Menu principal ~~~\n"
-				+ "------------------------------\n"
+				"\n\n~~~ Menu principal ~~~\n" +
+				"0. Para finalizar la compra o salir" +
+				"------------------------------\n"
 				);
+		
 		RepoHotel rH = new RepoHotel();
 		ArrayList<String> hoteles = rH.getMenuPrincipal();
 		for(int i = 0; i < hoteles.size(); i++) {
 			System.out.print((i+1) + ". " + hoteles.get(i) + "\n");
 		}
-		System.out.print("-----------------------------\n"
-				+ "Seleccione el hotel que desea: ");
+		
+		System.out.print(
+				"-----------------------------\n" +
+				"Seleccione el hotel que desea: "
+				);
 		int opc = Input.inOpc();
+		
 		MenuProductos.print(rH.getPKByName(hoteles.get(opc-1)));
 		
 	}

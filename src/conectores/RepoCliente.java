@@ -12,37 +12,41 @@ public class RepoCliente {
 	
 	private void inicializarArray() {
 		
-		// Insertar	
-		SQLScripts.add( "INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VALUES\r\n"
+		// Insertar	0
+		this.SQLScripts.add( "INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VALUES\r\n"
 				+ "(?, ?, ?, ?, ?, ?, ?, SHA2(?, 256))"
 				);
 		
-		// Eliminar
-		SQLScripts.add( "DELETE cliente"
+		// Eliminar 1
+		this.SQLScripts.add( "DELETE cliente"
 				+ "WHERE DNI = ?"
 				);
 		
-		// Modificar		
-		SQLScripts.add( "UPDATE cliente"
+		// Modificar 2		
+		this.SQLScripts.add( "UPDATE cliente "
 				+ "SET DNI = ?, nom = ?, ape = ?, tlfno = ?, email = ?, bTrabajador = ?, tarifa = ?, SHA2(pass = ?, 256)"
-				+ "WHERE DNI = ?"
+				+ " WHERE DNI = ?"
 				);
 		
-		// Comprobar existencia	
-		SQLScripts.add( "SELECT * FROM Cliente"
-				+ "WHERE DNI = ?"
+		// Comprobar existencia	3
+		this.SQLScripts.add( "SELECT dni FROM Cliente"
+				+ " WHERE DNI = ?;"
 				);
 		
-		// Traer informarcion		
-		SQLScripts.add( "SELECT * FROM Cliente"
-				+ "WHERE DNI = ?"
+		// Traer informarcion 4	
+		this.SQLScripts.add( "SELECT * FROM Cliente"
+				+ " WHERE DNI = ?"
 				);
 		
-		// Otros		
-		SQLScripts.add( "SELECT c.dni, c.pass\r\n"
+		// Otros
+		
+		// Comprobacion de credenciales 5
+		this.SQLScripts.add( "SELECT c.dni, c.pass\r\n"
 				+ "from cliente c\r\n"
 				+ "where c.dni = ? and c.pass = sha2(?, 256);"
 				);
+		
+		this.SQLScripts.add("");
 	}
 	
 	public boolean insert(Cliente nuevo) {
@@ -52,7 +56,7 @@ public class RepoCliente {
 		 */
 		
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
-		if (SQLScripts.isEmpty()) {
+		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
@@ -76,12 +80,14 @@ public class RepoCliente {
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
+				e.printStackTrace();
 				System.out.println("Error al insertar el nuevo cliente");
 				return false;
 			}
 		}
 		
 		//Si el cliente existe antes de la insercion devuelve false. 
+		System.out.println("El usuario ya existe");
 		return false;
 	}
 
@@ -190,14 +196,21 @@ public class RepoCliente {
 	
 
 	public boolean check(Cliente cliente) {
-		if (SQLScripts.isEmpty()) {
+		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
-		/*
-		 * WIP
-		 */
-		
+		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(3))) {
+	        preparedStatement.setString(1, cliente.getDNI());
+	        ResultSet rS = preparedStatement.executeQuery();
+	        if (rS.next()) {
+	        	return true;
+	        } else {
+	        	return false;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 	
@@ -210,7 +223,7 @@ public class RepoCliente {
 	}
 
 	public Cliente get(String DNI) {
-		if (SQLScripts.isEmpty()) {
+		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
@@ -224,13 +237,23 @@ public class RepoCliente {
 		return c;
 	}
 
-	public boolean checkCreden(String userS, String pass) {
-		if (userS.equalsIgnoreCase("04627062Z") && pass.equalsIgnoreCase("pepe")) {
-			return true;
-		} else {
+	public boolean checkCreden(String user, String pass) {
+		if (this.SQLScripts.isEmpty()) {
+			inicializarArray();
+		}
+		
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(5))) {
+	        pS.setString(1, user);
+	        pS.setString(2, pass);
+	        ResultSet rS = pS.executeQuery();
+	        if (rS.next()) {
+	        	return true;
+	        } else {
+	        	return false;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
-
-
 }

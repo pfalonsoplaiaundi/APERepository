@@ -1,6 +1,8 @@
 package auxi;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Date;
 import java.util.Scanner;
 
@@ -23,13 +25,18 @@ public class Input {
 	}
 	
 	public static String inDNI() {
-		System.out.print("DNI: ");
-		String DNI = scn.nextLine();
-		if(Cliente.verificacionDNI(DNI)) {
-			return DNI;
-		} else {
-			return "00000000A";
-		}
+		String DNI = "";
+		do {	
+			System.out.print("DNI: ");
+			DNI = scn.nextLine();
+			if (Cliente.verificacionDNI(DNI)) {
+				return DNI;
+			} else {
+				DNI = "";
+				System.out.println("ERROR: DNI no valido");
+			}
+		} while (DNI.equals(""));
+		return DNI;
 	}
 	
 	public static String inEmail() {
@@ -143,21 +150,23 @@ public class Input {
 	}
 	
 	public static String inPass() {
-		System.out.print("Contraseña: ");
-        StringBuilder pass = new StringBuilder();
-        try {
-            while (true) {
-                char ch = (char) System.in.read();
-                if (ch == '\n' || ch == '\r') {
-                    break;
-                }
-                pass.append(ch);
-                System.out.print("*");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return pass.toString();
+		String pass = "";
+		do {
+			System.out.print("Contraseña: ");
+			pass = scn.nextLine();
+			if (Cliente.verificacionPass(pass)) {
+				return pass;
+			} else {
+				System.out.print(
+						"La contraseña debe contener: " +
+						((!Cliente.tieneMayus(pass)) ? "Mayusculas " : "") +
+						((!Cliente.tieneMinus(pass)) ? "Minusculas " : "") +
+						((!Cliente.tieneNumeros(pass)) ? "Numeros\n" : "\n")
+						);
+				pass = "";
+			}
+		} while (pass.equals(""));
+		return pass;
     }
 	
 	public static int inOpc() {

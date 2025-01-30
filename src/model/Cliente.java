@@ -2,6 +2,8 @@ package model;
 
 import java.util.Objects;
 
+import auxi.Input;
+
 public class Cliente {
 	
 	// Enumerado de tarifas
@@ -43,13 +45,13 @@ public class Cliente {
 	public Cliente(String DNI, String nombre, String apellidos, int telefono, String email,
 			boolean bTrabajador, String pass) {
 		super();
-		this.DNI = (verificacionDNI(DNI)) ? DNI : ""; // Si el DNI es correcto introduce el DNI si no lo deja vacio.
+		this.DNI = DNI;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.email = email;
 		this.bTrabajador = bTrabajador;
-		this.pass = (verificacionPass(pass)) ? pass: ""; // Si la contraseña es valida introduce esta, si no lo deja vacio.
+		this.pass = pass;
 		this.tarifa = selectorTarifa();
 	}
 	
