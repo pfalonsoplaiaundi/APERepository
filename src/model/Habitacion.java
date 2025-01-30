@@ -11,7 +11,8 @@ public class Habitacion extends Sala{
 		familiar,
 		suite,
 		apartamento,
-		desconocido
+		desconocido;
+
 	}
 	
 	//-----------------------------------------------------------------------

@@ -24,22 +24,13 @@ public class Login {
 		String pass = Input.inPass();
 		
 		MenuPrincipal.print();
-		
-		
-		
+	
 	}
 	
 	public static void crearCuenta() {
 		Cliente c = new Cliente(Input.inDNI(), Input.inNombre(), Input.inApellido(), Input.inTelefono(), Input.inEmail(), false, Input.inPass());
 		RepoCliente rC = new RepoCliente();
 		rC.insert(c);
-			/*
-		    System.out.println("\nCuenta creada exitosamente");
 
-			} else if (respuesta.equals("no")) {
-				System.out.println("No se creó ninguna cuenta.");
-			} else {
-				System.out.println("Respuesta no válida. Por favor, responde con 'Si' o 'No'."); 
-			}*/
 	}
 }

@@ -28,7 +28,6 @@ header {
 
 .desplaza {
     display: none;
-    background-color: rgb(161, 139, 44);
     transform: scale(3);
 }
 
@@ -141,12 +140,12 @@ a:hover {
 } 
   
 .descripcion {
-    padding: 5px;  /* Reducción del padding */
+    padding: 5px; 
 }
 
 .descripcion h3 {
     font-size: 1.25rem;
-    margin-bottom: 15px;  /* Reducir el margen inferior */
+    margin-bottom: 15px;  
     color: #333;
     text-align: center;
 }
