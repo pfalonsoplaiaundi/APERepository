@@ -49,12 +49,11 @@ public class RepoCliente {
 		this.SQLScripts.add("");
 	}
 	
+	/**
+	 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente. Devuelve true siempre que el usuario exista o haya sido insertado.
+	 */
 	public boolean insert(Cliente nuevo) {
-		
-		/**
-		 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente
-		 */
-		
+			
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -76,7 +75,13 @@ public class RepoCliente {
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
-		        return check(nuevo);
+		        if (check(nuevo)) {
+		        	System.out.print("\n~~~ Cuenta creada correctamente ~~~\n");
+		        	return true;
+		        } else {
+		        	System.out.print("\n>>> Se ha producido un error <<<\n\n");
+		        	return false;
+		        }
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
@@ -88,7 +93,7 @@ public class RepoCliente {
 		
 		//Si el cliente existe antes de la insercion devuelve false. 
 		System.out.println("El usuario ya existe");
-		return false;
+		return true;
 	}
 
 	public boolean delete(Cliente aBorrar) {

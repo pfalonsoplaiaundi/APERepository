@@ -211,7 +211,7 @@ INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VAL
 ('89012345H', 'Luis', 'Díaz', 688990011, 'luis.diaz@mail.com', TRUE, 'estandar', SHA2('password8', 256)),
 ('90123456I', 'Elena', 'Moreno', 699001122, 'elena.moreno@mail.com', FALSE, 'dcto5', SHA2('password9', 256)),
 ('01234567J', 'Pedro', 'Vega', 611112223, 'pedro.vega@mail.com', TRUE, 'dcto10', SHA2('password10', 256)),
-('04627062Z', 'Pablo', 'Fernandez', 626140550, 'pfalonso@gmail.com', TRUE, 'dctoTrabajador', SHA2('pepe', 256));
+('04627062Z', 'Pablo', 'Fernandez', 626140550, 'pfalonso@gmail.com', TRUE, 'dctoTrabajador', SHA2('Pepe6', 256));
 
 -- Tabla Reserva
 INSERT INTO Reserva (DNI, ID, num, fecini, fecfin) VALUES

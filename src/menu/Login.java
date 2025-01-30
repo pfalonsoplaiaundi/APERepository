@@ -42,11 +42,17 @@ public class Login {
 	 */
 	public static boolean crearCuenta() {
 		System.out.print("\n~~~ Creacion de cuenta ~~~\n");
-		Cliente c = new Cliente(Input.inDNI(), Input.inNombre(), Input.inApellido(), Input.inTelefono(), Input.inEmail(), false, Input.inPass());
-		RepoCliente rC = new RepoCliente();
-		boolean insertado = rC.insert(c);
-		System.out.print((insertado) ? "\n~~~ Cuenta creada correctamente ~~~\n" : "\n>>> Se ha producido un error <<<\n\n");
-		return insertado;
+		Cliente c = new Cliente(
+			Input.inDNI(), 
+			Input.inNombre(), 
+			Input.inApellido(), 
+			Input.inTelefono(), 
+			Input.inEmail(), 
+			false, 
+			Input.inPass()
+		);
+		RepoCliente rC = new RepoCliente(); 
+		return rC.insert(c);
 	}
 	
 	/**
