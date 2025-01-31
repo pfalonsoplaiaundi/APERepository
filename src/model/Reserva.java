@@ -1,69 +1,49 @@
 package model;
 
-import java.util.Date;
-
 public class Reserva {
-	
-	//Atributos
-	private int ID;
-	private Date fecIni;
-	private Date fecFin;
-	private Cliente cliente;
-    private Sala sala;
-	
-	//-----------------------------------------------------------------------
-    
-	//Constructor
-    public Reserva(int iD, Date fecIni, Date fecFin, Cliente cliente, Sala sala) {
-		super();
-		ID = iD;
-		this.fecIni = fecIni;
-		this.fecFin = fecFin;
-		this.cliente = cliente;
-		this.sala = sala;
-	}
-    
-	//-----------------------------------------------------------------------
-    
-	//Getters & setters
-    public int getID() {
-		return ID;
-	}
+    private String id;
+    private String fechaInicio;
+    private String fechaFin;
+    private boolean confirmada;
 
-	public void setID(int iD) {
-		ID = iD;
-	}
+    // Constructor
+    public Reserva(String id, String fechaInicio, String fechaFin) {
+        this.id = id;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.confirmada = false;
+    }
 
-	public Date getFecIni() {
-		return fecIni;
-	}
+    // Getters y Setters
+    public String getId() {
+        return id;
+    }
 
-	public void setFecIni(Date fecIni) {
-		this.fecIni = fecIni;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public Date getFecFin() {
-		return fecFin;
-	}
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
 
-	public void setFecFin(Date fecFin) {
-		this.fecFin = fecFin;
-	}
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public String getFechaFin() {
+        return fechaFin;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public void setFechaFin(String fechaFin) {
+        this.fechaFin = fechaFin;
+    }
 
-	public Sala getSala() {
-		return sala;
-	}
+    public boolean isConfirmada() {
+        return confirmada;
+    }
 
-	public void setSala(Sala sala) {
-		this.sala = sala;
-	}
-	
+    public void setConfirmada(boolean confirmada) {
+        this.confirmada = confirmada;
+    }
 }
