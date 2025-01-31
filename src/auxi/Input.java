@@ -186,15 +186,53 @@ public class Input {
 	}
 	
 	public static Date inFecIni() {
-		System.out.print("Fecha inicial: ");
-		String fecIniS = scn.nextLine();
+		String fecIniS = "";
+		String fecIniSD;
+		String fecIniSM;
+		String fecIniSY; 
+		do {
+			System.out.print("~~~ Fecha inicial ~~~\n"
+					+ "Dia: ");
+			fecIniSD = scn.nextLine();
+			
+			System.out.print("Mes: ");
+			fecIniSM = scn.nextLine();
+			
+			System.out.print("Año: ");
+			fecIniSY = scn.nextLine();
+		
+		} while (!StringDate.isStringDate(fecIniSY, fecIniSM, fecIniSD));
+		
+		fecIniSM = StringDate.monthFormat(fecIniSM);
+		fecIniSD = StringDate.dayFormat(fecIniSD, fecIniSM, fecIniSY);
+		fecIniS = fecIniSY + "-" + fecIniSM + "-" + fecIniSD;
+		
 		Date fecIni = Date.valueOf(fecIniS);
 		return fecIni;
 	}
 	
 	public static Date inFecFin() {
-		System.out.print("Fecha final: ");
-		String fecFinS = scn.nextLine();
+		String fecFinS = "";
+		String fecFinSD;
+		String fecFinSM;
+		String fecFinSY; 
+		do {
+			System.out.print("~~~ Fecha final ~~~\n"
+					+ "Dia: ");
+			fecFinSD = scn.nextLine();
+			
+			System.out.print("Mes: ");
+			fecFinSM = scn.nextLine();
+			
+			System.out.print("Año: ");
+			fecFinSY = scn.nextLine();
+		
+		} while (!StringDate.isStringDate(fecFinSY, fecFinSM, fecFinSD));
+		
+		fecFinSM = StringDate.monthFormat(fecFinSM);
+		fecFinSD = StringDate.dayFormat(fecFinSD, fecFinSM, fecFinSY);
+		fecFinS = fecFinSY + "-" + fecFinSM + "-" + fecFinSD;
+		
 		Date fecFin = Date.valueOf(fecFinS);
 		return fecFin;
 	}

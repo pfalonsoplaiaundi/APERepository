@@ -19,12 +19,20 @@ public class Sala {
 	protected int num;
 	protected int capacidad;
 	protected int tlfno;
+	protected double pvp;
 	protected Hotel hotel;
 	protected tSala tipo;
 	
 	//-----------------------------------------------------------------------
 	
 	// Getters y setters
+	public double getPvp() {
+		return pvp;
+	}
+	public void setPvp(double num) {
+		this.pvp = pvp;
+	}
+	
 	public int getNum() {
 		return num;
 	}
@@ -53,11 +61,12 @@ public class Sala {
 	//-----------------------------------------------------------------------
 	
 	// Constructor/es
-	public Sala(int num, int capacidad, int tlfno, Hotel hotel) {
+	public Sala(int num, int capacidad, int tlfno, double pvp, Hotel hotel) {
 		super();
 		this.num = num;
 		this.capacidad = capacidad;
 		this.tlfno = tlfno;
+		this.pvp = pvp;
 		this.hotel = hotel;
 	}
 	
@@ -66,7 +75,11 @@ public class Sala {
 	// Metodos propios
 	@Override
 	public String toString() {
-		return "Sala [num=" + num + ", capacidad=" + capacidad + ", tlfno=" + tlfno + ", hotel=" + hotel + "]";
+		return "Capacidad: " + capacidad + "\n" +
+				"En el " + hotel.getNombre() + "\n" +
+				hotel.getCiudad() + " " + hotel.getDir() + "\n" +
+				"Email: " + hotel.getEmail() + "\n" +
+				"Telefono: " + hotel.getTlfno();
 	}
 	
 	public static void printTipo() {

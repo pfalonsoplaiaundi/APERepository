@@ -10,6 +10,10 @@ public class RepoCliente {
 
 	private ArrayList<String> SQLScripts = new ArrayList<>();	
 	
+	public RepoCliente() {
+		inicializarArray();
+	}
+	
 	private void inicializarArray() {
 		
 		// Insertar	0
@@ -231,15 +235,28 @@ public class RepoCliente {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
-		
-		/*
-		 * WIP
-		 */
-		
-		//Debug
-		Cliente c = new Cliente("04627062Z", "Pablo", "Fernandez Alonso", 626140551, "pfalonso@gmail.com",
-			false, "pepe" );
-		return c;
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(4))) {
+			pS.setString(1, DNI);
+			ResultSet rS = pS.executeQuery();
+			if (rS.next()) {
+				Cliente c = new Cliente(
+					rS.getString(1),
+					rS.getString(2),
+					rS.getString(3),
+					rS.getInt(4),
+					rS.getString(5),
+					rS.getBoolean(6),
+					rS.getString(7),
+					rS.getString(8)
+				);
+				return c;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public boolean checkCreden(String user, String pass) {

@@ -5,31 +5,47 @@ import java.util.Scanner;
 
 import auxi.*;
 import conectores.*;
+import model.Hotel;
 
 public class MenuPrincipal {
    
+	public static Hotel hotel;
+	
 	public static void print() {
 		
 		System.out.print(
 				"\n\n~~~ Menu principal ~~~\n" +
-				"0. Para finalizar la compra o salir" +
+				((Login.user.isbTrabajador()) ? "-1. Para entrar en el menu de admin\n" : "") +
+				"0. Para finalizar la compra o salir\n" +
 				"------------------------------\n"
 				);
 		
 		RepoHotel rH = new RepoHotel();
 		ArrayList<String> hoteles = rH.getMenuPrincipal();
-		for(int i = 0; i < hoteles.size(); i++) {
+		int i = 0;
+		while(i < hoteles.size()) {
 			System.out.print((i+1) + ". " + hoteles.get(i) + "\n");
+			i++;
 		}
 		
 		System.out.print(
-				"-----------------------------\n" +
+				"-----------------------------\n"
+				+ "Cualquier otro numero para volver atras\n" +
 				"Seleccione el hotel que desea: "
 				);
 		int opc = Input.inOpc();
 		
-		MenuProductos.print(rH.getPKByName(hoteles.get(opc-1)));
-		
+		if (opc == 0) {
+			MenuCarrito.print();
+		} else if (opc == -1 && Login.user.isbTrabajador()) {
+			MenuAdmin.print();
+		} else if (opc <= i && opc > 0) {
+			int idhotel = rH.getPKByName(hoteles.get(opc-1));
+			hotel = rH.get(idhotel);			
+			MenuProductos.print(hotel.getID());
+		} else {
+			Login.main(null);
+		}
 	}
 	
 	

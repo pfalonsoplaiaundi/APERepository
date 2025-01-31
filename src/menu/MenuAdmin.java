@@ -2,7 +2,9 @@ package menu;
 
 public class MenuAdmin {
 
-	public void print() {
+	public static void print() {
+		System.out.print("Soy Admin");
+		MenuPrincipal.print();
 		
 	}
 

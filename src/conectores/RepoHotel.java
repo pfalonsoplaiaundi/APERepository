@@ -36,13 +36,13 @@ public class RepoHotel {
 				);
 		
 		// Comprobar existencia 3	
-		SQLScripts.add( "SELECT * FROM Cliente"
+		SQLScripts.add( "SELECT * FROM Cliente "
 				+ "WHERE DNI = ?"
 				);
 		
 		// Traer informarcion 4	
-		SQLScripts.add( "SELECT * FROM Cliente"
-				+ "WHERE DNI = ?"
+		SQLScripts.add( "SELECT * FROM hotel "
+				+ "WHERE id = ?"
 				);
 		
 		// Otros		
@@ -215,12 +215,31 @@ public class RepoHotel {
 		return false;
 	}
 
-	public Cliente get(String DNI) {
-		if (SQLScripts.isEmpty()) {
+	public Hotel get(int idHotel) {
+		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
-		return null;
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(4))) {
+			pS.setInt(1, idHotel);
+			ResultSet rS = pS.executeQuery();
+			if (rS.next()) {
+				Hotel c = new Hotel(
+					rS.getInt(1),
+					rS.getString(2),
+					rS.getString(3),
+					rS.getString(4),
+					rS.getInt(5),
+					rS.getString(6)
+				);
+				return c;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public static int getTamano(int id) {

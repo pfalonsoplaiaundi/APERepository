@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
 CREATE TABLE  IF NOT EXISTS Hotel (
   ID tinyint unsigned AUTO_INCREMENT PRIMARY KEY,
   nom varchar(50),
+  ciu varchar(50) NOT NULL,
   dir varchar(80) NOT NULL,
   tlfno int NOT NULL constraint ck_tlf_hotel check(tlfno between 100000000 and 999999999),
   email varchar(80) NOT NULL
@@ -100,12 +101,12 @@ ALTER TABLE Sala
 	ADD CONSTRAINT Sala_ID_fk FOREIGN KEY (ID) REFERENCES Hotel(ID) ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- Tabla Hotel
-INSERT INTO Hotel (nom, dir, tlfno, email) VALUES
-('Hotel Central', 'Calle Mayor, 1', 911234567, 'central@hotel.com'),
-('Hotel Sur', 'Avenida del Sol, 22', 950123456, 'sur@hotel.com'),
-('Hotel Norte', 'Calle Fría, 10', 945678912, 'norte@hotel.com'),
-('Hotel Este', 'Paseo del Este, 45', 934567891, 'este@hotel.com'),
-('Hotel Oeste', 'Avenida del Oeste, 78', 923456789, 'oeste@hotel.com');
+INSERT INTO Hotel (nom, ciu, dir, tlfno, email) VALUES
+('Hotel Central', 'Madrid', 'Calle Mayor, 1', 911234567, 'central@hotel.com'),
+('Hotel Sur', 'Sevilla', 'Avenida del Sol, 22', 950123456, 'sur@hotel.com'),
+('Hotel Norte', 'Donostia', 'Calle Fría, 10', 945678912, 'norte@hotel.com'),
+('Hotel Este', 'Lleida', 'Paseo del Este, 45', 934567891, 'este@hotel.com'),
+('Hotel Oeste', 'Salamanca', 'Avenida del Oeste, 78', 923456789, 'oeste@hotel.com');
 
 -- Tabla Sala
 INSERT INTO Sala (ID, num, capacidad, tlfno, pvp, subtipo) VALUES
