@@ -7,108 +7,60 @@ import model.Habitacion;
 public class RepoHabitacion {
 
     private ArrayList<String> SQLScripts = new ArrayList<>();
-
+    
+    public RepoHabitacion() {
+        inicializarArray();
+    }
+    
     private void inicializarArray() {
-        // Insertar
-        SQLScripts.add("INSERT INTO Habitacion (ID, Num, tipoHab) VALUES (?, ?, ?)");
-
-        // Eliminar
-        SQLScripts.add("DELETE FROM Habitacion WHERE ID = ? AND Num = ?");
-
-        // Modificar
-        SQLScripts.add("UPDATE Habitacion SET tipoHab = ? WHERE ID = ? AND Num = ?");
-
-        // Comprobar existencia
-        SQLScripts.add("SELECT * FROM Habitacion WHERE ID = ? AND Num = ?");
-
-        // Obtener información
-        SQLScripts.add("SELECT * FROM Habitacion WHERE ID = ? AND Num = ?");
+        SQLScripts.add("INSERT INTO habitacion VALUES (?, ?, ?, ?, ?)");
+        SQLScripts.add("DELETE FROM habitacion WHERE id = ?");
+        SQLScripts.add("UPDATE habitacion SET num = ?, capacidad = ?, tlfno = ?, tipo = ? WHERE id = ?");
+        SQLScripts.add("SELECT * FROM habitacion WHERE id = ?");
     }
-
+    
     public boolean insert(Habitacion nuevo) {
-        if (!(nuevo instanceof Habitacion)) return false;
-        Habitacion habitacion = (Habitacion) nuevo;
-
-        if (SQLScripts.isEmpty()) {
-            inicializarArray();
-        }
-
-        if (!check(habitacion)) {
-            try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
-                preparedStatement.setInt(1, habitacion.getID());
-                preparedStatement.setInt(2, habitacion.getNum());
-                preparedStatement.setString(3, habitacion.getTipo().name());
-                preparedStatement.executeUpdate();
-                return check(habitacion);
-            } catch (SQLException e) {
-                System.out.println("Error al insertar la habitación");
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public boolean delete(Habitacion aBorrar) {
-        if (!(aBorrar instanceof Habitacion)) return false;
-        Habitacion habitacion = (Habitacion) aBorrar;
-
-        if (SQLScripts.isEmpty()) {
-            inicializarArray();
-        }
-
-        if (check(habitacion)) {
-            try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
-                preparedStatement.setInt(1, habitacion.getID());
-                preparedStatement.setInt(2, habitacion.getNum());
-                preparedStatement.executeUpdate();
-                return !check(habitacion);
-            } catch (SQLException e) {
-                System.out.println("Error al eliminar la habitación");
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public boolean update(Habitacion modificaciones) {
-        if (!(modificaciones instanceof Habitacion)) return false;
-        Habitacion habitacion = (Habitacion) modificaciones;
-
-        if (SQLScripts.isEmpty()) {
-            inicializarArray();
-        }
-
-        Habitacion original = get(habitacion.getID(), habitacion.getNum());
-        if (original == null) {
-            System.out.println("Error: habitación no encontrada");
+        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
+            preparedStatement.setInt(1, nuevo.getNum());
+            preparedStatement.setInt(2, nuevo.getCapacidad());
+            preparedStatement.setInt(3, nuevo.getTlfno());
+            preparedStatement.setString(4, nuevo.getTipo().toString());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error al insertar la habitación");
             return false;
         }
-
-        if (!habitacion.getTipo().isEmpty()) original.setTipo(habitacion.getTipo());
-
-        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
-        	preparedStatement.setString(1, original.getTipo().name());
-            preparedStatement.setInt(2, original.getID());
-            preparedStatement.setInt(3, original.getNum());
+    }
+    
+    public boolean delete(Habitacion aBorrar) {
+        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
+            preparedStatement.setInt(1, aBorrar.getNum());
             preparedStatement.executeUpdate();
-            return check(original);
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar la habitación");
+            return false;
+        }
+    }
+    
+    public boolean update(Habitacion modificaciones) {
+        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
+            preparedStatement.setInt(1, modificaciones.getNum());
+            preparedStatement.setInt(2, modificaciones.getCapacidad());
+            preparedStatement.setInt(3, modificaciones.getTlfno());
+            preparedStatement.setString(4, modificaciones.getTipo().toString());
+            preparedStatement.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println("Error al actualizar la habitación");
             return false;
         }
     }
-
-    public boolean check(Habitacion objeto) {
-        if (!(objeto instanceof Habitacion)) return false;
-        Habitacion habitacion = (Habitacion) objeto;
-
-        if (SQLScripts.isEmpty()) {
-            inicializarArray();
-        }
-
+    
+    public boolean check(Habitacion habitacion) {
         try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(3))) {
-            preparedStatement.setInt(1, habitacion.getID());
-            preparedStatement.setInt(2, habitacion.getNum());
+            preparedStatement.setInt(1, habitacion.getNum());
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet.next();
         } catch (SQLException e) {
@@ -116,31 +68,18 @@ public class RepoHabitacion {
             return false;
         }
     }
-
-    public Habitacion get(Habitacion primaryKey) {
-        return null;
-    }
-
-    public Habitacion get(int ID, int Num) {
-        if (SQLScripts.isEmpty()) {
-            inicializarArray();
-        }
-
-        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(4))) {
-            preparedStatement.setInt(1, ID);
-            preparedStatement.setInt(2, Num);
+    
+    public Habitacion get(int idHotel, int numSala) {
+        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(3))) {
+            preparedStatement.setInt(1, numSala);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             if (resultSet.next()) {
-                return new Habitacion(
-                    resultSet.getInt("ID"),
-                    resultSet.getInt("Num"),
-                    resultSet.getString("tipoHab")
-                );
+                return new Habitacion(resultSet.getInt("num"), resultSet.getInt("capacidad"), resultSet.getInt("tlfno"), null, Habitacion.tipoHab.valueOf(resultSet.getString("tipo")));
             }
         } catch (SQLException e) {
-        	System.out.println("Error al obtener la habitación: " + e.getMessage());
+            System.out.println("Error al obtener la habitación");
         }
         return null;
     }
 }
+
