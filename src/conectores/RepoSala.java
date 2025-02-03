@@ -57,13 +57,7 @@ public class RepoSala {
 		// Otros		
 		
 		// Tipos de habitaciones disponibles y su fecha mas cercana disponible. 5
-		SQLScripts.add( "SELECT h.tipohab, min(case \r\n"
-				+ "	when current_date() between r.fecini and r.fecfin then r.fecfin\r\n"
-				+ "    else current_date()\r\n"
-				+ "    end)\r\n"
-				+ "FROM habitacion h natural join sala s natural join reserva r\r\n"
-				+ "where s.id = ? and r.fecfin > current_date()\r\n"
-				+ "group by h.tipohab;");
+		SQLScripts.add( "SELECT h.tipohab, min(case when current_date() between r.fecini and r.fecfin then r.fecfin else current_date() end) FROM habitacion h natural join sala s natural join reserva where s.id = ? and r.fecfin > current_date() group by h.tipohab;");
 		
 		SQLScripts.add("");
 	

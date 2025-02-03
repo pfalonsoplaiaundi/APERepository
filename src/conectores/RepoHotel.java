@@ -53,7 +53,10 @@ public class RepoHotel {
 				);
 		
 		// Obtener el nombre de todos los hoteles 6
-		SQLScripts.add("SELECT nom FROM hotel;");
+		SQLScripts.add("SELECT nom FROM hotel;"); // AÑADIR ID
+		/*
+		 * wip
+		 */
 		
 		// Obtener el PK de un hotel mediante el nombre del hotel 7
 		SQLScripts.add("SELECT id FROM hotel WHERE nom = ?;");

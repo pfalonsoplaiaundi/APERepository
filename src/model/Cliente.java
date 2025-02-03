@@ -24,7 +24,7 @@ public class Cliente {
 	private String DNI;
 	private String nombre;
 	private String apellidos;
-	private int telefono;
+	private String telefono;
 	private String email;
 	private tarifas tarifa;
 	private boolean bTrabajador;
@@ -43,7 +43,7 @@ public class Cliente {
 	 * @param bTrabajador
 	 * @param pass
 	 */
-	public Cliente(String DNI, String nombre, String apellidos, int telefono, String email,
+	public Cliente(String DNI, String nombre, String apellidos, String telefono, String email,
 			boolean bTrabajador, String pass) {
 		super();
 		this.DNI = DNI;
@@ -56,7 +56,7 @@ public class Cliente {
 		this.tarifa = selectorTarifa();
 	}
 	
-	public Cliente(String DNI, String nombre, String apellidos, int telefono, String email,
+	public Cliente(String DNI, String nombre, String apellidos, String telefono, String email,
 			boolean bTrabajador, String tarifa, String pass) {
 		super();
 		this.DNI = DNI;
@@ -97,11 +97,11 @@ public class Cliente {
 		this.apellidos = apellidos;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
@@ -318,11 +318,4 @@ public class Cliente {
 				+ "Contraseña: " + pass + "\n"
 				+ "--------------------";
 	}
-    
-	public static void main(String[] args) {
-		Cliente c = new Cliente("464532", "Pepe", "Martin", 943486532, "pepe@pepe.pepe", true, "pepe6");
-		System.out.print(c.toString());
-	}
-    
-	
 }

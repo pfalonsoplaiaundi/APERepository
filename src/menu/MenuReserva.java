@@ -23,6 +23,8 @@ public class MenuReserva {
 			Login.user, 
 			rH.getByTypeAndFirstDate(tipoDeHab)
 		);
+			
+		
 		
 		MenuCarrito.addCarrito(r);
 		MenuPrincipal.print();
