@@ -86,10 +86,4 @@ public class RepoSala {
 		return null;
 	}
 
-	public Sala getByTypeAndFirstDate(String tipoDeHab) {
-		
-		return null;
-	}
-
-
 }

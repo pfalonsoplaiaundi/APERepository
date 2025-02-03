@@ -16,7 +16,7 @@ public class Reserva {
 	//Constructor
     public Reserva(int iD, Date fecIni, Date fecFin, Cliente cliente, Sala sala) {
 		super();
-		ID = iD;
+		this.ID = iD;
 		this.fecIni = fecIni;
 		this.fecFin = fecFin;
 		this.cliente = cliente;

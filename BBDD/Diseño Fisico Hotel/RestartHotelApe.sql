@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
   DNI Char(9) Primary Key,
   nom varchar(50) NOT NULL,
   ape varchar(50) NOT NULL,
-  tlfno varchar(15) NOT NULL,
+  tlfno int NOT NULL,
   email varchar(80) NOT NULL,
   btrabajador BOOLEAN NOT NULL,  
   tarifa enum ("estandar",
