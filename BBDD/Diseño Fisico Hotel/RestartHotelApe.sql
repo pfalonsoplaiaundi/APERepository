@@ -1,4 +1,6 @@
-Use Hotel; 
+CREATE DATABASE IF NOT EXISTS Hotel;
+
+USE Hotel; 
 
 DROP TABLE IF EXISTS EspaciosComunes;
 DROP TABLE IF EXISTS SalaReuniones;
@@ -13,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
   DNI Char(9) Primary Key,
   nom varchar(50) NOT NULL,
   ape varchar(50) NOT NULL,
-  tlfno int NOT NULL constraint ck_tlf_cliente check(tlfno between 100000000 and 999999999),
+  tlfno varchar(15) NOT NULL,
   email varchar(80) NOT NULL,
   btrabajador BOOLEAN NOT NULL,  
   tarifa enum ("estandar",
@@ -30,10 +32,10 @@ CREATE TABLE IF NOT EXISTS Cliente (
 -- Tabla de Hotel
 CREATE TABLE  IF NOT EXISTS Hotel (
   ID tinyint unsigned AUTO_INCREMENT PRIMARY KEY,
-  nom varchar(50),
+  nom varchar(50) NOT NULL,
   ciu varchar(50) NOT NULL,
   dir varchar(80) NOT NULL,
-  tlfno int NOT NULL constraint ck_tlf_hotel check(tlfno between 100000000 and 999999999),
+  tlfno varchar(15) NOT NULL,
   email varchar(80) NOT NULL
 );
 
@@ -41,8 +43,8 @@ CREATE TABLE  IF NOT EXISTS Hotel (
 CREATE TABLE IF NOT EXISTS Sala (
   ID tinyint unsigned,
   num smallint unsigned,
-  capacidad smallint unsigned,
-  tlfno int NOT NULL constraint ck_tlf_sala check(tlfno between 100000000 and 999999999),
+  capacidad smallint unsigned constraint CK_capacidad_sala check (capacidad > 0),
+  tlfno varchar(15) NOT NULL,
   pvp decimal,
   subtipo enum("Habitacion", "SalaReuniones", "EspaciosComunes") NOT NULL,
   constraint PK_Sala primary key (id, num)
@@ -79,7 +81,8 @@ CREATE TABLE IF NOT EXISTS Reserva (
   ID tinyint unsigned not null,
   num smallint unsigned not null,
   FecIni date NOT NULL,
-  FecFin date NOT NULL
+  FecFin date NOT NULL,
+  PrecioTotal decimal NOT NULL
 );
 
 -- Relaciones foreign keys
