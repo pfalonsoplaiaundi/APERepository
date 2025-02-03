@@ -1,5 +1,9 @@
 package auxi;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Date;
 import java.util.Scanner;
 
 import model.Cliente;
@@ -21,13 +25,18 @@ public class Input {
 	}
 	
 	public static String inDNI() {
-		System.out.print("DNI: ");
-		String DNI = scn.nextLine();
-		if(Cliente.verificacionDNI(DNI)) {
-			return DNI;
-		} else {
-			return null;
-		}
+		String DNI = "";
+		do {	
+			System.out.print("DNI: ");
+			DNI = scn.nextLine();
+			if (Cliente.verificacionDNI(DNI)) {
+				return DNI;
+			} else {
+				DNI = "";
+				System.out.println("ERROR: DNI no valido");
+			}
+		} while (DNI.equals(""));
+		return DNI;
 	}
 	
 	public static String inEmail() {
@@ -141,9 +150,24 @@ public class Input {
 	}
 	
 	public static String inPass() {
-		System.out.print("Contraseña: ");
-		return scn.nextLine();
-	}
+		String pass = "";
+		do {
+			System.out.print("Contraseña: ");
+			pass = scn.nextLine();
+			if (Cliente.verificacionPass(pass)) {
+				return pass;
+			} else {
+				System.out.print(
+						"La contraseña debe contener: " +
+						((!Cliente.tieneMayus(pass)) ? "Mayusculas " : "") +
+						((!Cliente.tieneMinus(pass)) ? "Minusculas " : "") +
+						((!Cliente.tieneNumeros(pass)) ? "Numeros\n" : "\n")
+						);
+				pass = "";
+			}
+		} while (pass.equals(""));
+		return pass;
+    }
 	
 	public static int inOpc() {
 		int opc = scn.nextInt();
@@ -159,5 +183,57 @@ public class Input {
 		} else {
 			return false;
 		}
+	}
+	
+	public static Date inFecIni() {
+		String fecIniS = "";
+		String fecIniSD;
+		String fecIniSM;
+		String fecIniSY; 
+		do {
+			System.out.print("~~~ Fecha inicial ~~~\n"
+					+ "Dia: ");
+			fecIniSD = scn.nextLine();
+			
+			System.out.print("Mes: ");
+			fecIniSM = scn.nextLine();
+			
+			System.out.print("Año: ");
+			fecIniSY = scn.nextLine();
+		
+		} while (!StringDate.isStringDate(fecIniSY, fecIniSM, fecIniSD));
+		
+		fecIniSM = StringDate.monthFormat(fecIniSM);
+		fecIniSD = StringDate.dayFormat(fecIniSD, fecIniSM, fecIniSY);
+		fecIniS = fecIniSY + "-" + fecIniSM + "-" + fecIniSD;
+		
+		Date fecIni = Date.valueOf(fecIniS);
+		return fecIni;
+	}
+	
+	public static Date inFecFin() {
+		String fecFinS = "";
+		String fecFinSD;
+		String fecFinSM;
+		String fecFinSY; 
+		do {
+			System.out.print("~~~ Fecha final ~~~\n"
+					+ "Dia: ");
+			fecFinSD = scn.nextLine();
+			
+			System.out.print("Mes: ");
+			fecFinSM = scn.nextLine();
+			
+			System.out.print("Año: ");
+			fecFinSY = scn.nextLine();
+		
+		} while (!StringDate.isStringDate(fecFinSY, fecFinSM, fecFinSD));
+		
+		fecFinSM = StringDate.monthFormat(fecFinSM);
+		fecFinSD = StringDate.dayFormat(fecFinSD, fecFinSM, fecFinSY);
+		fecFinS = fecFinSY + "-" + fecFinSM + "-" + fecFinSD;
+		
+		Date fecFin = Date.valueOf(fecFinS);
+		return fecFin;
 	}
 }

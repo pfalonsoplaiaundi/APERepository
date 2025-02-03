@@ -1,6 +1,9 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Objects;
+
+import auxi.Input;
 
 public class Cliente {
 	
@@ -43,14 +46,27 @@ public class Cliente {
 	public Cliente(String DNI, String nombre, String apellidos, int telefono, String email,
 			boolean bTrabajador, String pass) {
 		super();
-		this.DNI = (verificacionDNI(DNI)) ? DNI : ""; // Si el DNI es correcto introduce el DNI si no lo deja vacio.
+		this.DNI = DNI;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.email = email;
 		this.bTrabajador = bTrabajador;
-		this.pass = (verificacionPass(pass)) ? pass: ""; // Si la contraseña es valida introduce esta, si no lo deja vacio.
+		this.pass = pass;
 		this.tarifa = selectorTarifa();
+	}
+	
+	public Cliente(String DNI, String nombre, String apellidos, int telefono, String email,
+			boolean bTrabajador, String tarifa, String pass) {
+		super();
+		this.DNI = DNI;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.telefono = telefono;
+		this.email = email;
+		this.bTrabajador = bTrabajador;
+		this.pass = pass;
+		this.tarifa = selectorTarifa(tarifa);
 	}
 	
 	//-----------------------------------------------------------------------
@@ -241,6 +257,37 @@ public class Cliente {
             return tarifas.dctoNewCliente;
         }
     }
+    
+	private tarifas selectorTarifa(String tarifa) {
+		ArrayList<String> t = new ArrayList<>();
+		t.add("estandar");
+		t.add("dctoTrabajador");
+		t.add("dcto5");
+		t.add("dcto10");
+		t.add("dcto5por");
+		t.add("dcto10por");
+		t.add("dctoNewCliente");
+		
+		// Comparto lo que me pasan con el array de arriba y lo transformo en el enumerado
+		switch (t.indexOf(tarifa)) {
+		case 0:
+			return tarifas.estandar;
+		case 1:
+			return tarifas.dctoTrabajador;
+		case 2:
+			return tarifas.dcto5;
+		case 3:
+			return tarifas.dcto10;
+		case 4:
+			return tarifas.dcto5por;
+		case 5:
+			return tarifas.dcto10por;
+		case 6:
+			return tarifas.dctoNewCliente;
+		default:
+			return tarifas.estandar;
+		}
+	}
 
 	@Override
 	public int hashCode() {

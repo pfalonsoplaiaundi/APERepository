@@ -10,40 +10,53 @@ public class RepoHotel {
 
 	private ArrayList<String> SQLScripts = new ArrayList<>();	
 	
+	public RepoHotel() {
+		inicializarArray();
+	}
+	
+	/**
+	 * 0 Insert, 1 Delete, 2 Update, 3 Check, 4 Get, 5 NumOcupantesInHotel, 6 MenuPrincipal, 7 getPKHotelByName
+	 */
 	private void inicializarArray() {
 		
-		// Insertar	
+		// Insertar	0
 		SQLScripts.add( "INSERT hotel"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, SHA2(pass = ?, 256))"
 				);
 		
-		// Eliminar
+		// Eliminar 1
 		SQLScripts.add( "DELETE cliente"
 				+ "WHERE DNI = ?"
 				);
 		
-		// Modificar		
+		// Modificar 2		
 		SQLScripts.add( "UPDATE cliente"
 				+ "SET DNI = ?, nom = ?, ape = ?, tlfno = ?, email = ?, bTrabajador = ?, tarifa = ?, SHA2(pass = ?, 256)"
 				+ "WHERE DNI = ?"
 				);
 		
-		// Comprobar existencia	
-		SQLScripts.add( "SELECT * FROM Cliente"
+		// Comprobar existencia 3	
+		SQLScripts.add( "SELECT * FROM Cliente "
 				+ "WHERE DNI = ?"
 				);
 		
-		// Traer informarcion		
-		SQLScripts.add( "SELECT * FROM Cliente"
-				+ "WHERE DNI = ?"
+		// Traer informarcion 4	
+		SQLScripts.add( "SELECT * FROM hotel "
+				+ "WHERE id = ?"
 				);
 		
 		// Otros		
 		
-		// Numero de ocupantes de habitaciones en un hotel concreto.
+		// Numero de ocupantes de habitaciones en un hotel concreto. 5
 		SQLScripts.add( "SELECT"
 				+ "sum(capacidad) from hotel join sala using(id) natural join habitacion where id = ? group by nom;"
 				);
+		
+		// Obtener el nombre de todos los hoteles 6
+		SQLScripts.add("SELECT nom FROM hotel;");
+		
+		// Obtener el PK de un hotel mediante el nombre del hotel 7
+		SQLScripts.add("SELECT id FROM hotel WHERE nom = ?;");
 	}
 
 	
@@ -127,12 +140,11 @@ public class RepoHotel {
 		return false;
 	}
 
+	/**
+	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 */
 	public boolean update(Cliente modificaciones) {
-		
-		/**
-		 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
-		 */
-		
+				
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -203,16 +215,66 @@ public class RepoHotel {
 		return false;
 	}
 
-	public Cliente get(String DNI) {
-		if (SQLScripts.isEmpty()) {
+	public Hotel get(int idHotel) {
+		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
-		return null;
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(4))) {
+			pS.setInt(1, idHotel);
+			ResultSet rS = pS.executeQuery();
+			if (rS.next()) {
+				Hotel c = new Hotel(
+					rS.getInt(1),
+					rS.getString(2),
+					rS.getString(3),
+					rS.getString(4),
+					rS.getInt(5),
+					rS.getString(6)
+				);
+				return c;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public static int getTamano(int id) {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public ArrayList<String> getMenuPrincipal() {
+		ArrayList<String> mP = new ArrayList<>();
+		String query = SQLScripts.get(6);
+	    try (
+	    	PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query);
+	    	ResultSet resultSet = pS.executeQuery(query)
+	    ) {
+	    	while (resultSet.next()) {
+	       		mP.add(resultSet.getString("nom"));
+	       	} 
+	    } catch (SQLException e) {
+	    	e.printStackTrace();
+	    }
+		return mP;
+	}
+
+	public int getPKByName(String nom) {
+		try ( 
+			PreparedStatement pS = ConectMySQL.conexion.prepareStatement(SQLScripts.get(7));
+		) { 
+			pS.setString(1, nom);	
+			ResultSet rS = pS.executeQuery();
+			rS.next();
+			return rS.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 	
