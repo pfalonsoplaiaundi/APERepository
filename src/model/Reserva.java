@@ -1,49 +1,69 @@
 package model;
 
+import java.util.Date;
+
 public class Reserva {
-    private String id;
-    private String fechaInicio;
-    private String fechaFin;
-    private boolean confirmada;
+	
+	//Atributos
+	private int ID;
+	private Date fecIni;
+	private Date fecFin;
+	private Cliente cliente;
+    private Sala sala;
+	
+	//-----------------------------------------------------------------------
+    
+	//Constructor
+    public Reserva(int iD, Date fecIni, Date fecFin, Cliente cliente, Sala sala) {
+		super();
+		ID = iD;
+		this.fecIni = fecIni;
+		this.fecFin = fecFin;
+		this.cliente = cliente;
+		this.sala = sala;
+	}
+    
+	//-----------------------------------------------------------------------
+    
+	//Getters & setters
+    public int getID() {
+		return ID;
+	}
 
-    // Constructor
-    public Reserva(String id, String fechaInicio, String fechaFin) {
-        this.id = id;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.confirmada = false;
-    }
+	public void setID(int iD) {
+		ID = iD;
+	}
 
-    // Getters y Setters
-    public String getId() {
-        return id;
-    }
+	public Date getFecIni() {
+		return fecIni;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setFecIni(Date fecIni) {
+		this.fecIni = fecIni;
+	}
 
-    public String getFechaInicio() {
-        return fechaInicio;
-    }
+	public Date getFecFin() {
+		return fecFin;
+	}
 
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
+	public void setFecFin(Date fecFin) {
+		this.fecFin = fecFin;
+	}
 
-    public String getFechaFin() {
-        return fechaFin;
-    }
+	public Cliente getCliente() {
+		return cliente;
+	}
 
-    public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
-    }
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
-    public boolean isConfirmada() {
-        return confirmada;
-    }
+	public Sala getSala() {
+		return sala;
+	}
 
-    public void setConfirmada(boolean confirmada) {
-        this.confirmada = confirmada;
-    }
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+	
 }
