@@ -67,7 +67,7 @@ public class RepoHotel {
 	/**
 	 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente
 	 */
-	public boolean insert(Cliente nuevo) {
+	public boolean insert(Hotel nuevo) {
 		
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
@@ -79,14 +79,12 @@ public class RepoHotel {
 			
 			//Si no existe el cliente, hace la consulta a la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
-		        preparedStatement.setString(1, nuevo.getDNI());
+				preparedStatement.setInt(1, nuevo.getID());
 		        preparedStatement.setString(2, nuevo.getNombre());
-		        preparedStatement.setString(3, nuevo.getApellidos());
-		        preparedStatement.setInt(4, nuevo.getTelefono());
-		        preparedStatement.setString(5, nuevo.getEmail());
-		        preparedStatement.setBoolean(6, nuevo.isbTrabajador());
-		        preparedStatement.setString(9, nuevo.getTarifa().toString());
-		        preparedStatement.setString(8, nuevo.getPass());
+		        preparedStatement.setString(3, nuevo.getCiudad());
+		        preparedStatement.setString(4, nuevo.getDir());
+		        preparedStatement.setString(5, nuevo.getTlfno());
+		        preparedStatement.setString(9, nuevo.getEmail());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
@@ -103,7 +101,7 @@ public class RepoHotel {
 		return false;
 	}
 
-	public boolean delete(Cliente aBorrar) {
+	public boolean delete(Hotel aBorrar) {
 		
 		/**
 		 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
@@ -119,14 +117,12 @@ public class RepoHotel {
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
-		        preparedStatement.setString(1, aBorrar.getDNI());
+				preparedStatement.setInt(1, aBorrar.getID());
 		        preparedStatement.setString(2, aBorrar.getNombre());
-		        preparedStatement.setString(3, aBorrar.getApellidos());
-		        preparedStatement.setInt(4, aBorrar.getTelefono());
-		        preparedStatement.setString(5, aBorrar.getEmail());
-		        preparedStatement.setBoolean(6, aBorrar.isbTrabajador());
-		        preparedStatement.setString(9, aBorrar.getTarifa().toString());
-		        preparedStatement.setString(8, aBorrar.getPass());
+		        preparedStatement.setString(3, aBorrar.getCiudad());
+		        preparedStatement.setString(4, aBorrar.getDir());
+		        preparedStatement.setString(5, aBorrar.getTlfno());
+		        preparedStatement.setString(9, aBorrar.getEmail());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
@@ -146,7 +142,7 @@ public class RepoHotel {
 	/**
 	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
 	 */
-	public boolean update(Cliente modificaciones) {
+	public boolean update(Hotel modificaciones) {
 				
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
@@ -154,21 +150,20 @@ public class RepoHotel {
 		}
 		
 		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
-		Cliente original = new Cliente( "", "", "", 0, "", false, "");
+		Hotel original = new Hotel(0, "", "", "", "", "");
 		
 		// Copruebo que me han pasado el DNI correcto
-		if (!modificaciones.getDNI().equals("")) {
+		if (modificaciones.getID() != 0) {
 			
 			// Meto los datos del cliente original en el cliente creado anterior
-			original = get(modificaciones.getDNI());
+			original = get(modificaciones.getID());
 			
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
 			if (!modificaciones.getNombre().equals("")) original.setNombre(modificaciones.getNombre());
-			if (!modificaciones.getApellidos().equals("")) original.setApellidos(modificaciones.getApellidos());
-			if (!(modificaciones.getTelefono() == 0)) original.setTelefono(modificaciones.getTelefono());
+			if (!modificaciones.getCiudad().equals("")) original.setCiudad(modificaciones.getCiudad());
+			if (!modificaciones.getDir().equals("")) original.setDir(modificaciones.getDir());
+			if (!modificaciones.getTlfno().equals("")) original.setTlfno(modificaciones.getTlfno());
 			if (!modificaciones.getEmail().equals("")) original.setEmail(modificaciones.getEmail());
-			if (!modificaciones.getTarifa().toString().equals("estandar")) original.setTarifa(modificaciones.getTarifa());
-			if (!modificaciones.getPass().equals("")) original.setPass(modificaciones.getPass());
 		
 		// En caso de no tener el DNI correcto devuelvo error
 		} else {
@@ -181,18 +176,16 @@ public class RepoHotel {
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
-		        preparedStatement.setString(1, original.getDNI());
+		        preparedStatement.setInt(1, original.getID());
 		        preparedStatement.setString(2, original.getNombre());
-		        preparedStatement.setString(3, original.getApellidos());
-		        preparedStatement.setInt(4, original.getTelefono());
-		        preparedStatement.setString(5, original.getEmail());
-		        preparedStatement.setBoolean(6, original.isbTrabajador());
-		        preparedStatement.setString(9, original.getTarifa().toString());
-		        preparedStatement.setString(8, original.getPass());
+		        preparedStatement.setString(3, original.getCiudad());
+		        preparedStatement.setString(4, original.getDir());
+		        preparedStatement.setString(5, original.getTlfno());
+		        preparedStatement.setString(9, original.getEmail());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !checkEquals(original);
+		        return !check(original);
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
@@ -206,7 +199,7 @@ public class RepoHotel {
 	}
 	
 
-	public boolean check(Cliente cliente) {
+	public boolean check(Hotel hotel) {
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
@@ -232,7 +225,7 @@ public class RepoHotel {
 					rS.getString(2),
 					rS.getString(3),
 					rS.getString(4),
-					rS.getInt(5),
+					rS.getString(5),
 					rS.getString(6)
 				);
 				return c;

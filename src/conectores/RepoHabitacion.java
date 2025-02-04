@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import menu.MenuPrincipal;
 import model.Cliente;
+import model.HabDisponible;
 import model.Habitacion;
 import model.Sala;
 
@@ -79,7 +80,7 @@ public class RepoHabitacion {
 	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
 	            preparedStatement.setInt(1, nuevo.getNum());
 	            preparedStatement.setInt(2, nuevo.getCapacidad());
-	            preparedStatement.setInt(3, nuevo.getTlfno());
+	            preparedStatement.setString(3, nuevo.getTlfno());
 	            preparedStatement.setString(4, nuevo.getTipo().toString());
 	            preparedStatement.executeUpdate();
 		        
@@ -122,7 +123,6 @@ public class RepoHabitacion {
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
 	            preparedStatement.setInt(1, aBorrar.getNum());
 	            preparedStatement.executeUpdate();
-	            return true;
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
 		        return !check(aBorrar);
@@ -151,21 +151,19 @@ public class RepoHabitacion {
 		}
 		
 		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
-		Habitacion original = new Habitacion("", "", "", 0, "", false, "");
+		Habitacion original = new Habitacion(null, 0, 0, "", 0, "");
 		
-		// Copruebo que me han pasado el DNI correcto
-		if (!modificaciones.getNum().equals("")) {
+		// Copruebo que me han pasado el Primary Key correcto
+		if (!((modificaciones.getNum() != 0) && (modificaciones.getHotel() == null))) {
 			
 			// Meto los datos del cliente original en el cliente creado anterior
-			original = get(modificaciones.getNum());
+			original = get(modificaciones.getHotel().getID(), modificaciones.getNum());
 			
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
-			if (!modificaciones.getNombre().equals("")) original.setNombre(modificaciones.getNombre());
-			if (!modificaciones.getApellidos().equals("")) original.setApellidos(modificaciones.getApellidos());
-			if (!(modificaciones.getTelefono() == 0)) original.setTelefono(modificaciones.getTelefono());
-			if (!modificaciones.getEmail().equals("")) original.setEmail(modificaciones.getEmail());
-			if (!modificaciones.getTarifa().toString().equals("estandar")) original.setTarifa(modificaciones.getTarifa());
-			if (!modificaciones.getPass().equals("")) original.setPass(modificaciones.getPass());
+			if (modificaciones.getCapacidad() != 0) original.setCapacidad(modificaciones.getCapacidad());
+			if (!modificaciones.getTlfno().equals("")) original.setTlfno(modificaciones.getTlfno());
+			if (modificaciones.getPvp() != 0) original.setPvp(modificaciones.getPvp());
+			if (!modificaciones.getTipo().equals(Habitacion.tipoHab.desconocido)) original.setTipo(modificaciones.getTipo());
 		
 		// En caso de no tener el DNI correcto devuelvo error
 		} else {
@@ -178,18 +176,16 @@ public class RepoHabitacion {
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
-		        preparedStatement.setString(1, original.getDNI());
-		        preparedStatement.setString(2, original.getNombre());
-		        preparedStatement.setString(3, original.getApellidos());
-		        preparedStatement.setInt(4, original.getTelefono());
-		        preparedStatement.setString(5, original.getEmail());
-		        preparedStatement.setBoolean(6, original.isbTrabajador());
-		        preparedStatement.setString(9, original.getTarifa().toString());
-		        preparedStatement.setString(8, original.getPass());
+		        preparedStatement.setInt(1, original.getHotel().getID());
+		        preparedStatement.setInt(2, original.getNum());
+		        preparedStatement.setInt(3, original.getCapacidad());
+		        preparedStatement.setString(4, original.getTlfno());
+		        preparedStatement.setDouble(5, original.getPvp());
+		        preparedStatement.setString(6, original.getTipo().toString());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !checkEquals(original);
+		        return !check(original);
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
@@ -204,16 +200,14 @@ public class RepoHabitacion {
 	
 
 	public boolean check(Habitacion habitacion) {
-		/*
-		 * WIP
-		 */
 		
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
 		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(3))) {
-	        preparedStatement.setString(1, habitacion.getDNI());
+	        preparedStatement.setInt(1, habitacion.getHotel().getID());
+			preparedStatement.setInt(2, habitacion.getNum());
 	        ResultSet rS = preparedStatement.executeQuery();
 	        if (rS.next()) {
 	        	return true;
@@ -248,7 +242,7 @@ public class RepoHabitacion {
 					rH.get(rS.getInt(1)),
 					rS.getInt(2),
 					rS.getInt(4),
-					rS.getInt(5),
+					rS.getString(5),
 					rS.getDouble(6),
 					rS.getString(3)
 				);
@@ -277,7 +271,7 @@ public class RepoHabitacion {
 					MenuPrincipal.hotel,
 					rS.getInt(1),
 					rS.getInt(2),
-					rS.getInt(3),
+					rS.getString(3),
 					rS.getDouble(4),
 					rS.getString(5)	
 				);
@@ -289,6 +283,12 @@ public class RepoHabitacion {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public ArrayList<HabDisponible> getListaFiltrada(Habitacion filtro, int disponible) {
+		ArrayList<HabDisponible> lista = new ArrayList<>();
+		
+		return null;
 	}
 
 

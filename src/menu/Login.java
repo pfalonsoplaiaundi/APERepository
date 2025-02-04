@@ -14,6 +14,7 @@ public class Login {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
 		// Conecta con permisos minimos para poder revisar usuarios
 		ConectMySQL.conectar();		
 		

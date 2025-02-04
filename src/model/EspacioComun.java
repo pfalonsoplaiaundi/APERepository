@@ -14,7 +14,7 @@ public class EspacioComun extends Sala {
 		this.tipo = tipo;
 	}
 
-	public EspacioComun(int num, int capacidad, int tlfno, double pvp, Hotel hotel, String tipo) {
+	public EspacioComun(int num, int capacidad, String tlfno, double pvp, Hotel hotel, String tipo) {
 		super(num, capacidad, tlfno, pvp, hotel);
 		this.tipo = tipo;
 	}
