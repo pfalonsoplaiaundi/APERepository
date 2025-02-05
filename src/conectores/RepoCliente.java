@@ -50,7 +50,6 @@ public class RepoCliente {
 				+ "where c.dni = ? and c.pass = sha2(?, 256);"
 				);
 		
-		this.SQLScripts.add("");
 	}
 	
 	/**
@@ -71,7 +70,7 @@ public class RepoCliente {
 		        preparedStatement.setString(1, nuevo.getDNI());
 		        preparedStatement.setString(2, nuevo.getNombre());
 		        preparedStatement.setString(3, nuevo.getApellidos());
-		        preparedStatement.setInt(4, nuevo.getTelefono());
+		        preparedStatement.setString(4, nuevo.getTelefono());
 		        preparedStatement.setString(5, nuevo.getEmail());
 		        preparedStatement.setBoolean(6, nuevo.isbTrabajador());
 		        preparedStatement.setString(7, nuevo.getTarifa().toString());
@@ -119,7 +118,7 @@ public class RepoCliente {
 		        preparedStatement.setString(1, aBorrar.getDNI());
 		        preparedStatement.setString(2, aBorrar.getNombre());
 		        preparedStatement.setString(3, aBorrar.getApellidos());
-		        preparedStatement.setInt(4, aBorrar.getTelefono());
+		        preparedStatement.setString(4, aBorrar.getTelefono());
 		        preparedStatement.setString(5, aBorrar.getEmail());
 		        preparedStatement.setBoolean(6, aBorrar.isbTrabajador());
 		        preparedStatement.setString(9, aBorrar.getTarifa().toString());
@@ -140,11 +139,10 @@ public class RepoCliente {
 		return false;
 	}
 
+	/**
+	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 */
 	public boolean update(Cliente modificaciones) {
-		
-		/**
-		 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
-		 */
 		
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
@@ -152,7 +150,7 @@ public class RepoCliente {
 		}
 		
 		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
-		Cliente original = new Cliente( "", "", "", 0, "", false, "");
+		Cliente original = new Cliente( "", "", "", "", "", false, "");
 		
 		// Copruebo que me han pasado el DNI correcto
 		if (!modificaciones.getDNI().equals("")) {
@@ -163,7 +161,7 @@ public class RepoCliente {
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
 			if (!modificaciones.getNombre().equals("")) original.setNombre(modificaciones.getNombre());
 			if (!modificaciones.getApellidos().equals("")) original.setApellidos(modificaciones.getApellidos());
-			if (!(modificaciones.getTelefono() == 0)) original.setTelefono(modificaciones.getTelefono());
+			if (!modificaciones.getTelefono().equals("")) original.setTelefono(modificaciones.getTelefono());
 			if (!modificaciones.getEmail().equals("")) original.setEmail(modificaciones.getEmail());
 			if (!modificaciones.getTarifa().toString().equals("estandar")) original.setTarifa(modificaciones.getTarifa());
 			if (!modificaciones.getPass().equals("")) original.setPass(modificaciones.getPass());
@@ -182,7 +180,7 @@ public class RepoCliente {
 		        preparedStatement.setString(1, original.getDNI());
 		        preparedStatement.setString(2, original.getNombre());
 		        preparedStatement.setString(3, original.getApellidos());
-		        preparedStatement.setInt(4, original.getTelefono());
+		        preparedStatement.setString(4, original.getTelefono());
 		        preparedStatement.setString(5, original.getEmail());
 		        preparedStatement.setBoolean(6, original.isbTrabajador());
 		        preparedStatement.setString(9, original.getTarifa().toString());
@@ -243,7 +241,7 @@ public class RepoCliente {
 					rS.getString(1),
 					rS.getString(2),
 					rS.getString(3),
-					rS.getInt(4),
+					rS.getString(4),
 					rS.getString(5),
 					rS.getBoolean(6),
 					rS.getString(7),

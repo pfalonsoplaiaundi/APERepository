@@ -22,7 +22,7 @@ public class RepoHabitacion {
 		
 		// Insertar	0
 		this.SQLScripts.add( "INSERT INTO habitacion (id, num, tipohab) "
-				+ "VALUES"
+				+ "VALUES "
 				+ "(?, ?, ?)"
 				);
 		
@@ -32,14 +32,14 @@ public class RepoHabitacion {
 				);
 		
 		// Modificar 2		
-		this.SQLScripts.add( "UPDATE cliente "
-				+ "SET DNI = ?, nom = ?, ape = ?, tlfno = ?, email = ?, bTrabajador = ?, tarifa = ?, SHA2(pass = ?, 256)"
-				+ " WHERE DNI = ?"
+		this.SQLScripts.add( "UPDATE habitacion "
+				+ "SET id = ?, num = ?, tipoHab = ? "
+				+ " WHERE id = ? and num = ?"
 				);
 		
 		// Comprobar existencia	3
-		this.SQLScripts.add( "SELECT dni FROM Cliente"
-				+ " WHERE DNI = ?;"
+		this.SQLScripts.add( "SELECT * FROM habitacion "
+				+ " WHERE id = ? and num = ?;"
 				);
 		
 		// Traer informarcion 4	
@@ -48,13 +48,6 @@ public class RepoHabitacion {
 				);
 		
 		// Otros
-		
-		// Comprobacion de credenciales 5
-		this.SQLScripts.add( "SELECT c.dni, c.pass\r\n"
-				+ "from cliente c\r\n"
-				+ "where c.dni = ? and c.pass = sha2(?, 256);"
-				);
-		
 		// Recuperar la habitacion libre mas cercana de un tipo 6
 		this.SQLScripts.add("select s.num, s.capacidad, s.tlfno, s.pvp, h.tipohab\r\n"
 				+ "from habitacion h\r\n"
@@ -72,7 +65,7 @@ public class RepoHabitacion {
 	/**
 	 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente. Devuelve true siempre que el usuario exista o haya sido insertado.
 	 */
-	public boolean insert(Cliente nuevo) {
+	public boolean insert(Habitacion nuevo) {
 			
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (this.SQLScripts.isEmpty()) {
@@ -83,20 +76,16 @@ public class RepoHabitacion {
 		if(!check(nuevo)) {
 			
 			//Si no existe el cliente, hace la consulta a la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
-		        preparedStatement.setString(1, nuevo.getDNI());
-		        preparedStatement.setString(2, nuevo.getNombre());
-		        preparedStatement.setString(3, nuevo.getApellidos());
-		        preparedStatement.setInt(4, nuevo.getTelefono());
-		        preparedStatement.setString(5, nuevo.getEmail());
-		        preparedStatement.setBoolean(6, nuevo.isbTrabajador());
-		        preparedStatement.setString(7, nuevo.getTarifa().toString());
-		        preparedStatement.setString(8, nuevo.getPass());
-		        preparedStatement.executeUpdate();
+	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
+	            preparedStatement.setInt(1, nuevo.getNum());
+	            preparedStatement.setInt(2, nuevo.getCapacidad());
+	            preparedStatement.setInt(3, nuevo.getTlfno());
+	            preparedStatement.setString(4, nuevo.getTipo().toString());
+	            preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
 		        if (check(nuevo)) {
-		        	System.out.print("\n~~~ Cuenta creada correctamente ~~~\n");
+		        	System.out.print("\n~~~ Habitacion creada correctamente ~~~\n");
 		        	return true;
 		        } else {
 		        	System.out.print("\n>>> Se ha producido un error <<<\n\n");
@@ -106,7 +95,7 @@ public class RepoHabitacion {
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
 				e.printStackTrace();
-				System.out.println("Error al insertar el nuevo cliente");
+				System.out.println("Error al insertar la nueva habitacion");
 				return false;
 			}
 		}
@@ -116,12 +105,11 @@ public class RepoHabitacion {
 		return true;
 	}
 
-	public boolean delete(Cliente aBorrar) {
-		
-		/**
-		 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
-		 */
-		
+	/**
+	 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 */
+	public boolean delete(Habitacion aBorrar) {
+				
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -132,22 +120,16 @@ public class RepoHabitacion {
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
-		        preparedStatement.setString(1, aBorrar.getDNI());
-		        preparedStatement.setString(2, aBorrar.getNombre());
-		        preparedStatement.setString(3, aBorrar.getApellidos());
-		        preparedStatement.setInt(4, aBorrar.getTelefono());
-		        preparedStatement.setString(5, aBorrar.getEmail());
-		        preparedStatement.setBoolean(6, aBorrar.isbTrabajador());
-		        preparedStatement.setString(9, aBorrar.getTarifa().toString());
-		        preparedStatement.setString(8, aBorrar.getPass());
-		        preparedStatement.executeUpdate();
+	            preparedStatement.setInt(1, aBorrar.getNum());
+	            preparedStatement.executeUpdate();
+	            return true;
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
 		        return !check(aBorrar);
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al eliminar el cliente");
+				System.out.println("Error al eliminar la habitacion");
 				return false;
 			}
 		}
@@ -160,14 +142,16 @@ public class RepoHabitacion {
 	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
 	 */
 	public boolean update(Habitacion modificaciones) {
-				
+	/*
+	 * WIP
+	 */
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
 		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
-		Cliente original = new Cliente( "", "", "", 0, "", false, "");
+		Habitacion original = new Habitacion("", "", "", 0, "", false, "");
 		
 		// Copruebo que me han pasado el DNI correcto
 		if (!modificaciones.getNum().equals("")) {
@@ -219,13 +203,17 @@ public class RepoHabitacion {
 	}
 	
 
-	public boolean check(Cliente cliente) {
+	public boolean check(Habitacion habitacion) {
+		/*
+		 * WIP
+		 */
+		
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
 		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(3))) {
-	        preparedStatement.setString(1, cliente.getDNI());
+	        preparedStatement.setString(1, habitacion.getDNI());
 	        ResultSet rS = preparedStatement.executeQuery();
 	        if (rS.next()) {
 	        	return true;

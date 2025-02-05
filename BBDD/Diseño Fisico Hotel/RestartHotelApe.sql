@@ -104,12 +104,12 @@ ALTER TABLE Sala
 	ADD CONSTRAINT Sala_ID_fk FOREIGN KEY (ID) REFERENCES Hotel(ID) ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- Tabla Hotel
-INSERT INTO Hotel (nom, ciu, dir, tlfno, email) VALUES
-('Hotel Central', 'Madrid', 'Calle Mayor, 1', 911234567, 'central@hotel.com'),
-('Hotel Sur', 'Sevilla', 'Avenida del Sol, 22', 950123456, 'sur@hotel.com'),
-('Hotel Norte', 'Donostia', 'Calle Fría, 10', 945678912, 'norte@hotel.com'),
-('Hotel Este', 'Lleida', 'Paseo del Este, 45', 934567891, 'este@hotel.com'),
-('Hotel Oeste', 'Salamanca', 'Avenida del Oeste, 78', 923456789, 'oeste@hotel.com');
+INSERT INTO Hotel VALUES
+(1, 'Hotel Central', 'Madrid', 'Calle Mayor, 1', 911234567, 'central@hotel.com'),
+(2, 'Hotel Sur', 'Sevilla', 'Avenida del Sol, 22', 950123456, 'sur@hotel.com'),
+(3, 'Hotel Norte', 'Donostia', 'Calle Fría, 10', 945678912, 'norte@hotel.com'),
+(4, 'Hotel Este', 'Lleida', 'Paseo del Este, 45', 934567891, 'este@hotel.com'),
+(5, 'Hotel Oeste', 'Salamanca', 'Avenida del Oeste, 78', 923456789, 'oeste@hotel.com');
 
 -- Tabla Sala
 INSERT INTO Sala (ID, num, capacidad, tlfno, pvp, subtipo) VALUES

@@ -9,11 +9,11 @@ public class ConectMySQL {
 	//Conexion
 	public static Connection conexion;
 	
-	public static boolean conectar() {
 	/**
 	 * Establece la conexión como usuario basico dentro de la app
 	 */
-		
+	public static boolean conectar() {
+	
 		try {
 			
 			// Buscar el driver
@@ -23,8 +23,8 @@ public class ConectMySQL {
 			try {
 				
 				// Establecer conexion con la base de datos como usuario basico
-				 conexion = DriverManager.getConnection("jdbc:mysql://10.10.13.155:3306/hotel", "app", "app");
-				//conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel", "app", "app");
+				conexion = DriverManager.getConnection("jdbc:mysql://10.10.13.155:3306/hotel", "app", "app");
+				
 				System.out.println("Conexion establecida");
 				return true;
 			
@@ -41,10 +41,10 @@ public class ConectMySQL {
 		}
 	}
 	
-	public static boolean conectarAdm() {
 	/**
 	 * Establece la conexión como administrador dentro de la app
 	 */
+	public static boolean conectarAdm() {
 		
 		try {
 			
@@ -56,7 +56,7 @@ public class ConectMySQL {
 				
 				// Establecer conexion con la base de datos como usuario basico
 				conexion = DriverManager.getConnection("jdbc:mysql://10.10.13.155:3306/hotel", "appAdm", "appAdm");
-				//conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel", "appAdm", "appAdm");
+				
 				System.out.println("Conexion establecida");
 				return true;
 			
@@ -72,16 +72,4 @@ public class ConectMySQL {
 			return false;
 		}
 	}
-	
-	/*
-	 * DEBUGG DE CLASE
-	 */ 
-	public static void main(String[] args) {
-		conectar();
-		conectarAdm();
-		Cliente nuevo = new Cliente("", "", "", 0, "", false, "");
-		System.out.print(nuevo.getTarifa().toString());
-	}
-	
-	
 }

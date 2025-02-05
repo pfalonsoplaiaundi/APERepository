@@ -44,11 +44,9 @@ public class Input {
 		return scn.nextLine();
 	}
 	
-	public static int inTelefono() {
+	public static String inTelefono() {
 		System.out.print("Telefono: ");
-		String tlfnoT = scn.nextLine();
-		int tlfno = Integer.parseInt(tlfnoT);
-		return tlfno;
+		return scn.nextLine();
 	}
 	
 	public static boolean inBTrabajador() {
