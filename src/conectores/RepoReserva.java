@@ -267,6 +267,7 @@ public class RepoReserva {
 				+ "ORDER BY "
 					+ "R.FECINI ASC, "
 					+ "R.FECFIN ASC;";
+		
 		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
 			if (filtro.getSala() != null) {
 				if (filtro.getSala().getHotel() != null) {

@@ -50,19 +50,64 @@ public class RepoSala {
 				);
 		
 		// Traer informarcion 4	
-		SQLScripts.add( "SELECT * FROM Cliente"
-				+ "WHERE DNI = ?"
+		SQLScripts.add( "SELECT * FROM sala "
+				+ " WHERE id = ? and num = ?"
 				);
 		
 		// Otros		
 		
 		// Tipos de habitaciones disponibles y su fecha mas cercana disponible. 5
-		SQLScripts.add( "SELECT h.tipohab, min(case when current_date() between r.fecini and r.fecfin then r.fecfin else current_date() end) FROM habitacion h natural join sala s natural join reserva r where s.id = ? and r.fecfin > current_date() group by h.tipohab;");
+		SQLScripts.add( 
+				"SELECT "
+				+ "h.tipohab, "
+				+ "min("
+					+ "case "
+						+ "when current_date() between r.fecini and r.fecfin then r.fecfin "
+						+ "else current_date() "
+						+ "end"
+						+ ") "
+				+ "FROM "
+					+ "habitacion h "
+					+ "natural join sala s "
+					+ "natural join reserva r "
+				+ "WHERE "
+					+ "s.id = ? and r.fecfin > current_date() "
+				+ "GROUP BY "
+					+ "h.tipohab;"
+				);
 		
 		SQLScripts.add("");
 	
 	}
 
+	public Sala get(int id, int num) {
+		if (this.SQLScripts.isEmpty()) {
+			inicializarArray();
+		}
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(4))) {
+			pS.setInt(1, id);
+			pS.setInt(2, num);
+			ResultSet rS = pS.executeQuery();
+			if (rS.next()) {
+				RepoHotel rH = new RepoHotel();
+				Sala h = new Sala(
+					rH.get(rS.getInt(1)),
+					rS.getInt(2),
+					rS.getInt(4),
+					rS.getString(5),
+					rS.getDouble(6),
+					rS.getString(3)
+				);
+				return h;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}		
+	}
+	
 	public ArrayList<HabReserva> getMenuProductos(int idHotel) {
 		ArrayList<HabReserva> menuProductos = new ArrayList<>();
 		String query = SQLScripts.get(5);

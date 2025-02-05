@@ -72,7 +72,7 @@ public class MenuAdmin {
 		case 1:
 			listaReserva();
 		case 2:
-			//addReserva();
+			addReserva();
 		case 3:
 			//modifyReserva();
 		case 4:
@@ -84,6 +84,32 @@ public class MenuAdmin {
 		}
 	}
 	
+	private static void addReserva() {
+		RepoReserva rR = new RepoReserva();
+		RepoCliente rC = new RepoCliente();
+		RepoSala rS = new RepoSala();
+		RepoHotel rH = new RepoHotel();
+		ArrayList<String> hoteles = rH.getMenuPrincipal();
+		int i = 0;
+		while(i < hoteles.size()) {
+			System.out.print((i+1) + ". " + hoteles.get(i) + "\n");
+			i++;
+		}	
+		System.out.print("Seleccione el hotel que desea: ");
+		int hotel = Input.inOpc();
+	
+		Hotel h = rH.get(hotel);
+		Reserva r = new Reserva(
+							rR.getNewID(),
+							Input.inFecIni(),
+							Input.inFecFin(),
+							rC.get(Input.inDNI()),
+							rS.get(h.getID(), Input.inNum())
+						);
+		rR.insert(r);
+		
+	}
+
 	private static void listaReserva() {
 		if (!filtroReserva()) {
 			Reserva filtro = new Reserva(0, null, null, null, null);
