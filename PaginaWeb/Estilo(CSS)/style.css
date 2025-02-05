@@ -5,7 +5,7 @@
 }
 
 body {
-    background:linear-gradient(to bottom,#c4b586,#a8d08d2d,white,white,#c4b586) ;
+    background: linear-gradient(to bottom, #c4b586, #a8d08d2d, white, white, #c4b586);
 }
 
 #logo1 {
@@ -15,6 +15,8 @@ body {
 
 header {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -23,7 +25,9 @@ header {
     justify-content: space-between;
     color: rgb(255, 255, 255);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    background-image: url('Imagenes/banner3.jpg');
+    background-image: url('../Imagenes/banner3.jpg');
+    z-index: 1000; /* Asegura que el header esté sobre otros elementos */
+    padding: 10px 20px; /* Ajuste para asegurar que haya espacio alrededor */
 }
 
 .desplaza {
@@ -72,11 +76,11 @@ a:hover {
 }
 
 #contenido1 {
-    background-image: url('Imagenes/back2.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    height: 80vh; 
-    width: 100%; 
+    background-image: url('../Imagenes/back2.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,10 +91,10 @@ a:hover {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    width: 50%; 
-    max-width: 600px; 
+    width: 50%;
+    max-width: 600px;
     text-align: center;
-    border: 2px solid #a67c52; 
+    border: 2px solid #a67c52;
 }
 
 .tarjeta1 p {
@@ -98,11 +102,11 @@ a:hover {
 }
 
 #contenido2 {
-    background-image: url('Imagenes/back3.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    height: 80vh; 
-    width: 100%; 
+    background-image: url('../Imagenes/back3.jpg'); /* Corregida la ruta de la imagen */
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,7 +117,7 @@ a:hover {
     justify-content: center;
     padding: 20px;
 }
-  
+
 .tarjetas-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -121,7 +125,7 @@ a:hover {
     max-width: 1200px;
     width: 100%;
 }
-  
+
 .tarjeta2, .tarjeta3, .tarjeta4, .tarjeta5, .tarjeta6, .tarjeta7 {
     background-color: rgb(245, 228, 205);
     border-radius: 8px;
@@ -129,23 +133,24 @@ a:hover {
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
 }
-  
+
 .tarjeta2:hover, .tarjeta3:hover, .tarjeta4:hover, .tarjeta5:hover, .tarjeta6:hover, .tarjeta7:hover {
     transform: translateY(-10px);
 }
-  .tarjeta-imagen {
+
+.tarjeta-imagen {
     width: 100%;
-    height: 125px; 
+    height: 125px;
     object-fit: cover;
-} 
-  
+}
+
 .descripcion {
-    padding: 5px; 
+    padding: 5px;
 }
 
 .descripcion h3 {
     font-size: 1.25rem;
-    margin-bottom: 15px;  
+    margin-bottom: 15px;
     color: #333;
     text-align: center;
 }
@@ -170,7 +175,7 @@ a:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 20px; 
+    padding: 20px;
 }
 
 .Reservation-form {
@@ -181,7 +186,7 @@ a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 100%;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .Reservation-form h2 {
@@ -208,7 +213,7 @@ a:hover {
     padding: 10px;
     border: 1px solid #e6e6e6;
     border-radius: 5px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .form-group input[type="submit"] {
@@ -226,7 +231,7 @@ a:hover {
 
 @media (max-width: 768px) {
     .Reservation-form {
-        max-width: 100%; 
+        max-width: 100%;
         padding: 15px;
     }
 }
@@ -236,17 +241,17 @@ a:hover {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('Imagenes/back51.webp'); 
+    background-image: url('../Imagenes/back51.webp'); /* Corregida la ruta de la imagen */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 20px; 
+    padding: 20px;
 }
 
 table {
     width: 100%;
-    max-width: 800px; 
-    margin: 0 auto; 
+    max-width: 800px;
+    margin: 0 auto;
     border-collapse: collapse;
 }
 
@@ -292,8 +297,7 @@ table caption {
     }
 }
 
-
-footer{
+footer {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -305,22 +309,23 @@ footer{
     color: white;
     padding: 20px 0px;
 }
-footer a{
+
+footer a {
     text-decoration: none;
     color: white;
     font-size: 25px;
     padding: 25px;
 }
 
-footer a:hover{
+footer a:hover {
     background-color: #663e2759;
 }
 
-footer i{
+footer i {
     padding: 5px;
 }
 
-@media (min-width:1024px) {
+@media (min-width: 1024px) {
     #menu {
         grid-template-columns: auto auto auto;
         grid-template-rows: auto auto;
@@ -355,7 +360,7 @@ footer i{
     }
 }
 
-@media (min-width:600px) and (max-width: 1024px) {
+@media (min-width: 600px) and (max-width: 1024px) {
     header a {
         padding: 40px 10px;
     }
@@ -392,11 +397,9 @@ footer i{
         grid-column-start: 2;
         grid-column-end: 3;
     }
-
-
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     nav {
         display: none;
         transform: scale(0.5);
@@ -407,84 +410,7 @@ footer i{
         position: absolute;
         text-align: center;
         left: 60px;
-        top: 45px;
+        z-index: 10000;
+        background-color: rgba(250, 200, 137, 0.25);
     }
-
-    i {
-        transition-duration: 0.3s;
-    }
-
-    input[type=checkbox]:checked~nav {
-        position: absolute;
-        display: flex;
-        top: -8px;
-        left: -40px;
-        animation-duration: 0.6s;
-        animation-name: slide-in;
-        opacity: 0.8;
-    }
-
-    input[type=checkbox]:checked~i {
-        transition-duration: 0.6s;
-        transform: rotate(90deg);
-    }
-
-    @keyframes slide-in {
-        from {
-            top: -20px;
-            opacity: 0;
-        }
-
-        to {
-            top: -8px;
-            opacity: 0.8;
-        }
-    }
-
-    header {
-        background-image: url('Imagenes/banner3.jpg');
-        flex-direction: column;
-    }
-
-    h1 {
-        padding: 32px 0;
-        background-image: url('Imagenes/banner3.jpg');
-        width: 100%;
-        text-align: center;
-    }
-
-    nav ul {
-        flex-direction: column;
-        background-color: rgba(83, 52, 11, 0.808);
-    }
-
-    nav a {
-        padding: 5px 15px;
-    }
-
-    #tarjetas {
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto auto;
-    }
-
-    .tarjeta:nth-child(1) {
-        grid-row-start: 1;
-        grid-row-end: 2;
-    }
-
-    .tarjeta:nth-child(2) {
-        grid-row-start: 2;
-        grid-row-end: 3;
-    }
-
-    .tarjeta:nth-child(3) {
-        grid-row-start: 3;
-        grid-row-end: 4;
-    }
-
-    .tarjeta:nth-child(4) {
-        grid-row-start: 4;
-        grid-row-end: 5;
-    }
-
 }
