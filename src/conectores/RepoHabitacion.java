@@ -49,7 +49,7 @@ public class RepoHabitacion {
 				);
 		
 		// Otros
-		// Recuperar la habitacion libre mas cercana de un tipo 6
+		// Recuperar la habitacion libre mas cercana de un tipo 5
 		this.SQLScripts.add("select s.num, s.capacidad, s.tlfno, s.pvp, h.tipohab\r\n"
 				+ "from habitacion h\r\n"
 				+ "	natural join sala s\r\n"
@@ -262,7 +262,7 @@ public class RepoHabitacion {
 			inicializarArray();
 		}
 		
-		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(6))) {
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(5))) {
 			pS.setString(1, tipoDeHab);
 			pS.setInt(2, MenuPrincipal.hotel.getID());
 			ResultSet rS = pS.executeQuery();

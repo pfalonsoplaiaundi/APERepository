@@ -36,7 +36,7 @@ public class ConectMySQL {
 			
 		// Recoge los errores produccidos en la carga del driver	
 		}catch(Exception e) {
-			System.out.println("Error en el driver"+e.toString());
+			System.out.println("Error en el driver");
 			return false;
 		}
 	}

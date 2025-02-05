@@ -59,7 +59,7 @@ public class RepoHotel {
 		 */
 		
 		// Obtener el PK de un hotel mediante el nombre del hotel 7
-		SQLScripts.add("SELECT id FROM hotel WHERE nom = ?;");
+		SQLScripts.add("SELECT id FROM hotel WHERE nom like ?;");
 	}
 
 	

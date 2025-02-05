@@ -174,9 +174,9 @@ public class Input {
 	}
 
 	public static boolean inYesNo() {
-		System.out.print("(Si/No) ");
+		System.out.print("(Si/No) : ");
 		String r = scn.nextLine();
-		if (r.equalsIgnoreCase("Si")) {
+		if (r.equalsIgnoreCase("Si") || r.equals("1")) {
 			return true;
 		} else {
 			return false;
@@ -241,5 +241,12 @@ public class Input {
 		pvpT = pvpT.replace(",", ".");
 		double pvp = Double.parseDouble(pvpT);
 		return pvp;
+	}
+
+	public static int inNum() {
+		System.out.print("Numero de sala: ");
+		int num = scn.nextInt();
+		scn.nextLine();
+		return num;
 	}
 }

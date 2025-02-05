@@ -30,7 +30,7 @@ Where ("2025-01-30" not between r.fecini and r.fecfin) and h.TipoHab = "doble" a
 SELECT h.tipohab, min(case 
 	when current_date() between r.fecini and r.fecfin then r.fecfin
     else current_date()
-    end),
+    end)
 FROM habitacion h natural join sala s natural join reserva r
 where s.id = ? and r.fecfin > current_date()
 group by h.tipohab;
@@ -83,3 +83,49 @@ where
     h.id = ?;
     
     select * from habitacion natural join sala where id = 1 and num = 1;
+    
+SELECT
+	h.nom,
+    ha.num,
+    ha.tipoHab,
+    s.tlfno,
+    s.pvp,
+    case
+		when current_date() between r.fecini and r.fecfin then true
+        else false
+    end "Ocupada"
+FROM habitacion ha
+	JOIN sala s using (id, num)
+    join hotel h using(id)
+    left jOIN reserva r using( id, num)
+WHERE
+    (h.nom = "" or h.nom <> "") and
+    (ha.tipoHab = "" or ha.TipoHab <> "") and
+	( = "" or h.nom <> "") and
+	(h.nom = "" or h.nom <> "") and
+	(h.nom = "" or h.nom <> "");
+    
+    
+    select * FROM habitacion ha
+	JOIN sala s using (id, num)
+    jOIN reserva r using( id, num)
+    join hotel h using(id)
+    ;
+    
+SELECT  R.FECINI, R.FECFIN, R.DNI, C.NOM, C.APE, H.NOM, S.NUM
+FROM RESERVA R JOIN CLIENTE C USING(DNI) JOIN SALA S USING(ID, NUM) JOIN HOTEL H USING(ID)
+WHERE
+    (h.nom = "Hotel Central" or "Hotel Central" = "") and
+    (c.dni = "" or "" = "") and
+	(r.num = 0 or 0 = 0) and
+	(r.fecini = null or null is null) and
+	(r.fecfin = null or null is null)
+ORDER BY R.FECINI ASC, R.FECFIN ASC;
+
+
+
+    (h.nom = "Hotel Central" or h.nom <> "") and
+    (c.dni = "23456789B" or c.dni <> "") and
+	(r.num = "2" or r.num <> "") and
+	(r.fecini = "2025-01-28" or r.fecfin <> "1000-01-01") and
+	(r.fecfin = "2025-02-20" or r.fecfin <> "1000-01-01")
