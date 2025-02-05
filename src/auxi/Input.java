@@ -234,4 +234,12 @@ public class Input {
 		Date fecFin = Date.valueOf(fecFinS);
 		return fecFin;
 	}
+	
+	public static double inPvp() {
+		System.out.print("Precio: ");
+		String pvpT = scn.nextLine();
+		pvpT = pvpT.replace(",", ".");
+		double pvp = Double.parseDouble(pvpT);
+		return pvp;
+	}
 }

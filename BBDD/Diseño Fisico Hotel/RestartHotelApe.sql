@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
 -- Tabla de Hotel
 CREATE TABLE  IF NOT EXISTS Hotel (
   ID tinyint unsigned AUTO_INCREMENT PRIMARY KEY,
-  nom varchar(50) NOT NULL,
+  nom varchar(50) NOT NULL unique,
   ciu varchar(50) NOT NULL,
   dir varchar(80) NOT NULL,
   tlfno varchar(15) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS Reserva (
   num smallint unsigned not null,
   FecIni date NOT NULL,
   FecFin date NOT NULL,
-  PrecioTotal decimal NOT NULL
+  PrecioTotal decimal NOT NULL DEFAULT 0
 );
 
 -- Relaciones foreign keys

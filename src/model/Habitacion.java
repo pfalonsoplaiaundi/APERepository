@@ -36,12 +36,12 @@ public class Habitacion extends Sala{
 	//-----------------------------------------------------------------------
 	
 	// Constructor/es
-	public Habitacion(Hotel hotel, int num, int capacidad, int tlfno, double pvp, tipoHab tipo) {
+	public Habitacion(Hotel hotel, int num, int capacidad, String tlfno, double pvp, tipoHab tipo) {
 		super(num, capacidad, tlfno, pvp, hotel);
 		this.tipo = selectorTipoHab(capacidad);
 	}
 	
-	public Habitacion(Hotel hotel, int num, int capacidad, int tlfno, double pvp, String tipo) {
+	public Habitacion(Hotel hotel, int num, int capacidad, String tlfno, double pvp, String tipo) {
 		super(num, capacidad, tlfno, pvp, hotel);
 		this.tipo = selectorTipoHab(tipo);
 	}
@@ -74,11 +74,11 @@ public class Habitacion extends Sala{
 		}
 	}
 	
+	/**
+	 * Esta funcion permite elergir el tipo de habitacion que es al construirse una habitacion
+	 */
 	private tipoHab selectorTipoHab(int capacidad) {
-		/**
-		 * Esta funcion permite elergir el tipo de habitacion que es al construirse una habitacion
-		 */
-		
+	
 		int opc = 0;
 		do {
 			

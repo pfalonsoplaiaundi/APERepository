@@ -188,10 +188,10 @@ public class RepoReserva {
 			original = get(modificaciones.getID());
 			
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
-			if (!modificaciones.getFecIni().equals("")) original.setApellidos(modificaciones.getApellidos());
-			if (!modificaciones.getFecFin().equals("")) original.setTelefono(modificaciones.getTelefono());
-			if (!modificaciones.getCliente().equals("")) original.setEmail(modificaciones.getEmail());
-			if (!modificaciones.getSala().toString().equals("estandar")) original.setTarifa(modificaciones.getTarifa());
+			if (modificaciones.getFecIni() != null) original.setFecIni(modificaciones.getFecFin());
+			if (modificaciones.getFecFin() != null) original.setFecFin(modificaciones.getFecIni());
+			if (modificaciones.getCliente() != null) original.setCliente(modificaciones.getCliente());
+			if (modificaciones.getSala() != null) original.setSala(modificaciones.getSala());
 		
 		// En caso de no tener el DNI correcto devuelvo error
 		} else {
@@ -204,18 +204,15 @@ public class RepoReserva {
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
-		        preparedStatement.setString(1, original.getDNI());
-		        preparedStatement.setString(2, original.getNombre());
-		        preparedStatement.setString(3, original.getApellidos());
-		        preparedStatement.setString(4, original.getTelefono());
-		        preparedStatement.setString(5, original.getEmail());
-		        preparedStatement.setBoolean(6, original.isbTrabajador());
-		        preparedStatement.setString(9, original.getTarifa().toString());
-		        preparedStatement.setString(8, original.getPass());
+		        preparedStatement.setDate(1, original.getFecIni());
+		        preparedStatement.setDate(2, original.getFecFin());
+		        preparedStatement.setString(3, original.getCliente().getDNI());
+		        preparedStatement.setInt(4, original.getSala().getHotel().getID());
+		        preparedStatement.setInt(4, original.getSala().getNum());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !checkEquals(original);
+		        return !check(original);
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {

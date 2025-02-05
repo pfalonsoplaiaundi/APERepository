@@ -12,7 +12,7 @@ public class Hotel {
     private String nombre;
     private String ciudad;
     private String dir; 
-    private int tlfno; 
+    private String tlfno; 
     private String email;
 
 	//-----------------------------------------------------------------------
@@ -50,11 +50,11 @@ public class Hotel {
 		this.dir = dir;
 	}
 
-	public int getTlfno() {
+	public String getTlfno() {
 		return tlfno;
 	}
 
-	public void setTlfno(int tlfno) {
+	public void setTlfno(String tlfno) {
 		this.tlfno = tlfno;
 	}
 
@@ -69,7 +69,7 @@ public class Hotel {
 	//-----------------------------------------------------------------------
 	
 	// Constructor/es
-    public Hotel(int ID, String nombre, String ciudad, String dir, int tlfno, String email) {
+    public Hotel(int ID, String nombre, String ciudad, String dir, String tlfno, String email) {
         this.ID = ID;
         this.nombre = nombre;
         this.ciudad = ciudad;

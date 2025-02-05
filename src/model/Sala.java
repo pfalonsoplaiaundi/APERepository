@@ -18,7 +18,7 @@ public class Sala {
 	// Atributos
 	protected int num;
 	protected int capacidad;
-	protected int tlfno;
+	protected String tlfno;
 	protected double pvp;
 	protected Hotel hotel;
 	protected tSala tipo;
@@ -45,10 +45,10 @@ public class Sala {
 	public void setCapacidad(int capacidad) {
 		this.capacidad = capacidad;
 	}
-	public int getTlfno() {
+	public String getTlfno() {
 		return tlfno;
 	}
-	public void setTlfno(int tlfno) {
+	public void setTlfno(String tlfno) {
 		this.tlfno = tlfno;
 	}
 	public Hotel getHotel() {
@@ -61,7 +61,7 @@ public class Sala {
 	//-----------------------------------------------------------------------
 	
 	// Constructor/es
-	public Sala(int num, int capacidad, int tlfno, double pvp, Hotel hotel) {
+	public Sala(int num, int capacidad, String tlfno, double pvp, Hotel hotel) {
 		super();
 		this.num = num;
 		this.capacidad = capacidad;
