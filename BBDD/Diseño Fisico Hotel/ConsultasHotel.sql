@@ -122,4 +122,4 @@ WHERE
 	(r.fecfin = null or null is null)
 ORDER BY R.FECINI ASC, R.FECFIN ASC;
 
-select * from sala;
+select * from reserva;
