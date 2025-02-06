@@ -29,29 +29,57 @@ public class RepoSala {
 	private void inicializarArray() {
 		
 		// Insertar	0
-		SQLScripts.add( "INSERT hotel"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, SHA2(pass = ?, 256))"
+		SQLScripts.add( 
+				"INSERT "
+					+ "sala "
+				+ "VALUES "
+					+ "(?, ?, ?, ?, ?, ?, ?, SHA2(pass = ?, 256))"
 				);
 		
 		// Eliminar 1
-		SQLScripts.add( "DELETE cliente"
-				+ "WHERE DNI = ?"
+		SQLScripts.add( 
+				"DELETE "
+					+ "cliente "
+				+ "WHERE "
+					+ "DNI = ?"
 				);
 		
 		// Modificar 2		
-		SQLScripts.add( "UPDATE cliente"
-				+ "SET DNI = ?, nom = ?, ape = ?, tlfno = ?, email = ?, bTrabajador = ?, tarifa = ?, SHA2(pass = ?, 256)"
-				+ "WHERE DNI = ?"
+		SQLScripts.add( 
+				"UPDATE "
+					+ "cliente "
+				+ "SET "
+					+ "DNI = ?, "
+					+ "nom = ?, "
+					+ "ape = ?, "
+					+ "tlfno = ?, "
+					+ "email = ?, "
+					+ "bTrabajador = ?, "
+					+ "tarifa = ?, "
+					+ "SHA2(pass = ?, 256)"
+				+ "WHERE "
+					+ "DNI = ?"
 				);
 		
 		// Comprobar existencia 3	
-		SQLScripts.add( "SELECT * FROM Cliente"
-				+ "WHERE DNI = ?"
+		SQLScripts.add( 
+				"SELECT "
+					+ "* "
+				+ "FROM "
+					+ "Cliente"
+				+ "WHERE "
+					+ "DNI = ?"
 				);
 		
 		// Traer informarcion 4	
-		SQLScripts.add( "SELECT * FROM sala "
-				+ " WHERE id = ? and num = ?"
+		SQLScripts.add( 
+				"SELECT "
+					+ "* "
+				+ "FROM "
+					+ "sala "
+				+ "WHERE "
+					+ "id = ? and "
+					+ "num = ?"
 				);
 		
 		// Otros		
@@ -91,12 +119,12 @@ public class RepoSala {
 			if (rS.next()) {
 				RepoHotel rH = new RepoHotel();
 				Sala h = new Sala(
-					rH.get(rS.getInt(1)),
 					rS.getInt(2),
-					rS.getInt(4),
-					rS.getString(5),
-					rS.getDouble(6),
-					rS.getString(3)
+					rS.getInt(3),
+					rS.getString(4),
+					rS.getDouble(5),
+					rH.get(rS.getInt(1)),
+					rS.getString(6)
 				);
 				return h;
 			} else {

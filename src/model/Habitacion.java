@@ -20,30 +20,30 @@ public class Habitacion extends Sala{
 	//-----------------------------------------------------------------------
 	
 	// Atributos
-	private tipoHab tipo;
+	private tipoHab tHab;
 
 	//-----------------------------------------------------------------------
 	
 	// Getter y setters
 	public tipoHab getTipo() {
-		return tipo;
+		return tHab;
 	}
 
 	public void setTipo(tipoHab tipo) {
-		this.tipo = tipo;
+		this.tHab = tipo;
 	}
 
 	//-----------------------------------------------------------------------
 	
 	// Constructor/es
 	public Habitacion(Hotel hotel, int num, int capacidad, String tlfno, double pvp, tipoHab tipo) {
-		super(num, capacidad, tlfno, pvp, hotel);
-		this.tipo = selectorTipoHab(capacidad);
+		super(num, capacidad, tlfno, pvp, hotel, Sala.tSala.Habitacion);
+		this.tHab = selectorTipoHab(capacidad);
 	}
 	
 	public Habitacion(Hotel hotel, int num, int capacidad, String tlfno, double pvp, String tipo) {
-		super(num, capacidad, tlfno, pvp, hotel);
-		this.tipo = selectorTipoHab(tipo);
+		super(num, capacidad, tlfno, pvp, hotel, Sala.tSala.Habitacion);
+		this.tHab = selectorTipoHab(tipo);
 	}
 
 	//-----------------------------------------------------------------------
@@ -131,7 +131,7 @@ public class Habitacion extends Sala{
 
 	@Override
 	public String toString() {
-		return "Habitacion: " + tipo.toString() + "\n" +
+		return "Habitacion: " + tHab.toString() + "\n" +
 				super.toString();
 	}
 	

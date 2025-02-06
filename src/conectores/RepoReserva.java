@@ -47,13 +47,14 @@ public class RepoReserva {
 				);
 		
 		// Comprobar existencia	3
-		this.SQLScripts.add( "SELECT dni FROM Cliente"
-				+ " WHERE DNI = ?;"
+		this.SQLScripts.add( "SELECT codreserva "
+				+ "FROM reserva "
+				+ "WHERE codreserva = ?;"
 				);
 		
 		// Traer informarcion 4	
-		this.SQLScripts.add( "SELECT * FROM Reservas"
-				+ " WHERE codreserva = ?"
+		this.SQLScripts.add( "SELECT * FROM Reserva "
+				+ "WHERE codreserva = ?"
 				);
 		
 		// Otros
@@ -152,10 +153,11 @@ public class RepoReserva {
 				RepoCliente rC = new RepoCliente();
 				Reserva r = new Reserva(
 					rS.getInt(1),
-					rS.getDate(2),
-					rS.getDate(3),
-					rC.get(rS.getString(4)),
-					rH.get(rS.getInt(5), rS.getInt(6))
+					rS.getDate(5),
+					rS.getDate(6),
+					rC.get(rS.getString(2)),
+					rH.get(rS.getInt(3), rS.getInt(4)),
+					rS.getDouble(7)
 				);
 				return r;
 			} else {
@@ -180,7 +182,7 @@ public class RepoReserva {
 		}
 		
 		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
-		Reserva original = new Reserva(0, null, null, null, null);
+		Reserva original = new Reserva(0, null, null, null, null, 0);
 		
 		// Copruebo que me han pasado el ID correcto
 		if (modificaciones.getID() != 0) {
@@ -235,7 +237,7 @@ public class RepoReserva {
 		try (PreparedStatement pS = ConectMySQL.conexion.prepareCall(SQLScripts.get(5))) {
 			ResultSet rS = pS.executeQuery();
 			if (rS.next()) {
-				return rS.getInt(1);
+				return rS.getInt(1)+1;
 			} else {
 				return -1;
 			}
@@ -252,7 +254,8 @@ public class RepoReserva {
 					+ "R.FECFIN, "
 					+ "R.DNI, "
 					+ "H.NOM, "
-					+ "S.NUM "
+					+ "S.NUM, "
+					+ "R.CODRESERVA "
 				+ "FROM "
 					+ "RESERVA R "
 					+ "JOIN CLIENTE C USING(DNI) "
@@ -320,14 +323,16 @@ public class RepoReserva {
 								0, 
 								"", 
 								0, 
-								rH.get(rH.getPKByName(rS.getString(4)))
+								rH.get(rH.getPKByName(rS.getString(4))),
+								""
 							);
 				Reserva r = new Reserva(
-								0,
+								rS.getInt(6),
 								rS.getDate(1),
 								rS.getDate(2),
 								rC.get(rS.getString(3)),
-								s
+								s,
+								0
 							);
 				lista.add(r);
 			}
@@ -335,10 +340,11 @@ public class RepoReserva {
 			return lista;
 
 		} catch (SQLException e) {
-			
+			e.printStackTrace();
 		}
 		
 		
 		return null;
 	}
+
 }

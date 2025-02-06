@@ -249,4 +249,28 @@ public class Input {
 		scn.nextLine();
 		return num;
 	}
+
+	public static int inCod() {
+		System.out.print("Codigo de la reserva: ");
+		int cod = scn.nextInt();
+		scn.nextLine();
+		return cod;
+	}
+
+	public static int[] inTarjeta() {
+		System.out.print("\nDATOS DE TARJETA DE CREDITO\n------------------------\nNumero de tarjeta: ");
+		int[] num = new int[4]; 
+		num[0] = scn.nextInt();
+		scn.nextLine();
+		System.out.print("Mes caducidad: "); 
+		num[1] = scn.nextInt();
+		scn.nextLine();
+		System.out.print("Año caducidad: ");
+		num[2] = scn.nextInt();
+		scn.nextLine();
+		System.out.print("Codigo de seguridad: ");
+		num[3] = scn.nextInt();
+		scn.nextLine();
+		return num;
+	}
 }

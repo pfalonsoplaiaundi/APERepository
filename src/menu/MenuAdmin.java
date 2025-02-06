@@ -67,16 +67,24 @@ public class MenuAdmin {
 		selectorReservas(Input.inOpc());
 	}
 	
+	/**
+	 * WIP Logica del menu de administracion / reservas
+	 * @param opc
+	 */
 	private static void selectorReservas(int opc) {
 		switch (opc) {
 		case 1:
 			listaReserva();
+			break;
 		case 2:
 			addReserva();
+			break;
 		case 3:
-			//modifyReserva();
+			modifyReserva();
+			break;
 		case 4:
 			//delteReserva();
+			break;
 		case 0:
 			print();
 		default:
@@ -84,6 +92,151 @@ public class MenuAdmin {
 		}
 	}
 	
+	private static void modifyReserva() {
+		System.out.print( 
+				"¿Que reserva deseas modificar?\n"
+				+ "1. Buscar por CODIGO\n"
+				+ "2. Buscar por CLIENTE\n"
+				+ "3. Buscar por HOTEL\n"
+				+ "4. Buscar por FECHAS\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		Reserva aModificar = selectorModifyReservas(Input.inOpc());
+		System.out.print(
+				"\n~~~ Datos actuales ~~~\n" +
+				aModificar.toString() + "\n" +
+				"\n¿Que desea modificar?" +
+				"1. Cliente\n" +
+				"2. Fecha de inicio\n" +
+				"3. Fecha de finalizacion\n" +
+				"Selecciones la opcion que desee: "
+				) ;
+		
+	}
+
+	/**
+	 * 
+	 * @param opc
+	 */
+	private static Reserva selectorModifyReservas(int opc) {
+		Reserva aModificar = null;
+		RepoReserva rR = new RepoReserva();
+		Reserva filtro = null;
+		switch (opc) {
+		
+		
+		case 1:
+			aModificar = rR.get(Input.inCod());
+			break;
+			
+			
+		case 2:
+			RepoCliente rC = new RepoCliente();
+			filtro = new Reserva(0, null, null, rC.get(Input.inDNI()), null, 0);
+			printReservasCliente(filtro);
+			System.out.print("Seleccione la reserva que desea: ");
+			aModificar = rR.get(Input.inCod());
+			break;
+		
+		
+		case 3:
+			RepoHotel rH = new RepoHotel();
+			Sala s = new Sala(0, 0, "", 0, rH.get(rH.getPKByName(Input.inNombre())), "");
+			filtro = new Reserva(0, null, null, null, s, 0);
+			printReservasCliente(filtro);
+			System.out.print("Seleccione la reserva que desea: ");
+			aModificar = rR.get(Input.inCod());
+			break;
+		
+		
+		case 4:
+			System.out.print("\n"
+					+ "1. Por fecha de inicio\n"
+					+ "2. Por fecha de finalizacion\n"
+					+ "3. Por ambas fechas\n"
+					+ "0. Volver atras\n"
+					+ "Seleccione la opcion que desee: ");
+			int opc2 = Input.inOpc();
+			
+			switch (opc2) {
+			case 1:
+				filtro.setFecIni(Input.inFecIni());
+				break;
+			case 2:
+				filtro.setFecFin(Input.inFecFin());
+				break;
+			case 3:
+				filtro.setFecIni(Input.inFecIni());
+				filtro.setFecFin(Input.inFecFin());
+				break;
+			default:
+				break; 
+			}
+			
+			printReservasCliente(filtro);
+			System.out.print("Seleccione la reserva que desea: ");
+			aModificar = rR.get(Input.inCod());
+			break;
+		
+		
+		default:
+			modifyReserva();
+		}
+		return aModificar;
+	}
+
+	/**
+	 * 
+	 * @param filtro
+	 */
+	private static void printReservasCliente(Reserva filtro) {
+		RepoReserva rR = new RepoReserva();
+		ArrayList<Reserva> lista = rR.getListaFiltrada(filtro);
+		if (!(lista == null)) {
+		
+			System.out.print(
+					"Id" + "\t| " 
+					+ "Fecha Inicio" + "\t| "
+					+ "Fecha Fin" + "\t| "
+					+ "DNI" + "\t\t| "
+					+ "Nombre" + "\t| "
+					+ "Apellido/s" + "\t| "
+					+ "Hotel" + "\t\t| "
+					+ "Numero habitacion" + "\n"
+					+ "--------------------------------------------------------------------------------------------------------------------\n");
+			int i = 0;
+			while (i < lista.size()) {
+				System.out.print(
+						lista.get(i).getID() + "\t| "
+						+ lista.get(i).getFecIni().toString() + "\t| "
+						+ lista.get(i).getFecFin().toString() + "\t| "
+						+ lista.get(i).getCliente().getDNI() + "\t| "
+						+ (
+							(lista.get(i).getCliente().getNombre().length() < 6) ? 
+								(lista.get(i).getCliente().getNombre() + "\t\t| ") : 
+								(lista.get(i).getCliente().getNombre() + "\t| ")
+						)
+						+ (
+								(lista.get(i).getCliente().getApellidos().length() < 6) ? 
+									(lista.get(i).getCliente().getApellidos() + "\t\t| ") : 
+									(lista.get(i).getCliente().getApellidos() + "\t| ")
+							)
+						+ lista.get(i).getSala().getHotel().getNombre() + "\t| "
+						+ lista.get(i).getSala().getNum() + "\n"
+				);
+				i++;
+				if (i%5 == 0) System.out.print("--------------------------------------------------------------------------------------------------------------------\n");
+			}
+			System.out.print("\n");
+			
+		} else {
+			System.out.print("\n\n>>> No hay reservas <<<\n\n");
+		}
+	}
+	
+	/**
+	 * Funcion para crear una reserva desde el menu de administracion
+	 */
 	private static void addReserva() {
 		RepoReserva rR = new RepoReserva();
 		RepoCliente rC = new RepoCliente();
@@ -99,32 +252,43 @@ public class MenuAdmin {
 		int hotel = Input.inOpc();
 	
 		Hotel h = rH.get(hotel);
+		System.out.print("\n>>> Recuerda tener todos los datos (incluido el numero de habitacion) <<<\n");
 		Reserva r = new Reserva(
 							rR.getNewID(),
 							Input.inFecIni(),
 							Input.inFecFin(),
 							rC.get(Input.inDNI()),
-							rS.get(h.getID(), Input.inNum())
+							rS.get(h.getID(), Input.inNum()),
+							0
 						);
 		rR.insert(r);
+		System.out.println("");
 		
 	}
 
+	/**
+	 * Funcion para desplegar la lista de reservas completas 
+	 * en caso de no querer filtrar
+	 */
 	private static void listaReserva() {
 		if (!filtroReserva()) {
-			Reserva filtro = new Reserva(0, null, null, null, null);
+			Reserva filtro = new Reserva(0, null, null, null, null, 0);
 			printResultadoFiltroReserva(filtro);
 		}	
 	}
 	
-
+	/**
+	 * Funcion que te permite filtrar la lista resultados de reservas
+	 * Devuelve true, si se ha filtrado, false si no.
+	 * @return
+	 */
 	private static boolean filtroReserva() {
 		System.out.print("\n¿Deseas filtrar el resultado? ");
 		boolean respuesta = Input.inYesNo();
 		if (respuesta) {
 
 			int opc = 0;
-			Reserva filtro = new Reserva(0, null, null, null, null);
+			Reserva filtro = new Reserva(0, null, null, null, null, 0);
 			do {
 	
 				// Print filtro
@@ -132,69 +296,7 @@ public class MenuAdmin {
 				opc = Input.inOpc();
 				
 				// Selector
-				switch (opc) {
-				case 1: // Si no hay una sala asociada la crea con el hotel, si ya existe le asigna el hotel
-					RepoHotel rH = new RepoHotel();
-					ArrayList<String> hoteles = rH.getMenuPrincipal();
-					int i = 0;
-					while(i < hoteles.size()) {
-						System.out.print((i+1) + ". " + hoteles.get(i) + "\n");
-						i++;
-					}	
-					System.out.print("Seleccione el hotel que desea: ");
-					int hotel = Input.inOpc();
-				
-					if (filtro.getSala() == null) {
-						Sala s = new Sala(0, 0, "", 0, rH.get(hotel));
-						filtro.setSala(s);
-					} else {
-						filtro.getSala().setHotel(rH.get(hotel));
-					}
-					break;
-				
-				case 2: // Añade y sobreescribe el cliente al filtro
-					RepoCliente rC = new RepoCliente();
-					filtro.setCliente(rC.get(Input.inDNI()));
-					break;
-					
-				case 3: // Si no hay una sala en el filtro la crea con el numero, si ya existe sobreescribe el numero
-					if (filtro.getSala() == null) {
-						Sala s = new Sala(Input.inNum(), 0, "", 0, null);
-						filtro.setSala(s);
-					} else {
-						filtro.getSala().setNum(Input.inNum());
-					}
-					break;
-					
-				case 4: // Por fecha
-					System.out.print("\n"
-							+ "1. Por fecha de inicio\n"
-							+ "2. Por fecha de finalizacion\n"
-							+ "3. Por ambas fechas\n"
-							+ "0. Volver atras\n"
-							+ "Seleccione la opcion que desee: ");
-					int opc2 = Input.inOpc();
-					
-					switch (opc2) {
-					case 1:
-						filtro.setFecIni(Input.inFecIni());
-						break;
-					case 2:
-						filtro.setFecFin(Input.inFecFin());
-						break;
-					case 3:
-						filtro.setFecIni(Input.inFecIni());
-						filtro.setFecFin(Input.inFecFin());
-						break;
-					default:
-						break; 
-					}
-					break;
-					
-				default:
-					break;
-					
-				}
+				filtro = selectorMenuFiltroReserva(filtro, opc);
 			} while(opc != 0);
 			
 						
@@ -206,13 +308,16 @@ public class MenuAdmin {
 	}
 
 	/**
-	 * Imprime el menu de filtro, rellenando los valores ya seteados y dejando solo las opciones que esten libres.
+	 * Imprime el menu de filtro, rellenando los valores ya 
+	 * seteados y dejando solo las opciones que esten libres.
 	 * @param filtro
 	 * @param disponible
 	 */
 	private static void printMenuFiltroReserva(Reserva filtro) {
 		System.out.print(
 				"\n>>> Filtro <<<\n"
+				
+				// 1. Por hotel		
 				+ 														 
 				((filtro.getSala() == null) ?
 						"1. Por hotel\n" :
@@ -222,6 +327,7 @@ public class MenuAdmin {
 						)
 				)
 				
+				// 2. Por cliente
 				+ 
 				((filtro.getCliente() == null) ?
 						"2. Por cliente\n" :
@@ -231,6 +337,7 @@ public class MenuAdmin {
 						)
 				)
 				
+				// 3. Por numero de habitacion
 				+ 
 				((filtro.getSala() == null) ?
 						"3. Por numero de habitacion\n" :
@@ -240,6 +347,7 @@ public class MenuAdmin {
 						)
 				)
 				
+				// 4. Por fecha
 				+ // Si no esta el filtro muestra "4. Por fechas" si esta relleno, solo con minimo o maximo o ambos muestra las fechas.
 				(((filtro.getFecIni() == null) && (filtro.getFecFin() == null)) ? 
 						"4. Por fechas\n" : 
@@ -251,8 +359,86 @@ public class MenuAdmin {
 								)
 						)
 				)
+				
 				+ "0. Para continuar\n"
 		);
+	}
+	
+	private static Reserva selectorMenuFiltroReserva(Reserva filtro, int opc) {
+		switch (opc) {
+		
+		// Filtro hotel
+		//--------------------------------------------------------------------------------------------------------------
+		case 1: // Si no hay una sala asociada la crea con el hotel, si ya existe le asigna el hotel
+			RepoHotel rH = new RepoHotel();
+			ArrayList<String> hoteles = rH.getMenuPrincipal();
+			int i = 0;
+			while(i < hoteles.size()) {
+				System.out.print((i+1) + ". " + hoteles.get(i) + "\n");
+				i++;
+			}	
+			System.out.print("Seleccione el hotel que desea: ");
+			int hotel = Input.inOpc();
+		
+			if (filtro.getSala() == null) {
+				Sala s = new Sala(0, 0, "", 0, rH.get(hotel), "");
+				filtro.setSala(s);
+			} else {
+				filtro.getSala().setHotel(rH.get(hotel));
+			}
+			break;
+			
+		// Filtro cliente
+		//--------------------------------------------------------------------------------------------------------------		
+		case 2: // Añade y sobreescribe el cliente al filtro
+			RepoCliente rC = new RepoCliente();
+			filtro.setCliente(rC.get(Input.inDNI()));
+			break;
+			
+		// Filtro sala	
+		//--------------------------------------------------------------------------------------------------------------
+		case 3: // Si no hay una sala en el filtro la crea con el numero, si ya existe sobreescribe el numero
+			if (filtro.getSala() == null) {
+				Sala s = new Sala(Input.inNum(), 0, "", 0, null, "");
+				filtro.setSala(s);
+			} else {
+				filtro.getSala().setNum(Input.inNum());
+			}
+			break;
+			
+		// Filtro fecha	
+		//--------------------------------------------------------------------------------------------------------------
+		case 4: // Por fecha
+			System.out.print("\n"
+					+ "1. Por fecha de inicio\n"
+					+ "2. Por fecha de finalizacion\n"
+					+ "3. Por ambas fechas\n"
+					+ "0. Volver atras\n"
+					+ "Seleccione la opcion que desee: ");
+			int opc2 = Input.inOpc();
+			
+			switch (opc2) {
+			case 1:
+				filtro.setFecIni(Input.inFecIni());
+				break;
+			case 2:
+				filtro.setFecFin(Input.inFecFin());
+				break;
+			case 3:
+				filtro.setFecIni(Input.inFecIni());
+				filtro.setFecFin(Input.inFecFin());
+				break;
+			default:
+				break; 
+			}
+			break;
+			
+		//--------------------------------------------------------------------------------------------------------------
+		default:
+			break;
+			
+		}
+		return filtro;
 	}
 	
 	private static void printResultadoFiltroReserva(Reserva filtro) {
@@ -395,8 +581,6 @@ public class MenuAdmin {
 		}
 	}
 	
-
-
 	/**
 	 * Imprime el menu de filtro, rellenando los valores ya seteados y dejando solo las opciones que esten libres.
 	 * @param filtro

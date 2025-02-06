@@ -82,7 +82,8 @@ CREATE TABLE IF NOT EXISTS Reserva (
   num smallint unsigned not null,
   FecIni date NOT NULL,
   FecFin date NOT NULL,
-  PrecioTotal decimal NOT NULL DEFAULT 0
+  PrecioTotal decimal NOT NULL DEFAULT 0,
+  bPagada boolean NOT NULL DEFAULT false
 );
 
 -- Relaciones foreign keys

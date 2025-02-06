@@ -10,17 +10,21 @@ public class Reserva {
 	private Date fecFin;
 	private Cliente cliente;
     private Sala sala;
+    private double precioTotal;
+    private boolean bPagada;
 	
 	//-----------------------------------------------------------------------
     
 	//Constructor
-    public Reserva(int iD, Date fecIni, Date fecFin, Cliente cliente, Sala sala) {
+    public Reserva(int iD, Date fecIni, Date fecFin, Cliente cliente, Sala sala, double precioTotal) {
 		super();
 		this.ID = iD;
 		this.fecIni = fecIni;
 		this.fecFin = fecFin;
 		this.cliente = cliente;
 		this.sala = sala;
+		this.precioTotal = precioTotal;
+		this.bPagada = false;
 	}
     
 	//-----------------------------------------------------------------------
@@ -28,6 +32,14 @@ public class Reserva {
 	//Getters & setters
     public int getID() {
 		return ID;
+	}
+
+	public double getPrecioTotal() {
+		return precioTotal;
+	}
+
+	public void setPrecioTotal(double precioTotal) {
+		this.precioTotal = precioTotal;
 	}
 
 	public void setID(int iD) {
@@ -64,6 +76,14 @@ public class Reserva {
 
 	public void setSala(Sala sala) {
 		this.sala = sala;
+	}
+
+	public boolean isbPagada() {
+		return bPagada;
+	}
+
+	public void setbPagada(boolean bPagada) {
+		this.bPagada = bPagada;
 	}
 	
 }

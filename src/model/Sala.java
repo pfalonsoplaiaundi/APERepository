@@ -59,17 +59,17 @@ public class Sala {
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
-	public tSala getTipo() {
+	public tSala getTSala() {
 		return tipo;
 	}
-	public void setTipo(tSala tipo) {
+	public void setTSala(tSala tipo) {
 		this.tipo = tipo;
 	}
 	
 	//-----------------------------------------------------------------------
 	
 	// Constructor/es
-	public Sala(int num, int capacidad, String tlfno, double pvp, Hotel hotel, tSala tipo) {
+	public Sala(int num, int capacidad, String tlfno, double pvp, Hotel hotel) {
 		super();
 		this.num = num;
 		this.capacidad = capacidad;
@@ -77,6 +77,16 @@ public class Sala {
 		this.pvp = pvp;
 		this.hotel = hotel;
 		printTipo();
+	}
+	
+	public Sala(int num, int capacidad, String tlfno, double pvp, Hotel hotel, tSala tipo) {
+		super();
+		this.num = num;
+		this.capacidad = capacidad;
+		this.tlfno = tlfno;
+		this.pvp = pvp;
+		this.hotel = hotel;
+		this.tipo = tipo;
 	}
 	
 	public Sala(int num, int capacidad, String tlfno, double pvp, Hotel hotel, String tipo) {

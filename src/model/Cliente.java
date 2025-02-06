@@ -308,14 +308,44 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "--Cliente--\n"
+		return "\n--Cliente--\n"
 				+ "DNI: " + DNI + "\n"
 				+ "Nombre: " + nombre + " " + apellidos + "\n"
 				+ "Telefono: " + telefono + "\n"
 				+ "Email: " + email + "\n"
 				+ "Tarifa: " + tarifa + "\n"
 				+ ((bTrabajador)?"Trabajador":"Cliente") + "\n"
-				+ "Contraseña: " + pass + "\n"
 				+ "--------------------";
+	}
+	
+	public double aplicarDcto(double pvp) {
+		ArrayList<String> t = new ArrayList<>();
+		t.add("estandar");
+		t.add("dctoTrabajador");
+		t.add("dcto5");
+		t.add("dcto10");
+		t.add("dcto5por");
+		t.add("dcto10por");
+		t.add("dctoNewCliente");
+		
+		// Comparto lo que me pasan con el array de arriba y lo transformo en el enumerado
+		switch (t.indexOf(this.tarifa)) {
+		case 0:
+			return pvp;
+		case 1:
+			return pvp*0.8;
+		case 2:
+			return pvp-5;
+		case 3:
+			return pvp-10;
+		case 4:
+			return pvp*0.95;
+		case 5:
+			return pvp*0.9;
+		case 6:
+			return pvp*0.85;
+		default:
+			return pvp;
+		}
 	}
 }

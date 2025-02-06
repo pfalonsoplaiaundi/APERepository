@@ -16,15 +16,15 @@ public class MenuReserva {
 		RepoReserva rR = new RepoReserva();
 		RepoSala rS = new RepoSala();
 		RepoHabitacion rH = new RepoHabitacion();
+		Habitacion h = rH.getByTypeAndFirstDate(tipoDeHab);
 		Reserva r = new Reserva(
 			rR.getNewID(), 
 			Input.inFecIni(), 
 			Input.inFecFin(), 
 			Login.user, 
-			rH.getByTypeAndFirstDate(tipoDeHab)
+			h,
+			Login.user.aplicarDcto(h.getPvp())
 		);
-			
-		
 		
 		MenuCarrito.addCarrito(r);
 		MenuPrincipal.print();

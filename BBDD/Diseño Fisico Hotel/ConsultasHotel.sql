@@ -122,10 +122,4 @@ WHERE
 	(r.fecfin = null or null is null)
 ORDER BY R.FECINI ASC, R.FECFIN ASC;
 
-
-
-    (h.nom = "Hotel Central" or h.nom <> "") and
-    (c.dni = "23456789B" or c.dni <> "") and
-	(r.num = "2" or r.num <> "") and
-	(r.fecini = "2025-01-28" or r.fecfin <> "1000-01-01") and
-	(r.fecfin = "2025-02-20" or r.fecfin <> "1000-01-01")
+select * from sala;
