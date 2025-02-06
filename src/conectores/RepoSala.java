@@ -3,8 +3,11 @@ package conectores;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 import java.util.ArrayList;
 
+import menu.MenuPrincipal;
+import menu.MenuProductos;
 import model.HabReserva;
 import model.Habitacion;
 import model.Sala;
@@ -87,19 +90,17 @@ public class RepoSala {
 		// Tipos de habitaciones disponibles y su fecha mas cercana disponible. 5
 		SQLScripts.add( 
 				"SELECT "
-				+ "h.tipohab, "
-				+ "min("
-					+ "case "
-						+ "when current_date() between r.fecini and r.fecfin then r.fecfin "
-						+ "else current_date() "
-						+ "end"
-						+ ") "
+					+ "h.tipohab, "
+					+ "min(s.pvp) "
 				+ "FROM "
 					+ "habitacion h "
 					+ "natural join sala s "
-					+ "natural join reserva r "
+					+ "left join reserva r using(id, num) "
 				+ "WHERE "
-					+ "s.id = ? and r.fecfin > current_date() "
+					+ "s.id = ? and "
+					+ "r.fecfin > current_date() and "
+					+ "r.fecIni not between ? and ? and "
+					+ "r.fecFin not between ? and ? "
 				+ "GROUP BY "
 					+ "h.tipohab;"
 				);
@@ -136,15 +137,20 @@ public class RepoSala {
 		}		
 	}
 	
-	public ArrayList<HabReserva> getMenuProductos(int idHotel) {
-		ArrayList<HabReserva> menuProductos = new ArrayList<>();
+	public ArrayList<Habitacion> getMenuProductos(int idHotel) {
+		ArrayList<Habitacion> menuProductos = new ArrayList<>();
 		String query = SQLScripts.get(5);
 	    try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
 	    	pS.setInt(1, idHotel);
+	    	pS.setDate(2, MenuProductos.fecIni);
+	    	pS.setDate(3, MenuProductos.fecFin);
+	    	pS.setDate(4, MenuProductos.fecIni);
+	    	pS.setDate(5, MenuProductos.fecFin);
+	    	System.out.print(pS.toString());
 	    	ResultSet rS = pS.executeQuery();
 	    	while (rS.next()) {
-	    		HabReserva hR = new HabReserva(Habitacion.tipoHabStringToEnum(rS.getString(1)), rS.getDate(2));
-	    		menuProductos.add(hR);
+	    		Habitacion h = new Habitacion(MenuPrincipal.hotel, 0, 0, "", rS.getDouble(2), rS.getString(1));
+	    		menuProductos.add(h);
 	    	}
 	    	return menuProductos;
 	    } catch (SQLException e) {
