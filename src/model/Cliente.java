@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import auxi.Input;
+import menu.Login;
 
 public class Cliente {
 	
@@ -204,11 +205,10 @@ public class Cliente {
         return false;
     }
 
+	/**
+     * Funcion que comprueba que haya minusculas en un string
+     */
     public static boolean tieneMinus(String pass) {
-    	/**
-         * Funcion que comprueba que haya minusculas en un string
-         */
-    	
     	
     	// Comprueba que pass no este vacio
     	if (pass == null) {
@@ -223,12 +223,24 @@ public class Cliente {
         }
         return false;
     }
+    
+    public static boolean tiene8caracteres(String pass) {
+    	
+    	// Comprueba que pass no este vacio
+    	if (pass == null) {
+            return false;
+        }
+    	
+    	// Revisa caracter a caracter si hay una minuscula, si llega al final y no la hay devuelva false
+    	return pass.length()>=8;
+    }
 
+	/**
+	 * Comprueba que se cumplan todas las condiciones de la contraseña
+	 */
     public static boolean verificacionPass(String pass) {
-    	/**
-    	 * Comprueba que se cumplan todas las condiciones de la contraseña
-    	 */
-        return tieneNumeros(pass) && tieneMayus(pass) && tieneMinus(pass);
+
+        return tieneNumeros(pass) && tieneMayus(pass) && tieneMinus(pass) && tiene8caracteres(pass) ;
     }
 		
 	public static boolean verificacionExistencia() {
@@ -308,14 +320,13 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "\n--Cliente--\n"
-				+ "DNI: " + DNI + "\n"
-				+ "Nombre: " + nombre + " " + apellidos + "\n"
-				+ "Telefono: " + telefono + "\n"
-				+ "Email: " + email + "\n"
-				+ "Tarifa: " + tarifa + "\n"
-				+ ((bTrabajador)?"Trabajador":"Cliente") + "\n"
-				+ "--------------------";
+		return "\n------ Cliente ------\n"
+				+ "DNI: \t\t" + DNI + "\n"
+				+ "Nombre: \t" + nombre + " " + apellidos + "\n"
+				+ "Telefono: \t" + telefono + "\n"
+				+ "Email: \t\t" + email + "\n"
+				+ "Tarifa: \t" + tarifa + "\n"
+				+ "---------------------";
 	}
 	
 	public double aplicarDcto(double pvp) {
@@ -329,7 +340,7 @@ public class Cliente {
 		t.add("dctoNewCliente");
 		
 		// Comparto lo que me pasan con el array de arriba y lo transformo en el enumerado
-		switch (t.indexOf(this.tarifa)) {
+		switch (t.indexOf(Login.user.getTarifa().toString())) {
 		case 0:
 			return pvp;
 		case 1:

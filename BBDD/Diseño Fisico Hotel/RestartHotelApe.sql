@@ -206,17 +206,17 @@ INSERT INTO SalaReuniones (ID, num, servicios) VALUES
 
 -- Tabla Clientes
 INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VALUES
-('12345678A', 'Laura', 'García', 611223344, 'laura.garcia@mail.com', FALSE, 'estandar', SHA2('password1', 256)),
-('23456789D', 'Carlos', 'Martínez', 622334455, 'carlos.martinez@mail.com', TRUE, 'dctoTrabajador', SHA2('password2', 256)),
-('34567890C', 'Ana', 'López', 633445566, 'ana.lopez@mail.com', FALSE, 'dcto5', SHA2('password3', 256)),
-('45678901D', 'David', 'Hernández', 644556677, 'david.hernandez@mail.com', FALSE, 'dcto10', SHA2('password4', 256)),
-('56789012E', 'Marta', 'Pérez', 655667788, 'marta.perez@mail.com', TRUE, 'dcto5por', SHA2('password5', 256)),
-('67890123F', 'Jorge', 'Gómez', 666778899, 'jorge.gomez@mail.com', FALSE, 'dcto10por', SHA2('password6', 256)),
-('78901234G', 'Sara', 'Ruiz', 677889900, 'sara.ruiz@mail.com', FALSE, 'dctoNewCliente', SHA2('password7', 256)),
-('89012345H', 'Luis', 'Díaz', 688990011, 'luis.diaz@mail.com', TRUE, 'estandar', SHA2('password8', 256)),
-('90123456I', 'Elena', 'Moreno', 699001122, 'elena.moreno@mail.com', FALSE, 'dcto5', SHA2('password9', 256)),
-('01234567J', 'Pedro', 'Vega', 611112223, 'pedro.vega@mail.com', TRUE, 'dcto10', SHA2('password10', 256)),
-('04627062Z', 'Pablo', 'Fernandez', 626140550, 'pfalonso@gmail.com', TRUE, 'dctoTrabajador', SHA2('Pepe6', 256));
+('12345678A', 'Laura', 'García', 611223344, 'laura.garcia@mail.com', FALSE, 'estandar', SHA2('Contraseña1', 256)),
+('23456789D', 'Carlos', 'Martínez', 622334455, 'carlos.martinez@mail.com', TRUE, 'dctoTrabajador', SHA2('Contraseña1', 256)),
+('34567890C', 'Ana', 'López', 633445566, 'ana.lopez@mail.com', FALSE, 'dcto5', SHA2('Contraseña1', 256)),
+('45678901D', 'David', 'Hernández', 644556677, 'david.hernandez@mail.com', FALSE, 'dcto10', SHA2('Contraseña1', 256)),
+('56789012E', 'Marta', 'Pérez', 655667788, 'marta.perez@mail.com', TRUE, 'dcto5por', SHA2('Contraseña1', 256)),
+('67890123F', 'Jorge', 'Gómez', 666778899, 'jorge.gomez@mail.com', FALSE, 'dcto10por', SHA2('Contraseña1', 256)),
+('78901234G', 'Sara', 'Ruiz', 677889900, 'sara.ruiz@mail.com', FALSE, 'dctoNewCliente', SHA2('Contraseña1', 256)),
+('89012345H', 'Luis', 'Díaz', 688990011, 'luis.diaz@mail.com', TRUE, 'estandar', SHA2('Contraseña1', 256)),
+('90123456I', 'Elena', 'Moreno', 699001122, 'elena.moreno@mail.com', FALSE, 'dcto5', SHA2('Contraseña1', 256)),
+('01234567J', 'Pedro', 'Vega', 611112223, 'pedro.vega@mail.com', TRUE, 'dcto10', SHA2('Contraseña1', 256)),
+('04627062Z', 'Pablo', 'Fernandez', 626140550, 'pfalonso@gmail.com', TRUE, 'dctoTrabajador', SHA2('@6966olbaP', 256));
 
 -- Tabla Reserva
 INSERT INTO Reserva (DNI, ID, num, fecini, fecfin) VALUES

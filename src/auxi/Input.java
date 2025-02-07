@@ -41,7 +41,16 @@ public class Input {
 	
 	public static String inEmail() {
 		System.out.print("Correo Electronico: ");
-		return scn.nextLine();
+		String email = scn.nextLine();
+		String[] emailSplit = email.split("@");
+		if (emailSplit.length != 2) {
+			System.out.print("\n\n>>> Introduce un correo electronico valido <<<\n\n");
+			inEmail();
+		} else if (!emailSplit[1].contains(".")) {
+			System.out.print("\n\n>>> Introduce un correo electronico valido <<<\n\n");
+			inEmail();
+		}
+		return email;
 	}
 	
 	public static String inTelefono() {
@@ -159,7 +168,8 @@ public class Input {
 						"La contraseña debe contener: " +
 						((!Cliente.tieneMayus(pass)) ? "Mayusculas " : "") +
 						((!Cliente.tieneMinus(pass)) ? "Minusculas " : "") +
-						((!Cliente.tieneNumeros(pass)) ? "Numeros\n" : "\n")
+						((!Cliente.tieneNumeros(pass)) ? "Numeros " : "") +
+						((!Cliente.tiene8caracteres(pass)) ? "8 caracteres\n" : "\n")
 						);
 				pass = "";
 			}
@@ -176,7 +186,7 @@ public class Input {
 	public static boolean inYesNo() {
 		System.out.print("(Si/No) : ");
 		String r = scn.nextLine();
-		if (r.equalsIgnoreCase("Si") || r.equals("1")) {
+		if (r.equalsIgnoreCase("Si") || r.equals("1") || r.equalsIgnoreCase("s") || r.equalsIgnoreCase("y")) {
 			return true;
 		} else {
 			return false;

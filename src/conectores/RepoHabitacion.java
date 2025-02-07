@@ -5,10 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import menu.MenuCarrito;
 import menu.MenuPrincipal;
+import menu.MenuProductos;
 import model.Cliente;
 import model.HabDisponible;
 import model.Habitacion;
+import model.Reserva;
 import model.Sala;
 
 public class RepoHabitacion {
@@ -50,17 +53,28 @@ public class RepoHabitacion {
 		
 		// Otros
 		// Recuperar la habitacion libre mas cercana de un tipo 5
-		this.SQLScripts.add("select s.num, s.capacidad, s.tlfno, s.pvp, h.tipohab\r\n"
-				+ "from habitacion h\r\n"
-				+ "	natural join sala s\r\n"
-				+ "    left join reserva r on \r\n"
-				+ "		r.id = s.id and\r\n"
-				+ "        r.num = s.num and\r\n"
-				+ "        current_date() between r.FecIni and r.FecFin\r\n"
-				+ "where\r\n"
-				+ "	r.id is null and\r\n"
-				+ "    h.tipohab = ? and\r\n"
-				+ "    h.id = ?;");
+		this.SQLScripts.add(
+				"SELECT "
+					+ "s.num, "
+					+ "s.capacidad, "
+					+ "s.tlfno, "
+					+ "s.pvp, "
+					+ "h.tipohab "
+				+ "FROM "
+					+ "habitacion h "
+					+ "JOIN sala s USING(id, num) "
+					+ "LEFT JOIN reserva r ON "
+						+ "r.id = s.id AND "
+						+ "r.num = s.num AND "
+						+ "? BETWEEN r.FecIni AND r.FecFin AND"
+						+ "? BETWEEN r.fecini and r.fecfin "
+				+ "WHERE "
+					+ "r.id IS null AND "
+					+ "h.tipohab = ? AND "
+					+ "h.id = ? "
+				+ "ORDER BY "
+					+ "s.pvp ASC;"
+				);
 	}
 	
 	/**
@@ -262,9 +276,51 @@ public class RepoHabitacion {
 			inicializarArray();
 		}
 		
-		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(5))) {
-			pS.setString(1, tipoDeHab);
-			pS.setInt(2, MenuPrincipal.hotel.getID());
+		String query = "SELECT "
+					+ "s.num, "
+					+ "s.capacidad, "
+					+ "s.tlfno, "
+					+ "s.pvp, "
+					+ "h.tipohab "
+				+ "FROM "
+					+ "habitacion h "
+					+ "JOIN sala s USING(id, num) "
+					+ "LEFT JOIN reserva r ON "
+						+ "r.id = s.id AND "
+						+ "r.num = s.num AND "
+						+ "? BETWEEN r.FecIni AND r.FecFin AND"
+						+ "? BETWEEN r.fecini and r.fecfin "
+				+ "WHERE "
+					+ "r.id IS null AND "
+					+ "h.tipohab = ? AND "
+					+ "h.id = ? AND "
+					+ "h.num not in (";
+		if(MenuCarrito.carrito.isEmpty()) {
+			query += "\"\"";
+		} else {
+			int i = 0;
+			for (Reserva r : MenuCarrito.carrito) {
+				i++;
+				query += (i == MenuCarrito.carrito.size()) ? "? " : "?, ";
+				
+			}
+		}	
+		query	+= ") ORDER BY "
+					+ "s.pvp ASC;"
+				;
+		
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+			pS.setDate(1, MenuProductos.fecIni);
+			pS.setDate(2, MenuProductos.fecFin);
+			pS.setString(3, tipoDeHab);
+			pS.setInt(4, MenuPrincipal.hotel.getID());
+			if(!MenuCarrito.carrito.isEmpty()) {
+		    	int i = 0;
+		    	for (Reserva r : MenuCarrito.carrito) {
+		    		i++;
+		    		pS.setInt(i+4, r.getSala().getNum());
+		    	}
+			}
 			ResultSet rS = pS.executeQuery();
 			if (rS.next()) {
 				Habitacion h = new Habitacion(

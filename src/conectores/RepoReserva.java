@@ -2,6 +2,7 @@ package conectores;
 
 import java.util.ArrayList;
 
+import menu.MenuCarrito;
 import model.Cliente;
 import model.Reserva;
 import model.Sala;
@@ -30,9 +31,9 @@ public class RepoReserva {
 	private void inicializarArray() {
 		
 		// Insertar	0
-		this.SQLScripts.add( "INSERT INTO Reserva (DNI, id, num, fecini, fecfin) "
+		this.SQLScripts.add( "INSERT INTO Reserva (DNI, id, num, fecini, fecfin, bPagada) "
 				+ "VALUES "
-				+ "(?, ?, ?, ?, ?)"
+				+ "(?, ?, ?, ?, ?, ?)"
 				);
 		
 		// Eliminar 1
@@ -88,6 +89,7 @@ public class RepoReserva {
 		        preparedStatement.setInt(3, nuevo.getSala().getNum());
 		        preparedStatement.setDate(4, nuevo.getFecIni());
 		        preparedStatement.setDate(5, nuevo.getFecFin());
+		        preparedStatement.setBoolean(6, nuevo.isbPagada());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
@@ -237,7 +239,7 @@ public class RepoReserva {
 		try (PreparedStatement pS = ConectMySQL.conexion.prepareCall(SQLScripts.get(5))) {
 			ResultSet rS = pS.executeQuery();
 			if (rS.next()) {
-				return rS.getInt(1)+1;
+				return rS.getInt(1)+MenuCarrito.carrito.size()+1;
 			} else {
 				return -1;
 			}

@@ -27,7 +27,7 @@ public class MenuProductos {
 				+ "Tipo de Habitacion\t| Precio\n"
 				+ "---------------------------------------------------------------\n"
 				);
-		ArrayList<Habitacion> habitaciones = rS.getMenuProductos(idHotel);
+		ArrayList<Habitacion> habitaciones = rS.getMenuProductos();
 		int i = 1;
 		for(Habitacion h : habitaciones) {
 			System.out.print(
