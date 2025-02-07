@@ -4,6 +4,22 @@
     font-family: arial;
 }
 
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Coloca el video detrás del contenido */
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el video para que cubra toda la pantalla */
+}
+
 body {
     background: linear-gradient(to bottom, #c4b586, #a8d08d2d, white, white, #c4b586);
 }
@@ -26,8 +42,8 @@ header {
     color: rgb(255, 255, 255);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     background-image: url('../Imagenes/banner3.jpg');
-    z-index: 1000; /* Asegura que el header esté sobre otros elementos */
-    padding: 10px 20px; /* Ajuste para asegurar que haya espacio alrededor */
+    z-index: 1000; 
+    padding: 10px 20px; 
 }
 
 .desplaza {
@@ -87,14 +103,21 @@ a:hover {
 }
 
 .tarjeta1 {
-    background-color: rgba(219, 197, 168, 0.973);
+    background-color: rgb(219, 197, 168);
+    font-style: oblique;
+    color: #000000;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     width: 50%;
     max-width: 600px;
     text-align: center;
-    border: 2px solid #a67c52;
+    border: 3px solid #a67c52;
+}
+
+.tarjeta1 h2 {
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .tarjeta1 p {
@@ -240,8 +263,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-image: url('../Imagenes/back51.webp'); /* Corregida la ruta de la imagen */
+    height: 76vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
