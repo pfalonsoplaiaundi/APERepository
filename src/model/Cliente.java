@@ -224,6 +224,11 @@ public class Cliente {
         return false;
     }
     
+    /**
+     * Comprueba que la contraseña tenga al menos 8 caracteres
+     * @param pass
+     * @return
+     */
     public static boolean tiene8caracteres(String pass) {
     	
     	// Comprueba que pass no este vacio
@@ -242,27 +247,13 @@ public class Cliente {
 
         return tieneNumeros(pass) && tieneMayus(pass) && tieneMinus(pass) && tiene8caracteres(pass) ;
     }
-		
-	public static boolean verificacionExistencia() {
-		/*
-		 * WIP
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
-		return false;
-	}
-		
+
+    /**
+	 * Al construir un nuevo cliente le asigna su tarifa
+	 * segun si es trabajador o nuevo cliente.
+	 */
     private tarifas selectorTarifa() {
-    	/**
-    	 * Dependiendo de si el es o no trabajador tendra el descuento pertinente.
-    	 */
+    	
         if (bTrabajador) {
             return tarifas.dctoTrabajador;
         } else {
@@ -270,6 +261,11 @@ public class Cliente {
         }
     }
     
+    /**
+     * Transforma una tarifa en string en una tarifa en enum.
+     * @param tarifa
+     * @return
+     */
 	private tarifas selectorTarifa(String tarifa) {
 		ArrayList<String> t = new ArrayList<>();
 		t.add("estandar");

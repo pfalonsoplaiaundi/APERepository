@@ -90,6 +90,7 @@ public class MenuAdmin {
 		default:
 			printReservas();
 		}
+		printReservas();
 	}
 	
 	private static void modifyReserva() {
