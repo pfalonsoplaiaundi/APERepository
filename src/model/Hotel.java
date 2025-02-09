@@ -1,8 +1,5 @@
 package model;
 
-import java.util.Objects;
-
-import auxi.Input;
 import conectores.RepoHotel;
 
 public class Hotel {

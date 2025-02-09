@@ -2,6 +2,8 @@ package model;
 
 import java.sql.Date;
 
+import conectores.RepoHabitacion;
+
 public class Reserva {
 	
 	//Atributos
@@ -84,6 +86,17 @@ public class Reserva {
 
 	public void setbPagada(boolean bPagada) {
 		this.bPagada = bPagada;
+	}
+
+	@Override
+	public String toString() {
+		RepoHabitacion rH = new RepoHabitacion();
+		Habitacion h = rH.get(sala.getHotel().getID(), sala.getNum());
+		return "ID: " + ID + "\n" +
+				"Desde el " + fecIni + " hasta el " + fecFin + "\n" + 
+				"Cliente: " + cliente.getNombre() + " " + cliente.getApellidos() + "\n" + 
+				sala.getTSala() + " " + h.getTipo() + "\n" +
+				"Precio: " + precioTotal + "€";
 	}
 	
 }

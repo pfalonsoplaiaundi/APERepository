@@ -1,11 +1,33 @@
 package model;
 
-import java.util.Objects;
-
+/**
+ * Objeto que almacena los datos de los espacios comunes
+ */
 public class EspacioComun extends Sala {
 	
+	// Atributos
 	private String tipo;
 
+	//-----------------------------------------------------------------------
+	
+	//Constructor/es
+	/**
+	 * Constructor de espacio comun basico
+	 * @param num
+	 * @param capacidad
+	 * @param tlfno
+	 * @param pvp
+	 * @param hotel
+	 * @param tipo
+	 */
+	public EspacioComun(int num, int capacidad, String tlfno, double pvp, Hotel hotel, String tipo) {
+		super(num, capacidad, tlfno, pvp, hotel);
+		this.tipo = tipo;
+	}
+	
+	//-----------------------------------------------------------------------
+		
+	// Getter y setters
 	public String getTipo() {
 		return tipo;
 	}
@@ -14,11 +36,9 @@ public class EspacioComun extends Sala {
 		this.tipo = tipo;
 	}
 
-	public EspacioComun(int num, int capacidad, String tlfno, double pvp, Hotel hotel, String tipo) {
-		super(num, capacidad, tlfno, pvp, hotel);
-		this.tipo = tipo;
-	}
-
+	//-----------------------------------------------------------------------
+	
+	// Metodos basicos
 	@Override
 	public String toString() {
 		return super.toString() 

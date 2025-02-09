@@ -1,10 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
 import auxi.Input;
-import model.Habitacion.tipoHab;
 
 public class Sala {
 

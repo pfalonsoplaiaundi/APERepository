@@ -15,12 +15,9 @@ public class MenuCarrito {
 		if (!carrito.isEmpty()) {
 			System.out.print("\n~~~ Carrito ~~~\n");
 			RepoHabitacion rH = new RepoHabitacion();
-			int i = 0;
 			double subtotal = 0;
 			for(Reserva c : carrito) {
-				i++;
 				// Obtengo una habitacion con la reserva del carrito, y la imprimo
-
 				System.out.print(
 						".....................................\n" + 
 						/* Get IdHotel				 		   NumSala				 Imprime
@@ -34,19 +31,77 @@ public class MenuCarrito {
 			System.out.print(
 					Login.user.toString()
 					+"\n\nSUBTOTAL: " + subtotal
-					+"\n¿Es correcto? ");
+					+"\n¿Es correcto? (no para volver atras) ");
 			boolean respuesta = Input.inYesNo();
 			if (respuesta) {
 				pasarelaPago();
-
 				carrito.clear();
 				MenuCarrito.print();
 			} else {
+				modificarCarrito();
 				MenuPrincipal.print();
 			}
 			
 		} else {
-			System.out.print("\n\n\n\n\n\n\n\n>>> Fin de programa <<<");
+			System.out.print("\n\n\n\n\n\n\n\n>>> Fin de programa <<<\n\n\n\n\n\n\n");
+			System.exit(0);
+		}
+	}
+
+	private static void modificarCarrito() {
+		System.out.print("¿Deseas modificar el carrito? (no para volver atras) ");
+		boolean respuesta = Input.inYesNo();
+		if (respuesta) {
+			System.out.print("\n~~~ Reservas ~~~\n");
+			for (Reserva r : carrito) {
+				System.out.print(	
+									"...............\n " + 
+									r.toString() + 
+									"\n..............\n"
+								);
+			}
+			System.out.print("Elige el id de la reserva que deseas modificar: ");
+			int id = Input.inOpc();
+			printModificarReserva(id);
+			
+		} 	
+	}
+	
+	private static void printModificarReserva(int id) {
+		System.out.print("\n----- Modificar reserva -----\n"
+				+ "1. Eliminar\n"
+				+ "2. Modificar fechas\n"
+				+ "Seleccione lo que desea hacer: ");
+		selectorModificarReserva(Input.inOpc(), id);
+	}
+	
+	private static void selectorModificarReserva(int opc, int id) {
+		switch (opc) {
+		case 1:
+			int i = 0;
+			boolean bEncontrado = false;
+			while (i < carrito.size() && !bEncontrado) {
+				if (id != carrito.get(i).getID()) {
+					i++;
+				} else {
+					bEncontrado = true;
+					carrito.remove(i);
+					if (carrito.isEmpty()) {
+						MenuPrincipal.print();
+					} else {
+						print();
+					}
+				}
+			}
+			System.out.print("Error al introducir el id de reserva\n");
+			modificarCarrito();
+
+		case 2:
+			System.out.print("\n\n >>> Elimina la reserva y vuelve a crear la reserva <<<\n\n");
+			modificarCarrito();
+		default:
+			System.out.print("\n\n>>> ERROR: Elige una opcion valida <<<\n\n");
+			printModificarReserva(id);
 		}
 	}
 

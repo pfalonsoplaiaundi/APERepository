@@ -3,14 +3,11 @@ package conectores;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Array;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import menu.MenuCarrito;
 import menu.MenuPrincipal;
 import menu.MenuProductos;
-import model.HabReserva;
 import model.Habitacion;
 import model.Habitacion.tipoHab;
 import model.Reserva;
@@ -183,9 +180,7 @@ public class RepoSala {
 		if(MenuCarrito.carrito.isEmpty()) {
 			query += "\"\"";
 		} else {
-			int i = 0;
-			for (Reserva r : MenuCarrito.carrito) {
-				i++;
+			for (int i = 0 ; i < MenuCarrito.carrito.size() ; i++) {
 				query += (i == MenuCarrito.carrito.size()) ? "? " : "?, ";
 				
 			}

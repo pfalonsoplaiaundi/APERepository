@@ -1,6 +1,5 @@
 package menu;
 
-import auxi.Input;
 import conectores.*;
 import model.*;
 import model.Reserva;
@@ -25,11 +24,7 @@ public class MenuReserva {
 			Login.user.aplicarDcto(h.getPvp())
 		);
 		MenuCarrito.addCarrito(r);
-		int i = 0;
 		for(Reserva c : MenuCarrito.carrito) {
-			i++;
-			// Obtengo una habitacion con la reserva del carrito, y la imprimo
-
 			System.out.print(
 					".....................................\n" + 
 					/* Get IdHotel				 		   NumSala				 Imprime

@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 
 import auxi.Input;
-import model.Cliente.tarifas;
 
 public class Habitacion extends Sala{
 	

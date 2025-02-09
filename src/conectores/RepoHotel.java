@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import model.*;
-import model.Cliente.tarifas;
 
 public class RepoHotel {
 

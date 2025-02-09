@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import model.*;
-import model.Cliente.tarifas;
 
 public class RepoCliente {
 
@@ -275,5 +274,81 @@ public class RepoCliente {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public ArrayList<Cliente> getListaFiltrada(Cliente filtro) {
+		String query = 
+				"SELECT  "
+					+ "c.nom, "
+					+ "c.ape, "
+					+ "c.DNI, "
+					+ "c.tlfno, "
+					+ "c.email, "
+					+ "c.btrabajor, "
+					+ "c.tarifa "
+				+ "FROM "
+					+ "c cliente "
+				+ "WHERE "
+					+ "(c.nom = ? or ? = \"\") and "
+					+ "(c.tlfno = ? or ? = \"\") and "
+					+ "(c.email = ? or ? = 0) and "
+					+ "c.bTrabajador = ? "
+				+ "ORDER BY "
+					+ "c.nom ASC, "
+					+ "c.ape ASC;";
+		
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+			
+			if (filtro.getNombre().equals("")) {
+				pS.setString(1, filtro.getNombre());
+				pS.setString(2, filtro.getNombre());
+			} else {
+				pS.setString(1, "");
+				pS.setString(2, "");
+			}
+			
+			if (filtro.getTelefono().equals("")) {
+				pS.setString(3, filtro.getTelefono());
+				pS.setString(4, filtro.getTelefono());
+			} else {
+				pS.setString(3, "");
+				pS.setString(4, "");
+			}
+			
+			if (filtro.getEmail().equals("")) {
+				pS.setString(5, filtro.getEmail());
+				pS.setString(6, filtro.getEmail());
+			} else {
+				pS.setString(5, "");
+				pS.setString(6, "");
+			}
+			
+			pS.setBoolean(7, filtro.isbTrabajador());
+			
+			ResultSet rS = pS.executeQuery();
+						
+			ArrayList<Cliente> lista = new ArrayList<>();
+			while (rS.next()) {
+				Cliente c = new Cliente(
+						rS.getString(3),
+						rS.getString(1),
+						rS.getString(2),
+						rS.getString(4),
+						rS.getString(5),
+						rS.getBoolean(6),
+						rS.getString(7),
+						""
+						);
+				lista.add(c);
+			}
+			
+			return lista;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
 	}
 }

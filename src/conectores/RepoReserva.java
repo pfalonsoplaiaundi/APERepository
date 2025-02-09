@@ -3,7 +3,6 @@ package conectores;
 import java.util.ArrayList;
 
 import menu.MenuCarrito;
-import model.Cliente;
 import model.Reserva;
 import model.Sala;
 
@@ -70,7 +69,7 @@ public class RepoReserva {
 
 	/**
 	 *  Insertar una nueva reserva
-	 * @param nuevaReserva
+	 * @param nuevo
 	 * @return
 	 */
     public boolean insert(Reserva nuevo) {
@@ -116,7 +115,7 @@ public class RepoReserva {
 
     /**
      * Comprueba que exista o no.
-     * @param nuevo
+     * @param reserva
      * @return
      */
     public boolean check(Reserva reserva) {
@@ -140,7 +139,7 @@ public class RepoReserva {
 
 	/**
 	 * Obtener una reserva por codreserva
-	 * @param id
+	 * @param codreserva
 	 * @return
 	 */
     public Reserva get(int codreserva) {
@@ -173,7 +172,7 @@ public class RepoReserva {
 
     /**
      * Actualizar una reserva existente
-     * @param reservaActualizada
+     * @param modificaciones
      * @return
      */
     public boolean update(Reserva modificaciones) {
@@ -347,6 +346,22 @@ public class RepoReserva {
 		
 		
 		return null;
+	}
+
+	public boolean delete(Reserva aBorrar) {
+		String query = "DELETE FROM reserva "
+				+ "WHERE codreserva = ?";
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+			pS.setInt(1, aBorrar.getID());
+			pS.executeUpdate();
+			
+			return !check(aBorrar);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 }

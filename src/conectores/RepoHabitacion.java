@@ -12,7 +12,6 @@ import model.Cliente;
 import model.HabDisponible;
 import model.Habitacion;
 import model.Reserva;
-import model.Sala;
 
 public class RepoHabitacion {
 	
@@ -298,9 +297,7 @@ public class RepoHabitacion {
 		if(MenuCarrito.carrito.isEmpty()) {
 			query += "\"\"";
 		} else {
-			int i = 0;
-			for (Reserva r : MenuCarrito.carrito) {
-				i++;
+			for (int i = 0 ; i < MenuCarrito.carrito.size(); i++) {
 				query += (i == MenuCarrito.carrito.size()) ? "? " : "?, ";
 				
 			}
@@ -342,7 +339,7 @@ public class RepoHabitacion {
 	}
 
 	public ArrayList<HabDisponible> getListaFiltrada(Habitacion filtro, int disponible) {
-		ArrayList<HabDisponible> lista = new ArrayList<>();
+		//ArrayList<HabDisponible> lista = new ArrayList<>();
 		
 		return null;
 	}
