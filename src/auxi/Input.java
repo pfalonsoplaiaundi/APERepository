@@ -255,7 +255,6 @@ public class Input {
 		return pass;
     }
 	
-   
 /*	public static String readPassword() {
         StringBuilder password = new StringBuilder();
         try {

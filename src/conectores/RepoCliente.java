@@ -284,10 +284,10 @@ public class RepoCliente {
 					+ "c.DNI, "
 					+ "c.tlfno, "
 					+ "c.email, "
-					+ "c.btrabajor, "
+					+ "c.btrabajador, "
 					+ "c.tarifa "
 				+ "FROM "
-					+ "c cliente "
+					+ "cliente c "
 				+ "WHERE "
 					+ "(c.nom = ? or ? = \"\") and "
 					+ "(c.tlfno = ? or ? = \"\") and "
@@ -299,7 +299,7 @@ public class RepoCliente {
 		
 		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
 			
-			if (filtro.getNombre().equals("")) {
+			if (!filtro.getNombre().equals("")) {
 				pS.setString(1, filtro.getNombre());
 				pS.setString(2, filtro.getNombre());
 			} else {
@@ -307,7 +307,7 @@ public class RepoCliente {
 				pS.setString(2, "");
 			}
 			
-			if (filtro.getTelefono().equals("")) {
+			if (!filtro.getTelefono().equals("")) {
 				pS.setString(3, filtro.getTelefono());
 				pS.setString(4, filtro.getTelefono());
 			} else {
@@ -315,7 +315,7 @@ public class RepoCliente {
 				pS.setString(4, "");
 			}
 			
-			if (filtro.getEmail().equals("")) {
+			if (!filtro.getEmail().equals("")) {
 				pS.setString(5, filtro.getEmail());
 				pS.setString(6, filtro.getEmail());
 			} else {
@@ -361,10 +361,10 @@ public class RepoCliente {
 					+ "c.DNI, "
 					+ "c.tlfno, "
 					+ "c.email, "
-					+ "c.btrabajor, "
+					+ "c.btrabajador, "
 					+ "c.tarifa "
 				+ "FROM "
-					+ "c cliente "
+					+ "cliente c "
 				+ "ORDER BY "
 					+ "c.nom ASC, "
 					+ "c.ape ASC;";

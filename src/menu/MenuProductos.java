@@ -12,11 +12,23 @@ public class MenuProductos {
 
 	public static Date fecIni;
 	public static Date fecFin;
+	private static Date fecNow = new Date(System.currentTimeMillis());
 	
 	public static void print(int idHotel) {
 		RepoSala rS = new RepoSala();
 		fecIni = Input.inFecIni();
 		fecFin = Input.inFecFin();
+		if (fecIni.compareTo(fecFin) > 0) {
+			Date fecTemp = fecIni;
+			fecIni = fecFin;
+			fecFin = fecTemp;
+		}
+		
+		if (fecIni.compareTo(fecNow) < 0) {
+			System.out.print("\n>>> No se puede reservar fechas pasadas <<<\n\n");
+			print(idHotel);
+		}
+		
 		System.out.print(
 				"\n\n~~~ Menu Productos ~~~\n"
 				+ "------------------------------\n"

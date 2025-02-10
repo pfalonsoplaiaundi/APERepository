@@ -548,8 +548,7 @@ public class MenuAdmin {
 	 */
 	private static void printClientes() {
 		System.out.print(
-				"~~~ Menu de administración / Clientes ~~~\n"
-				+ "\n"
+				"\n~~~ Menu de administración / Clientes ~~~\n"
 				+ "1. Listado\n"
 				+ "2. Agregar\n"
 				+ "3. Modificar\n"
@@ -567,22 +566,53 @@ public class MenuAdmin {
 		switch (opc) {
 		case 1:
 			listaClientes();
+			break;
 		case 2:
-			// addCliente();
-			System.out.print("WIP");
+			addCliente();
+			break;
 		case 3:
 			// modifyCliente();
 			System.out.print("WIP");
+			break;
 		case 4:
 			// deleteCliente();
 			System.out.print("WIP");
+			break;
 		case 0:
 			print();
 		default:
 			printClientes();
 		}
+		printClientes();
 	}
 	
+	/**
+	 * Añade un nuevo cliente estando logeado como admin
+	 */
+	private static void addCliente() {
+		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
+				+ "¿Tienes los datos? ");
+		if (Input.inYesNo()) {
+			RepoCliente rC = new RepoCliente();
+			System.out.print("¿Es trabajador? ");
+			boolean bTrabajador = Input.inYesNo();
+			Cliente c = new Cliente(
+					Input.inDNI(),
+					Input.inNombre(),
+					Input.inApellido(),
+					Input.inTelefono(),
+					Input.inEmail(),
+					bTrabajador,
+					Input.inPass()
+					);
+			rC.insert(c);
+			System.out.println("");
+		} else {
+			printClientes();
+		}
+	}
+	
+
 	/**
 	 * Dependiendo de si filtra o no los clientes los muestra.
 	 */
@@ -622,7 +652,6 @@ public class MenuAdmin {
 		return false;
 	}
 
-
 	/**
 	 * Imprime el menu de filtro cliente
 	 * @param filtro
@@ -641,8 +670,8 @@ public class MenuAdmin {
 				// 2. Cliente o trabajador
 				+ 
 				((filtro.isbTrabajador()) ?
-						"2. Es cliente\n" :
-						"2. Es trabajador\n" 
+						"2. Es trabajador\n" :
+						"2. Es cliente\n" 
 				)
 				
 				// 3. Por telefono
@@ -716,42 +745,47 @@ public class MenuAdmin {
 		System.out.print(
 				"Nombre" + "\t\t| "
 				+ "Apellido/s" + "\t\t| "
-				+ "DNI" + "\t| "
+				+ "DNI" + "\t\t| "
 				+ "Telefono" + "\t| "
-				+ "Email" + "\t\t\t| "
+				+ "Email" + "\t\t\t\t| "
 				+ "Trabajador/Cliente" + "\t| "
 				+ "Tarifa" + "\n"
-						+ "--------------------------------------------------------------------------------------------------------------------\n");
+						+ "---------------------------------------------------------------------------------------------------------------------------------------------\n");
 		int i = 0;
 		while (i < lista.size()) {
 			System.out.print(
 					(
-							(lista.get(i).getNombre().length() < 6) ? 
+							(lista.get(i).getNombre().length() < 7) ? 
 								(lista.get(i).getNombre() + "\t\t| ") : 
 								(lista.get(i).getNombre() + "\t| ")
 					)
 					+
 					(
 							(lista.get(i).getApellidos().length() < 6) ? 
-								(lista.get(i).getApellidos() + "\t\t| ") : 
-								(lista.get(i).getApellidos() + "\t| ")
+								(lista.get(i).getApellidos() + "\t\t\t| ") : 
+								(lista.get(i).getApellidos() + "\t\t| ")
 					)
 					+ lista.get(i).getDNI() + "\t| "
 					+ lista.get(i).getTelefono() + "\t| "
-					+ lista.get(i).getEmail() + "\t| "
-					+ (
-							(lista.get(i).isbTrabajador()) ?
-									"Trabajador" :
-									"Cliente"
+					+
+					(
+							(lista.get(i).getEmail().length() < 22) ? 
+								(lista.get(i).getEmail() + "\t\t| ") : 
+								(lista.get(i).getEmail() + "\t| ")
 					)
-					+ lista.get(i).getTarifa().toString() + "\t| "
+					+
+					(
+							(lista.get(i).isbTrabajador()) ?
+									"Trabajador\t\t| " :
+									"Cliente\t\t| "
+					)
+					+ lista.get(i).getTarifa().toString()
 					+ "\n"
 			);
 			i++;
-			if (i%5 == 0) System.out.print("--------------------------------------------------------------------------------------------------------------------\n");
+			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");
 		}
 		System.out.print("\n");
-		
 	}
 	
 	/**
@@ -765,39 +799,45 @@ public class MenuAdmin {
 		System.out.print(
 				"Nombre" + "\t\t| "
 				+ "Apellido/s" + "\t\t| "
-				+ "DNI" + "\t| "
+				+ "DNI" + "\t\t| "
 				+ "Telefono" + "\t| "
-				+ "Email" + "\t\t\t| "
+				+ "Email" + "\t\t\t\t| "
 				+ "Trabajador/Cliente" + "\t| "
 				+ "Tarifa" + "\n"
-						+ "--------------------------------------------------------------------------------------------------------------------\n");
+						+ "---------------------------------------------------------------------------------------------------------------------------------------------\n");
 		int i = 0;
 		while (i < lista.size()) {
 			System.out.print(
 					(
-							(lista.get(i).getNombre().length() < 6) ? 
+							(lista.get(i).getNombre().length() < 7) ? 
 								(lista.get(i).getNombre() + "\t\t| ") : 
 								(lista.get(i).getNombre() + "\t| ")
 					)
 					+
 					(
 							(lista.get(i).getApellidos().length() < 6) ? 
-								(lista.get(i).getApellidos() + "\t\t| ") : 
-								(lista.get(i).getApellidos() + "\t| ")
+								(lista.get(i).getApellidos() + "\t\t\t| ") : 
+								(lista.get(i).getApellidos() + "\t\t| ")
 					)
 					+ lista.get(i).getDNI() + "\t| "
 					+ lista.get(i).getTelefono() + "\t| "
-					+ lista.get(i).getEmail() + "\t| "
-					+ (
-							(lista.get(i).isbTrabajador()) ?
-									"Trabajador" :
-									"Cliente"
+					+
+					(
+							(lista.get(i).getEmail().length() < 22) ? 
+								(lista.get(i).getEmail() + "\t\t| ") : 
+								(lista.get(i).getEmail() + "\t| ")
 					)
-					+ lista.get(i).getTarifa().toString() + "\t| "
+					+
+					(
+							(lista.get(i).isbTrabajador()) ?
+									"Trabajador\t\t| " :
+									"Cliente\t\t| "
+					)
+					+ lista.get(i).getTarifa().toString()
 					+ "\n"
 			);
 			i++;
-			if (i%5 == 0) System.out.print("--------------------------------------------------------------------------------------------------------------------\n");
+			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");
 		}
 		System.out.print("\n");
 		
