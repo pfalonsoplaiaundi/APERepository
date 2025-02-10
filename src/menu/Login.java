@@ -77,7 +77,14 @@ public class Login {
 				user = rC.get(DNI);
 				System.out.print("\n\n>>> IDENTIFICACION CORRECTA <<<\n\n");
 			} else {
-				System.out.print("\n\n>>> ERROR EN LA IDENTIFICACION <<<\n\n");
+				System.out.print("\n\n>>> ERROR EN LA IDENTIFICACION <<<\n\n"
+						+ "¿Quieres recuperar su contraseña? ");
+				boolean respuesta = Input.inYesNo();
+				if (respuesta) {
+					System.out.print("\nContacte con nuestro servicio de atencion al cliente por telefono para ello\n");
+					main(null);
+				}
+				
 			}
 		}while (user == null);
 	}

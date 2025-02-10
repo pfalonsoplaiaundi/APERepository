@@ -60,30 +60,29 @@ public class RepoHotel {
 		// Obtener el PK de un hotel mediante el nombre del hotel 7
 		SQLScripts.add("SELECT id FROM hotel WHERE nom like ?;");
 	}
-
-	
 	
 	/**
-	 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Esta funcion inserta un hotel nuevo en la tabla hotel 
+	 * con todos los parametros de hotel, menos ID
 	 */
 	public boolean insert(Hotel nuevo) {
-		
-		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
-		if (SQLScripts.isEmpty()) {
-			inicializarArray();
-		}
 		
 		// Revisa si ya existe el cliente
 		if(!check(nuevo)) {
 			
+			String query = 
+					"INSERT "
+						+ "Hotel (nom, ciu, dir, tlfno, email)"
+					+ "VALUES "
+						+ "(?, ?, ?, ?, ?) ";
+			
 			//Si no existe el cliente, hace la consulta a la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
-				preparedStatement.setInt(1, nuevo.getID());
-		        preparedStatement.setString(2, nuevo.getNombre());
-		        preparedStatement.setString(3, nuevo.getCiudad());
-		        preparedStatement.setString(4, nuevo.getDir());
-		        preparedStatement.setString(5, nuevo.getTlfno());
-		        preparedStatement.setString(9, nuevo.getEmail());
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+		        preparedStatement.setString(1, nuevo.getNombre());
+		        preparedStatement.setString(2, nuevo.getCiudad());
+		        preparedStatement.setString(3, nuevo.getDir());
+		        preparedStatement.setString(4, nuevo.getTlfno());
+		        preparedStatement.setString(5, nuevo.getEmail());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
@@ -91,7 +90,7 @@ public class RepoHotel {
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al insertar el nuevo cliente");
+				System.out.println("Error al insertar el nuevo hotel");
 				return false;
 			}
 		}
@@ -100,12 +99,12 @@ public class RepoHotel {
 		return false;
 	}
 
+	/**
+	 * Esta funcion borra un hotel en la tabla hotel 
+	 * con todos los parametros de hotel
+	 */	
 	public boolean delete(Hotel aBorrar) {
-		
-		/**
-		 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
-		 */
-		
+				
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -271,6 +270,84 @@ public class RepoHotel {
 		}
 		
 		return 0;
+	}
+
+	public ArrayList<Hotel> getListaFiltrada(Hotel filtro) {
+		String query = 
+				"SELECT  "
+					+ "h.nom, "
+					+ "h.ciu, "
+					+ "h.dir, "
+					+ "h.tlfno, "
+					+ "h.email, "
+					+ "h.id "
+				+ "FROM "
+					+ "Hotel h "
+				+ "WHERE "
+					+ "(h.nom = ? or ? = \"\") and "
+					+ "(h.tlfno = ? or ? = \"\") and "
+					+ "(h.email = ? or ? = \"\") and "
+					+ "(h.ciu = ? or ? = \"\") "
+				+ "ORDER BY "
+					+ "h.nom ASC, "
+					+ "h.id ASC;";
+		
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+			
+			if (!filtro.getNombre().equals("")) {
+				pS.setString(1, filtro.getNombre());
+				pS.setString(2, filtro.getNombre());
+			} else {
+				pS.setString(1, "");
+				pS.setString(2, "");
+			}
+			
+			if (!filtro.getTlfno().equals("")) {
+				pS.setString(3, filtro.getTlfno());
+				pS.setString(4, filtro.getTlfno());
+			} else {
+				pS.setString(3, "");
+				pS.setString(4, "");
+			}
+			
+			if (!filtro.getEmail().equals("")) {
+				pS.setString(5, filtro.getEmail());
+				pS.setString(6, filtro.getEmail());
+			} else {
+				pS.setString(5, "");
+				pS.setString(6, "");
+			}
+			
+			if (!filtro.getCiudad().equals("")) {
+				pS.setString(7, filtro.getCiudad());
+				pS.setString(8, filtro.getCiudad());
+			} else {
+				pS.setString(7, "");
+				pS.setString(8, "");
+			}
+			
+			ResultSet rS = pS.executeQuery();
+						
+			ArrayList<Hotel> lista = new ArrayList<>();
+			while (rS.next()) {
+				Hotel ho = new Hotel(
+						rS.getInt(6),
+						rS.getString(1),
+						rS.getString(2),
+						rS.getString(3),
+						rS.getString(4),
+						rS.getString(5)
+						);
+				lista.add(ho);
+			}
+			
+			return lista;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 

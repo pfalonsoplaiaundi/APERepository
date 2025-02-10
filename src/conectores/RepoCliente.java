@@ -98,12 +98,11 @@ public class RepoCliente {
 		return true;
 	}
 
+	/**
+	 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 */
 	public boolean delete(Cliente aBorrar) {
-		
-		/**
-		 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
-		 */
-		
+				
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -112,16 +111,16 @@ public class RepoCliente {
 		// Revisa si existe el cliente
 		if(check(aBorrar)) {
 			
+			String query =  
+					"DELETE FROM "
+						+ "cliente "
+					+ "WHERE "
+						+ "DNI = ?";
+			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 		        preparedStatement.setString(1, aBorrar.getDNI());
-		        preparedStatement.setString(2, aBorrar.getNombre());
-		        preparedStatement.setString(3, aBorrar.getApellidos());
-		        preparedStatement.setString(4, aBorrar.getTelefono());
-		        preparedStatement.setString(5, aBorrar.getEmail());
-		        preparedStatement.setBoolean(6, aBorrar.isbTrabajador());
-		        preparedStatement.setString(9, aBorrar.getTarifa().toString());
-		        preparedStatement.setString(8, aBorrar.getPass());
+		        
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
@@ -129,7 +128,7 @@ public class RepoCliente {
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al eliminar el cliente");
+				System.out.println("Error al eliminar el cliente\n");
 				return false;
 			}
 		}
@@ -276,7 +275,7 @@ public class RepoCliente {
 		}
 	}
 
-	public ArrayList<Cliente> getListaFiltrada(Cliente filtro) {
+	public ArrayList<Cliente> getListaFiltrada(Cliente filtro, int trabajador) {
 		String query = 
 				"SELECT  "
 					+ "c.nom, "
@@ -291,8 +290,7 @@ public class RepoCliente {
 				+ "WHERE "
 					+ "(c.nom = ? or ? = \"\") and "
 					+ "(c.tlfno = ? or ? = \"\") and "
-					+ "(c.email = ? or ? = 0) and "
-					+ "c.bTrabajador = ? "
+					+ "(c.email = ? or ? = 0) "
 				+ "ORDER BY "
 					+ "c.nom ASC, "
 					+ "c.ape ASC;";
@@ -323,8 +321,6 @@ public class RepoCliente {
 				pS.setString(6, "");
 			}
 			
-			pS.setBoolean(7, filtro.isbTrabajador());
-			
 			ResultSet rS = pS.executeQuery();
 						
 			ArrayList<Cliente> lista = new ArrayList<>();
@@ -339,7 +335,13 @@ public class RepoCliente {
 						rS.getString(7),
 						""
 						);
-				lista.add(c);
+				if (trabajador == 1 && c.isbTrabajador()) { // Si se quieren los trabajadores solo meto trabajadores
+					lista.add(c);
+				} else if (trabajador == 0 && !c.isbTrabajador()) { // Si se quieren los clientes solo meto los clientes
+					lista.add(c);
+				} else if (trabajador == -1) { // Si me da igual meto todos
+					lista.add(c);
+				}
 			}
 			
 			return lista;

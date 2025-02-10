@@ -182,13 +182,13 @@ public class RepoReserva {
 			inicializarArray();
 		}
 		
-		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
+		//Inicializo una reserva que va a recibir los datos de la reserva original, lo hago fuera del if para poder usarlo despues.
 		Reserva original = new Reserva(0, null, null, null, null, 0);
 		
 		// Copruebo que me han pasado el ID correcto
 		if (modificaciones.getID() != 0) {
 			
-			// Meto los datos del cliente original en el cliente creado anterior
+			// Meto los datos de la reserva original en la reserva creada anteriormente
 			original = get(modificaciones.getID());
 			
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
@@ -197,17 +197,30 @@ public class RepoReserva {
 			if (modificaciones.getCliente() != null) original.setCliente(modificaciones.getCliente());
 			if (modificaciones.getSala() != null) original.setSala(modificaciones.getSala());
 		
-		// En caso de no tener el DNI correcto devuelvo error
+		// En caso de no tener el ID correcto devuelvo error
 		} else {
-			System.out.println("Error al insertar el DNI");
+			System.out.println("Error al insertar el ID de reserva");
 			return false;
 		}
 				
-		// Revisa si existe el cliente
+		// Revisa si existe la reserva
 		if(check(original)) {
 			
-			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
+			String query = "UPDATE cliente "
+					+ "SET "
+						+ "DNI = ?, "
+						+ "nom = ?, "
+						+ "ape = ?, "
+						+ "tlfno = ?, "
+						+ "email = ?, "
+						+ "bTrabajador = ?, "
+						+ "tarifa = ?, "
+						+ "SHA2(pass = ?, 256) "
+					+ "WHERE "
+						+ "DNI = ?";
+			
+			//Si existe la reserva, ejecuta la modificacion en la BBDD
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 		        preparedStatement.setDate(1, original.getFecIni());
 		        preparedStatement.setDate(2, original.getFecFin());
 		        preparedStatement.setString(3, original.getCliente().getDNI());
@@ -220,12 +233,12 @@ public class RepoReserva {
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al actualizar el cliente");
+				System.out.println("Error al actualizar la reserva");
 				return false;
 			}
 		}
 		
-		//Si el cliente existe antes de la insercion devuelve false. 
+		//Si la reserva ya estaba modifica antes de la insercion devuelve false. 
 		return false;
     }
 
@@ -249,6 +262,7 @@ public class RepoReserva {
 	}
 
 	public ArrayList<Reserva> getListaFiltrada(Reserva filtro) {
+		
 		String query = 
 				"SELECT  "
 					+ "R.FECINI, "

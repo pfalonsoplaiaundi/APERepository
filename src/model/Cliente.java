@@ -173,7 +173,9 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "\n------ Cliente ------\n"
+		return "\n------ "
+				+ (isbTrabajador() ? "Trabajador" : "Cliente")
+				+ " ------\n"
 				+ "DNI: \t\t" + DNI + "\n"
 				+ "Nombre: \t" + nombre + " " + apellidos + "\n"
 				+ "Telefono: \t" + telefono + "\n"
