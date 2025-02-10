@@ -642,7 +642,6 @@ public class MenuAdmin {
 		Cliente aBorrar = selectorModifyClientes(Input.inOpc());
 		RepoCliente rC = new RepoCliente();
 		System.out.print((rC.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
-		
 	}
 
 	private static void modifyCliente() {
@@ -676,8 +675,6 @@ public class MenuAdmin {
 		selectorModifyCliente(Input.inOpc(), aModificar);
 		}
 	}
-
-	
 
 	private static void selectorModifyCliente(int opc, Cliente aModificar) {
 		RepoCliente rC = new RepoCliente();
@@ -786,8 +783,6 @@ public class MenuAdmin {
 		return aModificar;
 	}
 
-	
-
 	/**
 	 * Añade un nuevo cliente estando logeado como admin
 	 */
@@ -814,7 +809,6 @@ public class MenuAdmin {
 		}
 	}
 	
-
 	/**
 	 * Dependiendo de si filtra o no los clientes los muestra.
 	 */
@@ -1096,6 +1090,141 @@ public class MenuAdmin {
 		printHoteles();
 	}
 
+	private static void deleteHotel() {
+		System.out.print( 
+				"¿Que cliente deseas eliminar?\n"
+				+ "1. Buscar por ID\n"
+				+ "2. Buscar por NOMBRE\n"
+				+ "3. Buscar por TELEFONO\n"
+				+ "4. Buscar por EMAIL\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		Hotel aBorrar = selectorModifyHoteles(Input.inOpc());
+		RepoHotel rH = new RepoHotel();
+		System.out.print((rH.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
+	}
+
+	private static void modifyHotel() {
+		System.out.print( 
+				"\n¿Que hotel deseas modificar?\n"
+				+ "1. Buscar por ID\n"
+				+ "2. Buscar por NOMBRE\n"
+				+ "3. Buscar por TELEFONO\n"
+				+ "4. Buscar por EMAIL\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		Hotel aModificar = selectorModifyHoteles(Input.inOpc());
+		if (aModificar == null) {
+			System.out.print("\n>>> ERROR: Cliente no valido <<<\n");
+			modifyReserva();
+		} else {
+			System.out.print(
+					"\n~~~ Datos actuales ~~~\n" +
+					aModificar.toString() + "\n" +
+					"\n¿Que desea modificar?\n" +
+					"1. Nombre\n" +
+					"2. Ciudad\n" +
+					"3. Direccion\n" +
+					"4. Telefono\n" +
+					"5. Email\n" +
+					"0. Volver atras\n" +
+					"Selecciones la opcion que desee: "
+					);
+			selectorModifyHotel(Input.inOpc(), aModificar);
+		}
+	}
+
+	private static Hotel selectorModifyHoteles(int opc) {
+		Hotel aModificar = null;
+		RepoHotel rH = new RepoHotel();
+		Hotel filtro = null;
+		switch (opc) {
+		
+		// Buscar por ID
+		case 1:
+			aModificar = rH.get(Input.inID());
+			break;
+			
+		// Buscar por NOMBRE
+		case 2:
+			filtro = new Hotel(0, Input.inNombre(), "", "", "", "");
+			printResultadoFiltroHotel(filtro);
+			
+			// Elige el cliente por DNI
+			System.out.print("Seleccione ");
+			aModificar = rH.get(Input.inID());
+			break;
+		
+		// Buscar por TELEFONO
+		case 3:
+			filtro = new Hotel(0, "", "", "", Input.inTelefono(), "");
+			printResultadoFiltroHotel(filtro);
+			
+			// Elige el cliente por DNI
+			System.out.print("Seleccione ");
+			aModificar = rH.get(Input.inID());
+			break;
+		
+		// Buscar por EMAIL
+		case 4:
+			filtro = new Hotel(0, "", "", "", "", Input.inEmail());
+			printResultadoFiltroHotel(filtro);
+			
+			// Elige el cliente por DNI
+			System.out.print("Seleccione ");
+			aModificar = rH.get(Input.inID());
+			break;
+		
+		// Volver atras
+		case 0: 
+			printClientes();
+		// Vuelve atras
+		default:
+			modifyCliente();
+		}
+		return aModificar;	
+	}
+
+	private static void selectorModifyHotel(int opc, Hotel aModificar) {
+		RepoHotel rH = new RepoHotel();
+		switch (opc) {
+		
+		// Nombre
+		case 1:
+			aModificar.setNombre(Input.inNombre());
+			rH.update(aModificar);
+			break;
+		
+		// Ciudad
+		case 2:
+			aModificar.setCiudad(Input.inCiudad());
+			rH.update(aModificar);
+			break;
+			
+		// Direccion	
+		case 3:	
+			aModificar.setDir(Input.inDir());
+			rH.update(aModificar);
+			break;			
+			
+		// Telefono
+		case 4:
+			aModificar.setTlfno(Input.inTelefono());
+			rH.update(aModificar);
+			break;
+			
+		// Email
+		case 5:
+			aModificar.setEmail(Input.inEmail());
+			rH.update(aModificar);
+			break;
+			
+		// Volver atras	
+		default:
+			modifyCliente();	
+		}
+	}
+
 	private static void addHotel() {
 		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
 				+ "¿Tienes los datos? ");
@@ -1266,7 +1395,10 @@ public class MenuAdmin {
 	// --------------------------------------------------------------------------------------------------------------------------------
 	
 	// Menu administracion / habitaciones
-
+	
+	/**
+	 * 
+	 */
 	private static void printHabitaciones() {
 		System.out.print(
 				"~~~ Menu de administración / Habitaciones ~~~\n"
@@ -1276,8 +1408,7 @@ public class MenuAdmin {
 				+ "4. Eliminar\n"
 				+ "0. Volver atras\n"
 				+ "Seleccione la opcion que desee: ");
-		selectorHabitaciones(Input.inOpc());
-		
+		selectorHabitaciones(Input.inOpc());	
 	}
 	
 	/**
@@ -1306,54 +1437,191 @@ public class MenuAdmin {
 		printHabitaciones();
 	}
 	
-	/**
-	 * Imprime el menu de otros de administracion
-	 */
-	private static void printOtros() {
-		System.out.print(
-				"~~~ Menu de administración / Otros ~~~\n"
-				+ "\n"
-				+ "1. Salas de reunion\n"
-				+ "2. Espacios comunes\n"
-				+ "0. Volver atras\n");
-		selectorOtros(Input.inOpc());
+	private static void deleteHabitacion() {
+		System.out.print( 
+				"¿Que habitacion deseas eliminar?\n"
+				+ "1. Buscar por HOTEL\n"
+				+ "2. Buscar por NUMERO\n"
+				+ "3. Buscar por TIPO\n"
+				+ "4. Buscar por PVP\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		Habitacion aBorrar = selectorModifyHabitaciones(Input.inOpc());
+		RepoHabitacion rH = new RepoHabitacion();
+		System.out.print((rH.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
 	}
 
-	/**
-	 * Logica del menu de otros de administracion
-	 * @param opc
-	 */
-	private static void selectorOtros(int opc) {
-		switch (opc) {
-		case 1:
-			printReuniones();
-		case 2:
-			printComunes();
-		case 0:
-			print();
-		default:
-			printOtros();
+	private static void modifyHabitacion() {
+		System.out.print( 
+				"\n¿Que habitacion deseas modificar?\n"
+				+ "1. Buscar por HOTEL\n"
+				+ "2. Buscar por NUMERO\n"
+				+ "3. Buscar por TIPO\n"
+				+ "4. Buscar por PVP\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		Habitacion aModificar = selectorModifyHabitaciones(Input.inOpc());
+		if (aModificar == null) {
+			System.out.print("\n>>> ERROR: Cliente no valido <<<\n");
+			modifyReserva();
+		} else {
+			System.out.print(
+					"\n~~~ Datos actuales ~~~\n" +
+					aModificar.toString() + "\n" +
+					"\n¿Que desea modificar?\n" +
+					"1. Hotel\n" +
+					"2. Numero\n" +
+					"3. Capacidad\n" +
+					"4. Telefono\n" +
+					"5. PVP\n" +
+					"6. Tipo de habitacion\n" +
+					"0. Volver atras\n" +
+					"Selecciones la opcion que desee: "
+					);
+			selectorModifyHabitacion(Input.inOpc(), aModificar);
 		}
 	}
 
-	/**
-	 * 
-	 */
-	private static void printComunes() {
-		// TODO Auto-generated method stub
+	private static void selectorModifyHabitacion(int opc, Habitacion aModificar) {
+		RepoHabitacion rH = new RepoHabitacion();
+		RepoHotel rHo = new RepoHotel();
+		switch (opc) {
 		
+		// Hotel
+		case 1:
+			aModificar.setHotel(rHo.get(Input.inID()));
+			rH.update(aModificar);
+			break;
+		
+		// Numero
+		case 2:
+			aModificar.setNum(Input.inNum());
+			rH.update(aModificar);
+			break;
+			
+		// Capacidad
+		case 3:	
+			aModificar.setCapacidad(Input.inCapacidad());
+			rH.update(aModificar);
+			break;			
+			
+		// Telefono
+		case 4:
+			aModificar.setTlfno(Input.inTelefono());
+			rH.update(aModificar);
+			break;
+			
+		// PVP
+		case 5:
+			aModificar.setPvp(Input.inPvp());
+			rH.update(aModificar);
+			break;
+			
+		// Tipo de habitacion
+		case 6:
+			aModificar.setTipo(Input.inTipoHab());
+			rH.update(aModificar);
+			break;
+			
+		// Volver atras	
+		default:
+			modifyCliente();	
+		}
 	}
 
-	private static void printReuniones() {
-		// TODO Auto-generated method stub
+	private static Habitacion selectorModifyHabitaciones(int opc) {
+		Habitacion aModificar = null;
+		RepoHabitacion rH = new RepoHabitacion();
+		Habitacion filtro = null;
+		RepoHotel rHo = new RepoHotel();
+		switch (opc) {
 		
+		// Buscar por HOTEL
+		case 1:
+			int idHotel = Input.inID();
+			filtro = new Habitacion(rHo.get(idHotel), 0, 0, "", 0, "");
+			printResultadoFiltroHabitacion(filtro, -1);
+			
+			// Elige el cliente por Numero
+			System.out.print("Seleccione ");
+			aModificar = rH.get(idHotel, Input.inNum());
+			break;
+			
+		// Buscar por NUMERO
+		case 2:
+			int num = Input.inNum();
+			filtro = new Habitacion(null, num , 0, "", 0, "");
+			printResultadoFiltroHabitacion(filtro, -1);
+			
+			// Elige el cliente por Hotel
+			System.out.print("Seleccione ");
+			aModificar = rH.get(rHo.get(Input.inID()).getID(), num);
+			break;
+		
+		// Buscar por TIPO
+		case 3:
+			filtro = new Habitacion(null, 0, 0, "", 0, Input.inTipoHab());
+			printResultadoFiltroHabitacion(filtro, -1);
+			
+			// Elige el cliente por Numero y Hotel
+			System.out.print("Seleccione ");
+			aModificar = rH.get(Input.inID(), Input.inNum());
+			break;
+		
+		// Buscar por PVP
+		case 4:
+			filtro = new Habitacion(null, 0, 0, "", 0, "");
+			printResultadoFiltroHabitacion(filtro, -1);
+			
+			// Elige el cliente por Numero y Hotel
+			System.out.print("Seleccione ");
+			aModificar = rH.get(Input.inID(), Input.inNum());
+			break;
+		
+		// Volver atras
+		case 0: 
+			printHabitaciones();
+			
+		// Vuelve atras
+		default:
+			modifyHabitacion();
+		}
+		return aModificar;
 	}
 
-	private static void filtroHabitaciones() {
+	private static void addHabitacion() {
+		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
+				+ "¿Tienes los datos? ");
+		if (Input.inYesNo()) {
+			RepoHabitacion rH = new RepoHabitacion();
+			RepoHotel rHo = new RepoHotel();
+			Habitacion h = new Habitacion(
+					rHo.get(Input.inID()),
+					Input.inNum(),
+					Input.inCapacidad(),
+					Input.inTelefono(),
+					Input.inPvp(),
+					Input.inTipoHab()
+					);
+			rH.insert(h);
+			System.out.println("");
+		} else {
+			printHoteles();
+		}
+	}
+
+	private static void listaHabitaciones() {
+		if (!filtroHabitaciones()) {
+			Habitacion filtro = new Habitacion(null, 0, 0, "", 0, "");
+			int disponible = -1;
+			printResultadoFiltroHabitacion(filtro, disponible);
+		}
+	}
+	
+	private static boolean filtroHabitaciones() {
 		System.out.print("\n¿Deseas filtrar el resultado? (Si/no): ");
 		boolean respuesta = Input.inYesNo();
 		if (respuesta) {
-
 			
 			int opc = 0;
 			int disponible = -1; // -1 - vacio, 0 - no diponible, 1 - diponible 
@@ -1401,10 +1669,12 @@ public class MenuAdmin {
 						
 			// Print resultado
 			printResultadoFiltroHabitacion(filtro, disponible);
-				
+			return true;	
 		}
-	}
-	
+		return false;
+		
+	}	
+
 	/**
 	 * Imprime el menu de filtro, rellenando los valores ya seteados 
 	 * y dejando solo las opciones que esten libres.
@@ -1475,6 +1745,226 @@ public class MenuAdmin {
 		} while (opc == 0);
 		return null;
 	}
+	
+	// --------------------------------------------------------------------------------------------------------------------------------
+	
+	// Menu administracion / otros
+
+
+	/**
+	 * Imprime el menu de otros de administracion
+	 */
+	private static void printOtros() {
+		System.out.print(
+				"~~~ Menu de administración / Otros ~~~\n"
+				+ "\n"
+				+ "1. Salas de reunion\n"
+				+ "2. Espacios comunes\n"
+				+ "0. Volver atras\n"
+				+ "Seleccione la opcion que desee: ");
+		selectorOtros(Input.inOpc());
+	}
+
+	/**
+	 * Logica del menu de otros de administracion
+	 * @param opc
+	 */
+	private static void selectorOtros(int opc) {
+		switch (opc) {
+		case 1:
+			printReuniones();
+		case 2:
+			printComunes();
+		case 0:
+			print();
+		default:
+			printOtros();
+		}
+	}
+
+	// --------------------------------------------------------------------------------------------------------------------------------
+	
+	// Menu administracion / otros / comunes
+	
+	/**
+	 * 
+	 */
+	private static void printComunes() {
+		System.out.print(
+				"~~~ Menu de administración / Otros / Espacios comunes ~~~\n"
+				+ "1. Lista\n"
+				+ "2. Agregar\n"
+				+ "3. Modificar\n"
+				+ "4. Eliminar\n"
+				+ "0. Volver atras\n"
+				+ "Seleccione la opcion que desee: ");
+		selectorComunes(Input.inOpc());
+	}
+	
+	private static void selectorComunes(int opc) {
+		switch (opc) {
+		case 1:
+			listaComunes();
+			break;
+		case 2:
+			addComunes();
+			break;
+		case 3:
+			modifyComunes();
+			break;
+		case 4:
+			deleteComunes();
+			break;
+		case 0:
+			print();
+		default:
+			printComunes();
+		}
+		printOtros();
+	}
+	
+	private static void listaComunes() {
+		if (!filtroComunes()) {
+			EspacioComun filtro = new EspacioComun(0, 0, "", 0, null, "");
+			int disponible = -1;
+			printResultadoFiltroComunes(filtro);
+		}
+	}
+	
+	private static boolean filtroComunes() {
+		System.out.print("\n¿Deseas filtrar el resultado? ");
+		boolean respuesta = Input.inYesNo();
+		if (respuesta) {
+
+			int opc = 0;
+			EspacioComun filtro = new EspacioComun(0, 0, "", 0, null, "");
+			do {
+	
+				// Print filtro
+				printMenuFiltroComunes(filtro);
+				System.out.print("Seleccione la opcion que desea: ");
+				opc = Input.inOpc();
+				
+				// Selector
+				filtro = selectorMenuFiltroComunes(filtro, opc);
+			} while(opc != 0);
+		
+			// Print resultado
+			printResultadoFiltroComunes(filtro);
+			return true;
+		}
+		return false;
+	}
+	
+	private static void printResultadoFiltroComunes(EspacioComun filtro) {
+		RepoEspacioComun rEC = new RepoEspacioComun();
+		ArrayList<EspacioComun> lista = rEC.getListaFiltrada(filtro);
+		
+		System.out.print(
+				"Nombre" + "\t\t| "
+				+ "Ciudad" + "\t\t| "
+				+ "Telefono" + "\t| "
+				+ "Email" + "\t\t\t\t| "
+				+ "Direccion completa\n"
+				+ "---------------------------------------------------------------------------------------------------------------------------------------------\n");
+		int i = 0;
+		while (i < lista.size()) {
+			System.out.print(
+					(
+							(lista.get(i).getNombre().length() < 7) ? 
+								(lista.get(i).getNombre() + "\t\t| ") : 
+								(lista.get(i).getNombre() + "\t| ")
+					)
+					+
+					(
+							(lista.get(i).getCiudad().length() < 6) ? 
+								(lista.get(i).getCiudad() + "\t\t\t| ") : 
+								(lista.get(i).getCiudad() + "\t\t| ")
+					)
+					+ lista.get(i).getTlfno() + "\t| "
+					+
+					(
+							(lista.get(i).getEmail().length() < 22) ? 
+								(lista.get(i).getEmail() + "\t\t| ") : 
+								(lista.get(i).getEmail() + "\t| ")
+					)
+					+ lista.get(i).getDir()
+					+ "\n"
+			);
+			i++;
+			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");
+		}
+		System.out.print("\n");
+	}
+
+	private static EspacioComun selectorMenuFiltroComunes(EspacioComun filtro, int opc) {
+		switch (opc) {
+		
+		// Filtro numero
+		//--------------------------------------------------------------------------------------------------------------
+		case 1:
+			filtro.setNum(Input.inNum());
+			break;
+			
+		// Filtro hotel
+		//--------------------------------------------------------------------------------------------------------------		
+		case 2:
+			RepoHotel rH = new RepoHotel();
+			filtro.setHotel(rH.get(Input.inID()));
+			break;
+			
+		//--------------------------------------------------------------------------------------------------------------
+		default:
+			break;
+			
+		}
+		return filtro;
+	}
+
+	private static void printMenuFiltroComunes(EspacioComun filtro) {
+		System.out.print(
+				"\n>>> Filtro <<<\n"
+				
+				// 1. Por numero		
+				+ 														 
+				((filtro.getNum() == 0) ?
+						"1. Por nombre\n" :
+						filtro.getNum() + "\n"
+				)
+				
+				// 2. Por hotel
+				+ 
+				(
+					(filtro.getHotel().getID() == 0) ?
+						"2. Por ciudad\n" :
+						filtro.getHotel().getID() + "\n"
+				)
+				
+				+ "0. Para continuar\n"
+		);
+	}
+
+	
+	
+	// --------------------------------------------------------------------------------------------------------------------------------
+	
+	// Menu administracion / otros / reuniones
+
+
+
+
+	private static void printReuniones() {
+		System.out.print(
+				"~~~ Menu de administración / Otros / Sala de reuniones ~~~\n"
+				+ "1. Lista\n"
+				+ "2. Agregar\n"
+				+ "3. Modificar\n"
+				+ "4. Eliminar\n"
+				+ "0. Volver atras\n"
+				+ "Seleccione la opcion que desee: ");
+		selectorHabitaciones(Input.inOpc());
+	}
+
 
 	
 

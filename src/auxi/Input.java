@@ -561,4 +561,23 @@ public class Input {
         }
         return true;
 	}
+	
+	/**
+	 * Recoge el id del hotel
+	 * @return el id del hotel
+	 */
+	public static int inID() {
+		int id = 0;
+		try {	
+			System.out.print("ID de hotel: ");
+			id = scn.nextInt();
+			scn.nextLine();
+		} catch (InputMismatchException e) {
+			scn.nextLine();
+			id = 0;
+			System.out.print("\n>>> ERROR: introduzca un numero por favor <<<\n\n");
+			return inID();
+		}
+		return id;
+	}
 }

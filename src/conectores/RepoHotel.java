@@ -113,14 +113,15 @@ public class RepoHotel {
 		// Revisa si existe el cliente
 		if(check(aBorrar)) {
 			
+			String query = 
+					"DELETE FROM "
+						+ "cliente "
+					+ "WHERE "
+						+ "id = ?";
+			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 				preparedStatement.setInt(1, aBorrar.getID());
-		        preparedStatement.setString(2, aBorrar.getNombre());
-		        preparedStatement.setString(3, aBorrar.getCiudad());
-		        preparedStatement.setString(4, aBorrar.getDir());
-		        preparedStatement.setString(5, aBorrar.getTlfno());
-		        preparedStatement.setString(9, aBorrar.getEmail());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
