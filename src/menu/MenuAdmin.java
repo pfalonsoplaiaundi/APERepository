@@ -568,11 +568,14 @@ public class MenuAdmin {
 		case 1:
 			listaClientes();
 		case 2:
-			addCliente();
+			// addCliente();
+			System.out.print("WIP");
 		case 3:
-			modifyCliente();
+			// modifyCliente();
+			System.out.print("WIP");
 		case 4:
-			deleteCliente();
+			// deleteCliente();
+			System.out.print("WIP");
 		case 0:
 			print();
 		default:
@@ -581,12 +584,11 @@ public class MenuAdmin {
 	}
 	
 	/**
-	 * 
+	 * Dependiendo de si filtra o no los clientes los muestra.
 	 */
 	private static void listaClientes() {
 		if (!filtroCliente()) {
-			Cliente filtro = new Cliente("", "", "", "", "", false, "", "");
-			printResultadoFiltroCliente(filtro);
+			printResultadoCliente();
 		}
 	}
 
@@ -710,6 +712,55 @@ public class MenuAdmin {
 	private static void printResultadoFiltroCliente(Cliente filtro) {
 		RepoCliente rC = new RepoCliente();
 		ArrayList<Cliente> lista = rC.getListaFiltrada(filtro);
+		
+		System.out.print(
+				"Nombre" + "\t\t| "
+				+ "Apellido/s" + "\t\t| "
+				+ "DNI" + "\t| "
+				+ "Telefono" + "\t| "
+				+ "Email" + "\t\t\t| "
+				+ "Trabajador/Cliente" + "\t| "
+				+ "Tarifa" + "\n"
+						+ "--------------------------------------------------------------------------------------------------------------------\n");
+		int i = 0;
+		while (i < lista.size()) {
+			System.out.print(
+					(
+							(lista.get(i).getNombre().length() < 6) ? 
+								(lista.get(i).getNombre() + "\t\t| ") : 
+								(lista.get(i).getNombre() + "\t| ")
+					)
+					+
+					(
+							(lista.get(i).getApellidos().length() < 6) ? 
+								(lista.get(i).getApellidos() + "\t\t| ") : 
+								(lista.get(i).getApellidos() + "\t| ")
+					)
+					+ lista.get(i).getDNI() + "\t| "
+					+ lista.get(i).getTelefono() + "\t| "
+					+ lista.get(i).getEmail() + "\t| "
+					+ (
+							(lista.get(i).isbTrabajador()) ?
+									"Trabajador" :
+									"Cliente"
+					)
+					+ lista.get(i).getTarifa().toString() + "\t| "
+					+ "\n"
+			);
+			i++;
+			if (i%5 == 0) System.out.print("--------------------------------------------------------------------------------------------------------------------\n");
+		}
+		System.out.print("\n");
+		
+	}
+	
+	/**
+	 * Imprime tabla resultado clientes sin filtrar
+	 * @param filtro
+	 */
+	private static void printResultadoCliente() {
+		RepoCliente rC = new RepoCliente();
+		ArrayList<Cliente> lista = rC.getLista();
 		
 		System.out.print(
 				"Nombre" + "\t\t| "

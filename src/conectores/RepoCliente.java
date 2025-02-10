@@ -351,4 +351,49 @@ public class RepoCliente {
 		return null;
 		
 	}
+
+	public ArrayList<Cliente> getLista() {
+		
+		String query = 
+				"SELECT  "
+					+ "c.nom, "
+					+ "c.ape, "
+					+ "c.DNI, "
+					+ "c.tlfno, "
+					+ "c.email, "
+					+ "c.btrabajor, "
+					+ "c.tarifa "
+				+ "FROM "
+					+ "c cliente "
+				+ "ORDER BY "
+					+ "c.nom ASC, "
+					+ "c.ape ASC;";
+		
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+			
+			ResultSet rS = pS.executeQuery();
+						
+			ArrayList<Cliente> lista = new ArrayList<>();
+			while (rS.next()) {
+				Cliente c = new Cliente(
+						rS.getString(3),
+						rS.getString(1),
+						rS.getString(2),
+						rS.getString(4),
+						rS.getString(5),
+						rS.getBoolean(6),
+						rS.getString(7),
+						""
+						);
+				lista.add(c);
+			}
+			
+			return lista;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 }
