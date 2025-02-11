@@ -172,7 +172,7 @@ public class RepoSalaReunion {
 	public ArrayList<SalaReunion> getListaFiltrada(SalaReunion filtro) {
 		String query = 
 				"SELECT  "
-					+ "h.nom, "
+					+ "h.id, "
 					+ "s.num, "
 					+ "s.capacidad, "
 					+ "s.pvp, "

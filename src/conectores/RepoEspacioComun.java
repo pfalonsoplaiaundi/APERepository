@@ -15,14 +15,14 @@ public class RepoEspacioComun {
 	public ArrayList<EspacioComun> getListaFiltrada(EspacioComun filtro) {
 		String query = 
 				"SELECT  "
-					+ "h.nom, "
+					+ "h.id, "
 					+ "s.num, "
 					+ "s.capacidad, "
 					+ "s.pvp, "
 					+ "s.tlfno, "
 					+ "e.tipo "
 				+ "FROM "
-					+ "EspacioComun e "
+					+ "EspaciosComunes e "
 					+ "JOIN sala s USING(id, num) "
 					+ "JOIN HOTEL H USING(ID) "
 				+ "WHERE "

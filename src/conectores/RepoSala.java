@@ -10,6 +10,7 @@ import menu.MenuPrincipal;
 import menu.MenuProductos;
 import model.EspacioComun;
 import model.Habitacion;
+import model.Hotel;
 import model.Habitacion.tipoHab;
 import model.Sala.tSala;
 import model.Reserva;
@@ -285,7 +286,7 @@ public class RepoSala {
 		        
 		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
 		        if (check(nuevo)) {
-		        	System.out.print("\n~~~ Habitacion creada correctamente ~~~\n");
+		        	System.out.print("\n~~~ Sala creada correctamente ~~~\n");
 		        	return true;
 		        } else {
 		        	System.out.print("\n>>> Se ha producido un error <<<\n\n");
@@ -295,7 +296,7 @@ public class RepoSala {
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
 				e.printStackTrace();
-				System.out.println("Error al insertar la nueva habitacion");
+				System.out.println("Error al insertar la nueva sala");
 				return false;
 			}
 		}
@@ -328,6 +329,55 @@ public class RepoSala {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public boolean update(Sala modificaciones) {
+		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
+		if (SQLScripts.isEmpty()) {
+			inicializarArray();
+		}
+		
+		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
+		Sala original = new Sala(0, 0, "", 0, null, "");
+		
+		// Copruebo que me han pasado el ID correcto
+		if (modificaciones.getNum() != 0 && modificaciones.getHotel() != null) {
+			
+			// Meto los datos del cliente original en el cliente creado anterior
+			original = get(modificaciones.getHotel().getID(), modificaciones.getNum());
+			
+			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
+			if (modificaciones.getCapacidad() != 0) original.setCapacidad(modificaciones.getCapacidad());
+			if (!modificaciones.getTlfno().equals("")) original.setTlfno(modificaciones.getTlfno());
+			if (modificaciones.getPvp() != 0) original.setPvp(modificaciones.getPvp());
+		
+		// En caso de no tener el DNI correcto devuelvo error
+		} else {
+			System.out.println("Error al insertar el Hotel");
+			return false;
+		}
+		
+		String query = "UPDATE sala "
+				+ "SET capacidad = ?, tlfno = ?, pvp = ? "
+				+ "WHERE id = ? and num = ?";
+		
+		//Si existe el cliente, ejecuta el borrado en la BBDD
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+	        pS.setInt(1, original.getCapacidad());
+	        pS.setString(2, original.getTlfno());
+	        pS.setDouble(3, original.getPvp());
+	        pS.setInt(4, original.getHotel().getID());
+	        pS.setInt(5, original.getNum());
+	        pS.executeUpdate();
+	        
+	        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
+	        return true;
+
+		//En caso de que haya algun error en la base lo coge aqui
+		} catch (SQLException e) {
+			System.out.println("Error al actualizar la sala"+e);
+			return false;
+		}
 	}
 	
 }

@@ -86,9 +86,11 @@ public class Login {
 				if (respuesta) {
 					System.out.print("\nContacte con nuestro servicio de atencion al cliente por telefono para ello\n");
 					main(null);
+				} else {
+					identificarse();
 				}
 				
 			}
-		}while (user == null);
+		} while (user == null);
 	}
 }

@@ -195,8 +195,8 @@ public class RepoReserva {
 			original = get(modificaciones.getID());
 			
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
-			if (modificaciones.getFecIni() != null) original.setFecIni(modificaciones.getFecFin());
-			if (modificaciones.getFecFin() != null) original.setFecFin(modificaciones.getFecIni());
+			if (modificaciones.getFecIni() != null) original.setFecIni(modificaciones.getFecIni());
+			if (modificaciones.getFecFin() != null) original.setFecFin(modificaciones.getFecFin());
 			if (modificaciones.getCliente() != null) original.setCliente(modificaciones.getCliente());
 			if (modificaciones.getSala() != null) original.setSala(modificaciones.getSala());
 		
@@ -209,18 +209,15 @@ public class RepoReserva {
 		// Revisa si existe la reserva
 		if(check(original)) {
 			
-			String query = "UPDATE cliente "
+			String query = "UPDATE reserva "
 					+ "SET "
-						+ "DNI = ?, "
-						+ "nom = ?, "
-						+ "ape = ?, "
-						+ "tlfno = ?, "
-						+ "email = ?, "
-						+ "bTrabajador = ?, "
-						+ "tarifa = ?, "
-						+ "SHA2(pass = ?, 256) "
+						+ "fecini = ?, "
+						+ "fecfin = ?, "
+						+ "dni = ?, "
+						+ "id = ?, "
+						+ "num = ? "
 					+ "WHERE "
-						+ "DNI = ?";
+						+ "codreserva = ?";
 			
 			//Si existe la reserva, ejecuta la modificacion en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
@@ -228,7 +225,9 @@ public class RepoReserva {
 		        preparedStatement.setDate(2, original.getFecFin());
 		        preparedStatement.setString(3, original.getCliente().getDNI());
 		        preparedStatement.setInt(4, original.getSala().getHotel().getID());
-		        preparedStatement.setInt(4, original.getSala().getNum());
+		        preparedStatement.setInt(5, original.getSala().getNum());
+		        preparedStatement.setInt(6, original.getID());
+		        
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
@@ -236,7 +235,7 @@ public class RepoReserva {
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al actualizar la reserva");
+				System.out.println("Error al actualizar la reserva" + e);
 				return false;
 			}
 		}

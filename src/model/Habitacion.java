@@ -40,7 +40,7 @@ public class Habitacion extends Sala{
 	// Constructor/es
 	public Habitacion(Hotel hotel, int num, int capacidad, String tlfno, double pvp, tipoHab tipo) {
 		super(num, capacidad, tlfno, pvp, hotel, Sala.tSala.Habitacion);
-		this.tHab = selectorTipoHab(capacidad);
+		this.tHab = tipo;
 	}
 	
 	public Habitacion(Hotel hotel, int num, int capacidad, String tlfno, double pvp, String tipo) {

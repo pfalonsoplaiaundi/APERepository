@@ -169,7 +169,6 @@ public class Input {
 		System.out.print("Capacidad (en personas): ");
 		String aforoT = scn.nextLine();
 		int aforo = Integer.parseInt(aforoT);
-		scn.next();
 		return aforo;
 	}
 	

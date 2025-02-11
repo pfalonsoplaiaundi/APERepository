@@ -23,7 +23,7 @@ public class SalaReunion extends Sala {
 	
 	// Constructor
 	public SalaReunion(int num, int capacidad, String tlfno, double pvp, Hotel hotel, String servicios) {
-		super(num, capacidad, tlfno, pvp, hotel);
+		super(num, capacidad, tlfno, pvp, hotel, Sala.tSala.SalaReuniones);
 		this.servicios = servicios;
 	}
 	

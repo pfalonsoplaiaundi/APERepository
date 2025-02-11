@@ -142,13 +142,14 @@ public class MenuAdmin {
 		System.out.print(
 				"\n~~~ Datos actuales ~~~\n" +
 				aModificar.toString() + "\n" +
-				"\n¿Que desea modificar?" +
+				"\n¿Que desea modificar?\n" +
 				"1. Cliente\n" +
 				"2. Fecha de inicio\n" +
 				"3. Fecha de finalizacion\n" +
 				"Selecciones la opcion que desee: "
 				);
 		selectorModifyReserva(Input.inOpc(), aModificar);		
+		System.out.print("Reserva modificada");
 		}
 	}
 
@@ -682,6 +683,7 @@ public class MenuAdmin {
 				"Selecciones la opcion que desee: "
 				);
 		selectorModifyCliente(Input.inOpc(), aModificar);
+		System.out.print("Cliente modificado");
 		}
 	}
 
@@ -1079,8 +1081,7 @@ public class MenuAdmin {
 	 */
 	private static void printHoteles() {
 		System.out.print(
-				"~~~ Menu de administración / Hoteles ~~~\n"
-				+ "\n"
+				"\n~~~ Menu de administración / Hoteles ~~~\n"
 				+ "1. Lista\n"
 				+ "2. Agregar\n"
 				+ "3. Modificar\n"
@@ -1147,8 +1148,8 @@ public class MenuAdmin {
 				);
 		Hotel aModificar = selectorModifyHoteles(Input.inOpc());
 		if (aModificar == null) {
-			System.out.print("\n>>> ERROR: Cliente no valido <<<\n");
-			modifyReserva();
+			System.out.print("\n>>> ERROR: Hotel no valido <<<\n");
+			modifyHotel();
 		} else {
 			System.out.print(
 					"\n~~~ Datos actuales ~~~\n" +
@@ -1338,7 +1339,8 @@ public class MenuAdmin {
 		ArrayList<Hotel> lista = rH.getListaFiltrada(filtro);
 		
 		System.out.print(
-				"Nombre" + "\t\t| "
+				"ID" + "\t| "
+				+ "Nombre" + "\t\t| "
 				+ "Ciudad" + "\t\t| "
 				+ "Telefono" + "\t| "
 				+ "Email" + "\t\t\t\t| "
@@ -1347,8 +1349,9 @@ public class MenuAdmin {
 		int i = 0;
 		while (i < lista.size()) {
 			System.out.print(
+					lista.get(i).getID() + "\t| " +
 					(
-							(lista.get(i).getNombre().length() < 7) ? 
+							(lista.get(i).getNombre().length() < 14) ? 
 								(lista.get(i).getNombre() + "\t\t| ") : 
 								(lista.get(i).getNombre() + "\t| ")
 					)
@@ -1469,7 +1472,7 @@ public class MenuAdmin {
 	 */
 	private static void printHabitaciones() {
 		System.out.print(
-				"~~~ Menu de administración / Habitaciones ~~~\n"
+				"\n~~~ Menu de administración / Habitaciones ~~~\n"
 				+ "1. Lista\n"
 				+ "2. Agregar\n"
 				+ "3. Modificar\n"
@@ -1536,8 +1539,8 @@ public class MenuAdmin {
 				);
 		Habitacion aModificar = selectorModifyHabitaciones(Input.inOpc());
 		if (aModificar == null) {
-			System.out.print("\n>>> ERROR: Cliente no valido <<<\n");
-			modifyReserva();
+			System.out.print("\n>>> ERROR: Habitacion no valida <<<\n");
+			modifyHabitacion();
 		} else {
 			System.out.print(
 					"\n~~~ Datos actuales ~~~\n" +
@@ -1793,20 +1796,35 @@ public class MenuAdmin {
 	 */
 	private static void printResultadoFiltroHabitacion(Habitacion filtro, int disponible) {
 		RepoHabitacion rH = new RepoHabitacion();
-		System.out.print( "Hotel\t|\tHabitacion\t|\tTipo\t|\tTelefono\t|\tPVP\t|\tOcupada" );
+		System.out.print( "Hotel\t\t| Habitacion\t| Tipo\t\t| Telefono\t| PVP\t\t| Ocupada\n"
+			+ "-------------------------------------------------------------------------------------------------\n" );
+		int i = 0;
 		for(HabDisponible h : rH.getListaFiltrada(filtro, disponible)) {
-			int i = 0;
 			System.out.print(
-					h.getHabitacion().getHotel().getNombre() + "\t|\t" + 
-					h.getHabitacion().getNum() + "\t|\t" +
-					h.getHabitacion().getTipo().toString() + "\t|\t" +
-					h.getHabitacion().getTlfno() + "\t|\t" +
-					h.getHabitacion().getPvp() + "€\t|\t" +
+					h.getHabitacion().getHotel().getNombre() + "\t| " + 
+					h.getHabitacion().getNum() + "\t\t| " +
+					
+					((h.getHabitacion().getTipo().toString().length() > 6) ?
+					(h.getHabitacion().getTipo().toString() + "\t| ") :
+					(h.getHabitacion().getTipo().toString() + "\t\t| ")
+					)
+					
+					+
+					
+					
+					h.getHabitacion().getTlfno() + "\t| " +
+					
+					((h.getHabitacion().getPvp() >= 100) ?
+					(h.getHabitacion().getPvp() + "€\t| ") :
+					(h.getHabitacion().getPvp() + "€\t\t| ")
+					)
+					+
 					h.isDisponible() + "\n"
 				);
 			i++;
-			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------\n");
+			if (i%5 == 0) System.out.print("-------------------------------------------------------------------------------------------------\n");
 		};
+		System.out.println("");
 	}
 
 	/**
@@ -2199,7 +2217,7 @@ public class MenuAdmin {
 				"Hotel" + "\t\t| "
 				+ "Numero" + "\t| "
 				+ "Capacidad" + "\t| "
-				+ "Precio" + "\t| "
+				+ "Precio" + "\t\t| "
 				+ "Telefono" + "\t| "
 				+ "Tipo\n"
 				+ "---------------------------------------------------------------------------------------------------------------------------------------------\n");
@@ -2211,12 +2229,11 @@ public class MenuAdmin {
 								(lista.get(i).getHotel().getNombre() + "\t\t| ") : 
 								(lista.get(i).getHotel().getNombre() + "\t| ")
 					)
-					+ lista.get(i).getNum() + "\t| "
-					+ lista.get(i).getCapacidad() + "\t| "
-					+ lista.get(i).getPvp() + "\t| "
+					+ lista.get(i).getNum() + "\t\t| "
+					+ lista.get(i).getCapacidad() + "\t\t| "
+					+ lista.get(i).getPvp() + "€\t\t| "
 					+ lista.get(i).getTlfno() + "\t| "
-					+ lista.get(i).getTipo() + "\t| "
-					+ "\n"
+					+ lista.get(i).getTipo() + "\n"
 			);
 			i++;
 			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");
@@ -2579,12 +2596,11 @@ public class MenuAdmin {
 								(lista.get(i).getHotel().getNombre() + "\t\t| ") : 
 								(lista.get(i).getHotel().getNombre() + "\t| ")
 					)
-					+ lista.get(i).getNum() + "\t| "
-					+ lista.get(i).getCapacidad() + "\t| "
-					+ lista.get(i).getPvp() + "\t| "
+					+ lista.get(i).getNum() + "\t\t| "
+					+ lista.get(i).getCapacidad() + "\t\t| "
+					+ lista.get(i).getPvp() + "\t\t| "
 					+ lista.get(i).getTlfno() + "\t| "
-					+ lista.get(i).getServicios() + "\t| "
-					+ "\n"
+					+ lista.get(i).getServicios() + "\n"
 			);
 			i++;
 			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");

@@ -126,7 +126,7 @@ public class RepoHotel {
 			
 			String query = 
 					"DELETE FROM "
-						+ "cliente "
+						+ "hotel "
 					+ "WHERE "
 						+ "id = ?";
 			
@@ -136,7 +136,7 @@ public class RepoHotel {
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
-		        return !check(aBorrar);
+		        return true;
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
@@ -164,7 +164,7 @@ public class RepoHotel {
 		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
 		Hotel original = new Hotel(0, "", "", "", "", "");
 		
-		// Copruebo que me han pasado el DNI correcto
+		// Copruebo que me han pasado el ID correcto
 		if (modificaciones.getID() != 0) {
 			
 			// Meto los datos del cliente original en el cliente creado anterior
@@ -179,35 +179,34 @@ public class RepoHotel {
 		
 		// En caso de no tener el DNI correcto devuelvo error
 		} else {
-			System.out.println("Error al insertar el DNI");
+			System.out.println("Error al insertar el Hotel");
 			return false;
 		}
-				
-		// Revisa si existe el cliente
-		if(check(original)) {
-			
-			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
-		        preparedStatement.setInt(1, original.getID());
-		        preparedStatement.setString(2, original.getNombre());
-		        preparedStatement.setString(3, original.getCiudad());
-		        preparedStatement.setString(4, original.getDir());
-		        preparedStatement.setString(5, original.getTlfno());
-		        preparedStatement.setString(9, original.getEmail());
-		        preparedStatement.executeUpdate();
-		        
-		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !check(original);
+		
+		String query = "UPDATE hotel "
+				+ "SET id = ?, nom = ?, ciu = ?, dir = ?, tlfno = ?, email = ? "
+				+ "WHERE id = ?";
+		
+		//Si existe el cliente, ejecuta el borrado en la BBDD
+		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+	        preparedStatement.setInt(1, original.getID());
+	        preparedStatement.setString(2, original.getNombre());
+	        preparedStatement.setString(3, original.getCiudad());
+	        preparedStatement.setString(4, original.getDir());
+	        preparedStatement.setString(5, original.getTlfno());
+	        preparedStatement.setString(6, original.getEmail());
+	        preparedStatement.setInt(7, original.getID());
+	        preparedStatement.executeUpdate();
+	        
+	        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
+	        return true;
 
-			//En caso de que haya algun error en la base lo coge aqui
-			} catch (SQLException e) {
-				System.out.println("Error al actualizar el cliente");
-				return false;
-			}
+		//En caso de que haya algun error en la base lo coge aqui
+		} catch (SQLException e) {
+			System.out.println("Error al actualizar el Hotel"+e);
+			return false;
 		}
 		
-		//Si el cliente existe antes de la insercion devuelve false. 
-		return false;
 	}
 	
 	/**
@@ -216,10 +215,24 @@ public class RepoHotel {
 	 * @return
 	 */
 	public boolean check(Hotel hotel) {
-		if (SQLScripts.isEmpty()) {
+    	if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
+    	String query = "SELECT * FROM hotel "
+				+ "WHERE id = ?";
+    	
+		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+	        preparedStatement.setInt(1, hotel.getID());
+	        ResultSet rS = preparedStatement.executeQuery();
+	        if (rS.next()) {
+	        	return true;
+	        } else {
+	        	return false;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 	

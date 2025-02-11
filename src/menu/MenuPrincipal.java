@@ -45,7 +45,7 @@ public class MenuPrincipal {
 		if (opc == 0) {
 			System.out.print("¿Quieres deslogearte? ");
 			if (Input.inYesNo()) {
-				MenuCarrito.print();
+				Login.main(null);
 			} else {
 				print();
 			}

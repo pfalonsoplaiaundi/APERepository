@@ -182,16 +182,21 @@ public class RepoCliente {
 		// Revisa si existe el cliente
 		if(check(original)) {
 			
+			String query = "UPDATE cliente "
+					+ "SET DNI = ?, nom = ?, ape = ?, tlfno = ?, email = ?, bTrabajador = ?, tarifa = ?, pass = SHA2( ?, 256) "
+					+ "WHERE DNI = ?";
+			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 		        preparedStatement.setString(1, original.getDNI());
 		        preparedStatement.setString(2, original.getNombre());
 		        preparedStatement.setString(3, original.getApellidos());
 		        preparedStatement.setString(4, original.getTelefono());
 		        preparedStatement.setString(5, original.getEmail());
 		        preparedStatement.setBoolean(6, original.isbTrabajador());
-		        preparedStatement.setString(9, original.getTarifa().toString());
+		        preparedStatement.setString(7, original.getTarifa().toString());
 		        preparedStatement.setString(8, original.getPass());
+		        preparedStatement.setString(9, original.getDNI());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
