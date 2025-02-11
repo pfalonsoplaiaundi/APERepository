@@ -2,6 +2,9 @@ package conectores;
 
 import java.sql.*;
 
+/**
+ * Conexion a la base de datos
+ */
 public class ConectMySQL {
 
 	//Conexion

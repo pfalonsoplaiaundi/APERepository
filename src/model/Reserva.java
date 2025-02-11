@@ -4,6 +4,9 @@ import java.sql.Date;
 
 import conectores.RepoHabitacion;
 
+/**
+ * Objeto RESERVA
+ */
 public class Reserva {
 	
 	//Atributos
@@ -88,6 +91,10 @@ public class Reserva {
 		this.bPagada = bPagada;
 	}
 
+	//-----------------------------------------------------------------------
+	
+	// Metodos basicos
+	
 	@Override
 	public String toString() {
 		RepoHabitacion rH = new RepoHabitacion();

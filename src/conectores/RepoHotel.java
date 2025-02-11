@@ -5,15 +5,22 @@ import java.util.ArrayList;
 
 import model.*;
 
+/**
+ * Consultas a la bbdd de hoteles
+ */
 public class RepoHotel {
 
 	private ArrayList<String> SQLScripts = new ArrayList<>();	
 	
+	/**
+	 * Constructor del repositorio
+	 */
 	public RepoHotel() {
 		inicializarArray();
 	}
 	
 	/**
+	 * Inicializa el array de scripts
 	 * 0 Insert, 1 Delete, 2 Update, 3 Check, 4 Get, 5 NumOcupantesInHotel, 6 MenuPrincipal, 7 getPKHotelByName
 	 */
 	private void inicializarArray() {
@@ -64,6 +71,8 @@ public class RepoHotel {
 	/**
 	 * Esta funcion inserta un hotel nuevo en la tabla hotel 
 	 * con todos los parametros de hotel, menos ID
+	 * @param nuevo
+	 * @return
 	 */
 	public boolean insert(Hotel nuevo) {
 		
@@ -102,7 +111,9 @@ public class RepoHotel {
 	/**
 	 * Esta funcion borra un hotel en la tabla hotel 
 	 * con todos los parametros de hotel
-	 */	
+	 * @param aBorrar
+	 * @return
+	 */
 	public boolean delete(Hotel aBorrar) {
 				
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
@@ -139,7 +150,9 @@ public class RepoHotel {
 	}
 
 	/**
-	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Esta funcion modifica un hotel
+	 * @param modificaciones
+	 * @return
 	 */
 	public boolean update(Hotel modificaciones) {
 				
@@ -197,7 +210,11 @@ public class RepoHotel {
 		return false;
 	}
 	
-
+	/**
+	 * Comprueba la existencia de un hotel
+	 * @param hotel
+	 * @return
+	 */
 	public boolean check(Hotel hotel) {
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -206,10 +223,11 @@ public class RepoHotel {
 		return false;
 	}
 	
-	public boolean checkEquals(Cliente cliente) {
-		return false;
-	}
-
+	/**
+	 * Recupera la informacion de un hotel
+	 * @param idHotel
+	 * @return
+	 */
 	public Hotel get(int idHotel) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -237,11 +255,20 @@ public class RepoHotel {
 		}
 	}
 	
+	/**
+	 * Recupera la capacidad de aforo de las habitaciones de un hotel
+	 * @param id
+	 * @return
+	 */
 	public static int getTamano(int id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	
+	/**
+	 * Recupera la informacion necesaria para hacer el menu principal
+	 * @return
+	 */
 	public ArrayList<String> getMenuPrincipal() {
 		ArrayList<String> mP = new ArrayList<>();
 		String query = SQLScripts.get(6);
@@ -258,6 +285,11 @@ public class RepoHotel {
 		return mP;
 	}
 
+	/**
+	 * Recupera el id de un hotel mediante su nombre ya que es unico
+	 * @param nom
+	 * @return
+	 */
 	public int getPKByName(String nom) {
 		try ( 
 			PreparedStatement pS = ConectMySQL.conexion.prepareStatement(SQLScripts.get(7));
@@ -273,6 +305,11 @@ public class RepoHotel {
 		return 0;
 	}
 
+	/**
+	 * Recupera una lista de hoteles filtrando
+	 * @param filtro
+	 * @return
+	 */
 	public ArrayList<Hotel> getListaFiltrada(Hotel filtro) {
 		String query = 
 				"SELECT  "

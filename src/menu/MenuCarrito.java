@@ -7,10 +7,19 @@ import conectores.RepoHabitacion;
 import conectores.RepoReserva;
 import model.Reserva;
 
+/**
+ * Menu de finalizacion de compra
+ */
 public class MenuCarrito {
 
+	/**
+	 * Guarda las reservas flotantes
+	 */
 	public static ArrayList<Reserva> carrito = new ArrayList<>();
 	
+	/**
+	 * Imprime el menu
+	 */
 	public static void print() {
 		if (!carrito.isEmpty()) {
 			System.out.print("\n~~~ Carrito ~~~\n");
@@ -48,6 +57,9 @@ public class MenuCarrito {
 		}
 	}
 
+	/**
+	 * Permite eliminar reservas que no quieras
+	 */
 	private static void modificarCarrito() {
 		System.out.print("¿Deseas modificar el carrito? (no para volver atras) ");
 		boolean respuesta = Input.inYesNo();
@@ -67,6 +79,10 @@ public class MenuCarrito {
 		} 	
 	}
 	
+	/**
+	 * Imprimes la modificacion de reserva
+	 * @param id
+	 */
 	private static void printModificarReserva(int id) {
 		System.out.print("\n----- Modificar reserva -----\n"
 				+ "1. Eliminar\n"
@@ -75,6 +91,11 @@ public class MenuCarrito {
 		selectorModificarReserva(Input.inOpc(), id);
 	}
 	
+	/**
+	 * Logica de la modificacion de reserva
+	 * @param opc
+	 * @param id
+	 */
 	private static void selectorModificarReserva(int opc, int id) {
 		switch (opc) {
 		case 1:
@@ -105,6 +126,9 @@ public class MenuCarrito {
 		}
 	}
 
+	/**
+	 * Menu de pago (Ficticio)
+	 */
 	private static void pasarelaPago() {
 		System.out.print("\n\n~~~ Pasarela de pago ~~~\n"
 				+ "¿Que metodo de pago va a usar?\n"
@@ -120,6 +144,10 @@ public class MenuCarrito {
 		
 	}
 
+	/**
+	 * Logica del menu de pago
+	 * @param opc
+	 */
 	private static void selectorPasarelaPago(int opc) {
 		RepoReserva rR = new RepoReserva();
 		System.out.print("\n----------------------------------------------------------------\n");
@@ -172,6 +200,10 @@ public class MenuCarrito {
 		
 	}
 
+	/**
+	 * Añade una reserva al carrito
+	 * @param r
+	 */
 	public static void addCarrito(Reserva r) {
 		carrito.add(r);
 		

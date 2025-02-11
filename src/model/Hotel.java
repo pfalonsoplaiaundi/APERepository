@@ -1,7 +1,8 @@
 package model;
 
-import conectores.RepoHotel;
-
+/**
+ * Objeto HOTEL
+ */
 public class Hotel {
 
 	// Atributos
@@ -76,43 +77,8 @@ public class Hotel {
     }
     
 	//-----------------------------------------------------------------------
-    
-    // Metodos propios
-    public void printTamano() {
-        System.out.print("El hotel " + this.nombre + " tiene habitaciones para " + RepoHotel.getTamano(this.ID)); 
-    }
-
-    public boolean verificarDisponibilidad() {
-    	if (RepoHotel.getTamano(this.ID) == 0) {
-    		return false;
-    	} else {
-    		return true;
-    	}
-    }
-
-    public boolean crearSala() {
-    	/* WIP
-    	
-    	int opc = 0;
-    	int i = 0;
-    	do {
-    		Sala.printTipo();
-    		opc = Input.inOpc();
-    		if(Sala.selectorTipo(opc) == null) {
-    			opc = 0;
-    			i++;
-    		} else {
-    			if (Sala.selectorTipo(opc) = tSala) {
-    				
-    			}
-    			return true;
-    		}
-    	} while (opc == 0 || i == 10);
-        
-        */
-        return false; 
-    }
-    
+	
+	// Metodos basicos
     @Override
 	public String toString() {
 		return "--Hotel--\n"
@@ -123,6 +89,7 @@ public class Hotel {
 				+ "Telefono: " + tlfno + "\n"
 				+ "Email=" + email + "\n"
 				+ "------------------------------";
+    
 	}
 
  

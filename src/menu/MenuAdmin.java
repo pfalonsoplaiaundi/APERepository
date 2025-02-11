@@ -8,6 +8,9 @@ import conectores.*;
 import model.Habitacion.tipoHab;
 import model.*;
 
+/**
+ * Menu de administracion, solo disponible para trabajadores
+ */
 public class MenuAdmin {
 	
 	/**
@@ -606,7 +609,7 @@ public class MenuAdmin {
 	
 	/**
 	 * Logica del menu clientes de administracion
-	 * @param inOpc
+	 * @param opc
 	 */
 	private static void selectorClientes(int opc) {
 		switch (opc) {
@@ -630,6 +633,9 @@ public class MenuAdmin {
 		printClientes();
 	}
 	
+	/**
+	 * Elimina un cliente
+	 */
 	private static void deleteCliente() {
 		System.out.print( 
 				"¿Que cliente deseas eliminar?\n"
@@ -644,6 +650,9 @@ public class MenuAdmin {
 		System.out.print((rC.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
 	}
 
+	/**
+	 * Modifica un cliente
+	 */
 	private static void modifyCliente() {
 		System.out.print( 
 				"\n¿Que cliente deseas modificar?\n"
@@ -676,6 +685,11 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Logica de que se modifica del cliente
+	 * @param opc
+	 * @param aModificar
+	 */
 	private static void selectorModifyCliente(int opc, Cliente aModificar) {
 		RepoCliente rC = new RepoCliente();
 		switch (opc) {
@@ -728,6 +742,11 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Logica de que cliente se va a modificar
+	 * @param opc
+	 * @return
+	 */
 	private static Cliente selectorModifyClientes(int opc) {
 		Cliente aModificar = null;
 		RepoCliente rC = new RepoCliente();
@@ -999,7 +1018,6 @@ public class MenuAdmin {
 	
 	/**
 	 * Imprime tabla resultado clientes sin filtrar
-	 * @param filtro
 	 */
 	private static void printResultadoCliente() {
 		RepoCliente rC = new RepoCliente();
@@ -1055,7 +1073,10 @@ public class MenuAdmin {
 	// --------------------------------------------------------------------------------------------------------------------------------
 	
 	// Menu administracion / hoteles
-		
+	
+	/**
+	 * Menu de administracion hoteles
+	 */
 	private static void printHoteles() {
 		System.out.print(
 				"~~~ Menu de administración / Hoteles ~~~\n"
@@ -1069,6 +1090,10 @@ public class MenuAdmin {
 		selectorHoteles(Input.inOpc());
 	}
 
+	/**
+	 * Logica del menu de administracion de hoteles
+	 * @param opc
+	 */
 	private static void selectorHoteles(int opc) {
 		switch (opc) {
 		case 1:
@@ -1091,6 +1116,9 @@ public class MenuAdmin {
 		printHoteles();
 	}
 
+	/**
+	 * Elimina un hotel
+	 */
 	private static void deleteHotel() {
 		System.out.print( 
 				"¿Que cliente deseas eliminar?\n"
@@ -1105,6 +1133,9 @@ public class MenuAdmin {
 		System.out.print((rH.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
 	}
 
+	/**
+	 * Modifica un hotel
+	 */
 	private static void modifyHotel() {
 		System.out.print( 
 				"\n¿Que hotel deseas modificar?\n"
@@ -1135,6 +1166,11 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Logica de que hotel se va a modificar
+	 * @param opc
+	 * @return
+	 */
 	private static Hotel selectorModifyHoteles(int opc) {
 		Hotel aModificar = null;
 		RepoHotel rH = new RepoHotel();
@@ -1186,6 +1222,11 @@ public class MenuAdmin {
 		return aModificar;	
 	}
 
+	/**
+	 * Logica de que se va a modificar en el hotel
+	 * @param opc
+	 * @param aModificar
+	 */
 	private static void selectorModifyHotel(int opc, Hotel aModificar) {
 		RepoHotel rH = new RepoHotel();
 		switch (opc) {
@@ -1226,6 +1267,9 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Añade un hotel
+	 */
 	private static void addHotel() {
 		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
 				+ "¿Tienes los datos? ");
@@ -1246,6 +1290,9 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Lista de hoteles
+	 */
 	private static void listaHoteles() {
 		if (!filtroHotel()) {
 			Hotel filtro = new Hotel(0, "", "", "", "", "");
@@ -1253,6 +1300,10 @@ public class MenuAdmin {
 		}
 	}
 	
+	/**
+	 * Filtro de lista de hoteles
+	 * @return
+	 */
 	private static boolean filtroHotel() {
 		System.out.print("\n¿Deseas filtrar el resultado? ");
 		boolean respuesta = Input.inYesNo();
@@ -1278,6 +1329,10 @@ public class MenuAdmin {
 		return false;
 	}
 	
+	/**
+	 * Imprime una tabla resultado de un filtro de hotel
+	 * @param filtro
+	 */
 	private static void printResultadoFiltroHotel(Hotel filtro) {
 		RepoHotel rH = new RepoHotel();
 		ArrayList<Hotel> lista = rH.getListaFiltrada(filtro);
@@ -1321,6 +1376,12 @@ public class MenuAdmin {
 		System.out.print("\n");
 	}
 
+	/**
+	 * Logica del filtro de hotel
+	 * @param filtro
+	 * @param opc
+	 * @return
+	 */
 	private static Hotel selectorMenuFiltroHotel(Hotel filtro, int opc) {
 		switch (opc) {
 		
@@ -1356,6 +1417,10 @@ public class MenuAdmin {
 		return filtro;
 	}
 
+	/**
+	 * Menu de filtro de hotel
+	 * @param filtro
+	 */
 	private static void printMenuFiltroHotel(Hotel filtro) {
 		System.out.print(
 				"\n>>> Filtro <<<\n"
@@ -1400,7 +1465,7 @@ public class MenuAdmin {
 	// Menu administracion / habitaciones
 	
 	/**
-	 * 
+	 * Menu de administracion de habitaciones
 	 */
 	private static void printHabitaciones() {
 		System.out.print(
@@ -1440,6 +1505,9 @@ public class MenuAdmin {
 		printHabitaciones();
 	}
 	
+	/**
+	 * Elimina una habitacion
+	 */
 	private static void deleteHabitacion() {
 		System.out.print( 
 				"¿Que habitacion deseas eliminar?\n"
@@ -1454,6 +1522,9 @@ public class MenuAdmin {
 		System.out.print((rH.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
 	}
 
+	/**
+	 * Modifica una habitacion
+	 */
 	private static void modifyHabitacion() {
 		System.out.print( 
 				"\n¿Que habitacion deseas modificar?\n"
@@ -1485,6 +1556,11 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Logica sobre que se va a modificar de una habitacion
+	 * @param opc
+	 * @param aModificar
+	 */
 	private static void selectorModifyHabitacion(int opc, Habitacion aModificar) {
 		RepoHabitacion rH = new RepoHabitacion();
 		RepoHotel rHo = new RepoHotel();
@@ -1532,6 +1608,11 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Logica sobre que habitacion va a ser modificada
+	 * @param opc
+	 * @return
+	 */
 	private static Habitacion selectorModifyHabitaciones(int opc) {
 		Habitacion aModificar = null;
 		RepoHabitacion rH = new RepoHabitacion();
@@ -1592,6 +1673,9 @@ public class MenuAdmin {
 		return aModificar;
 	}
 
+	/**
+	 * Añade una habitacion
+	 */
 	private static void addHabitacion() {
 		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
 				+ "¿Tienes los datos? ");
@@ -1613,6 +1697,9 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Lista de habitaciones
+	 */
 	private static void listaHabitaciones() {
 		if (!filtroHabitaciones()) {
 			Habitacion filtro = new Habitacion(null, 0, 0, "", 0, "");
@@ -1621,6 +1708,10 @@ public class MenuAdmin {
 		}
 	}
 	
+	/**
+	 * Filtro de habitaciones
+	 * @return
+	 */
 	private static boolean filtroHabitaciones() {
 		System.out.print("\n¿Deseas filtrar el resultado? (Si/no): ");
 		boolean respuesta = Input.inYesNo();
@@ -1695,6 +1786,11 @@ public class MenuAdmin {
 		);
 	}
 	
+	/**
+	 * Imprime una tabla con los datos resultado de habitaciones
+	 * @param filtro
+	 * @param disponible
+	 */
 	private static void printResultadoFiltroHabitacion(Habitacion filtro, int disponible) {
 		RepoHabitacion rH = new RepoHabitacion();
 		System.out.print( "Hotel\t|\tHabitacion\t|\tTipo\t|\tTelefono\t|\tPVP\t|\tOcupada" );
@@ -1713,6 +1809,10 @@ public class MenuAdmin {
 		};
 	}
 
+	/**
+	 * Apoyo para el uso de enum TipoHab
+	 * @return
+	 */
 	private static tipoHab filtroTipoHab() {
 		int opc = 0;
 		do {
@@ -1753,7 +1853,6 @@ public class MenuAdmin {
 	
 	// Menu administracion / otros
 
-
 	/**
 	 * Imprime el menu de otros de administracion
 	 */
@@ -1790,7 +1889,7 @@ public class MenuAdmin {
 	// Menu administracion / otros / comunes
 	
 	/**
-	 * 
+	 * Imprime el menu de administracion de espacios comunes
 	 */
 	private static void printComunes() {
 		System.out.print(
@@ -1804,6 +1903,10 @@ public class MenuAdmin {
 		selectorComunes(Input.inOpc());
 	}
 	
+	/**
+	 * Logica del menu de administacion de espacios comunes 
+	 * @param opc
+	 */
 	private static void selectorComunes(int opc) {
 		switch (opc) {
 		case 1:
@@ -1826,6 +1929,9 @@ public class MenuAdmin {
 		printOtros();
 	}
 	
+	/**
+	 * Elimina un espacio comun 
+	 */
 	private static void deleteComun() {
 		System.out.print( 
 				"¿Que espacio comun deseas eliminar?\n"
@@ -1838,6 +1944,9 @@ public class MenuAdmin {
 		System.out.print((rEc.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
 	}
 
+	/**
+	 * Modifica un espacio comun
+	 */
 	private static void modifyComun() {
 		System.out.print( 
 				"\n¿Que habitacion deseas modificar?\n"
@@ -1869,6 +1978,11 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Logica sobre que se va a modifica en un espacio comun
+	 * @param opc
+	 * @param aModificar
+	 */
 	private static void selectorModifyComun(int opc, EspacioComun aModificar) {
 		RepoEspacioComun rEc = new RepoEspacioComun();
 		RepoHotel rHo = new RepoHotel();
@@ -1916,6 +2030,10 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Imprime una tabla de espacios comunes tras un filtro
+	 * @param filtro
+	 */
 	private static void printResultadoFiltroComun(EspacioComun filtro) {
 		RepoEspacioComun rEc = new RepoEspacioComun();
 		System.out.print( "Hotel\t|\tHabitacion\t|\tTelefono\t|\tPVP\t|\tTipo\n" );
@@ -1934,6 +2052,11 @@ public class MenuAdmin {
 		};
 	}
 	
+	/**
+	 * Logica sobre que espacio comun va a ser modificado
+	 * @param opc
+	 * @return
+	 */
 	private static EspacioComun selectorModifyComunes(int opc) {
 		EspacioComun aModificar = null;
 		RepoEspacioComun rEc = new RepoEspacioComun();
@@ -1974,6 +2097,9 @@ public class MenuAdmin {
 		return aModificar;
 	}
 
+	/**
+	 * Añade un espacio comun
+	 */
 	private static void addComun() {
 		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
 				+ "¿Tienes los datos? ");
@@ -1995,6 +2121,9 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Lista de espacios comunes
+	 */
 	private static void listaComunes() {
 		if (!filtroComunes()) {
 			EspacioComun filtro = new EspacioComun(0, 0, "", 0, null, "");
@@ -2002,7 +2131,10 @@ public class MenuAdmin {
 		}
 	}
 	
-	
+	/**
+	 * Filtro de espacios comunes
+	 * @return
+	 */
 	private static boolean filtroComunes() {
 		System.out.print("\n¿Deseas filtrar el resultado? ");
 		boolean respuesta = Input.inYesNo();
@@ -2028,6 +2160,10 @@ public class MenuAdmin {
 		return false;
 	}
 	
+	/**
+	 * Menu de filtro de espacios comunes
+	 * @param filtro
+	 */
 	private static void printMenuFiltroComunes(EspacioComun filtro) {
 		System.out.print(
 				"\n>>> Filtro <<<\n"
@@ -2051,7 +2187,10 @@ public class MenuAdmin {
 		);
 	}
 	
-	
+	/**
+	 * Imprime una tabla con los espacios comunes filtrados
+	 * @param filtro
+	 */
 	private static void printResultadoFiltroComunes(EspacioComun filtro) {
 		RepoEspacioComun rEC = new RepoEspacioComun();
 		ArrayList<EspacioComun> lista = rEC.getListaFiltrada(filtro);
@@ -2085,6 +2224,12 @@ public class MenuAdmin {
 		System.out.print("\n");
 	}
 	
+	/**
+	 * Logica del filtro de espacios comunes
+	 * @param filtro
+	 * @param opc
+	 * @return
+	 */
 	private static EspacioComun selectorMenuFiltroComunes(EspacioComun filtro, int opc) {
 		switch (opc) {
 		
@@ -2113,6 +2258,9 @@ public class MenuAdmin {
 	
 	// Menu administracion / otros / reuniones
 
+	/**
+	 * Imprime el menu de administracion de salas de reuniones
+	 */
 	private static void printReuniones() {
 		System.out.print(
 				"\n~~~ Menu de administración / Otros / Sala de reuniones ~~~\n"
@@ -2125,6 +2273,10 @@ public class MenuAdmin {
 		selectorReuniones(Input.inOpc());
 	}
 
+	/**
+	 * Logica del menu de administracion de salas de reuniones
+	 * @param opc
+	 */
 	private static void selectorReuniones(int opc) {
 		switch (opc) {
 		case 1:
@@ -2147,6 +2299,9 @@ public class MenuAdmin {
 		printOtros();
 	}
 	
+	/**
+	 * Elimina salas de reuniones
+	 */
 	private static void deleteReuniones() {
 		System.out.print( 
 				"¿Que sala de reuniones deseas eliminar?\n"
@@ -2159,6 +2314,9 @@ public class MenuAdmin {
 		System.out.print((rSr.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
 	}
 
+	/**
+	 * Modifica una sala de reuniones
+	 */
 	private static void modifyReuniones() {
 		System.out.print( 
 				"\n¿Que sala de reuniones deseas modificar?\n"
@@ -2188,6 +2346,11 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Logica sobre que se va a modifica en una sala de reuniones
+	 * @param opc
+	 * @param aModificar
+	 */
 	private static void selectorModifyReunion(int opc, SalaReunion aModificar) {
 		RepoSalaReunion rSr = new RepoSalaReunion();
 		RepoHotel rHo = new RepoHotel();
@@ -2235,6 +2398,10 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Imprime las salas de reuniones tras un filtro
+	 * @param filtro
+	 */
 	private static void printResultadoFiltroReunion(SalaReunion filtro) {
 		RepoSalaReunion rSr = new RepoSalaReunion();
 		System.out.print( "Hotel\t|\tHabitacion\t|\tTelefono\t|\tPVP\t|\tServicios\n" );
@@ -2253,6 +2420,11 @@ public class MenuAdmin {
 		};
 	}
 	
+	/**
+	 * Logica sobre que sala de reunion se va a modificar
+	 * @param opc
+	 * @return
+	 */
 	private static SalaReunion selectorModifyReuniones(int opc) {
 		SalaReunion aModificar = null;
 		RepoSalaReunion rSr = new RepoSalaReunion();
@@ -2293,6 +2465,9 @@ public class MenuAdmin {
 		return aModificar;
 	}
 
+	/**
+	 * Añade una sala de reuniones
+	 */
 	private static void addReunion() {
 		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
 				+ "¿Tienes los datos? ");
@@ -2314,6 +2489,9 @@ public class MenuAdmin {
 		}
 	}
 
+	/**
+	 * Lista de salas de reuniones
+	 */
 	private static void listaReuniones() {
 		if (!filtroReuniones()) {
 			SalaReunion filtro = new SalaReunion(0, 0, "", 0, null, "");
@@ -2321,6 +2499,10 @@ public class MenuAdmin {
 		}
 	}
 	
+	/**
+	 * Filtro de salas de reunion 
+	 * @return
+	 */
 	private static boolean filtroReuniones() {
 		System.out.print("\n¿Deseas filtrar el resultado? ");
 		boolean respuesta = Input.inYesNo();
@@ -2346,6 +2528,10 @@ public class MenuAdmin {
 		return false;
 	}
 		
+	/**
+	 * Imprime un filtro de salas de reuniones
+	 * @param filtro
+	 */
 	private static void printMenuFiltroReuniones(SalaReunion filtro) {
 		System.out.print(
 				"\n>>> Filtro <<<\n"
@@ -2369,6 +2555,10 @@ public class MenuAdmin {
 		);
 	}
 	
+	/**
+	 * Imprime las salas de reuniones ya filtradas
+	 * @param filtro
+	 */
 	private static void printResultadoFiltroReuniones(SalaReunion filtro) {
 		RepoSalaReunion rSr = new RepoSalaReunion();
 		ArrayList<SalaReunion> lista = rSr.getListaFiltrada(filtro);
@@ -2402,6 +2592,12 @@ public class MenuAdmin {
 		System.out.print("\n");
 	}
 
+	/**
+	 * Logica del filtro de salas de reunion
+	 * @param filtro
+	 * @param opc
+	 * @return
+	 */
 	private static SalaReunion selectorMenuFiltroReuniones(SalaReunion filtro, int opc) {
 		switch (opc) {
 		

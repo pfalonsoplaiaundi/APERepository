@@ -5,6 +5,9 @@ import conectores.ConectMySQL;
 import conectores.RepoCliente;
 import model.Cliente;
 
+/**
+ * INICIO DEL PROGRAMA, clase que logea al usuario o en su defecto crea un nuevo usuario
+ */
 public class Login {
 	
 	public static Cliente user;

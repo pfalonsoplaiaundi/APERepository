@@ -16,23 +16,23 @@ import model.Reserva;
 import model.Sala;
 import model.SalaReunion;
 
+/**
+ * Repositorio de consultas de salas
+ */
 public class RepoSala {
 	
 	private ArrayList<String> SQLScripts = new ArrayList<>();
-	private int idHotel;
-		
-	public int getIdHotel() {
-		return idHotel;
-	}
 
-	public void setIdHotel(int idHotel) {
-		this.idHotel = idHotel;
-	}
-
+	/**
+	 * Constructor
+	 */
 	public RepoSala() {
 		inicializarArray();
 	}
 	
+	/**
+	 * Inicializa el array de scripts
+	 */
 	private void inicializarArray() {
 		
 		// Insertar	0
@@ -139,6 +139,12 @@ public class RepoSala {
 	
 	}
 
+	/**
+	 * Recupera la informacion de una sala
+	 * @param id
+	 * @param num
+	 * @return
+	 */
 	public Sala get(int id, int num) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -167,6 +173,10 @@ public class RepoSala {
 		}		
 	}
 	
+	/**
+	 * Recupera el menu de productos
+	 * @return
+	 */
 	public ArrayList<Habitacion> getMenuProductos() {
 		ArrayList<Habitacion> menuProductos = new ArrayList<>();
 		//String query = SQLScripts.get(5);
@@ -217,6 +227,11 @@ public class RepoSala {
 		return null;
 	}
 
+	/**
+	 * Recupera la sala selecionada en el menu de productos
+	 * @param tipoHab
+	 * @return
+	 */
 	public Habitacion getSeleccionMenuProductos(tipoHab tipoHab) {
 		String query = SQLScripts.get(6);
 	    try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
@@ -237,6 +252,11 @@ public class RepoSala {
 		return null;
 	}
 
+	/**
+	 * Inserta una nueva sala
+	 * @param nuevo
+	 * @return
+	 */
 	public boolean insert(Sala nuevo) {
 		
 		// Revisa si ya existe el cliente
@@ -285,6 +305,11 @@ public class RepoSala {
 		return true;
 	}
 
+	/**
+	 * Comprueba la existencia de una sala
+	 * @param sala
+	 * @return
+	 */
 	private boolean check(Sala sala) {
 
 		String query = "SELECT * FROM sala "

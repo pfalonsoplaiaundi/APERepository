@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import model.EspacioComun;
 
+/**
+ * Conexion a la base de datos que hace las peticiones de espacio comun
+ */
 public class RepoEspacioComun {
 
 	public ArrayList<EspacioComun> getListaFiltrada(EspacioComun filtro) {
@@ -74,7 +77,9 @@ public class RepoEspacioComun {
 	}
 
 	/**
-	 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente. Devuelve true siempre que el usuario exista o haya sido insertado.
+	 * Esta funcion inserta un espacio comun nuevo.
+	 * @param nuevo
+	 * @return
 	 */
 	public boolean insert(EspacioComun nuevo) {
 			
@@ -117,7 +122,11 @@ public class RepoEspacioComun {
 		return true;
 	}
 
-
+	/**
+	 * Comprueba que una sala exista en la base de datos
+	 * @param espacioComun
+	 * @return
+	 */
 	public boolean check(EspacioComun espacioComun) {
 		
 		String query = "SELECT * FROM espaciocomun "
@@ -139,7 +148,7 @@ public class RepoEspacioComun {
 	}
 
 	/**
-	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Esta funcion modifica un espacio comun
 	 */
 	public boolean update(EspacioComun modificaciones) {
 				
@@ -195,6 +204,12 @@ public class RepoEspacioComun {
 		return false;
 	}
 
+	/**
+	 * Recupera de la BBDD informacion de un espacio comun
+	 * @param idHotel
+	 * @param num
+	 * @return
+	 */
 	public EspacioComun get(int idHotel, int num) {
 
 		String query = "SELECT * FROM espaciocomun natural join sala "
@@ -224,9 +239,10 @@ public class RepoEspacioComun {
 		}
 	}
 
-	
 	/**
-	 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Esta funcion borra un espacio comun
+	 * @param aBorrar
+	 * @return
 	 */
 	public boolean delete(EspacioComun aBorrar) {
 	

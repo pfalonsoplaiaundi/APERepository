@@ -254,32 +254,7 @@ public class Input {
 		} while (pass.equals(""));
 		return pass;
     }
-	
-/*	public static String readPassword() {
-        StringBuilder password = new StringBuilder();
-        try {
-            while (true) {
-                char ch = (char) System.in.read(); // Leer un solo carácter
 
-                if (ch == '\n' || ch == '\r') { // Si es Enter, termina la entrada
-                    break;
-                } else if (ch == '\b' || ch == 127) { // Si es Backspace
-                    if (password.length() > 0) {
-                        password.deleteCharAt(password.length() - 1);
-                        System.out.print("\b \b"); // Borra el último '*'
-                    }
-                } else {
-                    password.append(ch);
-                    System.out.print("*"); // Muestra '*' en vez del carácter
-                }
-            }
-            System.out.println(); // Salto de línea al terminar
-        } catch (IOException e) {
-            System.out.println("Error al leer la contraseña.");
-        }
-        return password.toString();
-    } */
-	
 	/**
 	 * Recoge la opcion numerica necesaria para moverse entre menus
 	 * @return la opcion en numero

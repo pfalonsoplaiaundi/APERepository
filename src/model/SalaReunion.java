@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Objeto sala de reuniones
+ */
 public class SalaReunion extends Sala {
 	
 	// Atributos
@@ -15,8 +18,6 @@ public class SalaReunion extends Sala {
 	public void setServicios(String servicios) {
 		this.servicios = servicios;
 	}
-
-
 
 	//-----------------------------------------------------------------------
 	

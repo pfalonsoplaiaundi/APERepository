@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import auxi.Input;
 
+/**
+ * Objeto SALA
+ */
 public class Sala {
 
 	// Enumeracion	
@@ -98,6 +101,57 @@ public class Sala {
 	
 	//-----------------------------------------------------------------------
 	
+	// Metodos basicos
+	@Override
+	public String toString() {
+		return "Capacidad: " + capacidad + "\n" +
+				"En el " + hotel.getNombre() + "\n" +
+				hotel.getCiudad() + " " + hotel.getDir() + "\n" +
+				"Email: " + hotel.getEmail() + "\n" +
+				"Telefono: " + hotel.getTlfno();
+	}
+	
+	//-----------------------------------------------------------------------
+	
+
+	// Metodos propios
+	/**
+	 * Menu de selecion de tipo de sala
+	 */
+	public void printTipo() {
+		// Menu de seleccion
+		System.out.print(
+				"¿Que tipo de sala es?\n"
+				+ "1. Habitacion\n"
+				+ "2. Sala de reuniones\n"
+				+ "3. Espacio comun\n"
+				+ "Selecciona el tipo: "
+		);
+		selectorTipo(Input.inOpc());
+	}
+	
+	/**
+	 * Logica de seleccion de sala
+	 * @param opc
+	 */
+	public void selectorTipo(int opc) {
+		switch (opc) {
+		case 1:
+			this.tipo = tSala.Habitacion;
+		case 2:
+			this.tipo = tSala.SalaReuniones;
+		case 3:
+			this.tipo = tSala.EspaciosComunes;
+		default:
+			this.tipo = null;
+		}
+	}
+	
+	/**
+	 * Convierte un string en un TSala
+	 * @param tipo
+	 * @return
+	 */
 	private tSala tSalaStringToTSala(String tipo) {
 		ArrayList<String> t = new ArrayList<>();
 		t.add("Habitacion");
@@ -112,40 +166,6 @@ public class Sala {
 			default: return null;
 		}
 		
-	}
-	// Metodos propios
-	@Override
-	public String toString() {
-		return "Capacidad: " + capacidad + "\n" +
-				"En el " + hotel.getNombre() + "\n" +
-				hotel.getCiudad() + " " + hotel.getDir() + "\n" +
-				"Email: " + hotel.getEmail() + "\n" +
-				"Telefono: " + hotel.getTlfno();
-	}
-	
-	public void printTipo() {
-		// Menu de seleccion
-		System.out.print(
-				"¿Que tipo de sala es?\n"
-				+ "1. Habitacion\n"
-				+ "2. Sala de reuniones\n"
-				+ "3. Espacio comun\n"
-				+ "Selecciona el tipo: "
-		);
-		selectorTipo(Input.inOpc());
-	}
-	
-	public void selectorTipo(int opc) {
-		switch (opc) {
-		case 1:
-			this.tipo = tSala.Habitacion;
-		case 2:
-			this.tipo = tSala.SalaReuniones;
-		case 3:
-			this.tipo = tSala.EspaciosComunes;
-		default:
-			this.tipo = null;
-		}
 	}
 	
 }

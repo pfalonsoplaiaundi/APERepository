@@ -8,6 +8,9 @@ import model.Sala;
 
 import java.sql.*;
 
+/**
+ * Repositorio de consultas de reserva
+ */
 public class RepoReserva {
 
 	// Atributos	
@@ -242,7 +245,10 @@ public class RepoReserva {
 		return false;
     }
 
-	
+	/**
+	 * Recupera el valor maximo del autoincrement
+	 * @return
+	 */
 	public int getNewID() {
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -261,6 +267,11 @@ public class RepoReserva {
 		}
 	}
 
+	/**
+	 * Recupera una lista de todas las reservas segun un filtro
+	 * @param filtro
+	 * @return
+	 */
 	public ArrayList<Reserva> getListaFiltrada(Reserva filtro) {
 		
 		String query = 
@@ -362,6 +373,11 @@ public class RepoReserva {
 		return null;
 	}
 
+	/**
+	 * Elimina una reserva
+	 * @param aBorrar
+	 * @return
+	 */
 	public boolean delete(Reserva aBorrar) {
 		String query = "DELETE FROM reserva "
 				+ "WHERE codreserva = ?";

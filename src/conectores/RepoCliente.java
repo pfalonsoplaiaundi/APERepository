@@ -5,14 +5,23 @@ import java.util.ArrayList;
 
 import model.*;
 
+/**
+ * Consultas a la base de datos de cliente
+ */
 public class RepoCliente {
 
 	private ArrayList<String> SQLScripts = new ArrayList<>();	
 	
+	/**
+	 * Constructor del repocliente
+	 */
 	public RepoCliente() {
 		inicializarArray();
 	}
 	
+	/**
+	 * Inicializacion del array de scripts
+	 */
 	private void inicializarArray() {
 		
 		// Insertar	0
@@ -186,7 +195,7 @@ public class RepoCliente {
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !checkEquals(original);
+		        return true;
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
@@ -199,7 +208,11 @@ public class RepoCliente {
 		return false;
 	}
 	
-
+	/**
+	 * Comprueba la existencia en la base de datos de un cliente
+	 * @param cliente
+	 * @return
+	 */
 	public boolean check(Cliente cliente) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -218,15 +231,12 @@ public class RepoCliente {
 		}
 		return false;
 	}
-	
-	public boolean checkEquals(Cliente cliente) {
-		/*
-		 * WIP
-		 */
-		
-		return false;
-	}
 
+	/**
+	 * Consigue los datos de un cliente de la base de datos
+	 * @param DNI
+	 * @return
+	 */
 	public Cliente get(String DNI) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -255,6 +265,12 @@ public class RepoCliente {
 		}
 	}
 
+	/**
+	 * Comprueba las credenciales de un cliente sean correctas
+	 * @param user
+	 * @param pass
+	 * @return
+	 */
 	public boolean checkCreden(String user, String pass) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -275,6 +291,12 @@ public class RepoCliente {
 		}
 	}
 
+	/**
+	 * Devuelve un array con los clientes filtrada por las necesidades
+	 * @param filtro
+	 * @param trabajador
+	 * @return
+	 */
 	public ArrayList<Cliente> getListaFiltrada(Cliente filtro, int trabajador) {
 		String query = 
 				"SELECT  "
@@ -354,6 +376,10 @@ public class RepoCliente {
 		
 	}
 
+	/**
+	 * Recupera de la base de datos todos los clientes
+	 * @return
+	 */
 	public ArrayList<Cliente> getLista() {
 		
 		String query = 

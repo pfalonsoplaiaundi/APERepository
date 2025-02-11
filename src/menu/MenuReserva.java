@@ -4,8 +4,15 @@ import conectores.*;
 import model.*;
 import model.Reserva;
 
+/**
+ * Menu para confirmar la reserva antes de meterla en el carro
+ */
 public class MenuReserva {
 
+	/**
+	 * Imprime el menu
+	 * @param tipoDeHab
+	 */
 	public static void print(String tipoDeHab) {
 		
 		System.out.print(

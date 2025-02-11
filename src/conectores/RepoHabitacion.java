@@ -8,19 +8,27 @@ import java.util.ArrayList;
 import menu.MenuCarrito;
 import menu.MenuPrincipal;
 import menu.MenuProductos;
-import model.Cliente;
 import model.HabDisponible;
 import model.Habitacion;
 import model.Reserva;
 
+/**
+ * Consultas de la BBDD de habitaciones
+ */
 public class RepoHabitacion {
 	
 	private ArrayList<String> SQLScripts = new ArrayList<>();	
 	
+	/**
+	 * Constructor del repositorio
+	 */
 	public RepoHabitacion() {
 		inicializarArray();
 	}
 	
+	/**
+	 * Inicializa el array de scripts
+	 */
 	private void inicializarArray() {
 		
 		// Insertar	0
@@ -77,7 +85,9 @@ public class RepoHabitacion {
 	}
 	
 	/**
-	 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente. Devuelve true siempre que el usuario exista o haya sido insertado.
+	 * Inserta una habitacion nueva
+	 * @param nuevo
+	 * @return
 	 */
 	public boolean insert(Habitacion nuevo) {
 			
@@ -120,7 +130,9 @@ public class RepoHabitacion {
 	}
 
 	/**
-	 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Elimina una habitacion de la bbdd
+	 * @param aBorrar
+	 * @return
 	 */
 	public boolean delete(Habitacion aBorrar) {
 				
@@ -152,7 +164,9 @@ public class RepoHabitacion {
 	}
 
 	/**
-	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Modifica una habitacion de la base de datos
+	 * @param modificaciones
+	 * @return
 	 */
 	public boolean update(Habitacion modificaciones) {
 	/*
@@ -211,7 +225,11 @@ public class RepoHabitacion {
 		return false;
 	}
 	
-
+	/**
+	 * Comprueba la existencia de una habitacion
+	 * @param habitacion
+	 * @return
+	 */
 	public boolean check(Habitacion habitacion) {
 		
 		if (this.SQLScripts.isEmpty()) {
@@ -232,15 +250,13 @@ public class RepoHabitacion {
 		}
 		return false;
 	}
-	
-	public boolean checkEquals(Cliente cliente) {
-		/*
-		 * WIP
-		 */
-		
-		return false;
-	}
 
+	/**
+	 * Recuperas los datos de una habitacion
+	 * @param idHotel
+	 * @param num
+	 * @return
+	 */
 	public Habitacion get(int idHotel, int num) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -269,7 +285,11 @@ public class RepoHabitacion {
 		}
 	}
 	
-
+	/**
+	 * Busca la habitacion libre de un tipo mas cercana
+	 * @param tipoDeHab
+	 * @return
+	 */
 	public Habitacion getByTypeAndFirstDate(String tipoDeHab) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -338,6 +358,12 @@ public class RepoHabitacion {
 		}
 	}
 
+	/**
+	 * Recupera la informacion de las habitaciones y su disponibilidad actual segun un filtro
+	 * @param filtro
+	 * @param disponible
+	 * @return
+	 */
 	public ArrayList<HabDisponible> getListaFiltrada(Habitacion filtro, int disponible) {
 		String query = 
 				"SELECT  "

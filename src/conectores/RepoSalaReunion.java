@@ -7,8 +7,16 @@ import java.util.ArrayList;
 
 import model.SalaReunion;
 
+/**
+ * Repositorio de consultas de salas de reunion
+ */
 public class RepoSalaReunion {
 
+	/**
+	 * Elimina una sala de reunion
+	 * @param aBorrar
+	 * @return
+	 */
 	public boolean delete(SalaReunion aBorrar) {
 		
 		// Revisa si existe el cliente
@@ -37,6 +45,11 @@ public class RepoSalaReunion {
 		return false;
 	}
 
+	/**
+	 * Comprueba la existencia de una sala de reunion
+	 * @param salaReunion
+	 * @return
+	 */
 	public boolean check(SalaReunion salaReunion) {
 		
 		String query = "SELECT * FROM salareuniones "
@@ -57,9 +70,10 @@ public class RepoSalaReunion {
 		return false;
 	}
 
-
 	/**
-	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Modifica los datos de una sala de reuniones
+	 * @param modificaciones
+	 * @return
 	 */
 	public boolean update(SalaReunion modificaciones) {
 				
@@ -115,6 +129,12 @@ public class RepoSalaReunion {
 		return false;
 	}
 
+	/**
+	 * Recupera la informacion de una sala de reuniones
+	 * @param idHotel
+	 * @param num
+	 * @return
+	 */
 	public SalaReunion get(int idHotel, int num) {
 
 		String query = "SELECT * FROM salareuniones natural join sala "
@@ -144,7 +164,11 @@ public class RepoSalaReunion {
 		}
 	}
 
-	
+	/**
+	 * Recupera una lista con salas de reunion
+	 * @param filtro
+	 * @return
+	 */
 	public ArrayList<SalaReunion> getListaFiltrada(SalaReunion filtro) {
 		String query = 
 				"SELECT  "
@@ -210,7 +234,9 @@ public class RepoSalaReunion {
 	}
 
 	/**
-	 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente. Devuelve true siempre que el usuario exista o haya sido insertado.
+	 * Inserta una nueva sala de reuniones
+	 * @param salaReunion
+	 * @return
 	 */
 	public boolean insert(SalaReunion salaReunion) {
 			
