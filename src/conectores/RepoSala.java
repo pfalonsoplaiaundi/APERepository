@@ -86,7 +86,7 @@ public class RepoSala {
 					+ "sala "
 				+ "WHERE "
 					+ "id = ? and "
-					+ "num = ?"
+					+ "num = ?;"
 				);
 		
 		// Otros		
@@ -194,7 +194,7 @@ public class RepoSala {
 			query += "\"\"";
 		} else {
 			for (int i = 0 ; i < MenuCarrito.carrito.size() ; i++) {
-				query += (i == MenuCarrito.carrito.size()) ? "? " : "?, ";
+				query += (i+1 == MenuCarrito.carrito.size()) ? "? " : "?, ";
 				
 			}
 		}
@@ -214,7 +214,7 @@ public class RepoSala {
 		    		pS.setInt(i+5, r.getSala().getNum());
 		    	}
 			}
-			// System.out.print("\n" + pS.toString() + "\n");
+			
 	    	ResultSet rS = pS.executeQuery();
 	    	while (rS.next()) {
 	    		Habitacion h = new Habitacion(MenuPrincipal.hotel, 0, 0, "",  rS.getDouble(2), rS.getString(1));

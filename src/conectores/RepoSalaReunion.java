@@ -23,7 +23,7 @@ public class RepoSalaReunion {
 		if(check(aBorrar)) {
 
 			String query = "DELETE FROM sala "
-					+ "WHERE id = ? and num = ?";
+					+ "WHERE id = ? and num = ?;";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
@@ -53,7 +53,7 @@ public class RepoSalaReunion {
 	public boolean check(SalaReunion salaReunion) {
 		
 		String query = "SELECT * FROM salareuniones "
-				+ " WHERE id = ? and num = ?";
+				+ " WHERE id = ? and num = ?;";
 		
 		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 	        preparedStatement.setInt(1, salaReunion.getHotel().getID());
@@ -138,7 +138,7 @@ public class RepoSalaReunion {
 	public SalaReunion get(int idHotel, int num) {
 
 		String query = "SELECT * FROM salareuniones natural join sala "
-				+ " WHERE id = ? and num = ?";
+				+ " WHERE id = ? and num = ?;";
 		
 		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
 			pS.setInt(1, idHotel);
@@ -248,7 +248,7 @@ public class RepoSalaReunion {
 			
 			String query = "INSERT INTO salaReuniones (id, num, servicios) "
 					+ "VALUES "
-					+ "(?, ?, ?)";
+					+ "(?, ?, ?);";
 			
 			//Si no existe el cliente, hace la consulta a la BBDD
 	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {

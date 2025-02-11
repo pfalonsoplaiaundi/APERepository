@@ -321,6 +321,8 @@ public class Input {
 		fecIniSD = StringDate.dayFormat(fecIniSD, fecIniSM, fecIniSY);
 		fecIniS = fecIniSY + "-" + fecIniSM + "-" + fecIniSD;
 		
+		if (fecIniSY.equals("") || fecIniSM.equals("") || fecIniSD.equals("")) return inFecIni();
+		
 		Date fecIni = Date.valueOf(fecIniS);
 		return fecIni;
 	}
@@ -349,6 +351,9 @@ public class Input {
 		
 		fecFinSM = StringDate.monthFormat(fecFinSM);
 		fecFinSD = StringDate.dayFormat(fecFinSD, fecFinSM, fecFinSY);
+		
+		if (fecFinSY.equals("") || fecFinSM.equals("") || fecFinSD.equals("")) return inFecFin();
+		
 		fecFinS = fecFinSY + "-" + fecFinSM + "-" + fecFinSD;
 		
 		Date fecFin = Date.valueOf(fecFinS);

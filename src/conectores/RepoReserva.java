@@ -57,7 +57,7 @@ public class RepoReserva {
 		
 		// Traer informarcion 4	
 		this.SQLScripts.add( "SELECT * FROM Reserva "
-				+ "WHERE codreserva = ?"
+				+ "WHERE codreserva = ?;"
 				);
 		
 		// Otros

@@ -24,7 +24,7 @@ public class MenuProductos {
 	/**
 	 * Apoyo: ¿Que dia es hoy?
 	 */
-	private static Date fecNow = new Date(System.currentTimeMillis());
+	private static Date fecNow = new Date(System.currentTimeMillis() - 86400000);
 	
 	/**
 	 * Imprime el menu

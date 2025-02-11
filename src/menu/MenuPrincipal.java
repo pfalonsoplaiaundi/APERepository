@@ -43,12 +43,7 @@ public class MenuPrincipal {
 		int opc = Input.inOpc();
 		
 		if (opc == 0) {
-			System.out.print("¿Quieres deslogearte? ");
-			if (Input.inYesNo()) {
-				Login.main(null);
-			} else {
-				print();
-			}
+			MenuCarrito.print();
 		} else if (opc == -1 && Login.user.isbTrabajador()) {
 			MenuAdmin.print();
 		} else if (opc <= i && opc > 0) {
@@ -56,8 +51,12 @@ public class MenuPrincipal {
 			hotel = rH.get(idhotel);			
 			MenuProductos.print(hotel.getID());
 		} else {
-			Login.main(null);
-		}
+			System.out.print("¿Quieres deslogearte? ");
+			if (Input.inYesNo()) {
+				Login.main(null);
+			} else {
+				print();
+			}		}
 	}
 	
 }

@@ -131,7 +131,7 @@ public class RepoEspacioComun {
 	public boolean check(EspacioComun espacioComun) {
 		
 		String query = "SELECT * FROM espacioscomunes "
-				+ " WHERE id = ? and num = ?";
+				+ " WHERE id = ? and num = ?;";
 		
 		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 	        preparedStatement.setInt(1, espacioComun.getHotel().getID());
@@ -216,7 +216,7 @@ public class RepoEspacioComun {
 	public EspacioComun get(int idHotel, int num) {
 
 		String query = "SELECT * FROM espacioscomunes natural join sala "
-				+ " WHERE id = ? and num = ?";
+				+ " WHERE id = ? and num = ?;";
 		
 		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
 			pS.setInt(1, idHotel);
@@ -253,7 +253,7 @@ public class RepoEspacioComun {
 		if(check(aBorrar)) {
 
 			String query = "DELETE FROM sala "
-					+ "WHERE id = ? and num = ?";
+					+ "WHERE id = ? and num = ?;";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {

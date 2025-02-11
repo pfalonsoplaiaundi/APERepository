@@ -22,14 +22,21 @@ public class MenuReserva {
 		RepoHabitacion rH = new RepoHabitacion();
 		Habitacion h = rH.getByTypeAndFirstDate(tipoDeHab);
 		RepoReserva rR = new RepoReserva();
+		
+        long diffInMillis = MenuProductos.fecFin.getTime() - MenuProductos.fecIni.getTime();
+
+        // Convertir a días
+        long diffInDays = diffInMillis / (1000 * 60 * 60 * 24);
+		
 		Reserva r = new Reserva(
 			rR.getNewID(), 
 			MenuProductos.fecIni, 
 			MenuProductos.fecFin, 
 			Login.user, 
 			h,
-			Login.user.aplicarDcto(h.getPvp())
+			Login.user.aplicarDcto(h.getPvp()*diffInDays)
 		);
+		
 		MenuCarrito.addCarrito(r);
 		for(Reserva c : MenuCarrito.carrito) {
 			System.out.print(

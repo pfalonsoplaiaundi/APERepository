@@ -26,12 +26,12 @@ public class RepoCliente {
 		
 		// Insertar	0
 		this.SQLScripts.add( "INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VALUES\r\n"
-				+ "(?, ?, ?, ?, ?, ?, ?, SHA2(?, 256))"
+				+ "(?, ?, ?, ?, ?, ?, ?, SHA2(?, 256));"
 				);
 		
 		// Eliminar 1
-		this.SQLScripts.add( "DELETE cliente"
-				+ "WHERE DNI = ?"
+		this.SQLScripts.add( "DELETE FROM cliente"
+				+ "WHERE DNI = ?;"
 				);
 		
 		// Modificar 2		
@@ -47,7 +47,7 @@ public class RepoCliente {
 		
 		// Traer informarcion 4	
 		this.SQLScripts.add( "SELECT * FROM Cliente"
-				+ " WHERE DNI = ?"
+				+ " WHERE DNI = ?;"
 				);
 		
 		// Otros

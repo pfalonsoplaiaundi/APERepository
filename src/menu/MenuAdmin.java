@@ -1716,7 +1716,7 @@ public class MenuAdmin {
 	 * @return
 	 */
 	private static boolean filtroHabitaciones() {
-		System.out.print("\n¿Deseas filtrar el resultado? (Si/no): ");
+		System.out.print("\n¿Deseas filtrar el resultado? ");
 		boolean respuesta = Input.inYesNo();
 		if (respuesta) {
 			
@@ -1734,15 +1734,18 @@ public class MenuAdmin {
 				case 1:
 					RepoHotel rH = new RepoHotel();
 					filtro.setHotel(rH.get(rH.getPKByName(Input.inNombre())));
-				
+					break;
+					
 				case 2:
 					filtro.setTipo(filtroTipoHab());
+					break;
 					
 				case 3:
 					System.out.print(
-							"¿Quieres que esten libre u ocupadas?"
+							"¿Quieres que esten libre u ocupadas?\n"
 							+ "1. Libres\n"
 							+ "2. Ocupadas\n"
+							+ "Elige la opcion que desee: "
 							);
 					opc = Input.inOpc();
 					switch (opc) {
@@ -1753,9 +1756,11 @@ public class MenuAdmin {
 					default:
 						disponible = -1;
 					}
+					break;
 					
 				case 4:
 					filtro.setPvp(Input.inPvp());
+					break;
 					
 				default:
 					break;
@@ -1781,11 +1786,12 @@ public class MenuAdmin {
 	private static void printMenuFiltroHabitaciones(Habitacion filtro, int disponible) {
 		System.out.print(
 				"\n"
-				+ ((filtro.getHotel() == null) ? "1. Por hotel\n" : filtro.getHotel().getNombre())
-				+ ((filtro.getTipo() == tipoHab.desconocido) ? "2. Por tipo\n" : filtro.getTipo().toString())
-				+ ((disponible == -1) ? "3. Por disponibilidad\n" : ((disponible == 1) ? "Habitaciones libres" : "Habitaciones ocupadas"))
-				+ ((filtro.getPvp() == 0) ? "4. Por precio\n" : ("Al menos " + filtro.getPvp() + "€"))
+				+ ((filtro.getHotel() == null) ? "1. Por hotel\n" : filtro.getHotel().getNombre() + "\n")
+				+ ((filtro.getTipo() == tipoHab.desconocido) ? "2. Por tipo\n" : filtro.getTipo().toString() + "\n")
+				+ ((disponible == -1) ? "3. Por disponibilidad\n" : ((disponible == 1) ? "Habitaciones libres\n" : "Habitaciones ocupadas\n"))
+				+ ((filtro.getPvp() == 0) ? "4. Por precio\n" : ("Al menos " + filtro.getPvp() + "€\n"))
 				+ "0. Para continuar\n"
+				+ "Seleccione la opcion que desee: "
 		);
 	}
 	

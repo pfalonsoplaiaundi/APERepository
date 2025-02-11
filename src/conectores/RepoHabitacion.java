@@ -55,7 +55,7 @@ public class RepoHabitacion {
 		
 		// Traer informarcion 4	
 		this.SQLScripts.add( "SELECT * FROM habitacion natural join sala "
-				+ " WHERE id = ? and num = ?"
+				+ " WHERE id = ? and num = ?;"
 				);
 		
 		// Otros
@@ -151,7 +151,7 @@ public class RepoHabitacion {
 		if(check(aBorrar)) {
 			
 			String query = "DELETE FROM sala "
-					+ "WHERE id = ? and num = ?";
+					+ "WHERE id = ? and num = ?;";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
@@ -215,7 +215,7 @@ public class RepoHabitacion {
 			
 			String query = "UPDATE habitacion "
 					+ "SET tipoHab = ? "
-					+ " WHERE id = ? and num = ?";
+					+ " WHERE id = ? and num = ?;";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
@@ -332,7 +332,7 @@ public class RepoHabitacion {
 			query += "\"\"";
 		} else {
 			for (int i = 0 ; i < MenuCarrito.carrito.size(); i++) {
-				query += (i == MenuCarrito.carrito.size()) ? "? " : "?, ";
+				query += (i+1 == MenuCarrito.carrito.size()) ? "? " : "?, ";
 				
 			}
 		}	

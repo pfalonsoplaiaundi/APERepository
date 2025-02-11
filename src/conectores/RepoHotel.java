@@ -48,7 +48,7 @@ public class RepoHotel {
 		
 		// Traer informarcion 4	
 		SQLScripts.add( "SELECT * FROM hotel "
-				+ "WHERE id = ?"
+				+ "WHERE id = ?;"
 				);
 		
 		// Otros		
@@ -128,7 +128,7 @@ public class RepoHotel {
 					"DELETE FROM "
 						+ "hotel "
 					+ "WHERE "
-						+ "id = ?";
+						+ "id = ?;";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
@@ -185,7 +185,7 @@ public class RepoHotel {
 		
 		String query = "UPDATE hotel "
 				+ "SET id = ?, nom = ?, ciu = ?, dir = ?, tlfno = ?, email = ? "
-				+ "WHERE id = ?";
+				+ "WHERE id = ?;";
 		
 		//Si existe el cliente, ejecuta el borrado en la BBDD
 		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
@@ -220,7 +220,7 @@ public class RepoHotel {
 		}
 		
     	String query = "SELECT * FROM hotel "
-				+ "WHERE id = ?";
+				+ "WHERE id = ?;";
     	
 		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 	        preparedStatement.setInt(1, hotel.getID());
@@ -309,8 +309,7 @@ public class RepoHotel {
 		) { 
 			pS.setString(1, nom);	
 			ResultSet rS = pS.executeQuery();
-			rS.next();
-			return rS.getInt(1);
+			return (rS.next()) ? rS.getInt(1) : 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
