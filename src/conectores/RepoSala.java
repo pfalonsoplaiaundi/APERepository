@@ -10,7 +10,6 @@ import menu.MenuPrincipal;
 import menu.MenuProductos;
 import model.EspacioComun;
 import model.Habitacion;
-import model.Hotel;
 import model.Habitacion.tipoHab;
 import model.Sala.tSala;
 import model.Reserva;

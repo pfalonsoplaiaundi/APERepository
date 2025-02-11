@@ -1876,8 +1876,7 @@ public class MenuAdmin {
 	 */
 	private static void printOtros() {
 		System.out.print(
-				"~~~ Menu de administración / Otros ~~~\n"
-				+ "\n"
+				"\n~~~ Menu de administración / Otros ~~~\n"
 				+ "1. Salas de reunion\n"
 				+ "2. Espacios comunes\n"
 				+ "0. Volver atras\n"
@@ -1911,7 +1910,7 @@ public class MenuAdmin {
 	 */
 	private static void printComunes() {
 		System.out.print(
-				"~~~ Menu de administración / Otros / Espacios comunes ~~~\n"
+				"\n~~~ Menu de administración / Otros / Espacios comunes ~~~\n"
 				+ "1. Lista\n"
 				+ "2. Agregar\n"
 				+ "3. Modificar\n"
@@ -1977,7 +1976,7 @@ public class MenuAdmin {
 		EspacioComun aModificar = selectorModifyComunes(Input.inOpc());
 		if (aModificar == null) {
 			System.out.print("\n>>> ERROR: Cliente no valido <<<\n");
-			modifyReserva();
+			modifyComun();
 		} else {
 			System.out.print(
 					"\n~~~ Datos actuales ~~~\n" +
@@ -2047,28 +2046,6 @@ public class MenuAdmin {
 			modifyCliente();	
 		}
 	}
-
-	/**
-	 * Imprime una tabla de espacios comunes tras un filtro
-	 * @param filtro
-	 */
-	private static void printResultadoFiltroComun(EspacioComun filtro) {
-		RepoEspacioComun rEc = new RepoEspacioComun();
-		System.out.print( "Hotel\t|\tHabitacion\t|\tTelefono\t|\tPVP\t|\tTipo\n" );
-		for(EspacioComun e : rEc.getListaFiltrada(filtro)) {
-			int i = 0;
-			System.out.print(
-					e.getHotel().getNombre() + "\t|\t" + 
-					e.getNum() + "\t|\t" +
-					e.getTlfno() + "\t|\t" +
-					e.getPvp() + "€\t|\t" +
-					e.getTipo().toString() + "\n" 
-					
-				);
-			i++;
-			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------\n");
-		};
-	}
 	
 	/**
 	 * Logica sobre que espacio comun va a ser modificado
@@ -2086,7 +2063,7 @@ public class MenuAdmin {
 		case 1:
 			int idHotel = Input.inID();
 			filtro = new EspacioComun(0, 0, "", 0, rHo.get(idHotel), "");
-			printResultadoFiltroComun(filtro);
+			printResultadoFiltroComunes(filtro);
 			
 			// Elige el cliente por Numero
 			System.out.print("Seleccione ");
@@ -2097,7 +2074,7 @@ public class MenuAdmin {
 		case 2:
 			int num = Input.inNum();
 			filtro = new EspacioComun(num, 0, "", 0, null, "");
-			printResultadoFiltroComun(filtro);
+			printResultadoFiltroComunes(filtro);
 			
 			// Elige el cliente por Hotel
 			System.out.print("Seleccione ");
@@ -2196,10 +2173,12 @@ public class MenuAdmin {
 				// 2. Por hotel
 				+ 
 				(
+				(filtro.getHotel() == null) ?
+					"2. Por hotel\n" : (
 					(filtro.getHotel().getID() == 0) ?
-						"2. Por ciudad\n" :
+						"2. Por hotel\n" :
 						filtro.getHotel().getID() + "\n"
-				)
+				))
 				
 				+ "0. Para continuar\n"
 		);
@@ -2328,7 +2307,7 @@ public class MenuAdmin {
 				);
 		SalaReunion aBorrar = selectorModifyReuniones(Input.inOpc());
 		RepoSalaReunion rSr = new RepoSalaReunion();
-		System.out.print((rSr.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
+		System.out.print((rSr.delete(aBorrar)) ? "Borrado correctamente\n" : "Error al eliminar\n");
 	}
 
 	/**
@@ -2344,7 +2323,7 @@ public class MenuAdmin {
 		SalaReunion aModificar = selectorModifyReuniones(Input.inOpc());
 		if (aModificar == null) {
 			System.out.print("\n>>> ERROR: Sala de reuniones no valido <<<\n");
-			modifyReserva();
+			modifyReuniones();
 		} else {
 			System.out.print(
 					"\n~~~ Datos actuales ~~~\n" +
@@ -2414,28 +2393,6 @@ public class MenuAdmin {
 			modifyCliente();	
 		}
 	}
-
-	/**
-	 * Imprime las salas de reuniones tras un filtro
-	 * @param filtro
-	 */
-	private static void printResultadoFiltroReunion(SalaReunion filtro) {
-		RepoSalaReunion rSr = new RepoSalaReunion();
-		System.out.print( "Hotel\t|\tHabitacion\t|\tTelefono\t|\tPVP\t|\tServicios\n" );
-		for(SalaReunion e : rSr.getListaFiltrada(filtro)) {
-			int i = 0;
-			System.out.print(
-					e.getHotel().getNombre() + "\t|\t" + 
-					e.getNum() + "\t|\t" +
-					e.getTlfno() + "\t|\t" +
-					e.getPvp() + "€\t|\t" +
-					e.getServicios() + "\n" 
-					
-				);
-			i++;
-			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------\n");
-		};
-	}
 	
 	/**
 	 * Logica sobre que sala de reunion se va a modificar
@@ -2453,7 +2410,7 @@ public class MenuAdmin {
 		case 1:
 			int idHotel = Input.inID();
 			filtro = new SalaReunion(0, 0, "", 0, rHo.get(idHotel), "");
-			printResultadoFiltroReunion(filtro);
+			printResultadoFiltroReuniones(filtro);
 			
 			// Elige el cliente por Numero
 			System.out.print("Seleccione ");
@@ -2464,7 +2421,7 @@ public class MenuAdmin {
 		case 2:
 			int num = Input.inNum();
 			filtro = new SalaReunion(num, 0, "", 0, null, "");
-			printResultadoFiltroReunion(filtro);
+			printResultadoFiltroReuniones(filtro);
 			
 			// Elige el cliente por Hotel
 			System.out.print("Seleccione ");
@@ -2497,7 +2454,7 @@ public class MenuAdmin {
 					Input.inTelefono(),
 					Input.inPvp(),
 					rHo.get(Input.inID()),
-					Input.inTipoComun()
+					Input.inServicios()
 					);
 			rSr.insert(s);
 			System.out.println("");
@@ -2556,17 +2513,19 @@ public class MenuAdmin {
 				// 1. Por numero		
 				+ 														 
 				((filtro.getNum() == 0) ?
-						"1. Por nombre\n" :
+						"1. Por numero de sala\n" :
 						filtro.getNum() + "\n"
 				)
 				
 				// 2. Por hotel
 				+ 
 				(
+				(filtro.getHotel() == null) ?
+					"2. Por hotel\n" : (
 					(filtro.getHotel().getID() == 0) ?
-						"2. Por ciudad\n" :
+						"2. Por hotel\n" :
 						filtro.getHotel().getID() + "\n"
-				)
+				))
 				
 				+ "0. Para continuar\n"
 		);
@@ -2598,7 +2557,7 @@ public class MenuAdmin {
 					)
 					+ lista.get(i).getNum() + "\t\t| "
 					+ lista.get(i).getCapacidad() + "\t\t| "
-					+ lista.get(i).getPvp() + "\t\t| "
+					+ ((lista.get(i).getPvp() >= 100) ? lista.get(i).getPvp() + "€\t| " : lista.get(i).getPvp() + "€\t\t| ")
 					+ lista.get(i).getTlfno() + "\t| "
 					+ lista.get(i).getServicios() + "\n"
 			);

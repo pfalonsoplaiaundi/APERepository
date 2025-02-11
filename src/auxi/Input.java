@@ -35,6 +35,11 @@ public class Input {
         }
 	}
 	
+	public static String inPassLibre() {
+		System.out.print("Password: ");
+		return scn.nextLine();
+	}
+	
 	/**
 	 * Pregunta por apellido/os, no admite apellidos con numeros
 	 * @return todos los apellidos

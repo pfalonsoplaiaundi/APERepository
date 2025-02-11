@@ -89,15 +89,16 @@ public class RepoEspacioComun {
 			RepoSala rSa = new RepoSala();
 			rSa.insert(nuevo);
 			
-			String query = "INSERT INTO espacioComun (id, num, tipo) "
+			String query = "INSERT INTO espaciosComunes (id, num, tipo) "
 					+ "VALUES "
-					+ "(?, ?, ?)";
+					+ "(?, ?, ?);";
 			
 			//Si no existe el cliente, hace la consulta a la BBDD
 	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
-	            preparedStatement.setInt(1, nuevo.getNum());
-	            preparedStatement.setInt(2, nuevo.getCapacidad());
+	            preparedStatement.setInt(1, nuevo.getHotel().getID());
+	            preparedStatement.setInt(2, nuevo.getNum());
 	            preparedStatement.setString(3, nuevo.getTipo());
+	            
 	            preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
@@ -129,7 +130,7 @@ public class RepoEspacioComun {
 	 */
 	public boolean check(EspacioComun espacioComun) {
 		
-		String query = "SELECT * FROM espaciocomun "
+		String query = "SELECT * FROM espacioscomunes "
 				+ " WHERE id = ? and num = ?";
 		
 		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
@@ -176,18 +177,20 @@ public class RepoEspacioComun {
 		// Revisa si existe el cliente
 		if(check(original)) {
 			
-			String query = "UPDATE espaciocomun "
-					+ "SET id = ?, num = ?, tipoHab = ? "
+			RepoSala rSa = new RepoSala();
+			rSa.update(modificaciones);
+			
+			String query = "UPDATE espacioscomunes "
+					+ "SET tipo = ? "
 					+ "WHERE id = ? and num = ? ;";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
-		        preparedStatement.setInt(1, original.getHotel().getID());
-		        preparedStatement.setInt(2, original.getNum());
-		        preparedStatement.setInt(3, original.getCapacidad());
-		        preparedStatement.setString(4, original.getTlfno());
-		        preparedStatement.setDouble(5, original.getPvp());
-		        preparedStatement.setString(6, original.getTipo().toString());
+		        preparedStatement.setString(1, original.getTipo());
+		        preparedStatement.setInt(2, original.getHotel().getID());
+		        preparedStatement.setInt(3, original.getNum());
+		        System.out.println(preparedStatement);
+		        
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
@@ -195,7 +198,7 @@ public class RepoEspacioComun {
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al actualizar el espacio comun");
+				System.out.println("Error al actualizar el espacio comun" +e);
 				return false;
 			}
 		}
@@ -212,7 +215,7 @@ public class RepoEspacioComun {
 	 */
 	public EspacioComun get(int idHotel, int num) {
 
-		String query = "SELECT * FROM espaciocomun natural join sala "
+		String query = "SELECT * FROM espacioscomunes natural join sala "
 				+ " WHERE id = ? and num = ?";
 		
 		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
@@ -249,7 +252,7 @@ public class RepoEspacioComun {
 		// Revisa si existe el cliente
 		if(check(aBorrar)) {
 
-			String query = "DELETE FROM espacioscomunes "
+			String query = "DELETE FROM sala "
 					+ "WHERE id = ? and num = ?";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD

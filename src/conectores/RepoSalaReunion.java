@@ -22,7 +22,7 @@ public class RepoSalaReunion {
 		// Revisa si existe el cliente
 		if(check(aBorrar)) {
 
-			String query = "DELETE FROM espacioscomunes "
+			String query = "DELETE FROM sala "
 					+ "WHERE id = ? and num = ?";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
@@ -32,7 +32,7 @@ public class RepoSalaReunion {
 	            preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
-		        return !check(aBorrar);
+		        return true;
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
@@ -101,26 +101,26 @@ public class RepoSalaReunion {
 		// Revisa si existe el cliente
 		if(check(original)) {
 			
+			RepoSala rSa = new RepoSala();
+			rSa.update(modificaciones);
+			
 			String query = "UPDATE salareuniones "
-					+ "SET id = ?, num = ?, servicios = ? "
+					+ "SET servicios = ? "
 					+ "WHERE id = ? and num = ? ;";
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
-		        preparedStatement.setInt(1, original.getHotel().getID());
-		        preparedStatement.setInt(2, original.getNum());
-		        preparedStatement.setInt(3, original.getCapacidad());
-		        preparedStatement.setString(4, original.getTlfno());
-		        preparedStatement.setDouble(5, original.getPvp());
-		        preparedStatement.setString(6, original.getServicios().toString());
+		        preparedStatement.setString(1, original.getServicios());
+		        preparedStatement.setInt(2, original.getHotel().getID());
+		        preparedStatement.setInt(3, original.getNum());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !check(original);
+		        return true;
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al actualizar el espacio comun");
+				System.out.println("Error al actualizar el espacio comun" + e);
 				return false;
 			}
 		}
@@ -183,25 +183,25 @@ public class RepoSalaReunion {
 					+ "JOIN sala s USING(id, num) "
 					+ "JOIN HOTEL H USING(ID) "
 				+ "WHERE "
-					+ "(h.nom = ? or ? = \"\") and "
-					+ "(h.ciu = ? or ? = \"\") "
+					+ "(s.num = ? or ? = 0) and "
+					+ "(s.id = ? or ? = 0) "
 				+ "ORDER BY "
 					+ "h.id ASC, "
 					+ "s.num ASC;";
 		
 		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
 			
-			if (filtro.getHotel() != null && !filtro.getHotel().getNombre().equals("")) {
-				pS.setString(1, filtro.getHotel().getNombre());
-				pS.setString(2, filtro.getHotel().getNombre());
+			if (filtro.getNum() != 0) {
+				pS.setInt(1, filtro.getNum());
+				pS.setInt(2, filtro.getNum());
 			} else {
-				pS.setString(1, "");
-				pS.setString(2, "");
+				pS.setInt(1, 0);
+				pS.setInt(2, 0);
 			}
 				
-			if (filtro.getHotel() != null && !filtro.getHotel().getCiudad().equals("")) {
-				pS.setString(3, filtro.getHotel().getCiudad());
-				pS.setString(4, filtro.getHotel().getCiudad());
+			if (filtro.getHotel() != null && filtro.getHotel().getID() != 0 ) {
+				pS.setInt(3, filtro.getHotel().getID());
+				pS.setInt(4, filtro.getHotel().getID());
 			} else {
 				pS.setString(3, "");
 				pS.setString(4, "");
@@ -252,8 +252,8 @@ public class RepoSalaReunion {
 			
 			//Si no existe el cliente, hace la consulta a la BBDD
 	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
-	            preparedStatement.setInt(1, salaReunion.getNum());
-	            preparedStatement.setInt(2, salaReunion.getCapacidad());
+	            preparedStatement.setInt(1, salaReunion.getHotel().getID());
+	            preparedStatement.setInt(2, salaReunion.getNum());
 	            preparedStatement.setString(3, salaReunion.getServicios());
 	            preparedStatement.executeUpdate();
 		        
