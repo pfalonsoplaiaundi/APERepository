@@ -8,10 +8,13 @@ import java.util.ArrayList;
 import menu.MenuCarrito;
 import menu.MenuPrincipal;
 import menu.MenuProductos;
+import model.EspacioComun;
 import model.Habitacion;
 import model.Habitacion.tipoHab;
+import model.Sala.tSala;
 import model.Reserva;
 import model.Sala;
+import model.SalaReunion;
 
 public class RepoSala {
 	
@@ -232,6 +235,74 @@ public class RepoSala {
 	    	e.printStackTrace();
 	    }
 		return null;
+	}
+
+	public boolean insert(Sala nuevo) {
+		
+		// Revisa si ya existe el cliente
+		if(!check(nuevo)) {
+			
+			if (nuevo.getClass().equals(Habitacion.class)) {
+				nuevo.setTSala(tSala.Habitacion);
+			} else if (nuevo.getClass().equals(EspacioComun.class)) {
+				nuevo.setTSala(tSala.EspaciosComunes);				
+			} else if (nuevo.getClass().equals(SalaReunion.class)) {
+				nuevo.setTSala(tSala.SalaReuniones);
+			}
+			
+			String query = "INSERT sala (id, num, capacidad, tlfno, pvp, subtipo) "
+					+ "VALUES (?, ?, ?, ?, ?, ?);";
+			
+			//Si no existe el cliente, hace la consulta a la BBDD
+	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+	            preparedStatement.setInt(1, nuevo.getHotel().getID());
+	            preparedStatement.setInt(2, nuevo.getNum());
+	            preparedStatement.setInt(3, nuevo.getCapacidad());
+	            preparedStatement.setString(4, nuevo.getTlfno());
+	            preparedStatement.setDouble(5, nuevo.getPvp());
+	            preparedStatement.setString(6, nuevo.getTSala().toString());
+	            preparedStatement.executeUpdate();
+		        
+		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
+		        if (check(nuevo)) {
+		        	System.out.print("\n~~~ Habitacion creada correctamente ~~~\n");
+		        	return true;
+		        } else {
+		        	System.out.print("\n>>> Se ha producido un error <<<\n\n");
+		        	return false;
+		        }
+
+			//En caso de que haya algun error en la base lo coge aqui
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error al insertar la nueva habitacion");
+				return false;
+			}
+		}
+		
+		//Si el cliente existe antes de la insercion devuelve false. 
+		System.out.println("El usuario ya existe");
+		return true;
+	}
+
+	private boolean check(Sala sala) {
+
+		String query = "SELECT * FROM sala "
+				+ " WHERE id = ? and num = ?;";
+		
+		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+	        preparedStatement.setInt(1, sala.getHotel().getID());
+			preparedStatement.setInt(2, sala.getNum());
+	        ResultSet rS = preparedStatement.executeQuery();
+	        if (rS.next()) {
+	        	return true;
+	        } else {
+	        	return false;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 }

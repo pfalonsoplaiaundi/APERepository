@@ -20,7 +20,7 @@ public class Sala {
 	protected String tlfno;
 	protected double pvp;
 	protected Hotel hotel;
-	protected tSala tipo;
+	private tSala tipo;
 	
 	//-----------------------------------------------------------------------
 	

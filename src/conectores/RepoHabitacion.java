@@ -339,7 +339,74 @@ public class RepoHabitacion {
 	}
 
 	public ArrayList<HabDisponible> getListaFiltrada(Habitacion filtro, int disponible) {
-		//ArrayList<HabDisponible> lista = new ArrayList<>();
+		String query = 
+				"SELECT  "
+					+ "h.nom, "
+					+ "s.num, "
+					+ "s.capacidad, "
+					+ "s.pvp, "
+					+ "s.tlfno, "
+					+ "h.tipo, "
+					+ "case when current_day() between r.fecini and r.fecfin then true else false end "
+				+ "FROM "
+					+ "Salareuniones r "
+					+ "JOIN sala s USING(id, num) "
+					+ "JOIN HOTEL H USING(ID) "
+					+ "LEFT JOIN reservas r USING(id, num)"
+				+ "WHERE "
+					+ "(h.nom = ? or ? = \"\") and "
+					+ "(h.ciu = ? or ? = \"\") "
+				+ "ORDER BY "
+					+ "h.id ASC, "
+					+ "s.num ASC;";
+		
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+			
+			if (filtro.getHotel() != null && !filtro.getHotel().getNombre().equals("")) {
+				pS.setString(1, filtro.getHotel().getNombre());
+				pS.setString(2, filtro.getHotel().getNombre());
+			} else {
+				pS.setString(1, "");
+				pS.setString(2, "");
+			}
+				
+			if (filtro.getHotel() != null && !filtro.getHotel().getCiudad().equals("")) {
+				pS.setString(3, filtro.getHotel().getCiudad());
+				pS.setString(4, filtro.getHotel().getCiudad());
+			} else {
+				pS.setString(3, "");
+				pS.setString(4, "");
+			}
+			
+			ResultSet rS = pS.executeQuery();
+						
+			ArrayList<HabDisponible> lista = new ArrayList<>();
+			RepoHotel rH = new RepoHotel();
+			while (rS.next()) {
+				Habitacion h = new Habitacion(
+						rH.get(rS.getInt(1)),
+						rS.getInt(2),
+						rS.getInt(3),
+						rS.getString(5),
+						rS.getDouble(4),
+						rS.getString(6)
+						);
+
+				HabDisponible hd = new HabDisponible(h, rS.getBoolean(7));
+				if (disponible == -1) {
+					lista.add(hd);
+				} else if (disponible == 1) {
+					if (hd.isDisponible()) lista.add(hd);
+				} else if (disponible == 0) {
+					if (!hd.isDisponible()) lista.add(hd); 
+				}
+			}
+			return lista;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 		return null;
 	}

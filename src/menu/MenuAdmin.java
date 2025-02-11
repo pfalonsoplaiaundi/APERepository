@@ -1064,7 +1064,8 @@ public class MenuAdmin {
 				+ "2. Agregar\n"
 				+ "3. Modificar\n"
 				+ "4. Eliminar\n"
-				+ "0. Volver atras\n");
+				+ "0. Volver atras\n"
+				+ "Seleccione la opcion que desee: ");
 		selectorHoteles(Input.inOpc());
 	}
 
@@ -1305,9 +1306,11 @@ public class MenuAdmin {
 					+ lista.get(i).getTlfno() + "\t| "
 					+
 					(
-							(lista.get(i).getEmail().length() < 22) ? 
-								(lista.get(i).getEmail() + "\t\t| ") : 
-								(lista.get(i).getEmail() + "\t| ")
+							(lista.get(i).getEmail().length() < 14) ? 
+									(lista.get(i).getEmail() + "\t\t\t| ") : 
+									(lista.get(i).getEmail().length() < 22) ? 
+										(lista.get(i).getEmail() + "\t\t| ") : 
+										(lista.get(i).getEmail() + "\t| ")
 					)
 					+ lista.get(i).getDir()
 					+ "\n"
@@ -1807,13 +1810,13 @@ public class MenuAdmin {
 			listaComunes();
 			break;
 		case 2:
-			addComunes();
+			addComun();
 			break;
 		case 3:
-			modifyComunes();
+			modifyComun();
 			break;
 		case 4:
-			deleteComunes();
+			deleteComun();
 			break;
 		case 0:
 			print();
@@ -1823,13 +1826,182 @@ public class MenuAdmin {
 		printOtros();
 	}
 	
+	private static void deleteComun() {
+		System.out.print( 
+				"¿Que espacio comun deseas eliminar?\n"
+				+ "1. Buscar por HOTEL\n"
+				+ "2. Buscar por NUMERO\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		EspacioComun aBorrar = selectorModifyComunes(Input.inOpc());
+		RepoEspacioComun rEc = new RepoEspacioComun();
+		System.out.print((rEc.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
+	}
+
+	private static void modifyComun() {
+		System.out.print( 
+				"\n¿Que habitacion deseas modificar?\n"
+				+ "1. Buscar por HOTEL\n"
+				+ "2. Buscar por NUMERO\n"
+				+ "3. Buscar por TIPO\n"
+				+ "4. Buscar por PVP\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		EspacioComun aModificar = selectorModifyComunes(Input.inOpc());
+		if (aModificar == null) {
+			System.out.print("\n>>> ERROR: Cliente no valido <<<\n");
+			modifyReserva();
+		} else {
+			System.out.print(
+					"\n~~~ Datos actuales ~~~\n" +
+					aModificar.toString() + "\n" +
+					"\n¿Que desea modificar?\n" +
+					"1. Hotel\n" +
+					"2. Numero\n" +
+					"3. Capacidad\n" +
+					"4. Telefono\n" +
+					"5. PVP\n" +
+					"6. Tipo de habitacion\n" +
+					"0. Volver atras\n" +
+					"Selecciones la opcion que desee: "
+					);
+			selectorModifyComun(Input.inOpc(), aModificar);
+		}
+	}
+
+	private static void selectorModifyComun(int opc, EspacioComun aModificar) {
+		RepoEspacioComun rEc = new RepoEspacioComun();
+		RepoHotel rHo = new RepoHotel();
+		switch (opc) {
+		
+		// Hotel
+		case 1:
+			aModificar.setHotel(rHo.get(Input.inID()));
+			rEc.update(aModificar);
+			break;
+		
+		// Numero
+		case 2:
+			aModificar.setNum(Input.inNum());
+			rEc.update(aModificar);
+			break;
+			
+		// Capacidad
+		case 3:	
+			aModificar.setCapacidad(Input.inCapacidad());
+			rEc.update(aModificar);
+			break;			
+			
+		// Telefono
+		case 4:
+			aModificar.setTlfno(Input.inTelefono());
+			rEc.update(aModificar);
+			break;
+			
+		// PVP
+		case 5:
+			aModificar.setPvp(Input.inPvp());
+			rEc.update(aModificar);
+			break;
+			
+		// Tipo de habitacion
+		case 6:
+			aModificar.setTipo(Input.inTipoComun());
+			rEc.update(aModificar);
+			break;
+			
+		// Volver atras	
+		default:
+			modifyCliente();	
+		}
+	}
+
+	private static void printResultadoFiltroComun(EspacioComun filtro) {
+		RepoEspacioComun rEc = new RepoEspacioComun();
+		System.out.print( "Hotel\t|\tHabitacion\t|\tTelefono\t|\tPVP\t|\tTipo\n" );
+		for(EspacioComun e : rEc.getListaFiltrada(filtro)) {
+			int i = 0;
+			System.out.print(
+					e.getHotel().getNombre() + "\t|\t" + 
+					e.getNum() + "\t|\t" +
+					e.getTlfno() + "\t|\t" +
+					e.getPvp() + "€\t|\t" +
+					e.getTipo().toString() + "\n" 
+					
+				);
+			i++;
+			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------\n");
+		};
+	}
+	
+	private static EspacioComun selectorModifyComunes(int opc) {
+		EspacioComun aModificar = null;
+		RepoEspacioComun rEc = new RepoEspacioComun();
+		EspacioComun filtro = null;
+		RepoHotel rHo = new RepoHotel();
+		switch (opc) {
+		
+		// Buscar por HOTEL
+		case 1:
+			int idHotel = Input.inID();
+			filtro = new EspacioComun(0, 0, "", 0, rHo.get(idHotel), "");
+			printResultadoFiltroComun(filtro);
+			
+			// Elige el cliente por Numero
+			System.out.print("Seleccione ");
+			aModificar = rEc.get(idHotel, Input.inNum());
+			break;
+			
+		// Buscar por NUMERO
+		case 2:
+			int num = Input.inNum();
+			filtro = new EspacioComun(num, 0, "", 0, null, "");
+			printResultadoFiltroComun(filtro);
+			
+			// Elige el cliente por Hotel
+			System.out.print("Seleccione ");
+			aModificar = rEc.get(rHo.get(Input.inID()).getID(), num);
+			break;
+		
+		// Volver atras
+		case 0: 
+			printHabitaciones();
+			
+		// Vuelve atras
+		default:
+			modifyHabitacion();
+		}
+		return aModificar;
+	}
+
+	private static void addComun() {
+		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
+				+ "¿Tienes los datos? ");
+		if (Input.inYesNo()) {
+			RepoEspacioComun rEc = new RepoEspacioComun();
+			RepoHotel rHo = new RepoHotel();
+			EspacioComun e = new EspacioComun(
+					Input.inNum(),
+					Input.inCapacidad(),
+					Input.inTelefono(),
+					Input.inPvp(),
+					rHo.get(Input.inID()),
+					Input.inTipoComun()
+					);
+			rEc.insert(e);
+			System.out.println("");
+		} else {
+			printHoteles();
+		}
+	}
+
 	private static void listaComunes() {
 		if (!filtroComunes()) {
 			EspacioComun filtro = new EspacioComun(0, 0, "", 0, null, "");
-			int disponible = -1;
 			printResultadoFiltroComunes(filtro);
 		}
 	}
+	
 	
 	private static boolean filtroComunes() {
 		System.out.print("\n¿Deseas filtrar el resultado? ");
@@ -1856,39 +2028,55 @@ public class MenuAdmin {
 		return false;
 	}
 	
+	private static void printMenuFiltroComunes(EspacioComun filtro) {
+		System.out.print(
+				"\n>>> Filtro <<<\n"
+				
+				// 1. Por numero		
+				+ 														 
+				((filtro.getNum() == 0) ?
+						"1. Por nombre\n" :
+						filtro.getNum() + "\n"
+				)
+				
+				// 2. Por hotel
+				+ 
+				(
+					(filtro.getHotel().getID() == 0) ?
+						"2. Por ciudad\n" :
+						filtro.getHotel().getID() + "\n"
+				)
+				
+				+ "0. Para continuar\n"
+		);
+	}
+	
+	
 	private static void printResultadoFiltroComunes(EspacioComun filtro) {
 		RepoEspacioComun rEC = new RepoEspacioComun();
 		ArrayList<EspacioComun> lista = rEC.getListaFiltrada(filtro);
 		
 		System.out.print(
-				"Nombre" + "\t\t| "
-				+ "Ciudad" + "\t\t| "
+				"Hotel" + "\t\t| "
+				+ "Numero" + "\t| "
+				+ "Capacidad" + "\t| "
+				+ "Precio" + "\t| "
 				+ "Telefono" + "\t| "
-				+ "Email" + "\t\t\t\t| "
-				+ "Direccion completa\n"
+				+ "Tipo\n"
 				+ "---------------------------------------------------------------------------------------------------------------------------------------------\n");
 		int i = 0;
 		while (i < lista.size()) {
 			System.out.print(
 					(
-							(lista.get(i).getNombre().length() < 7) ? 
-								(lista.get(i).getNombre() + "\t\t| ") : 
-								(lista.get(i).getNombre() + "\t| ")
+							(lista.get(i).getHotel().getNombre().length() < 7) ? 
+								(lista.get(i).getHotel().getNombre() + "\t\t| ") : 
+								(lista.get(i).getHotel().getNombre() + "\t| ")
 					)
-					+
-					(
-							(lista.get(i).getCiudad().length() < 6) ? 
-								(lista.get(i).getCiudad() + "\t\t\t| ") : 
-								(lista.get(i).getCiudad() + "\t\t| ")
-					)
+					+ lista.get(i).getNum() + "\t| "
+					+ lista.get(i).getCapacidad() + "\t| "
+					+ lista.get(i).getPvp() + "\t| "
 					+ lista.get(i).getTlfno() + "\t| "
-					+
-					(
-							(lista.get(i).getEmail().length() < 22) ? 
-								(lista.get(i).getEmail() + "\t\t| ") : 
-								(lista.get(i).getEmail() + "\t| ")
-					)
-					+ lista.get(i).getDir()
+					+ lista.get(i).getTipo() + "\t| "
 					+ "\n"
 			);
 			i++;
@@ -1896,7 +2084,7 @@ public class MenuAdmin {
 		}
 		System.out.print("\n");
 	}
-
+	
 	private static EspacioComun selectorMenuFiltroComunes(EspacioComun filtro, int opc) {
 		switch (opc) {
 		
@@ -1920,8 +2108,245 @@ public class MenuAdmin {
 		}
 		return filtro;
 	}
+	
+	// --------------------------------------------------------------------------------------------------------------------------------
+	
+	// Menu administracion / otros / reuniones
 
-	private static void printMenuFiltroComunes(EspacioComun filtro) {
+	private static void printReuniones() {
+		System.out.print(
+				"\n~~~ Menu de administración / Otros / Sala de reuniones ~~~\n"
+				+ "1. Lista\n"
+				+ "2. Agregar\n"
+				+ "3. Modificar\n"
+				+ "4. Eliminar\n"
+				+ "0. Volver atras\n"
+				+ "Seleccione la opcion que desee: ");
+		selectorReuniones(Input.inOpc());
+	}
+
+	private static void selectorReuniones(int opc) {
+		switch (opc) {
+		case 1:
+			listaReuniones();
+			break;
+		case 2:
+			addReunion();
+			break;
+		case 3:
+			modifyReuniones();
+			break;
+		case 4:
+			deleteReuniones();
+			break;
+		case 0:
+			print();
+		default:
+			printReuniones();
+		}
+		printOtros();
+	}
+	
+	private static void deleteReuniones() {
+		System.out.print( 
+				"¿Que sala de reuniones deseas eliminar?\n"
+				+ "1. Buscar por HOTEL\n"
+				+ "2. Buscar por NUMERO\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		SalaReunion aBorrar = selectorModifyReuniones(Input.inOpc());
+		RepoSalaReunion rSr = new RepoSalaReunion();
+		System.out.print((rSr.delete(aBorrar)) ? "Borrado correctamente" : "Error al eliminar");
+	}
+
+	private static void modifyReuniones() {
+		System.out.print( 
+				"\n¿Que sala de reuniones deseas modificar?\n"
+				+ "1. Buscar por HOTEL\n"
+				+ "2. Buscar por NUMERO\n"
+				+ "Seleccione la opcion que deseas: "
+				);
+		SalaReunion aModificar = selectorModifyReuniones(Input.inOpc());
+		if (aModificar == null) {
+			System.out.print("\n>>> ERROR: Sala de reuniones no valido <<<\n");
+			modifyReserva();
+		} else {
+			System.out.print(
+					"\n~~~ Datos actuales ~~~\n" +
+					aModificar.toString() + "\n" +
+					"\n¿Que desea modificar?\n" +
+					"1. Hotel\n" +
+					"2. Numero\n" +
+					"3. Capacidad\n" +
+					"4. Telefono\n" +
+					"5. PVP\n" +
+					"6. Saervicios\n" +
+					"0. Volver atras\n" +
+					"Selecciones la opcion que desee: "
+					);
+			selectorModifyReunion(Input.inOpc(), aModificar);
+		}
+	}
+
+	private static void selectorModifyReunion(int opc, SalaReunion aModificar) {
+		RepoSalaReunion rSr = new RepoSalaReunion();
+		RepoHotel rHo = new RepoHotel();
+		switch (opc) {
+		
+		// Hotel
+		case 1:
+			aModificar.setHotel(rHo.get(Input.inID()));
+			rSr.update(aModificar);
+			break;
+		
+		// Numero
+		case 2:
+			aModificar.setNum(Input.inNum());
+			rSr.update(aModificar);
+			break;
+			
+		// Capacidad
+		case 3:	
+			aModificar.setCapacidad(Input.inCapacidad());
+			rSr.update(aModificar);
+			break;			
+			
+		// Telefono
+		case 4:
+			aModificar.setTlfno(Input.inTelefono());
+			rSr.update(aModificar);
+			break;
+			
+		// PVP
+		case 5:
+			aModificar.setPvp(Input.inPvp());
+			rSr.update(aModificar);
+			break;
+			
+		// Servicios
+		case 6:
+			aModificar.setServicios(Input.inServicios());
+			rSr.update(aModificar);
+			break;
+			
+		// Volver atras	
+		default:
+			modifyCliente();	
+		}
+	}
+
+	private static void printResultadoFiltroReunion(SalaReunion filtro) {
+		RepoSalaReunion rSr = new RepoSalaReunion();
+		System.out.print( "Hotel\t|\tHabitacion\t|\tTelefono\t|\tPVP\t|\tServicios\n" );
+		for(SalaReunion e : rSr.getListaFiltrada(filtro)) {
+			int i = 0;
+			System.out.print(
+					e.getHotel().getNombre() + "\t|\t" + 
+					e.getNum() + "\t|\t" +
+					e.getTlfno() + "\t|\t" +
+					e.getPvp() + "€\t|\t" +
+					e.getServicios() + "\n" 
+					
+				);
+			i++;
+			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------\n");
+		};
+	}
+	
+	private static SalaReunion selectorModifyReuniones(int opc) {
+		SalaReunion aModificar = null;
+		RepoSalaReunion rSr = new RepoSalaReunion();
+		SalaReunion filtro = null;
+		RepoHotel rHo = new RepoHotel();
+		switch (opc) {
+		
+		// Buscar por HOTEL
+		case 1:
+			int idHotel = Input.inID();
+			filtro = new SalaReunion(0, 0, "", 0, rHo.get(idHotel), "");
+			printResultadoFiltroReunion(filtro);
+			
+			// Elige el cliente por Numero
+			System.out.print("Seleccione ");
+			aModificar = rSr.get(idHotel, Input.inNum());
+			break;
+			
+		// Buscar por NUMERO
+		case 2:
+			int num = Input.inNum();
+			filtro = new SalaReunion(num, 0, "", 0, null, "");
+			printResultadoFiltroReunion(filtro);
+			
+			// Elige el cliente por Hotel
+			System.out.print("Seleccione ");
+			aModificar = rSr.get(rHo.get(Input.inID()).getID(), num);
+			break;
+		
+		// Volver atras
+		case 0: 
+			printReuniones();
+			
+		// Vuelve atras
+		default:
+			modifyReuniones();
+		}
+		return aModificar;
+	}
+
+	private static void addReunion() {
+		System.out.print("\n>>> Recuerda tener todos los datos <<<\n"
+				+ "¿Tienes los datos? ");
+		if (Input.inYesNo()) {
+			RepoSalaReunion rSr = new RepoSalaReunion();
+			RepoHotel rHo = new RepoHotel();
+			SalaReunion s = new SalaReunion(
+					Input.inNum(),
+					Input.inCapacidad(),
+					Input.inTelefono(),
+					Input.inPvp(),
+					rHo.get(Input.inID()),
+					Input.inTipoComun()
+					);
+			rSr.insert(s);
+			System.out.println("");
+		} else {
+			printHoteles();
+		}
+	}
+
+	private static void listaReuniones() {
+		if (!filtroReuniones()) {
+			SalaReunion filtro = new SalaReunion(0, 0, "", 0, null, "");
+			printResultadoFiltroReuniones(filtro);
+		}
+	}
+	
+	private static boolean filtroReuniones() {
+		System.out.print("\n¿Deseas filtrar el resultado? ");
+		boolean respuesta = Input.inYesNo();
+		if (respuesta) {
+
+			int opc = 0;
+			SalaReunion filtro = new SalaReunion(0, 0, "", 0, null, "");
+			do {
+	
+				// Print filtro
+				printMenuFiltroReuniones(filtro);
+				System.out.print("Seleccione la opcion que desea: ");
+				opc = Input.inOpc();
+				
+				// Selector
+				filtro = selectorMenuFiltroReuniones(filtro, opc);
+			} while(opc != 0);
+		
+			// Print resultado
+			printResultadoFiltroReuniones(filtro);
+			return true;
+		}
+		return false;
+	}
+		
+	private static void printMenuFiltroReuniones(SalaReunion filtro) {
 		System.out.print(
 				"\n>>> Filtro <<<\n"
 				
@@ -1943,32 +2368,62 @@ public class MenuAdmin {
 				+ "0. Para continuar\n"
 		);
 	}
-
 	
-	
-	// --------------------------------------------------------------------------------------------------------------------------------
-	
-	// Menu administracion / otros / reuniones
-
-
-
-
-	private static void printReuniones() {
+	private static void printResultadoFiltroReuniones(SalaReunion filtro) {
+		RepoSalaReunion rSr = new RepoSalaReunion();
+		ArrayList<SalaReunion> lista = rSr.getListaFiltrada(filtro);
+		
 		System.out.print(
-				"~~~ Menu de administración / Otros / Sala de reuniones ~~~\n"
-				+ "1. Lista\n"
-				+ "2. Agregar\n"
-				+ "3. Modificar\n"
-				+ "4. Eliminar\n"
-				+ "0. Volver atras\n"
-				+ "Seleccione la opcion que desee: ");
-		selectorHabitaciones(Input.inOpc());
+				"Hotel" + "\t\t| "
+				+ "Numero" + "\t| "
+				+ "Capacidad" + "\t| "
+				+ "Precio" + "\t| "
+				+ "Telefono" + "\t| "
+				+ "Servicios\n"
+				+ "---------------------------------------------------------------------------------------------------------------------------------------------\n");
+		int i = 0;
+		while (i < lista.size()) {
+			System.out.print(
+					(
+							(lista.get(i).getHotel().getNombre().length() < 7) ? 
+								(lista.get(i).getHotel().getNombre() + "\t\t| ") : 
+								(lista.get(i).getHotel().getNombre() + "\t| ")
+					)
+					+ lista.get(i).getNum() + "\t| "
+					+ lista.get(i).getCapacidad() + "\t| "
+					+ lista.get(i).getPvp() + "\t| "
+					+ lista.get(i).getTlfno() + "\t| "
+					+ lista.get(i).getServicios() + "\t| "
+					+ "\n"
+			);
+			i++;
+			if (i%5 == 0) System.out.print("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");
+		}
+		System.out.print("\n");
 	}
 
-
-	
-
-
-
+	private static SalaReunion selectorMenuFiltroReuniones(SalaReunion filtro, int opc) {
+		switch (opc) {
+		
+		// Filtro numero
+		//--------------------------------------------------------------------------------------------------------------
+		case 1:
+			filtro.setNum(Input.inNum());
+			break;
+			
+		// Filtro hotel
+		//--------------------------------------------------------------------------------------------------------------		
+		case 2:
+			RepoHotel rH = new RepoHotel();
+			filtro.setHotel(rH.get(Input.inID()));
+			break;
+			
+		//--------------------------------------------------------------------------------------------------------------
+		default:
+			break;
+			
+		}
+		return filtro;
+	}
 
 }
