@@ -1,0 +1,1954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.diagrams="http://ns.yatta-solutions.com/umllab/diagrams/1.1.0" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_nKcmsOimEe-n_bccIa6R9w">
+  <modelElement href="../src/APEHoteles.uml#_kG2S0OimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkYwseimEe-n_bccIa6R9w" targetItem="_nkihuOimEe-n_bccIa6R9w" sourceItem="_nkYwsOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkb0AeimEe-n_bccIa6R9w" targetItem="_nkih3eimEe-n_bccIa6R9w" sourceItem="_nkb0AOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkcbEeimEe-n_bccIa6R9w" targetItem="_nkih-OimEe-n_bccIa6R9w" sourceItem="_nkcbEOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkdCIeimEe-n_bccIa6R9w" targetItem="_nkiiL-imEe-n_bccIa6R9w" sourceItem="_nkdCIOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkdCI-imEe-n_bccIa6R9w" targetItem="_nkiiN-imEe-n_bccIa6R9w" sourceItem="_nkdCIuimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkdpMeimEe-n_bccIa6R9w" targetItem="_nkiiP-imEe-n_bccIa6R9w" sourceItem="_nkdpMOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkdpM-imEe-n_bccIa6R9w" targetItem="_nkiiR-imEe-n_bccIa6R9w" sourceItem="_nkdpMuimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkeQQOimEe-n_bccIa6R9w" targetItem="_nkiiT-imEe-n_bccIa6R9w" sourceItem="_nkdpNOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkeQQuimEe-n_bccIa6R9w" targetItem="_nkiiV-imEe-n_bccIa6R9w" sourceItem="_nkeQQeimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkeQROimEe-n_bccIa6R9w" targetItem="_nkiiX-imEe-n_bccIa6R9w" sourceItem="_nkeQQ-imEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nkeQRuimEe-n_bccIa6R9w" targetItem="_nkiiZOimEe-n_bccIa6R9w" sourceItem="_nkeQReimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nke3UeimEe-n_bccIa6R9w" targetItem="_nkiibOimEe-n_bccIa6R9w" sourceItem="_nke3UOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_nkihsOimEe-n_bccIa6R9w" target="_nkihuOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYutAOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmb_IOimEe-n_bccIa6R9w" position="230.0,230.0"/>
+    <nameVisual xmi:id="_nkihseimEe-n_bccIa6R9w" text=""/>
+    <sourceRole xmi:id="_nkihsuimEe-n_bccIa6R9w" aggregationKind="NONE" name="tarifa" navigable="true">
+      <modelElement href="../src/APEHoteles.uml#_kXjoU-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkihs-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkihtOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_nkihteimEe-n_bccIa6R9w" aggregationKind="NONE" name="">
+      <modelElement href="../src/APEHoteles.uml#_kYutAeimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkihtuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiht-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nlMB8eimEe-n_bccIa6R9w" targetItem="_nlNQEOimEe-n_bccIa6R9w" sourceItem="_nlMB8OimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nlQ6ceimEe-n_bccIa6R9w" targetItem="_nlSImOimEe-n_bccIa6R9w" sourceItem="_nlQ6cOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_nlSIkOimEe-n_bccIa6R9w" sourceAnchor="426.0,230.0" targetAnchor="240.0,0.0" target="_nlSImOimEe-n_bccIa6R9w" source="_nlb5kOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYwiMeimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmb_IeimEe-n_bccIa6R9w" position="250.0,250.0"/>
+    <nameVisual xmi:id="_nlSIkeimEe-n_bccIa6R9w" text="">
+      <visualProperties xmi:id="_nybMsOimEe-n_bccIa6R9w" position="2.0,-15.222222222222172"/>
+    </nameVisual>
+    <sourceRole xmi:id="_nlSIkuimEe-n_bccIa6R9w" aggregationKind="NONE" name="habitacion" navigable="true">
+      <modelElement href="../src/APEHoteles.uml#_kXldgeimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_nyalouimEe-n_bccIa6R9w" position="-73.0,24.25"/>
+      <visibility xmi:id="_nlSIk-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlSIlOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_nlSIleimEe-n_bccIa6R9w" aggregationKind="NONE" name="">
+      <modelElement href="../src/APEHoteles.uml#_kYwiMuimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_nybMseimEe-n_bccIa6R9w" position="-17.0,-69.25"/>
+      <visibility xmi:id="_nlSIluimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlSIl-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nlVL4eimEe-n_bccIa6R9w" targetItem="_nlWaCOimEe-n_bccIa6R9w" sourceItem="_nlVL4OimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_nlWaAOimEe-n_bccIa6R9w" target="_nlWaCOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxJQOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmcmMOimEe-n_bccIa6R9w" position="270.0,270.0"/>
+    <nameVisual xmi:id="_nlWaAeimEe-n_bccIa6R9w" text=""/>
+    <sourceRole xmi:id="_nlWaAuimEe-n_bccIa6R9w" aggregationKind="NONE" name="fecha" navigable="true">
+      <modelElement href="../src/APEHoteles.uml#_kXmEkeimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlWaA-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlWaBOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_nlWaBeimEe-n_bccIa6R9w" aggregationKind="NONE" name="">
+      <modelElement href="../src/APEHoteles.uml#_kYxJQeimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlWaBuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlWaB-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nlZdUOimEe-n_bccIa6R9w" targetItem="_nlb5kOimEe-n_bccIa6R9w" sourceItem="_nlY2QOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nlZdUuimEe-n_bccIa6R9w" targetItem="_nlb5nuimEe-n_bccIa6R9w" sourceItem="_nlZdUeimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nlaEYeimEe-n_bccIa6R9w" targetItem="_nlb5puimEe-n_bccIa6R9w" sourceItem="_nlaEYOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nlaEY-imEe-n_bccIa6R9w" targetItem="_nlb5teimEe-n_bccIa6R9w" sourceItem="_nlaEYuimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nlx30eimEe-n_bccIa6R9w" targetItem="_nlzF8OimEe-n_bccIa6R9w" sourceItem="_nlx30OimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_nl2wUOimEe-n_bccIa6R9w" sourceAnchor="860.0,248.0" targetAnchor="0.0,106.0" target="_nl7ByOimEe-n_bccIa6R9w" source="_nkihuOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYyXYeimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmcmM-imEe-n_bccIa6R9w" position="330.0,330.0"/>
+    <nameVisual xmi:id="_nl4lguimEe-n_bccIa6R9w" text="">
+      <visualProperties xmi:id="_nyaloOimEe-n_bccIa6R9w" position="4.0,-19.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_nl4lg-imEe-n_bccIa6R9w" aggregationKind="NONE" name="cliente" navigable="true">
+      <modelElement href="../src/APEHoteles.uml#_kXog0eimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_nyZ-leimEe-n_bccIa6R9w" position="18.0,2.0"/>
+      <visibility xmi:id="_nl5zpuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl5zpeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_nl4lhOimEe-n_bccIa6R9w" aggregationKind="NONE" name="">
+      <modelElement href="../src/APEHoteles.uml#_kYyXYuimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_nyaloeimEe-n_bccIa6R9w" position="-27.0,2.0"/>
+      <visibility xmi:id="_nl5zqOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl5zp-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nl3-ceimEe-n_bccIa6R9w" targetItem="_nl7ByOimEe-n_bccIa6R9w" sourceItem="_nl3-cOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_nl4lgOimEe-n_bccIa6R9w" target="_nl7ByOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxwUuimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmcmMeimEe-n_bccIa6R9w" position="290.0,290.0"/>
+    <nameVisual xmi:id="_nl5MkOimEe-n_bccIa6R9w" text=""/>
+    <sourceRole xmi:id="_nl5zoOimEe-n_bccIa6R9w" aggregationKind="NONE" name="fecIni" navigable="true">
+      <modelElement href="../src/APEHoteles.uml#_kXn5wuimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl6aseimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl6asOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_nl5zoeimEe-n_bccIa6R9w" aggregationKind="NONE" name="">
+      <modelElement href="../src/APEHoteles.uml#_kYxwU-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl6as-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl6asuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_nl4lgeimEe-n_bccIa6R9w" target="_nl7ByOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxwVOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmcmMuimEe-n_bccIa6R9w" position="310.0,310.0"/>
+    <nameVisual xmi:id="_nl5zouimEe-n_bccIa6R9w" text=""/>
+    <sourceRole xmi:id="_nl5zo-imEe-n_bccIa6R9w" aggregationKind="NONE" name="fecFin" navigable="true">
+      <modelElement href="../src/APEHoteles.uml#_kXog0OimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl6ateimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl6atOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_nl5zpOimEe-n_bccIa6R9w" aggregationKind="NONE" name="">
+      <modelElement href="../src/APEHoteles.uml#_kYyXYOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl6at-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl6atuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_nl7BwOimEe-n_bccIa6R9w" sourceAnchor="0.0,101.0" targetAnchor="607.0,106.0" target="_nl7ByOimEe-n_bccIa6R9w" source="_nmFZ0OimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYyXY-imEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmcmNOimEe-n_bccIa6R9w" position="350.0,350.0"/>
+    <nameVisual xmi:id="_nl7BweimEe-n_bccIa6R9w" text="">
+      <visualProperties xmi:id="_nyca0eimEe-n_bccIa6R9w" position="-8.0,-19.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_nl7BwuimEe-n_bccIa6R9w" aggregationKind="NONE" name="sala" navigable="true">
+      <modelElement href="../src/APEHoteles.uml#_kXog0uimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_nyca0OimEe-n_bccIa6R9w" position="-55.0,2.0"/>
+      <visibility xmi:id="_nl7Bw-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7BxOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_nl7BxeimEe-n_bccIa6R9w" aggregationKind="NONE" name="">
+      <modelElement href="../src/APEHoteles.uml#_kYyXZOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_nyca0uimEe-n_bccIa6R9w" position="11.0,2.0"/>
+      <visibility xmi:id="_nl7BxuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7Bx-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_nl_6QOimEe-n_bccIa6R9w" sourceAnchor="290.0,0.0" targetAnchor="283.0,194.0" target="_nlzF8OimEe-n_bccIa6R9w" source="_nmFZ0OimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kZErQ-imEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmcmNeimEe-n_bccIa6R9w" position="370.0,370.0"/>
+    <stereotypes xmi:id="_nmBvcuimEe-n_bccIa6R9w" name="Reference">
+      <modelElement href="../src/APEHoteles.uml#_kZFSUOimEe-n_bccIa6R9w"/>
+    </stereotypes>
+    <nameVisual xmi:id="_nmBIYuimEe-n_bccIa6R9w" text="">
+      <visualProperties xmi:id="_nybzweimEe-n_bccIa6R9w" position="2.0,12.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_nmBvcOimEe-n_bccIa6R9w" aggregationKind="NONE" name="">
+      <modelElement href="../src/APEHoteles.uml#_kZErROimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_nybzwOimEe-n_bccIa6R9w" position="-17.0,-92.0"/>
+      <visibility xmi:id="_nmELseimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmELsOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_nmBvceimEe-n_bccIa6R9w" aggregationKind="NONE" name="hotel" navigable="true">
+      <modelElement href="../src/APEHoteles.uml#_kXq9EeimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_nybzwuimEe-n_bccIa6R9w" position="2.0,23.0"/>
+      <visibility xmi:id="_nmELs-imEe-n_bccIa6R9w" label="#"/>
+      <cardinality xmi:id="_nmELsuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nmAhUeimEe-n_bccIa6R9w" targetItem="_nmFZ0OimEe-n_bccIa6R9w" sourceItem="_nmAhUOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_nmBIYOimEe-n_bccIa6R9w" sourceAnchor="335.0,0.0" targetAnchor="276.0,515.0" superClass="_nmFZ0OimEe-n_bccIa6R9w" subClass="_nlNQEOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kWjiwOimEe-n_bccIa6R9w"/>
+    <bendpoints xmi:id="_LznjAOinEe-n_bccIa6R9w" sourceY="-140" targetX="-928" targetY="44"/>
+    <bendpoints xmi:id="_LznjAeinEe-n_bccIa6R9w" sourceX="928" sourceY="-139" targetY="45"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_nmBIYeimEe-n_bccIa6R9w" sourceAnchor="319.0,0.0" targetAnchor="276.0,515.0" superClass="_nmFZ0OimEe-n_bccIa6R9w" subClass="_nlb5kOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kWobQeimEe-n_bccIa6R9w"/>
+    <bendpoints xmi:id="_Lzm78OinEe-n_bccIa6R9w" sourceY="-30" targetX="482" targetY="44"/>
+    <bendpoints xmi:id="_Lzm78einEe-n_bccIa6R9w" sourceX="-482" sourceY="-29" targetY="45"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nmCWgeimEe-n_bccIa6R9w" targetItem="_nmGBNuimEe-n_bccIa6R9w" sourceItem="_nmCWgOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nmCWg-imEe-n_bccIa6R9w" targetItem="_nmGBOeimEe-n_bccIa6R9w" sourceItem="_nmCWguimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nmCWheimEe-n_bccIa6R9w" targetItem="_nmGBP-imEe-n_bccIa6R9w" sourceItem="_nmCWhOimEe-n_bccIa6R9w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_nmYUwOimEe-n_bccIa6R9w" sourceAnchor="332.0,0.0" targetAnchor="276.0,515.0" superClass="_nmFZ0OimEe-n_bccIa6R9w" subClass="_nmaJ8OimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kWyMQOimEe-n_bccIa6R9w"/>
+    <bendpoints xmi:id="_Lzm78uinEe-n_bccIa6R9w" sourceY="-147" targetX="-230" targetY="45"/>
+    <bendpoints xmi:id="_Lzm78-inEe-n_bccIa6R9w" sourceX="230" sourceY="-147" targetY="45"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_nmYUwuimEe-n_bccIa6R9w" targetItem="_nmaJ8OimEe-n_bccIa6R9w" sourceItem="_nmYUweimEe-n_bccIa6R9w"/>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkYwsOimEe-n_bccIa6R9w" sourceConnectionVisual="_nkYwseimEe-n_bccIa6R9w" text="Objeto que almacena los datos de cliente" item="_nkihuOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYte4-imEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkb0AOimEe-n_bccIa6R9w" sourceConnectionVisual="_nkb0AeimEe-n_bccIa6R9w" text="Constructor de cliente en el que la tarifa se pone automaticamente&#xD;&#xA;&#x9; * @param DNI&#xD;&#xA;&#x9; * @param nombre&#xD;&#xA;&#x9; * @param apellidos&#xD;&#xA;&#x9; * @param telefono&#xD;&#xA;&#x9; * @param email&#xD;&#xA;&#x9; * @param bTrabajador&#xD;&#xA;&#x9; * @param pass" item="_nkih3eimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYutAuimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkcbEOimEe-n_bccIa6R9w" sourceConnectionVisual="_nkcbEeimEe-n_bccIa6R9w" text="Constructor de cliente en el que la tarifa se da en String&#xD;&#xA;&#x9; * @param DNI&#xD;&#xA;&#x9; * @param nombre&#xD;&#xA;&#x9; * @param apellidos&#xD;&#xA;&#x9; * @param telefono&#xD;&#xA;&#x9; * @param email&#xD;&#xA;&#x9; * @param bTrabajador&#xD;&#xA;&#x9; * @param tarifa&#xD;&#xA;&#x9; * @param pass" item="_nkih-OimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUEOimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkdCIOimEe-n_bccIa6R9w" sourceConnectionVisual="_nkdCIeimEe-n_bccIa6R9w" text="Verifica si un DNI es correcto o no&#xD;&#xA;&#x9; * @param DNI&#xD;&#xA;&#x9; * @return" item="_nkiiL-imEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUEeimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkdCIuimEe-n_bccIa6R9w" sourceConnectionVisual="_nkdCI-imEe-n_bccIa6R9w" text="Funcion que comprueba que haya numeros en un string" item="_nkiiN-imEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUEuimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkdpMOimEe-n_bccIa6R9w" sourceConnectionVisual="_nkdpMeimEe-n_bccIa6R9w" text="Funcion que comprueba que haya mayusculas en un string" item="_nkiiP-imEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUE-imEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkdpMuimEe-n_bccIa6R9w" sourceConnectionVisual="_nkdpM-imEe-n_bccIa6R9w" text="Funcion que comprueba que haya minusculas en un string" item="_nkiiR-imEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUFOimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkdpNOimEe-n_bccIa6R9w" sourceConnectionVisual="_nkeQQOimEe-n_bccIa6R9w" text="Comprueba que la contraseña tenga al menos 8 caracteres&#xD;&#xA;     * @param pass&#xD;&#xA;     * @return" item="_nkiiT-imEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUFeimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkeQQeimEe-n_bccIa6R9w" sourceConnectionVisual="_nkeQQuimEe-n_bccIa6R9w" text="Comprueba que se cumplan todas las condiciones de la contraseña" item="_nkiiV-imEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUFuimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkeQQ-imEe-n_bccIa6R9w" sourceConnectionVisual="_nkeQROimEe-n_bccIa6R9w" text="Al construir un nuevo cliente le asigna su tarifa&#xD;&#xA;&#x9; * segun si es trabajador o nuevo cliente." item="_nkiiX-imEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUF-imEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nkeQReimEe-n_bccIa6R9w" sourceConnectionVisual="_nkeQRuimEe-n_bccIa6R9w" text="Transforma una tarifa en string en una tarifa en enum.&#xD;&#xA;     * @param tarifa&#xD;&#xA;     * @return" item="_nkiiZOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYvUGOimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nke3UOimEe-n_bccIa6R9w" sourceConnectionVisual="_nke3UeimEe-n_bccIa6R9w" text="Transforma una tarifa en un descuento sobre el pvp&#xD;&#xA;&#x9; * @param pvp&#xD;&#xA;&#x9; * @return" item="_nkiibOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYv7IOimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nlMB8OimEe-n_bccIa6R9w" sourceConnectionVisual="_nlMB8eimEe-n_bccIa6R9w" text="Objeto que almacena los datos de los espacios comunes" item="_nlNQEOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYv7IeimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nlQ6cOimEe-n_bccIa6R9w" sourceConnectionVisual="_nlQ6ceimEe-n_bccIa6R9w" text="Objeto que almacena la informacion de habitacion y su disponibilidad" item="_nlSImOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYwiMOimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nlVL4OimEe-n_bccIa6R9w" sourceConnectionVisual="_nlVL4eimEe-n_bccIa6R9w" text="Objeto que guarda un tipo de habitacion y una fecha" item="_nlWaCOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYwiM-imEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nlY2QOimEe-n_bccIa6R9w" sourceConnectionVisual="_nlZdUOimEe-n_bccIa6R9w" text="Objeto HABITACION" item="_nlb5kOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxJQuimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nlZdUeimEe-n_bccIa6R9w" sourceConnectionVisual="_nlZdUuimEe-n_bccIa6R9w" text="Automaticamente te pone un tipo de habitacion&#xD;&#xA;&#x9; * @param tipo&#xD;&#xA;&#x9; * @return" item="_nlb5nuimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxJQ-imEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nlaEYOimEe-n_bccIa6R9w" sourceConnectionVisual="_nlaEYeimEe-n_bccIa6R9w" text="Esta funcion permite elergir el tipo de habitacion que es al construirse una habitacion" item="_nlb5puimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxJROimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nlaEYuimEe-n_bccIa6R9w" sourceConnectionVisual="_nlaEY-imEe-n_bccIa6R9w" text="Convierte tipoHab en string&#xD;&#xA;&#x9; * @param tipoDeHab&#xD;&#xA;&#x9; * @return" item="_nlb5teimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxJReimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nlx30OimEe-n_bccIa6R9w" sourceConnectionVisual="_nlx30eimEe-n_bccIa6R9w" text="Objeto HOTEL" item="_nlzF8OimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxwUOimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nl3-cOimEe-n_bccIa6R9w" sourceConnectionVisual="_nl3-ceimEe-n_bccIa6R9w" text="Objeto RESERVA" item="_nl7ByOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYxwUeimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nmAhUOimEe-n_bccIa6R9w" sourceConnectionVisual="_nmAhUeimEe-n_bccIa6R9w" text="Objeto SALA" item="_nmFZ0OimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYyXZeimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nmCWgOimEe-n_bccIa6R9w" sourceConnectionVisual="_nmCWgeimEe-n_bccIa6R9w" text="Menu de selecion de tipo de sala" item="_nmGBNuimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYy-cOimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nmCWguimEe-n_bccIa6R9w" sourceConnectionVisual="_nmCWg-imEe-n_bccIa6R9w" text="Logica de seleccion de sala&#xD;&#xA;&#x9; * @param opc" item="_nmGBOeimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYy-ceimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nmCWhOimEe-n_bccIa6R9w" sourceConnectionVisual="_nmCWheimEe-n_bccIa6R9w" text="Convierte un string en un TSala&#xD;&#xA;&#x9; * @param tipo&#xD;&#xA;&#x9; * @return" item="_nmGBP-imEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYy-cuimEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_nmYUweimEe-n_bccIa6R9w" sourceConnectionVisual="_nmYUwuimEe-n_bccIa6R9w" text="Objeto sala de reuniones" item="_nmaJ8OimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kYy-c-imEe-n_bccIa6R9w"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nkihuOimEe-n_bccIa6R9w" comments="_nkYwsOimEe-n_bccIa6R9w" targetConnectionVisual="_nkYwseimEe-n_bccIa6R9w" name="Cliente" associationsIn="_nkihsOimEe-n_bccIa6R9w" associationsOut="_nl2wUOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kKqb0uimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nkihueimEe-n_bccIa6R9w" position="50.0,50.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_nkihuuimEe-n_bccIa6R9w" name="Patch">
+      <modelElement href="../src/APEHoteles.uml#_nJ2JwOimEe-n_bccIa6R9w"/>
+    </stereotypes>
+    <visibility xmi:id="_nkihu-imEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nkihvOimEe-n_bccIa6R9w" name="DNI">
+      <modelElement href="../src/APEHoteles.uml#_kXjBQ-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkihveimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkihvuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nkihv-imEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nkihwOimEe-n_bccIa6R9w" name="nombre">
+      <modelElement href="../src/APEHoteles.uml#_kXjBROimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkihweimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkihwuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nkihw-imEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nkihxOimEe-n_bccIa6R9w" name="apellidos">
+      <modelElement href="../src/APEHoteles.uml#_kXjoUOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkihxeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkihxuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nkihx-imEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nkihyOimEe-n_bccIa6R9w" name="telefono">
+      <modelElement href="../src/APEHoteles.uml#_kXjoUeimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkihyeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkihyuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nkihy-imEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nkihzOimEe-n_bccIa6R9w" name="email">
+      <modelElement href="../src/APEHoteles.uml#_kXjoUuimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkihzeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkihzuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nkihz-imEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nkih0OimEe-n_bccIa6R9w" name="tarifa">
+      <modelElement href="../src/APEHoteles.uml#_kXjoU-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkih0eimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkih0uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nkih0-imEe-n_bccIa6R9w" name="tarifas">
+        <modelElement href="../src/APEHoteles.uml#_kKrp8OimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nkih1OimEe-n_bccIa6R9w" name="bTrabajador">
+      <modelElement href="../src/APEHoteles.uml#_kXkPYOimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nkih1eimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXkPYeimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nkih1uimEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nkih1-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nkih2OimEe-n_bccIa6R9w" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nkih2eimEe-n_bccIa6R9w" name="pass">
+      <modelElement href="../src/APEHoteles.uml#_kXkPYuimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkih2uimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkih2-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nkih3OimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nkih3eimEe-n_bccIa6R9w" comments="_nkb0AOimEe-n_bccIa6R9w" targetConnectionVisual="_nkb0AeimEe-n_bccIa6R9w" name="Cliente">
+      <modelElement href="../src/APEHoteles.uml#_kKv7YOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nkih3uimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nkih3-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkih4OimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkih4eimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kKwiduimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkih4uimEe-n_bccIa6R9w" name="Cliente">
+          <modelElement href="../src/APEHoteles.uml#_kKqb0uimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkih4-imEe-n_bccIa6R9w" name="DNI">
+        <modelElement href="../src/APEHoteles.uml#_kKv7YeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkih5OimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkih5eimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkih5uimEe-n_bccIa6R9w" name="nombre">
+        <modelElement href="../src/APEHoteles.uml#_kKv7YuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkih5-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkih6OimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkih6eimEe-n_bccIa6R9w" name="apellidos">
+        <modelElement href="../src/APEHoteles.uml#_kKv7Y-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkih6uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkih6-imEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkih7OimEe-n_bccIa6R9w" name="telefono">
+        <modelElement href="../src/APEHoteles.uml#_kKwicOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkih7eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkih7uimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkih7-imEe-n_bccIa6R9w" name="email">
+        <modelElement href="../src/APEHoteles.uml#_kKwiceimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkih8OimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkih8eimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkih8uimEe-n_bccIa6R9w" name="bTrabajador">
+        <modelElement href="../src/APEHoteles.uml#_kKwicuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkih8-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkih9OimEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkih9eimEe-n_bccIa6R9w" name="pass">
+        <modelElement href="../src/APEHoteles.uml#_kKwic-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkih9uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkih9-imEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkih-OimEe-n_bccIa6R9w" comments="_nkcbEOimEe-n_bccIa6R9w" targetConnectionVisual="_nkcbEeimEe-n_bccIa6R9w" name="Cliente">
+      <modelElement href="../src/APEHoteles.uml#_kKxwkOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nkih-eimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nkih-uimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkih--imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkih_OimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kKyXpuimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkih_eimEe-n_bccIa6R9w" name="Cliente">
+          <modelElement href="../src/APEHoteles.uml#_kKqb0uimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkih_uimEe-n_bccIa6R9w" name="DNI">
+        <modelElement href="../src/APEHoteles.uml#_kKxwkeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkih_-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiAOimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkiiAeimEe-n_bccIa6R9w" name="nombre">
+        <modelElement href="../src/APEHoteles.uml#_kKxwkuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiAuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiA-imEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkiiBOimEe-n_bccIa6R9w" name="apellidos">
+        <modelElement href="../src/APEHoteles.uml#_kKxwk-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiBeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiBuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkiiB-imEe-n_bccIa6R9w" name="telefono">
+        <modelElement href="../src/APEHoteles.uml#_kKxwlOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiCOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiCeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkiiCuimEe-n_bccIa6R9w" name="email">
+        <modelElement href="../src/APEHoteles.uml#_kKyXoOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiC-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiDOimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkiiDeimEe-n_bccIa6R9w" name="bTrabajador">
+        <modelElement href="../src/APEHoteles.uml#_kKyXoeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiDuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiD-imEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkiiEOimEe-n_bccIa6R9w" name="tarifa">
+        <modelElement href="../src/APEHoteles.uml#_kKyXouimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiEeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiEuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nkiiE-imEe-n_bccIa6R9w" name="pass">
+        <modelElement href="../src/APEHoteles.uml#_kKyXo-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiFOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiFeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiiFuimEe-n_bccIa6R9w" name="isbTrabajador">
+      <modelElement href="../src/APEHoteles.uml#_kKyXp-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiF-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiGOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiGeimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kKy-sOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiGuimEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nkiiG-imEe-n_bccIa6R9w" name="setbTrabajador">
+      <modelElement href="../src/APEHoteles.uml#_kKy-seimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiHOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiHeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nkiiHuimEe-n_bccIa6R9w" name="bTrabajador">
+        <modelElement href="../src/APEHoteles.uml#_kKzlwOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiH-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiIOimEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiiIeimEe-n_bccIa6R9w" name="hashCode">
+      <modelElement href="../src/APEHoteles.uml#_kKzlweimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nkiiIuimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kK0M0OimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nkiiI-imEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kK33MOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nkiiJOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiJeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiJuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kKzlwuimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiJ-imEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nkiiKOimEe-n_bccIa6R9w" name="toString">
+      <modelElement href="../src/APEHoteles.uml#_kK7hkOimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nkiiKeimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kK8IoeimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nkiiKuimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kK8IouimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nkiiK-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiLOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiLeimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kK8IoOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiLuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nkiiL-imEe-n_bccIa6R9w" comments="_nkdCIOimEe-n_bccIa6R9w" targetConnectionVisual="_nkdCIeimEe-n_bccIa6R9w" name="verificacionDNI" staticOperation="true">
+      <modelElement href="../src/APEHoteles.uml#_kK8vsOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiMOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiMeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiMuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kK8vsuimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiM-imEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiiNOimEe-n_bccIa6R9w" name="DNI">
+        <modelElement href="../src/APEHoteles.uml#_kK8vseimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiNeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiNuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiiN-imEe-n_bccIa6R9w" comments="_nkdCIuimEe-n_bccIa6R9w" targetConnectionVisual="_nkdCI-imEe-n_bccIa6R9w" name="tieneNumeros" staticOperation="true">
+      <modelElement href="../src/APEHoteles.uml#_kK8vs-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiOOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiOeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiOuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kK8vteimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiO-imEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiiPOimEe-n_bccIa6R9w" name="pass">
+        <modelElement href="../src/APEHoteles.uml#_kK8vtOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiPeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiPuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiiP-imEe-n_bccIa6R9w" comments="_nkdpMOimEe-n_bccIa6R9w" targetConnectionVisual="_nkdpMeimEe-n_bccIa6R9w" name="tieneMayus" staticOperation="true">
+      <modelElement href="../src/APEHoteles.uml#_kK9WwOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiQOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiQeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiQuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kK9WwuimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiQ-imEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiiROimEe-n_bccIa6R9w" name="pass">
+        <modelElement href="../src/APEHoteles.uml#_kK9WweimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiReimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiRuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiiR-imEe-n_bccIa6R9w" comments="_nkdpMuimEe-n_bccIa6R9w" targetConnectionVisual="_nkdpM-imEe-n_bccIa6R9w" name="tieneMinus" staticOperation="true">
+      <modelElement href="../src/APEHoteles.uml#_kK9Ww-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiSOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiSeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiSuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kK9WxeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiS-imEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiiTOimEe-n_bccIa6R9w" name="pass">
+        <modelElement href="../src/APEHoteles.uml#_kK9WxOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiTeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiTuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiiT-imEe-n_bccIa6R9w" comments="_nkdpNOimEe-n_bccIa6R9w" targetConnectionVisual="_nkeQQOimEe-n_bccIa6R9w" name="tiene8caracteres" staticOperation="true">
+      <modelElement href="../src/APEHoteles.uml#_kK990OimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiUOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiUeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiUuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kK990uimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiU-imEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiiVOimEe-n_bccIa6R9w" name="pass">
+        <modelElement href="../src/APEHoteles.uml#_kK990eimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiVeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiVuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiiV-imEe-n_bccIa6R9w" comments="_nkeQQeimEe-n_bccIa6R9w" targetConnectionVisual="_nkeQQuimEe-n_bccIa6R9w" name="verificacionPass" staticOperation="true">
+      <modelElement href="../src/APEHoteles.uml#_kK990-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiWOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiiWeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiWuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kK991eimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiW-imEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiiXOimEe-n_bccIa6R9w" name="pass">
+        <modelElement href="../src/APEHoteles.uml#_kK991OimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiXeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiiXuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiiX-imEe-n_bccIa6R9w" comments="_nkeQQ-imEe-n_bccIa6R9w" targetConnectionVisual="_nkeQROimEe-n_bccIa6R9w" name="selectorTarifa">
+      <modelElement href="../src/APEHoteles.uml#_kK991uimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiYOimEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nkiiYeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiYuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWf4YOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiY-imEe-n_bccIa6R9w" name="tarifas">
+          <modelElement href="../src/APEHoteles.uml#_kKrp8OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nkiiZOimEe-n_bccIa6R9w" comments="_nkeQReimEe-n_bccIa6R9w" targetConnectionVisual="_nkeQRuimEe-n_bccIa6R9w" name="selectorTarifa">
+      <modelElement href="../src/APEHoteles.uml#_kK-k4OimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiiZeimEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nkiiZuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiiZ-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWf4YeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiiaOimEe-n_bccIa6R9w" name="tarifas">
+          <modelElement href="../src/APEHoteles.uml#_kKrp8OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiiaeimEe-n_bccIa6R9w" name="tarifa">
+        <modelElement href="../src/APEHoteles.uml#_kK-k4eimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiiauimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiia-imEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiibOimEe-n_bccIa6R9w" comments="_nke3UOimEe-n_bccIa6R9w" targetConnectionVisual="_nke3UeimEe-n_bccIa6R9w" name="aplicarDcto">
+      <modelElement href="../src/APEHoteles.uml#_kK_L8OimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nkiibeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiibuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiib-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kK_L8uimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiicOimEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiiceimEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kK_L8eimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiicuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiic-imEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nkiidOimEe-n_bccIa6R9w" name="equals">
+      <modelElement href="../src/APEHoteles.uml#_kXJ_sOimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nkiideimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXJ_s-imEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nkiiduimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kXKmwOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nkiid-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nkiieOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nkiieeimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kXJ_suimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nkiieuimEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nkiie-imEe-n_bccIa6R9w" name="obj">
+        <modelElement href="../src/APEHoteles.uml#_kXJ_seimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nkiifOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nkiifeimEe-n_bccIa6R9w" name="Object">
+          <modelElement href="../src/APEHoteles.uml#_kXJYoOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nlzF8OimEe-n_bccIa6R9w" comments="_nlx30OimEe-n_bccIa6R9w" targetConnectionVisual="_nlx30eimEe-n_bccIa6R9w" name="Hotel" associationsIn="_nl_6QOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nlzF8eimEe-n_bccIa6R9w" position="1721.0,-112.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_nlzF8uimEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nlzF8-imEe-n_bccIa6R9w" name="ID">
+      <modelElement href="../src/APEHoteles.uml#_kXnSsOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlzF9OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlzF9eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlzF9uimEe-n_bccIa6R9w" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nlzF9-imEe-n_bccIa6R9w" name="nombre">
+      <modelElement href="../src/APEHoteles.uml#_kXnSseimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlzF-OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlzF-eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlzF-uimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nlzF--imEe-n_bccIa6R9w" name="ciudad">
+      <modelElement href="../src/APEHoteles.uml#_kXnSsuimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlzF_OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlzF_eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlzF_uimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nlzF_-imEe-n_bccIa6R9w" name="dir">
+      <modelElement href="../src/APEHoteles.uml#_kXnSs-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlzGAOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlzGAeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlzGAuimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nlzGA-imEe-n_bccIa6R9w" name="tlfno">
+      <modelElement href="../src/APEHoteles.uml#_kXnStOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlzGBOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlzGBeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlzGBuimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nlzGB-imEe-n_bccIa6R9w" name="email">
+      <modelElement href="../src/APEHoteles.uml#_kXn5wOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlzGCOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlzGCeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlzGCuimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nlzGC-imEe-n_bccIa6R9w" name="Hotel">
+      <modelElement href="../src/APEHoteles.uml#_kLPDkOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nlzGDOimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nlzGDeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlzGDuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlzGD-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLPqoeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlzGEOimEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlzGEeimEe-n_bccIa6R9w" name="ID">
+        <modelElement href="../src/APEHoteles.uml#_kLPDkeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlzGEuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlzGE-imEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlzGFOimEe-n_bccIa6R9w" name="nombre">
+        <modelElement href="../src/APEHoteles.uml#_kLPDkuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlzGFeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlzGFuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlzGF-imEe-n_bccIa6R9w" name="ciudad">
+        <modelElement href="../src/APEHoteles.uml#_kLPDk-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlzGGOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlzGGeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlzGGuimEe-n_bccIa6R9w" name="dir">
+        <modelElement href="../src/APEHoteles.uml#_kLPDlOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlzGG-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlzGHOimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlzGHeimEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kLPDleimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlzGHuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlzGH-imEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlzGIOimEe-n_bccIa6R9w" name="email">
+        <modelElement href="../src/APEHoteles.uml#_kLPDluimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlzGIeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlzGIuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nlzGI-imEe-n_bccIa6R9w" name="toString">
+      <modelElement href="../src/APEHoteles.uml#_kLPqouimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nlzGJOimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kLPqpOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nlzGJeimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kLQRsOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nlzGJuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlzGJ-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlzGKOimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLPqo-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlzGKeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nlb5kOimEe-n_bccIa6R9w" comments="_nlY2QOimEe-n_bccIa6R9w" targetConnectionVisual="_nlZdUOimEe-n_bccIa6R9w" name="Habitacion" associationsOut="_nlSIkOimEe-n_bccIa6R9w" generalizations="_nmBIYeimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kLIV4OimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nlb5keimEe-n_bccIa6R9w" position="2153.0,787.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_nlb5kuimEe-n_bccIa6R9w" name="Patch">
+      <modelElement href="../src/APEHoteles.uml#_nJ3-8OimEe-n_bccIa6R9w"/>
+    </stereotypes>
+    <visibility xmi:id="_nlb5k-imEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nlb5lOimEe-n_bccIa6R9w" name="tHab">
+      <modelElement href="../src/APEHoteles.uml#_kXmEkuimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nlb5leimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXmroOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nlb5luimEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nlb5l-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlb5mOimEe-n_bccIa6R9w" name="tipoHab">
+        <modelElement href="../src/APEHoteles.uml#_kLI88OimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nlb5meimEe-n_bccIa6R9w" name="getTipo">
+      <modelElement href="../src/APEHoteles.uml#_kLKLEuimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlb5muimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlb5m-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlb5nOimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWmmEOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlb5neimEe-n_bccIa6R9w" name="tipoHab">
+          <modelElement href="../src/APEHoteles.uml#_kLI88OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nlb5nuimEe-n_bccIa6R9w" comments="_nlZdUeimEe-n_bccIa6R9w" targetConnectionVisual="_nlZdUuimEe-n_bccIa6R9w" name="selectorTipoHab">
+      <modelElement href="../src/APEHoteles.uml#_kLKyIOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlb5n-imEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nlb5oOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlb5oeimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWn0OuimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlb5ouimEe-n_bccIa6R9w" name="tipoHab">
+          <modelElement href="../src/APEHoteles.uml#_kLI88OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlb5o-imEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kLKyIeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb5pOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb5peimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nlb5puimEe-n_bccIa6R9w" comments="_nlaEYOimEe-n_bccIa6R9w" targetConnectionVisual="_nlaEYeimEe-n_bccIa6R9w" name="selectorTipoHab">
+      <modelElement href="../src/APEHoteles.uml#_kLLZMOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlb5p-imEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nlb5qOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlb5qeimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWn0O-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlb5quimEe-n_bccIa6R9w" name="tipoHab">
+          <modelElement href="../src/APEHoteles.uml#_kLI88OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlb5q-imEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kLLZMeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb5rOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb5reimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nlb5ruimEe-n_bccIa6R9w" name="toString">
+      <modelElement href="../src/APEHoteles.uml#_kLLZMuimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nlb5r-imEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kLMAQeimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nlb5sOimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kLMAQuimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nlb5seimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlb5suimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlb5s-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLMAQOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlb5tOimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nlb5teimEe-n_bccIa6R9w" comments="_nlaEYuimEe-n_bccIa6R9w" targetConnectionVisual="_nlaEY-imEe-n_bccIa6R9w" name="tipoHabStringToEnum" staticOperation="true">
+      <modelElement href="../src/APEHoteles.uml#_kLMAROimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlb5tuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlb5t-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlb5uOimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWobQOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlb5ueimEe-n_bccIa6R9w" name="tipoHab">
+          <modelElement href="../src/APEHoteles.uml#_kLI88OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlb5uuimEe-n_bccIa6R9w" name="tipoDeHab">
+        <modelElement href="../src/APEHoteles.uml#_kLMAReimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb5u-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb5vOimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nlb5veimEe-n_bccIa6R9w" name="setTipo">
+      <modelElement href="../src/APEHoteles.uml#_kWmmEeimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlb5vuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlb5v-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nlb5wOimEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kWmmEuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb5weimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb5wuimEe-n_bccIa6R9w" name="tipoHab">
+          <modelElement href="../src/APEHoteles.uml#_kLI88OimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nlb5w-imEe-n_bccIa6R9w" name="Habitacion">
+      <modelElement href="../src/APEHoteles.uml#_kWnNIOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nlb5xOimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nlb5xeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlb5xuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlb5x-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWnNKeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlb5yOimEe-n_bccIa6R9w" name="Habitacion">
+          <modelElement href="../src/APEHoteles.uml#_kLIV4OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlb5yeimEe-n_bccIa6R9w" name="hotel">
+        <modelElement href="../src/APEHoteles.uml#_kWnNIeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb5yuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb5y-imEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb5zOimEe-n_bccIa6R9w" name="num">
+        <modelElement href="../src/APEHoteles.uml#_kWnNIuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb5zeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb5zuimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb5z-imEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kWnNI-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb50OimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb50eimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb50uimEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kWnNJOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb50-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb51OimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb51eimEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kWnNJeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb51uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb51-imEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb52OimEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kWnNJuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb52eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb52uimEe-n_bccIa6R9w" name="tipoHab">
+          <modelElement href="../src/APEHoteles.uml#_kLI88OimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nlb52-imEe-n_bccIa6R9w" name="Habitacion">
+      <modelElement href="../src/APEHoteles.uml#_kWn0MOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nlb53OimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nlb53eimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlb53uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlb53-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWn0OeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlb54OimEe-n_bccIa6R9w" name="Habitacion">
+          <modelElement href="../src/APEHoteles.uml#_kLIV4OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlb54eimEe-n_bccIa6R9w" name="hotel">
+        <modelElement href="../src/APEHoteles.uml#_kWn0MeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb54uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb54-imEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb55OimEe-n_bccIa6R9w" name="num">
+        <modelElement href="../src/APEHoteles.uml#_kWn0MuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb55eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb55uimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb55-imEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kWn0M-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb56OimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb56eimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb56uimEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kWn0NOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb56-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb57OimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb57eimEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kWn0NeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb57uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb57-imEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlb58OimEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kWn0NuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlb58eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlb58uimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nmaJ8OimEe-n_bccIa6R9w" comments="_nmYUweimEe-n_bccIa6R9w" targetConnectionVisual="_nmYUwuimEe-n_bccIa6R9w" name="SalaReunion" generalizations="_nmYUwOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kLbQ0OimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmaJ8eimEe-n_bccIa6R9w" position="1428.0,904.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_nmaJ8uimEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nmaJ8-imEe-n_bccIa6R9w" name="servicios">
+      <modelElement href="../src/APEHoteles.uml#_kXsLMOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmaJ9OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmaJ9eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nmaJ9uimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nmaJ9-imEe-n_bccIa6R9w" name="SalaReunion">
+      <modelElement href="../src/APEHoteles.uml#_kWw-IOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nmaJ-OimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nmaJ-eimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmaJ-uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmaJ--imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWxlOOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmaJ_OimEe-n_bccIa6R9w" name="SalaReunion">
+          <modelElement href="../src/APEHoteles.uml#_kLbQ0OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nmaJ_eimEe-n_bccIa6R9w" name="num">
+        <modelElement href="../src/APEHoteles.uml#_kWxlMOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmaJ_uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmaJ_-imEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmaKAOimEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kWxlMeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmaKAeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmaKAuimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmaKA-imEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kWxlMuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmaKBOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmaKBeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmaKBuimEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kWxlM-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmaKB-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmaKCOimEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmaKCeimEe-n_bccIa6R9w" name="hotel">
+        <modelElement href="../src/APEHoteles.uml#_kWxlNOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmaKCuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmaKC-imEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmaKDOimEe-n_bccIa6R9w" name="servicios">
+        <modelElement href="../src/APEHoteles.uml#_kWxlNeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmaKDeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmaKDuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nlNQEOimEe-n_bccIa6R9w" comments="_nlMB8OimEe-n_bccIa6R9w" targetConnectionVisual="_nlMB8eimEe-n_bccIa6R9w" name="EspacioComun" generalizations="_nmBIYOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kLBoMOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nlNQEeimEe-n_bccIa6R9w" position="727.0,897.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_nlNQEuimEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nlNQE-imEe-n_bccIa6R9w" name="tipo">
+      <modelElement href="../src/APEHoteles.uml#_kXldgOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlNQFOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlNQFeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlNQFuimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nlNQF-imEe-n_bccIa6R9w" name="toString">
+      <modelElement href="../src/APEHoteles.uml#_kLDdYOimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nlNQGOimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kLEEcOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nlNQGeimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kLErgOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nlNQGuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlN3IOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlN3IeimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLDdYeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlN3IuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nlN3I-imEe-n_bccIa6R9w" name="EspacioComun">
+      <modelElement href="../src/APEHoteles.uml#_kWi7sOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nlN3JOimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nlN3JeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlN3JuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlN3J-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWi7ueimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlN3KOimEe-n_bccIa6R9w" name="EspacioComun">
+          <modelElement href="../src/APEHoteles.uml#_kLBoMOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlN3KeimEe-n_bccIa6R9w" name="num">
+        <modelElement href="../src/APEHoteles.uml#_kWi7seimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlN3KuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlN3K-imEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlN3LOimEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kWi7suimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlN3LeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlN3LuimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlN3L-imEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kWi7s-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlN3MOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlN3MeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlN3MuimEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kWi7tOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlN3M-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlN3NOimEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlN3NeimEe-n_bccIa6R9w" name="hotel">
+        <modelElement href="../src/APEHoteles.uml#_kWi7teimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlN3NuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlN3N-imEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlN3OOimEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kWi7tuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlN3OeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlN3OuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nl7ByOimEe-n_bccIa6R9w" comments="_nl3-cOimEe-n_bccIa6R9w" targetConnectionVisual="_nl3-ceimEe-n_bccIa6R9w" name="Reserva" associationsIn="_nl2wUOimEe-n_bccIa6R9w _nl4lgOimEe-n_bccIa6R9w _nl4lgeimEe-n_bccIa6R9w _nl7BwOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kLQ4wOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nl7ByeimEe-n_bccIa6R9w" position="1015.0,192.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_nl7ByuimEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nl7By-imEe-n_bccIa6R9w" name="ID">
+      <modelElement href="../src/APEHoteles.uml#_kXn5weimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl7BzOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7BzeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nl7BzuimEe-n_bccIa6R9w" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nl7Bz-imEe-n_bccIa6R9w" name="fecIni">
+      <modelElement href="../src/APEHoteles.uml#_kXn5wuimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl7B0OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B0eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nl7B0uimEe-n_bccIa6R9w" name="Date">
+        <modelElement href="../src/APEHoteles.uml#_kVkrUOimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nl7B0-imEe-n_bccIa6R9w" name="fecFin">
+      <modelElement href="../src/APEHoteles.uml#_kXog0OimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl7B1OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B1eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nl7B1uimEe-n_bccIa6R9w" name="Date">
+        <modelElement href="../src/APEHoteles.uml#_kVkrUOimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nl7B1-imEe-n_bccIa6R9w" name="cliente">
+      <modelElement href="../src/APEHoteles.uml#_kXog0eimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl7B2OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B2eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nl7B2uimEe-n_bccIa6R9w" name="Cliente">
+        <modelElement href="../src/APEHoteles.uml#_kKqb0uimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nl7B2-imEe-n_bccIa6R9w" name="sala">
+      <modelElement href="../src/APEHoteles.uml#_kXog0uimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl7B3OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B3eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nl7B3uimEe-n_bccIa6R9w" name="Sala">
+        <modelElement href="../src/APEHoteles.uml#_kLT8EOimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nl7B3-imEe-n_bccIa6R9w" name="precioTotal">
+      <modelElement href="../src/APEHoteles.uml#_kXog0-imEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl7B4OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B4eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nl7B4uimEe-n_bccIa6R9w" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nl7B4-imEe-n_bccIa6R9w" name="bPagada">
+      <modelElement href="../src/APEHoteles.uml#_kXog1OimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nl7B5OimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXpH4OimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nl7B5eimEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nl7B5uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nl7B5-imEe-n_bccIa6R9w" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nl7B6OimEe-n_bccIa6R9w" name="isbPagada">
+      <modelElement href="../src/APEHoteles.uml#_kLSG4OimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl7B6eimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B6uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nl7B6-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLSG4eimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nl7B7OimEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nl7B7eimEe-n_bccIa6R9w" name="setbPagada">
+      <modelElement href="../src/APEHoteles.uml#_kLSG4uimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nl7B7uimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B7-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nl7B8OimEe-n_bccIa6R9w" name="bPagada">
+        <modelElement href="../src/APEHoteles.uml#_kLSG4-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nl7B8eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nl7B8uimEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nl7B8-imEe-n_bccIa6R9w" name="toString">
+      <modelElement href="../src/APEHoteles.uml#_kLSG5OimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nl7B9OimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kLSt8OimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nl7B9eimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kLSt8eimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nl7B9uimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B9-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nl7B-OimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLSG5eimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nl7B-eimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nl7B-uimEe-n_bccIa6R9w" name="Reserva">
+      <modelElement href="../src/APEHoteles.uml#_kXPfQOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nl7B--imEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nl7B_OimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nl7B_eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nl7B_uimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kXQGV-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nl7B_-imEe-n_bccIa6R9w" name="Reserva">
+          <modelElement href="../src/APEHoteles.uml#_kLQ4wOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nl7CAOimEe-n_bccIa6R9w" name="iD">
+        <modelElement href="../src/APEHoteles.uml#_kXPfQeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nl7CAeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nl7CAuimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nl7CA-imEe-n_bccIa6R9w" name="fecIni">
+        <modelElement href="../src/APEHoteles.uml#_kXQGUOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nl7CBOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nl7CBeimEe-n_bccIa6R9w" name="Date">
+          <modelElement href="../src/APEHoteles.uml#_kVkrUOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nl7CBuimEe-n_bccIa6R9w" name="fecFin">
+        <modelElement href="../src/APEHoteles.uml#_kXQGUeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nl7CB-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nl7CCOimEe-n_bccIa6R9w" name="Date">
+          <modelElement href="../src/APEHoteles.uml#_kVkrUOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nl7CCeimEe-n_bccIa6R9w" name="cliente">
+        <modelElement href="../src/APEHoteles.uml#_kXQGUuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nl7CCuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nl7CC-imEe-n_bccIa6R9w" name="Cliente">
+          <modelElement href="../src/APEHoteles.uml#_kKqb0uimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nl7CDOimEe-n_bccIa6R9w" name="sala">
+        <modelElement href="../src/APEHoteles.uml#_kXQGU-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nl7CDeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nl7CDuimEe-n_bccIa6R9w" name="Sala">
+          <modelElement href="../src/APEHoteles.uml#_kLT8EOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nl7CD-imEe-n_bccIa6R9w" name="precioTotal">
+        <modelElement href="../src/APEHoteles.uml#_kXQGVOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nl7CEOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nl7CEeimEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nlWaCOimEe-n_bccIa6R9w" comments="_nlVL4OimEe-n_bccIa6R9w" targetConnectionVisual="_nlVL4eimEe-n_bccIa6R9w" name="HabReserva" associationsIn="_nlWaAOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kLHu0OimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nlWaCeimEe-n_bccIa6R9w" position="1745.0,1054.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_nlWaCuimEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nlWaC-imEe-n_bccIa6R9w" name="tipoHab">
+      <modelElement href="../src/APEHoteles.uml#_kXmEkOimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlWaDOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlWaDeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlWaDuimEe-n_bccIa6R9w" name="tipoHab">
+        <modelElement href="../src/APEHoteles.uml#_kVqK4uimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nlWaD-imEe-n_bccIa6R9w" name="fecha">
+      <modelElement href="../src/APEHoteles.uml#_kXmEkeimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlWaEOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlWaEeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlWaEuimEe-n_bccIa6R9w" name="Date">
+        <modelElement href="../src/APEHoteles.uml#_kVkrUOimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nlWaE-imEe-n_bccIa6R9w" name="HabReserva">
+      <modelElement href="../src/APEHoteles.uml#_kXNqEOimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nlWaFOimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nlWaFeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlWaFuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlWaF-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kXNqFeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlWaGOimEe-n_bccIa6R9w" name="HabReserva">
+          <modelElement href="../src/APEHoteles.uml#_kLHu0OimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlWaGeimEe-n_bccIa6R9w" name="tipoHab">
+        <modelElement href="../src/APEHoteles.uml#_kXNqEeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlWaGuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlWaG-imEe-n_bccIa6R9w" name="tipoHab">
+          <modelElement href="../src/APEHoteles.uml#_kWClYOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlWaHOimEe-n_bccIa6R9w" name="fecha">
+        <modelElement href="../src/APEHoteles.uml#_kXNqEuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlWaHeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlWaHuimEe-n_bccIa6R9w" name="Date">
+          <modelElement href="../src/APEHoteles.uml#_kVkrUOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_nmdNQOimEe-n_bccIa6R9w" name="Habitacion">
+    <modelElement href="../src/APEHoteles.uml#_kHZFYOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmdNQeimEe-n_bccIa6R9w" position="1630.0,1081.0" size="-1.0,-1.0"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_nmebYOimEe-n_bccIa6R9w" name="Sala">
+    <modelElement href="../src/APEHoteles.uml#_kHZFYeimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmebYeimEe-n_bccIa6R9w" position="2148.0,1075.0" size="-1.0,-1.0"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nlSImOimEe-n_bccIa6R9w" comments="_nlQ6cOimEe-n_bccIa6R9w" targetConnectionVisual="_nlQ6ceimEe-n_bccIa6R9w" name="HabDisponible" associationsIn="_nlSIkOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kLFSkOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nlSImeimEe-n_bccIa6R9w" position="2339.0,1157.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_nlSImuimEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nlSIm-imEe-n_bccIa6R9w" name="habitacion">
+      <modelElement href="../src/APEHoteles.uml#_kXldgeimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlSInOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlSIneimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlSInuimEe-n_bccIa6R9w" name="Habitacion">
+        <modelElement href="../src/APEHoteles.uml#_kLIV4OimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nlSIn-imEe-n_bccIa6R9w" name="disponible">
+      <modelElement href="../src/APEHoteles.uml#_kXldguimEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nlSIoOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlSIoeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nlSIouimEe-n_bccIa6R9w" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nlSIo-imEe-n_bccIa6R9w" name="toString">
+      <modelElement href="../src/APEHoteles.uml#_kLF5oOimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nlSIpOimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kLF5ouimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nlSIpeimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kLGgsOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nlSIpuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlSIp-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlSIqOimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLF5oeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlSIqeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nlSIquimEe-n_bccIa6R9w" name="hashCode">
+      <modelElement href="../src/APEHoteles.uml#_kLGgsuimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nlSIq-imEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kLGgtOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nlSIrOimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kLGgteimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nlSIreimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlSIruimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlSIr-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLGgs-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlSIsOimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nlSIseimEe-n_bccIa6R9w" name="HabDisponible">
+      <modelElement href="../src/APEHoteles.uml#_kWkJ0OimEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nlSIsuimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nlSIs-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlSItOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlSIteimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWkJ1eimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlSItuimEe-n_bccIa6R9w" name="HabDisponible">
+          <modelElement href="../src/APEHoteles.uml#_kLFSkOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlSIt-imEe-n_bccIa6R9w" name="habitacion">
+        <modelElement href="../src/APEHoteles.uml#_kWkJ0eimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlSIuOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlSIueimEe-n_bccIa6R9w" name="Habitacion">
+          <modelElement href="../src/APEHoteles.uml#_kLIV4OimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nlSIuuimEe-n_bccIa6R9w" name="disponible">
+        <modelElement href="../src/APEHoteles.uml#_kWkJ0uimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlSIu-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlSIvOimEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nlSIveimEe-n_bccIa6R9w" name="equals">
+      <modelElement href="../src/APEHoteles.uml#_kXMb8OimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nlSIvuimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXMb8-imEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nlSIv-imEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kXNDAOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nlSIwOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nlSIweimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nlSIwuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kXMb8uimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nlSIw-imEe-n_bccIa6R9w" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nlSIxOimEe-n_bccIa6R9w" name="obj">
+        <modelElement href="../src/APEHoteles.uml#_kXMb8eimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nlSIxeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nlSIxuimEe-n_bccIa6R9w" name="Object">
+          <modelElement href="../src/APEHoteles.uml#_kXJYoOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nmFZ0OimEe-n_bccIa6R9w" comments="_nmAhUOimEe-n_bccIa6R9w" targetConnectionVisual="_nmAhUeimEe-n_bccIa6R9w" name="Sala" associationsOut="_nl_6QOimEe-n_bccIa6R9w _nl7BwOimEe-n_bccIa6R9w" subclassedBy="_nmBIYOimEe-n_bccIa6R9w _nmBIYeimEe-n_bccIa6R9w _nmYUwOimEe-n_bccIa6R9w">
+    <modelElement href="../src/APEHoteles.uml#_kLT8EOimEe-n_bccIa6R9w"/>
+    <visualProperties xmi:id="_nmFZ0eimEe-n_bccIa6R9w" position="1714.0,197.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_nmFZ0uimEe-n_bccIa6R9w" name="Patch">
+      <modelElement href="../src/APEHoteles.uml#_nJ3-8eimEe-n_bccIa6R9w"/>
+    </stereotypes>
+    <visibility xmi:id="_nmFZ0-imEe-n_bccIa6R9w" label="+"/>
+    <attributes xmi:id="_nmFZ1OimEe-n_bccIa6R9w" name="num">
+      <modelElement href="../src/APEHoteles.uml#_kXpu8OimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nmFZ1eimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXpu8eimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nmFZ1uimEe-n_bccIa6R9w" label="#"/>
+      <cardinality xmi:id="_nmFZ1-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nmFZ2OimEe-n_bccIa6R9w" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nmGA4OimEe-n_bccIa6R9w" name="capacidad">
+      <modelElement href="../src/APEHoteles.uml#_kXpu8uimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nmGA4eimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXqWAOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nmGA4uimEe-n_bccIa6R9w" label="#"/>
+      <cardinality xmi:id="_nmGA4-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nmGA5OimEe-n_bccIa6R9w" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nmGA5eimEe-n_bccIa6R9w" name="tlfno">
+      <modelElement href="../src/APEHoteles.uml#_kXqWAeimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nmGA5uimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXqWAuimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nmGA5-imEe-n_bccIa6R9w" label="#"/>
+      <cardinality xmi:id="_nmGA6OimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nmGA6eimEe-n_bccIa6R9w" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nmGA6uimEe-n_bccIa6R9w" name="pvp">
+      <modelElement href="../src/APEHoteles.uml#_kXqWA-imEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nmGA6-imEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXq9EOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nmGA7OimEe-n_bccIa6R9w" label="#"/>
+      <cardinality xmi:id="_nmGA7eimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nmGA7uimEe-n_bccIa6R9w" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nmGA7-imEe-n_bccIa6R9w" name="hotel">
+      <modelElement href="../src/APEHoteles.uml#_kXq9EeimEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nmGA8OimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXq9EuimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nmGA8eimEe-n_bccIa6R9w" label="#"/>
+      <cardinality xmi:id="_nmGA8uimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nmGA8-imEe-n_bccIa6R9w" name="Hotel">
+        <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_nmGA9OimEe-n_bccIa6R9w" name="tipo">
+      <modelElement href="../src/APEHoteles.uml#_kXq9E-imEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nmGA9eimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kXrkIOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nmGA9uimEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nmGA9-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <type xmi:id="_nmGA-OimEe-n_bccIa6R9w" name="tSala">
+        <modelElement href="../src/APEHoteles.uml#_kLUjIOimEe-n_bccIa6R9w"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_nmGA-eimEe-n_bccIa6R9w" name="getPvp">
+      <modelElement href="../src/APEHoteles.uml#_kLVKMOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rc_IAOioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGA-uimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGA--imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGA_OimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLVKMeimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGA_eimEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nmGA_uimEe-n_bccIa6R9w" name="setPvp">
+      <modelElement href="../src/APEHoteles.uml#_kLVxQOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rc_vEOioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGA_-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBAOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nmGBAeimEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kLVxQeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBAuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBA-imEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBBOimEe-n_bccIa6R9w" name="getNum">
+      <modelElement href="../src/APEHoteles.uml#_kLVxQuimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rc_vEeioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBBeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBBuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBB-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLVxQ-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBCOimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nmGBCeimEe-n_bccIa6R9w" name="setNum">
+      <modelElement href="../src/APEHoteles.uml#_kLVxROimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rc_vEuioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBCuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBC-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nmGBDOimEe-n_bccIa6R9w" name="num">
+        <modelElement href="../src/APEHoteles.uml#_kLVxReimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBDeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBDuimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBD-imEe-n_bccIa6R9w" name="getCapacidad">
+      <modelElement href="../src/APEHoteles.uml#_kLVxRuimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdAWIOioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBEOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBEeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBEuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLVxR-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBE-imEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nmGBFOimEe-n_bccIa6R9w" name="setCapacidad">
+      <modelElement href="../src/APEHoteles.uml#_kLWYUOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdAWIeioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBFeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBFuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nmGBF-imEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kLWYUeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBGOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBGeimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBGuimEe-n_bccIa6R9w" name="getTlfno">
+      <modelElement href="../src/APEHoteles.uml#_kLWYUuimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdAWIuioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBG-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBHOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBHeimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLWYU-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBHuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nmGBH-imEe-n_bccIa6R9w" name="setTlfno">
+      <modelElement href="../src/APEHoteles.uml#_kLWYVOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdAWI-ioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBIOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBIeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nmGBIuimEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kLWYVeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBI-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBJOimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBJeimEe-n_bccIa6R9w" name="getHotel">
+      <modelElement href="../src/APEHoteles.uml#_kLW_YOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdA9MOioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBJuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBJ-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBKOimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWsFoOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBKeimEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nmGBKuimEe-n_bccIa6R9w" name="getTSala">
+      <modelElement href="../src/APEHoteles.uml#_kLW_YeimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdA9MeioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBK-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBLOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBLeimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWsFo-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBLuimEe-n_bccIa6R9w" name="tSala">
+          <modelElement href="../src/APEHoteles.uml#_kLUjIOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nmGBL-imEe-n_bccIa6R9w" name="toString">
+      <modelElement href="../src/APEHoteles.uml#_kLXmcOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdA9MuioEe-n_bccIa6R9w"/>
+      <stereotypes xmi:id="_nmGBMOimEe-n_bccIa6R9w" name="LegacyStyledElement">
+        <modelElement href="../src/APEHoteles.uml#_kLYNgOimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <stereotypes xmi:id="_nmGBMeimEe-n_bccIa6R9w" name="Annotations">
+        <modelElement href="../src/APEHoteles.uml#_kLYNgeimEe-n_bccIa6R9w"/>
+      </stereotypes>
+      <visibility xmi:id="_nmGBMuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBM-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBNOimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kLXmceimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBNeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_nmGBNuimEe-n_bccIa6R9w" comments="_nmCWgOimEe-n_bccIa6R9w" targetConnectionVisual="_nmCWgeimEe-n_bccIa6R9w" name="printTipo">
+      <modelElement href="../src/APEHoteles.uml#_kLYNg-imEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdCLUOioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBN-imEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBOOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_nmGBOeimEe-n_bccIa6R9w" comments="_nmCWguimEe-n_bccIa6R9w" targetConnectionVisual="_nmCWg-imEe-n_bccIa6R9w" name="selectorTipo">
+      <modelElement href="../src/APEHoteles.uml#_kLY0kOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdCLUeioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBOuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBO-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nmGBPOimEe-n_bccIa6R9w" name="opc">
+        <modelElement href="../src/APEHoteles.uml#_kLY0keimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBPeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBPuimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBP-imEe-n_bccIa6R9w" comments="_nmCWhOimEe-n_bccIa6R9w" targetConnectionVisual="_nmCWheimEe-n_bccIa6R9w" name="tSalaStringToTSala">
+      <modelElement href="../src/APEHoteles.uml#_kLY0kuimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdCLUuioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBQOimEe-n_bccIa6R9w" label="-"/>
+      <cardinality xmi:id="_nmGBQeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBQuimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWuh4-imEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBQ-imEe-n_bccIa6R9w" name="tSala">
+          <modelElement href="../src/APEHoteles.uml#_kLUjIOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nmGBROimEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kLY0k-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBReimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBRuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBR-imEe-n_bccIa6R9w" name="setHotel">
+      <modelElement href="../src/APEHoteles.uml#_kWsFoeimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdCLU-ioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBSOimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBSeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nmGBSuimEe-n_bccIa6R9w" name="hotel">
+        <modelElement href="../src/APEHoteles.uml#_kWsFouimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBS-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBTOimEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBTeimEe-n_bccIa6R9w" name="setTSala">
+      <modelElement href="../src/APEHoteles.uml#_kWsFpOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdCyYOioEe-n_bccIa6R9w"/>
+      <visibility xmi:id="_nmGBTuimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBT-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <parameters xmi:id="_nmGBUOimEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kWsFpeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBUeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBUuimEe-n_bccIa6R9w" name="tSala">
+          <modelElement href="../src/APEHoteles.uml#_kLUjIOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBU-imEe-n_bccIa6R9w" name="Sala">
+      <modelElement href="../src/APEHoteles.uml#_kWsssOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdCyYeioEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nmGBVOimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nmGBVeimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBVuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBV-imEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWssuOimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBWOimEe-n_bccIa6R9w" name="Sala">
+          <modelElement href="../src/APEHoteles.uml#_kLT8EOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nmGBWeimEe-n_bccIa6R9w" name="num">
+        <modelElement href="../src/APEHoteles.uml#_kWssseimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBWuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBW-imEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBXOimEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kWsssuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBXeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBXuimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBX-imEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kWsss-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBYOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBYeimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBYuimEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kWsstOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBY-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBZOimEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBZeimEe-n_bccIa6R9w" name="hotel">
+        <modelElement href="../src/APEHoteles.uml#_kWssteimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBZuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBZ-imEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBaOimEe-n_bccIa6R9w" name="Sala">
+      <modelElement href="../src/APEHoteles.uml#_kWtTwOimEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdCyYuioEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nmGBaeimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nmGBauimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBa-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBbOimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWt60uimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBbeimEe-n_bccIa6R9w" name="Sala">
+          <modelElement href="../src/APEHoteles.uml#_kLT8EOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nmGBbuimEe-n_bccIa6R9w" name="num">
+        <modelElement href="../src/APEHoteles.uml#_kWtTweimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBb-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBcOimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBceimEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kWtTwuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBcuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBc-imEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBdOimEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kWtTw-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBdeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBduimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBd-imEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kWtTxOimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBeOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBeeimEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBeuimEe-n_bccIa6R9w" name="hotel">
+        <modelElement href="../src/APEHoteles.uml#_kWtTxeimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBe-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBfOimEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBfeimEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kWtTxuimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBfuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBf-imEe-n_bccIa6R9w" name="tSala">
+          <modelElement href="../src/APEHoteles.uml#_kLUjIOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_nmGBgOimEe-n_bccIa6R9w" name="Sala">
+      <modelElement href="../src/APEHoteles.uml#_kWt60-imEe-n_bccIa6R9w"/>
+      <visualProperties xmi:id="_rdDZcOioEe-n_bccIa6R9w"/>
+      <keywords xmi:id="_nmGBgeimEe-n_bccIa6R9w" keyword="create"/>
+      <visibility xmi:id="_nmGBguimEe-n_bccIa6R9w" label="+"/>
+      <cardinality xmi:id="_nmGBg-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_nmGBhOimEe-n_bccIa6R9w">
+        <modelElement href="../src/APEHoteles.uml#_kWuh4uimEe-n_bccIa6R9w"/>
+        <type xmi:id="_nmGBheimEe-n_bccIa6R9w" name="Sala">
+          <modelElement href="../src/APEHoteles.uml#_kLT8EOimEe-n_bccIa6R9w"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_nmGBhuimEe-n_bccIa6R9w" name="num">
+        <modelElement href="../src/APEHoteles.uml#_kWt61OimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBh-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBiOimEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBieimEe-n_bccIa6R9w" name="capacidad">
+        <modelElement href="../src/APEHoteles.uml#_kWt61eimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBiuimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBi-imEe-n_bccIa6R9w" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBjOimEe-n_bccIa6R9w" name="tlfno">
+        <modelElement href="../src/APEHoteles.uml#_kWt61uimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBjeimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBjuimEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBj-imEe-n_bccIa6R9w" name="pvp">
+        <modelElement href="../src/APEHoteles.uml#_kWt61-imEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBkOimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBkeimEe-n_bccIa6R9w" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBkuimEe-n_bccIa6R9w" name="hotel">
+        <modelElement href="../src/APEHoteles.uml#_kWt62OimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBk-imEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBlOimEe-n_bccIa6R9w" name="Hotel">
+          <modelElement href="../src/APEHoteles.uml#_kLN1cOimEe-n_bccIa6R9w"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_nmGBleimEe-n_bccIa6R9w" name="tipo">
+        <modelElement href="../src/APEHoteles.uml#_kWt62eimEe-n_bccIa6R9w"/>
+        <cardinality xmi:id="_nmGBluimEe-n_bccIa6R9w" label="1" max="1" min="1"/>
+        <type xmi:id="_nmGBl-imEe-n_bccIa6R9w" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>

@@ -1,0 +1,9 @@
+--- Hola Arritxu ---
+
+Debido al tamaño tan grande del proyecto he usado automatismos para obtener la documentacion final del proyecto tal y como funciona la aplicacion y directamente del codigo.
+
+En doc.rar tienes una web con la documentacion
+
+En UML.rar tienes los diagramas
+
+Te sorprendera los numeros pero, es literalmente como funciona la app, ya que hotel no contiene un Array de salas, si no que son las salas quien contienen los hoteles, para evitar descargas excesivas de informacion de la BBDD.

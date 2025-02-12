@@ -35,6 +35,11 @@ public class Input {
         }
 	}
 	
+	public static String inPassLibre() {
+		System.out.print("Password: ");
+		return scn.nextLine();
+	}
+	
 	/**
 	 * Pregunta por apellido/os, no admite apellidos con numeros
 	 * @return todos los apellidos
@@ -169,7 +174,6 @@ public class Input {
 		System.out.print("Capacidad (en personas): ");
 		String aforoT = scn.nextLine();
 		int aforo = Integer.parseInt(aforoT);
-		scn.next();
 		return aforo;
 	}
 	
@@ -254,32 +258,7 @@ public class Input {
 		} while (pass.equals(""));
 		return pass;
     }
-	
-/*	public static String readPassword() {
-        StringBuilder password = new StringBuilder();
-        try {
-            while (true) {
-                char ch = (char) System.in.read(); // Leer un solo carácter
 
-                if (ch == '\n' || ch == '\r') { // Si es Enter, termina la entrada
-                    break;
-                } else if (ch == '\b' || ch == 127) { // Si es Backspace
-                    if (password.length() > 0) {
-                        password.deleteCharAt(password.length() - 1);
-                        System.out.print("\b \b"); // Borra el último '*'
-                    }
-                } else {
-                    password.append(ch);
-                    System.out.print("*"); // Muestra '*' en vez del carácter
-                }
-            }
-            System.out.println(); // Salto de línea al terminar
-        } catch (IOException e) {
-            System.out.println("Error al leer la contraseña.");
-        }
-        return password.toString();
-    } */
-	
 	/**
 	 * Recoge la opcion numerica necesaria para moverse entre menus
 	 * @return la opcion en numero
@@ -342,6 +321,8 @@ public class Input {
 		fecIniSD = StringDate.dayFormat(fecIniSD, fecIniSM, fecIniSY);
 		fecIniS = fecIniSY + "-" + fecIniSM + "-" + fecIniSD;
 		
+		if (fecIniSY.equals("") || fecIniSM.equals("") || fecIniSD.equals("")) return inFecIni();
+		
 		Date fecIni = Date.valueOf(fecIniS);
 		return fecIni;
 	}
@@ -370,6 +351,9 @@ public class Input {
 		
 		fecFinSM = StringDate.monthFormat(fecFinSM);
 		fecFinSD = StringDate.dayFormat(fecFinSD, fecFinSM, fecFinSY);
+		
+		if (fecFinSY.equals("") || fecFinSM.equals("") || fecFinSD.equals("")) return inFecFin();
+		
 		fecFinS = fecFinSY + "-" + fecFinSM + "-" + fecFinSD;
 		
 		Date fecFin = Date.valueOf(fecFinS);
@@ -560,5 +544,24 @@ public class Input {
             }
         }
         return true;
+	}
+	
+	/**
+	 * Recoge el id del hotel
+	 * @return el id del hotel
+	 */
+	public static int inID() {
+		int id = 0;
+		try {	
+			System.out.print("ID de hotel: ");
+			id = scn.nextInt();
+			scn.nextLine();
+		} catch (InputMismatchException e) {
+			scn.nextLine();
+			id = 0;
+			System.out.print("\n>>> ERROR: introduzca un numero por favor <<<\n\n");
+			return inID();
+		}
+		return id;
 	}
 }

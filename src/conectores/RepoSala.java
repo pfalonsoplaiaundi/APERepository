@@ -8,28 +8,31 @@ import java.util.ArrayList;
 import menu.MenuCarrito;
 import menu.MenuPrincipal;
 import menu.MenuProductos;
+import model.EspacioComun;
 import model.Habitacion;
 import model.Habitacion.tipoHab;
+import model.Sala.tSala;
 import model.Reserva;
 import model.Sala;
+import model.SalaReunion;
 
+/**
+ * Repositorio de consultas de salas
+ */
 public class RepoSala {
 	
 	private ArrayList<String> SQLScripts = new ArrayList<>();
-	private int idHotel;
-		
-	public int getIdHotel() {
-		return idHotel;
-	}
 
-	public void setIdHotel(int idHotel) {
-		this.idHotel = idHotel;
-	}
-
+	/**
+	 * Constructor
+	 */
 	public RepoSala() {
 		inicializarArray();
 	}
 	
+	/**
+	 * Inicializa el array de scripts
+	 */
 	private void inicializarArray() {
 		
 		// Insertar	0
@@ -83,7 +86,7 @@ public class RepoSala {
 					+ "sala "
 				+ "WHERE "
 					+ "id = ? and "
-					+ "num = ?"
+					+ "num = ?;"
 				);
 		
 		// Otros		
@@ -136,6 +139,12 @@ public class RepoSala {
 	
 	}
 
+	/**
+	 * Recupera la informacion de una sala
+	 * @param id
+	 * @param num
+	 * @return
+	 */
 	public Sala get(int id, int num) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -164,6 +173,10 @@ public class RepoSala {
 		}		
 	}
 	
+	/**
+	 * Recupera el menu de productos
+	 * @return
+	 */
 	public ArrayList<Habitacion> getMenuProductos() {
 		ArrayList<Habitacion> menuProductos = new ArrayList<>();
 		//String query = SQLScripts.get(5);
@@ -181,7 +194,7 @@ public class RepoSala {
 			query += "\"\"";
 		} else {
 			for (int i = 0 ; i < MenuCarrito.carrito.size() ; i++) {
-				query += (i == MenuCarrito.carrito.size()) ? "? " : "?, ";
+				query += (i+1 == MenuCarrito.carrito.size()) ? "? " : "?, ";
 				
 			}
 		}
@@ -201,7 +214,7 @@ public class RepoSala {
 		    		pS.setInt(i+5, r.getSala().getNum());
 		    	}
 			}
-			// System.out.print("\n" + pS.toString() + "\n");
+			
 	    	ResultSet rS = pS.executeQuery();
 	    	while (rS.next()) {
 	    		Habitacion h = new Habitacion(MenuPrincipal.hotel, 0, 0, "",  rS.getDouble(2), rS.getString(1));
@@ -214,6 +227,11 @@ public class RepoSala {
 		return null;
 	}
 
+	/**
+	 * Recupera la sala selecionada en el menu de productos
+	 * @param tipoHab
+	 * @return
+	 */
 	public Habitacion getSeleccionMenuProductos(tipoHab tipoHab) {
 		String query = SQLScripts.get(6);
 	    try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
@@ -232,6 +250,133 @@ public class RepoSala {
 	    	e.printStackTrace();
 	    }
 		return null;
+	}
+
+	/**
+	 * Inserta una nueva sala
+	 * @param nuevo
+	 * @return
+	 */
+	public boolean insert(Sala nuevo) {
+		
+		// Revisa si ya existe el cliente
+		if(!check(nuevo)) {
+			
+			if (nuevo.getClass().equals(Habitacion.class)) {
+				nuevo.setTSala(tSala.Habitacion);
+			} else if (nuevo.getClass().equals(EspacioComun.class)) {
+				nuevo.setTSala(tSala.EspaciosComunes);				
+			} else if (nuevo.getClass().equals(SalaReunion.class)) {
+				nuevo.setTSala(tSala.SalaReuniones);
+			}
+			
+			String query = "INSERT sala (id, num, capacidad, tlfno, pvp, subtipo) "
+					+ "VALUES (?, ?, ?, ?, ?, ?);";
+			
+			//Si no existe el cliente, hace la consulta a la BBDD
+	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+	            preparedStatement.setInt(1, nuevo.getHotel().getID());
+	            preparedStatement.setInt(2, nuevo.getNum());
+	            preparedStatement.setInt(3, nuevo.getCapacidad());
+	            preparedStatement.setString(4, nuevo.getTlfno());
+	            preparedStatement.setDouble(5, nuevo.getPvp());
+	            preparedStatement.setString(6, nuevo.getTSala().toString());
+	            preparedStatement.executeUpdate();
+		        
+		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
+		        if (check(nuevo)) {
+		        	System.out.print("\n~~~ Sala creada correctamente ~~~\n");
+		        	return true;
+		        } else {
+		        	System.out.print("\n>>> Se ha producido un error <<<\n\n");
+		        	return false;
+		        }
+
+			//En caso de que haya algun error en la base lo coge aqui
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error al insertar la nueva sala");
+				return false;
+			}
+		}
+		
+		//Si el cliente existe antes de la insercion devuelve false. 
+		System.out.println("El usuario ya existe");
+		return true;
+	}
+
+	/**
+	 * Comprueba la existencia de una sala
+	 * @param sala
+	 * @return
+	 */
+	private boolean check(Sala sala) {
+
+		String query = "SELECT * FROM sala "
+				+ " WHERE id = ? and num = ?;";
+		
+		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+	        preparedStatement.setInt(1, sala.getHotel().getID());
+			preparedStatement.setInt(2, sala.getNum());
+	        ResultSet rS = preparedStatement.executeQuery();
+	        if (rS.next()) {
+	        	return true;
+	        } else {
+	        	return false;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean update(Sala modificaciones) {
+		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
+		if (SQLScripts.isEmpty()) {
+			inicializarArray();
+		}
+		
+		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
+		Sala original = new Sala(0, 0, "", 0, null, "");
+		
+		// Copruebo que me han pasado el ID correcto
+		if (modificaciones.getNum() != 0 && modificaciones.getHotel() != null) {
+			
+			// Meto los datos del cliente original en el cliente creado anterior
+			original = get(modificaciones.getHotel().getID(), modificaciones.getNum());
+			
+			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
+			if (modificaciones.getCapacidad() != 0) original.setCapacidad(modificaciones.getCapacidad());
+			if (!modificaciones.getTlfno().equals("")) original.setTlfno(modificaciones.getTlfno());
+			if (modificaciones.getPvp() != 0) original.setPvp(modificaciones.getPvp());
+		
+		// En caso de no tener el DNI correcto devuelvo error
+		} else {
+			System.out.println("Error al insertar el Hotel");
+			return false;
+		}
+		
+		String query = "UPDATE sala "
+				+ "SET capacidad = ?, tlfno = ?, pvp = ? "
+				+ "WHERE id = ? and num = ?";
+		
+		//Si existe el cliente, ejecuta el borrado en la BBDD
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+	        pS.setInt(1, original.getCapacidad());
+	        pS.setString(2, original.getTlfno());
+	        pS.setDouble(3, original.getPvp());
+	        pS.setInt(4, original.getHotel().getID());
+	        pS.setInt(5, original.getNum());
+	        pS.executeUpdate();
+	        
+	        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
+	        return true;
+
+		//En caso de que haya algun error en la base lo coge aqui
+		} catch (SQLException e) {
+			System.out.println("Error al actualizar la sala"+e);
+			return false;
+		}
 	}
 	
 }

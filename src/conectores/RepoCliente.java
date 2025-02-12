@@ -5,24 +5,33 @@ import java.util.ArrayList;
 
 import model.*;
 
+/**
+ * Consultas a la base de datos de cliente
+ */
 public class RepoCliente {
 
 	private ArrayList<String> SQLScripts = new ArrayList<>();	
 	
+	/**
+	 * Constructor del repocliente
+	 */
 	public RepoCliente() {
 		inicializarArray();
 	}
 	
+	/**
+	 * Inicializacion del array de scripts
+	 */
 	private void inicializarArray() {
 		
 		// Insertar	0
 		this.SQLScripts.add( "INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VALUES\r\n"
-				+ "(?, ?, ?, ?, ?, ?, ?, SHA2(?, 256))"
+				+ "(?, ?, ?, ?, ?, ?, ?, SHA2(?, 256));"
 				);
 		
 		// Eliminar 1
-		this.SQLScripts.add( "DELETE cliente"
-				+ "WHERE DNI = ?"
+		this.SQLScripts.add( "DELETE FROM cliente"
+				+ "WHERE DNI = ?;"
 				);
 		
 		// Modificar 2		
@@ -38,7 +47,7 @@ public class RepoCliente {
 		
 		// Traer informarcion 4	
 		this.SQLScripts.add( "SELECT * FROM Cliente"
-				+ " WHERE DNI = ?"
+				+ " WHERE DNI = ?;"
 				);
 		
 		// Otros
@@ -49,7 +58,6 @@ public class RepoCliente {
 				+ "where c.dni = ? and c.pass = sha2(?, 256);"
 				);
 		
-		this.SQLScripts.add("");
 	}
 	
 	/**
@@ -70,7 +78,7 @@ public class RepoCliente {
 		        preparedStatement.setString(1, nuevo.getDNI());
 		        preparedStatement.setString(2, nuevo.getNombre());
 		        preparedStatement.setString(3, nuevo.getApellidos());
-		        preparedStatement.setInt(4, nuevo.getTelefono());
+		        preparedStatement.setString(4, nuevo.getTelefono());
 		        preparedStatement.setString(5, nuevo.getEmail());
 		        preparedStatement.setBoolean(6, nuevo.isbTrabajador());
 		        preparedStatement.setString(7, nuevo.getTarifa().toString());
@@ -99,12 +107,11 @@ public class RepoCliente {
 		return true;
 	}
 
+	/**
+	 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 */
 	public boolean delete(Cliente aBorrar) {
-		
-		/**
-		 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
-		 */
-		
+				
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -113,16 +120,16 @@ public class RepoCliente {
 		// Revisa si existe el cliente
 		if(check(aBorrar)) {
 			
+			String query =  
+					"DELETE FROM "
+						+ "cliente "
+					+ "WHERE "
+						+ "DNI = ?";
+			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 		        preparedStatement.setString(1, aBorrar.getDNI());
-		        preparedStatement.setString(2, aBorrar.getNombre());
-		        preparedStatement.setString(3, aBorrar.getApellidos());
-		        preparedStatement.setInt(4, aBorrar.getTelefono());
-		        preparedStatement.setString(5, aBorrar.getEmail());
-		        preparedStatement.setBoolean(6, aBorrar.isbTrabajador());
-		        preparedStatement.setString(9, aBorrar.getTarifa().toString());
-		        preparedStatement.setString(8, aBorrar.getPass());
+		        
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
@@ -130,7 +137,7 @@ public class RepoCliente {
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al eliminar el cliente");
+				System.out.println("Error al eliminar el cliente\n");
 				return false;
 			}
 		}
@@ -139,11 +146,10 @@ public class RepoCliente {
 		return false;
 	}
 
+	/**
+	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 */
 	public boolean update(Cliente modificaciones) {
-		
-		/**
-		 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
-		 */
 		
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
@@ -151,7 +157,7 @@ public class RepoCliente {
 		}
 		
 		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
-		Cliente original = new Cliente( "", "", "", 0, "", false, "");
+		Cliente original = new Cliente( "", "", "", "", "", false, "");
 		
 		// Copruebo que me han pasado el DNI correcto
 		if (!modificaciones.getDNI().equals("")) {
@@ -162,7 +168,7 @@ public class RepoCliente {
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
 			if (!modificaciones.getNombre().equals("")) original.setNombre(modificaciones.getNombre());
 			if (!modificaciones.getApellidos().equals("")) original.setApellidos(modificaciones.getApellidos());
-			if (!(modificaciones.getTelefono() == 0)) original.setTelefono(modificaciones.getTelefono());
+			if (!modificaciones.getTelefono().equals("")) original.setTelefono(modificaciones.getTelefono());
 			if (!modificaciones.getEmail().equals("")) original.setEmail(modificaciones.getEmail());
 			if (!modificaciones.getTarifa().toString().equals("estandar")) original.setTarifa(modificaciones.getTarifa());
 			if (!modificaciones.getPass().equals("")) original.setPass(modificaciones.getPass());
@@ -176,20 +182,25 @@ public class RepoCliente {
 		// Revisa si existe el cliente
 		if(check(original)) {
 			
+			String query = "UPDATE cliente "
+					+ "SET DNI = ?, nom = ?, ape = ?, tlfno = ?, email = ?, bTrabajador = ?, tarifa = ?, pass = SHA2( ?, 256) "
+					+ "WHERE DNI = ?";
+			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 		        preparedStatement.setString(1, original.getDNI());
 		        preparedStatement.setString(2, original.getNombre());
 		        preparedStatement.setString(3, original.getApellidos());
-		        preparedStatement.setInt(4, original.getTelefono());
+		        preparedStatement.setString(4, original.getTelefono());
 		        preparedStatement.setString(5, original.getEmail());
 		        preparedStatement.setBoolean(6, original.isbTrabajador());
-		        preparedStatement.setString(9, original.getTarifa().toString());
+		        preparedStatement.setString(7, original.getTarifa().toString());
 		        preparedStatement.setString(8, original.getPass());
+		        preparedStatement.setString(9, original.getDNI());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !checkEquals(original);
+		        return true;
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
@@ -202,7 +213,11 @@ public class RepoCliente {
 		return false;
 	}
 	
-
+	/**
+	 * Comprueba la existencia en la base de datos de un cliente
+	 * @param cliente
+	 * @return
+	 */
 	public boolean check(Cliente cliente) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -221,15 +236,12 @@ public class RepoCliente {
 		}
 		return false;
 	}
-	
-	public boolean checkEquals(Cliente cliente) {
-		/*
-		 * WIP
-		 */
-		
-		return false;
-	}
 
+	/**
+	 * Consigue los datos de un cliente de la base de datos
+	 * @param DNI
+	 * @return
+	 */
 	public Cliente get(String DNI) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -242,7 +254,7 @@ public class RepoCliente {
 					rS.getString(1),
 					rS.getString(2),
 					rS.getString(3),
-					rS.getInt(4),
+					rS.getString(4),
 					rS.getString(5),
 					rS.getBoolean(6),
 					rS.getString(7),
@@ -258,6 +270,12 @@ public class RepoCliente {
 		}
 	}
 
+	/**
+	 * Comprueba las credenciales de un cliente sean correctas
+	 * @param user
+	 * @param pass
+	 * @return
+	 */
 	public boolean checkCreden(String user, String pass) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -278,7 +296,13 @@ public class RepoCliente {
 		}
 	}
 
-	public ArrayList<Cliente> getListaFiltrada(Cliente filtro) {
+	/**
+	 * Devuelve un array con los clientes filtrada por las necesidades
+	 * @param filtro
+	 * @param trabajador
+	 * @return
+	 */
+	public ArrayList<Cliente> getListaFiltrada(Cliente filtro, int trabajador) {
 		String query = 
 				"SELECT  "
 					+ "c.nom, "
@@ -293,8 +317,7 @@ public class RepoCliente {
 				+ "WHERE "
 					+ "(c.nom = ? or ? = \"\") and "
 					+ "(c.tlfno = ? or ? = \"\") and "
-					+ "(c.email = ? or ? = 0) and "
-					+ "c.bTrabajador = ? "
+					+ "(c.email = ? or ? = 0) "
 				+ "ORDER BY "
 					+ "c.nom ASC, "
 					+ "c.ape ASC;";
@@ -325,8 +348,6 @@ public class RepoCliente {
 				pS.setString(6, "");
 			}
 			
-			pS.setBoolean(7, filtro.isbTrabajador());
-			
 			ResultSet rS = pS.executeQuery();
 						
 			ArrayList<Cliente> lista = new ArrayList<>();
@@ -341,7 +362,13 @@ public class RepoCliente {
 						rS.getString(7),
 						""
 						);
-				lista.add(c);
+				if (trabajador == 1 && c.isbTrabajador()) { // Si se quieren los trabajadores solo meto trabajadores
+					lista.add(c);
+				} else if (trabajador == 0 && !c.isbTrabajador()) { // Si se quieren los clientes solo meto los clientes
+					lista.add(c);
+				} else if (trabajador == -1) { // Si me da igual meto todos
+					lista.add(c);
+				}
 			}
 			
 			return lista;
@@ -354,6 +381,10 @@ public class RepoCliente {
 		
 	}
 
+	/**
+	 * Recupera de la base de datos todos los clientes
+	 * @return
+	 */
 	public ArrayList<Cliente> getLista() {
 		
 		String query = 

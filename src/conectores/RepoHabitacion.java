@@ -8,19 +8,27 @@ import java.util.ArrayList;
 import menu.MenuCarrito;
 import menu.MenuPrincipal;
 import menu.MenuProductos;
-import model.Cliente;
 import model.HabDisponible;
 import model.Habitacion;
 import model.Reserva;
 
+/**
+ * Consultas de la BBDD de habitaciones
+ */
 public class RepoHabitacion {
 	
 	private ArrayList<String> SQLScripts = new ArrayList<>();	
 	
+	/**
+	 * Constructor del repositorio
+	 */
 	public RepoHabitacion() {
 		inicializarArray();
 	}
 	
+	/**
+	 * Inicializa el array de scripts
+	 */
 	private void inicializarArray() {
 		
 		// Insertar	0
@@ -47,7 +55,7 @@ public class RepoHabitacion {
 		
 		// Traer informarcion 4	
 		this.SQLScripts.add( "SELECT * FROM habitacion natural join sala "
-				+ " WHERE id = ? and num = ?"
+				+ " WHERE id = ? and num = ?;"
 				);
 		
 		// Otros
@@ -77,7 +85,9 @@ public class RepoHabitacion {
 	}
 	
 	/**
-	 * Esta funcion inserta un cliente nuevo en la tabla cliente con todos los parametros de cliente. Devuelve true siempre que el usuario exista o haya sido insertado.
+	 * Inserta una habitacion nueva
+	 * @param nuevo
+	 * @return
 	 */
 	public boolean insert(Habitacion nuevo) {
 			
@@ -89,12 +99,18 @@ public class RepoHabitacion {
 		// Revisa si ya existe el cliente
 		if(!check(nuevo)) {
 			
+			RepoSala rSa = new RepoSala();
+			rSa.insert(nuevo);
+			
+			String query = "INSERT INTO habitacion (id, num, tipohab) "
+					+ "VALUES "
+					+ "(?, ?, ?)";
+			
 			//Si no existe el cliente, hace la consulta a la BBDD
-	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
-	            preparedStatement.setInt(1, nuevo.getNum());
-	            preparedStatement.setInt(2, nuevo.getCapacidad());
-	            preparedStatement.setString(3, nuevo.getTlfno());
-	            preparedStatement.setString(4, nuevo.getTipo().toString());
+	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+	            preparedStatement.setInt(1, nuevo.getHotel().getID());
+	            preparedStatement.setInt(2, nuevo.getNum());
+	            preparedStatement.setString(3, nuevo.getTipo().toString());
 	            preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve en funcion de esta
@@ -120,7 +136,9 @@ public class RepoHabitacion {
 	}
 
 	/**
-	 * Esta funcion borra un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Elimina una habitacion de la bbdd
+	 * @param aBorrar
+	 * @return
 	 */
 	public boolean delete(Habitacion aBorrar) {
 				
@@ -132,17 +150,22 @@ public class RepoHabitacion {
 		// Revisa si existe el cliente
 		if(check(aBorrar)) {
 			
+			String query = "DELETE FROM sala "
+					+ "WHERE id = ? and num = ?;";
+			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
-	            preparedStatement.setInt(1, aBorrar.getNum());
-	            preparedStatement.executeUpdate();
+			try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+	            pS.setInt(1, aBorrar.getHotel().getID());
+				pS.setInt(2, aBorrar.getNum());
+				
+	            pS.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
-		        return !check(aBorrar);
+		        return true;
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al eliminar la habitacion");
+				System.out.println("Error al eliminar la habitacion" + e);
 				return false;
 			}
 		}
@@ -152,12 +175,12 @@ public class RepoHabitacion {
 	}
 
 	/**
-	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
+	 * Modifica una habitacion de la base de datos
+	 * @param modificaciones
+	 * @return
 	 */
 	public boolean update(Habitacion modificaciones) {
-	/*
-	 * WIP
-	 */
+		
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -180,29 +203,34 @@ public class RepoHabitacion {
 		
 		// En caso de no tener el DNI correcto devuelvo error
 		} else {
-			System.out.println("Error al insertar el DNI");
+			System.out.println("Error al insertar la sala");
 			return false;
 		}
 				
 		// Revisa si existe el cliente
 		if(check(original)) {
 			
+			RepoSala rSa = new RepoSala();
+			rSa.update(original);
+			
+			String query = "UPDATE habitacion "
+					+ "SET tipoHab = ? "
+					+ " WHERE id = ? and num = ?;";
+			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
-		        preparedStatement.setInt(1, original.getHotel().getID());
-		        preparedStatement.setInt(2, original.getNum());
-		        preparedStatement.setInt(3, original.getCapacidad());
-		        preparedStatement.setString(4, original.getTlfno());
-		        preparedStatement.setDouble(5, original.getPvp());
-		        preparedStatement.setString(6, original.getTipo().toString());
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
+				preparedStatement.setString(1, original.getTipo().toString());
+				preparedStatement.setInt(2, original.getHotel().getID());
+				preparedStatement.setInt(3, original.getNum());
+				
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !check(original);
+		        return true;
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al actualizar el cliente");
+				System.out.println("Error al actualizar la habitacion" + e);
 				return false;
 			}
 		}
@@ -211,7 +239,11 @@ public class RepoHabitacion {
 		return false;
 	}
 	
-
+	/**
+	 * Comprueba la existencia de una habitacion
+	 * @param habitacion
+	 * @return
+	 */
 	public boolean check(Habitacion habitacion) {
 		
 		if (this.SQLScripts.isEmpty()) {
@@ -232,15 +264,13 @@ public class RepoHabitacion {
 		}
 		return false;
 	}
-	
-	public boolean checkEquals(Cliente cliente) {
-		/*
-		 * WIP
-		 */
-		
-		return false;
-	}
 
+	/**
+	 * Recuperas los datos de una habitacion
+	 * @param idHotel
+	 * @param num
+	 * @return
+	 */
 	public Habitacion get(int idHotel, int num) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -269,7 +299,11 @@ public class RepoHabitacion {
 		}
 	}
 	
-
+	/**
+	 * Busca la habitacion libre de un tipo mas cercana
+	 * @param tipoDeHab
+	 * @return
+	 */
 	public Habitacion getByTypeAndFirstDate(String tipoDeHab) {
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -298,7 +332,7 @@ public class RepoHabitacion {
 			query += "\"\"";
 		} else {
 			for (int i = 0 ; i < MenuCarrito.carrito.size(); i++) {
-				query += (i == MenuCarrito.carrito.size()) ? "? " : "?, ";
+				query += (i+1 == MenuCarrito.carrito.size()) ? "? " : "?, ";
 				
 			}
 		}	
@@ -338,8 +372,81 @@ public class RepoHabitacion {
 		}
 	}
 
+	/**
+	 * Recupera la informacion de las habitaciones y su disponibilidad actual segun un filtro
+	 * @param filtro
+	 * @param disponible
+	 * @return
+	 */
 	public ArrayList<HabDisponible> getListaFiltrada(Habitacion filtro, int disponible) {
-		//ArrayList<HabDisponible> lista = new ArrayList<>();
+		String query = 
+				"SELECT  "
+					+ "h.nom, "
+					+ "s.num, "
+					+ "s.capacidad, "
+					+ "s.pvp, "
+					+ "s.tlfno, "
+					+ "ha.tipohab, "
+					+ "case when current_date() between r.fecini and r.fecfin then true else false end "
+				+ "FROM "
+					+ "habitacion ha "
+					+ "JOIN sala s USING(id, num) "
+					+ "JOIN HOTEL H USING(ID) "
+					+ "LEFT JOIN reserva r USING(id, num) "
+				+ "WHERE "
+					+ "(h.nom = ? or ? = \"\") and "
+					+ "(h.ciu = ? or ? = \"\") "
+				+ "ORDER BY "
+					+ "h.id ASC, "
+					+ "s.num ASC;";
+		
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+			
+			if (filtro.getHotel() != null && !filtro.getHotel().getNombre().equals("")) {
+				pS.setString(1, filtro.getHotel().getNombre());
+				pS.setString(2, filtro.getHotel().getNombre());
+			} else {
+				pS.setString(1, "");
+				pS.setString(2, "");
+			}
+				
+			if (filtro.getHotel() != null && !filtro.getHotel().getCiudad().equals("")) {
+				pS.setString(3, filtro.getHotel().getCiudad());
+				pS.setString(4, filtro.getHotel().getCiudad());
+			} else {
+				pS.setString(3, "");
+				pS.setString(4, "");
+			}
+			
+			ResultSet rS = pS.executeQuery();
+						
+			ArrayList<HabDisponible> lista = new ArrayList<>();
+			RepoHotel rH = new RepoHotel();
+			while (rS.next()) {
+				Habitacion h = new Habitacion(
+						rH.get(rH.getPKByName(rS.getString(1))),
+						rS.getInt(2),
+						rS.getInt(3),
+						rS.getString(5),
+						rS.getDouble(4),
+						rS.getString(6)
+						);
+
+				HabDisponible hd = new HabDisponible(h, rS.getBoolean(7));
+				if (disponible == -1) {
+					lista.add(hd);
+				} else if (disponible == 1) {
+					if (hd.isDisponible()) lista.add(hd);
+				} else if (disponible == 0) {
+					if (!hd.isDisponible()) lista.add(hd); 
+				}
+			}
+			return lista;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 		return null;
 	}

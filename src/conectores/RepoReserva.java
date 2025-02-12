@@ -8,6 +8,9 @@ import model.Sala;
 
 import java.sql.*;
 
+/**
+ * Repositorio de consultas de reserva
+ */
 public class RepoReserva {
 
 	// Atributos	
@@ -54,7 +57,7 @@ public class RepoReserva {
 		
 		// Traer informarcion 4	
 		this.SQLScripts.add( "SELECT * FROM Reserva "
-				+ "WHERE codreserva = ?"
+				+ "WHERE codreserva = ?;"
 				);
 		
 		// Otros
@@ -182,37 +185,49 @@ public class RepoReserva {
 			inicializarArray();
 		}
 		
-		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
+		//Inicializo una reserva que va a recibir los datos de la reserva original, lo hago fuera del if para poder usarlo despues.
 		Reserva original = new Reserva(0, null, null, null, null, 0);
 		
 		// Copruebo que me han pasado el ID correcto
 		if (modificaciones.getID() != 0) {
 			
-			// Meto los datos del cliente original en el cliente creado anterior
+			// Meto los datos de la reserva original en la reserva creada anteriormente
 			original = get(modificaciones.getID());
 			
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
-			if (modificaciones.getFecIni() != null) original.setFecIni(modificaciones.getFecFin());
-			if (modificaciones.getFecFin() != null) original.setFecFin(modificaciones.getFecIni());
+			if (modificaciones.getFecIni() != null) original.setFecIni(modificaciones.getFecIni());
+			if (modificaciones.getFecFin() != null) original.setFecFin(modificaciones.getFecFin());
 			if (modificaciones.getCliente() != null) original.setCliente(modificaciones.getCliente());
 			if (modificaciones.getSala() != null) original.setSala(modificaciones.getSala());
 		
-		// En caso de no tener el DNI correcto devuelvo error
+		// En caso de no tener el ID correcto devuelvo error
 		} else {
-			System.out.println("Error al insertar el DNI");
+			System.out.println("Error al insertar el ID de reserva");
 			return false;
 		}
 				
-		// Revisa si existe el cliente
+		// Revisa si existe la reserva
 		if(check(original)) {
 			
-			//Si existe el cliente, ejecuta el borrado en la BBDD
-			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
+			String query = "UPDATE reserva "
+					+ "SET "
+						+ "fecini = ?, "
+						+ "fecfin = ?, "
+						+ "dni = ?, "
+						+ "id = ?, "
+						+ "num = ? "
+					+ "WHERE "
+						+ "codreserva = ?";
+			
+			//Si existe la reserva, ejecuta la modificacion en la BBDD
+			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(query)) {
 		        preparedStatement.setDate(1, original.getFecIni());
 		        preparedStatement.setDate(2, original.getFecFin());
 		        preparedStatement.setString(3, original.getCliente().getDNI());
 		        preparedStatement.setInt(4, original.getSala().getHotel().getID());
-		        preparedStatement.setInt(4, original.getSala().getNum());
+		        preparedStatement.setInt(5, original.getSala().getNum());
+		        preparedStatement.setInt(6, original.getID());
+		        
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
@@ -220,16 +235,19 @@ public class RepoReserva {
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al actualizar el cliente");
+				System.out.println("Error al actualizar la reserva" + e);
 				return false;
 			}
 		}
 		
-		//Si el cliente existe antes de la insercion devuelve false. 
+		//Si la reserva ya estaba modifica antes de la insercion devuelve false. 
 		return false;
     }
 
-	
+	/**
+	 * Recupera el valor maximo del autoincrement
+	 * @return
+	 */
 	public int getNewID() {
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
@@ -248,7 +266,13 @@ public class RepoReserva {
 		}
 	}
 
+	/**
+	 * Recupera una lista de todas las reservas segun un filtro
+	 * @param filtro
+	 * @return
+	 */
 	public ArrayList<Reserva> getListaFiltrada(Reserva filtro) {
+		
 		String query = 
 				"SELECT  "
 					+ "R.FECINI, "
@@ -348,6 +372,11 @@ public class RepoReserva {
 		return null;
 	}
 
+	/**
+	 * Elimina una reserva
+	 * @param aBorrar
+	 * @return
+	 */
 	public boolean delete(Reserva aBorrar) {
 		String query = "DELETE FROM reserva "
 				+ "WHERE codreserva = ?";

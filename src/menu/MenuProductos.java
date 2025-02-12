@@ -8,12 +8,28 @@ import conectores.RepoHotel;
 import conectores.RepoSala;
 import model.Habitacion;
 
+/**
+ * Menu de productos disponibles
+ */
 public class MenuProductos {
 
+	/**
+	 * Fecha de inicio de reserva
+	 */
 	public static Date fecIni;
+	/**
+	 * Fecha fin de reserva
+	 */
 	public static Date fecFin;
-	private static Date fecNow = new Date(System.currentTimeMillis());
+	/**
+	 * Apoyo: ¿Que dia es hoy?
+	 */
+	private static Date fecNow = new Date(System.currentTimeMillis() - 86400000);
 	
+	/**
+	 * Imprime el menu
+	 * @param idHotel
+	 */
 	public static void print(int idHotel) {
 		RepoSala rS = new RepoSala();
 		fecIni = Input.inFecIni();

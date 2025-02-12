@@ -5,6 +5,9 @@ import conectores.ConectMySQL;
 import conectores.RepoCliente;
 import model.Cliente;
 
+/**
+ * INICIO DEL PROGRAMA, clase que logea al usuario o en su defecto crea un nuevo usuario
+ */
 public class Login {
 	
 	public static Cliente user;
@@ -14,7 +17,7 @@ public class Login {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		
 		// Conecta con permisos minimos para poder revisar usuarios, en caso de que falle lo intenta 5 veces y luego termina.
 		int i = 0;
 		boolean conecta = false;
@@ -77,8 +80,17 @@ public class Login {
 				user = rC.get(DNI);
 				System.out.print("\n\n>>> IDENTIFICACION CORRECTA <<<\n\n");
 			} else {
-				System.out.print("\n\n>>> ERROR EN LA IDENTIFICACION <<<\n\n");
+				System.out.print("\n\n>>> ERROR EN LA IDENTIFICACION <<<\n\n"
+						+ "¿Quieres recuperar su contraseña? ");
+				boolean respuesta = Input.inYesNo();
+				if (respuesta) {
+					System.out.print("\nContacte con nuestro servicio de atencion al cliente por telefono para ello\n");
+					main(null);
+				} else {
+					identificarse();
+				}
+				
 			}
-		}while (user == null);
+		} while (user == null);
 	}
 }

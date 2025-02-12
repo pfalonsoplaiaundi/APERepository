@@ -1,6 +1,9 @@
 package model;
 
-public class SalaReunion {
+/**
+ * Objeto sala de reuniones
+ */
+public class SalaReunion extends Sala {
 	
 	// Atributos
 	private String servicios;
@@ -19,11 +22,10 @@ public class SalaReunion {
 	//-----------------------------------------------------------------------
 	
 	// Constructor
-	public SalaReunion(String servicios) {
-		super();
+	public SalaReunion(int num, int capacidad, String tlfno, double pvp, Hotel hotel, String servicios) {
+		super(num, capacidad, tlfno, pvp, hotel, Sala.tSala.SalaReuniones);
 		this.servicios = servicios;
 	}
-	
 	
 
 }

@@ -2,10 +2,19 @@ package model;
 
 import java.util.Objects;
 
+/**
+ * Objeto que almacena la informacion de habitacion y su disponibilidad
+ */
 public class HabDisponible {
+	//-----------------------------------------------------------------------
 	
+	// Atributos	
 	private Habitacion habitacion;
 	private boolean disponible;
+	
+	//-----------------------------------------------------------------------
+	
+	// Getter y setters
 	public boolean isDisponible() {
 		return disponible;
 	}
@@ -18,11 +27,19 @@ public class HabDisponible {
 	public void setHabitacion(Habitacion habitacion) {
 		this.habitacion = habitacion;
 	}
+	
+	//-----------------------------------------------------------------------
+	
+	// Constructor
 	public HabDisponible(Habitacion habitacion, boolean disponible) {
 		super();
 		this.habitacion = habitacion;
 		this.disponible = disponible;
 	}
+	
+	//-----------------------------------------------------------------------
+	
+	// Metodos basicos
 	@Override
 	public String toString() {
 		return "HabDisponible [habitacion=" + habitacion + ", disponible=" + disponible + "]";

@@ -2,6 +2,9 @@ package conectores;
 
 import java.sql.*;
 
+/**
+ * Conexion a la base de datos
+ */
 public class ConectMySQL {
 
 	//Conexion
@@ -21,7 +24,7 @@ public class ConectMySQL {
 			try {
 				
 				// Establecer conexion con la base de datos como usuario basico
-				conexion = DriverManager.getConnection("jdbc:mysql://10.10.13.155:3306/hotel", "app", "app");
+				conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/hotel", "app", "app");
 				
 				System.out.println("Conexion establecida");
 				return true;
@@ -53,7 +56,7 @@ public class ConectMySQL {
 			try {
 				
 				// Establecer conexion con la base de datos como usuario basico
-				conexion = DriverManager.getConnection("jdbc:mysql://10.10.13.155:3306/hotel", "appAdm", "appAdm");
+				conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/hotel", "appAdm", "appAdm");
 				
 				//System.out.println("Conexion establecida");
 				return true;

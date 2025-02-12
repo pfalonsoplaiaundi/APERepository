@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import auxi.Input;
 
+/**
+ * Objeto HABITACION
+ */
 public class Habitacion extends Sala{
 	
 	// Enumerado
@@ -37,7 +40,7 @@ public class Habitacion extends Sala{
 	// Constructor/es
 	public Habitacion(Hotel hotel, int num, int capacidad, String tlfno, double pvp, tipoHab tipo) {
 		super(num, capacidad, tlfno, pvp, hotel, Sala.tSala.Habitacion);
-		this.tHab = selectorTipoHab(capacidad);
+		this.tHab = tipo;
 	}
 	
 	public Habitacion(Hotel hotel, int num, int capacidad, String tlfno, double pvp, String tipo) {
@@ -48,6 +51,11 @@ public class Habitacion extends Sala{
 	//-----------------------------------------------------------------------
 	
 	// Metodos propios
+	/**
+	 * Automaticamente te pone un tipo de habitacion
+	 * @param tipo
+	 * @return
+	 */
 	private tipoHab selectorTipoHab(String tipo) {
 		ArrayList<String> t = new ArrayList<>();
 		t.add("individual");
@@ -134,6 +142,11 @@ public class Habitacion extends Sala{
 				super.toString();
 	}
 	
+	/**
+	 * Convierte tipoHab en string
+	 * @param tipoDeHab
+	 * @return
+	 */
 	public static tipoHab tipoHabStringToEnum(String tipoDeHab) {
 		if (tipoDeHab.equalsIgnoreCase("individual")) {
 			return tipoHab.individual;

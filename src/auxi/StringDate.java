@@ -4,26 +4,36 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ * Clase de apoyo que gestiona fechas en formato string
+ */
 public class StringDate {
 
+	//Atributos
     private String fecha;
 
-    //GETTER & SETTERS
+    //	GETTER & SETTERS
     public String getFecha() {
         return fecha;
     }
-
+    
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    //CONVIERTE EL STRING A LOCALDATE
+    /**
+     * CONVIERTE EL STRING A LOCALDATE
+     * @return
+     */
     public LocalDate getFechaAsLocalDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         return LocalDate.parse(fecha, formatter);
     }
 
-    //METODO PARA QUE USER INTRODUZCA LA FECHA
+    /**
+     * Metodo para que user introduzca la fecha
+     * @param sc
+     */
     public void tranformarFecha(Scanner sc) {
         System.out.print("Introduce la fecha en formato yyyyMMdd: ");
         String fechaUsuario = sc.nextLine();
@@ -39,14 +49,13 @@ public class StringDate {
         }
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        StringDate prueba = new StringDate();
-
-        prueba.tranformarFecha(sc); //LLAMADA AL METODO
-        
-    }
-
+    /**
+     * Funcion que comprueba si un string esta en formato date
+     * @param year
+     * @param month
+     * @param day
+     * @return
+     */
 	public static boolean isStringDate(String year, String month, String day) {
 		if (isYear(year) && isMonth(month) && isDay(day)) {
 			return true;
@@ -55,6 +64,11 @@ public class StringDate {
 		}
 	}
 
+	/**
+	 * ¿Este string es un año?
+	 * @param year
+	 * @return
+	 */
 	private static boolean isYear(String year) {
 		if (
 				year.length() == 4 &&
@@ -67,6 +81,11 @@ public class StringDate {
 		}
 	}
 	
+	/**
+	 * ¿Este string es un mes?
+	 * @param month
+	 * @return
+	 */
 	private static boolean isMonth(String month) {
 		if (
 				(month.length() == 2 || month.length() == 1)  &&
@@ -79,6 +98,11 @@ public class StringDate {
 		}
 	}
 	
+	/**
+	 * ¿Este string es un dia?
+	 * @param day
+	 * @return
+	 */
 	private static boolean isDay(String day) {
 		if (
 				(day.length() == 2 || day.length() == 1)  &&
@@ -91,6 +115,11 @@ public class StringDate {
 		}
 	}
 
+	/**
+	 * Convierte en formato mes de date un string
+	 * @param month
+	 * @return
+	 */
 	public static String monthFormat(String month) {
 		if (month.length() == 1) {
 			return 0+month;
@@ -99,10 +128,22 @@ public class StringDate {
 		}
 	}
 
+	/**
+	 * Este año es bisiesto
+	 * @param año
+	 * @return
+	 */
     private static boolean esBisiesto(int año) {
         return (año % 4 == 0 && año % 100 != 0) || (año % 400 == 0);
     }
 	
+    /**
+     * Convierte en formato dia de date un string
+     * @param day
+     * @param month
+     * @param year
+     * @return
+     */
 	public static String dayFormat(String day, String month, String year) {
 		switch (Integer.parseInt(month)) {
 		case 1, 3, 5, 7, 8, 10, 12:
