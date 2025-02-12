@@ -1,7 +1,6 @@
 package model;
 
-import java.util.Objects;
-
+import java.util.ArrayList;
 import auxi.Input;
 
 public class Sala {
@@ -10,7 +9,7 @@ public class Sala {
 	public enum tSala {
 		Habitacion,
 		SalaReuniones,
-		EspacioComun
+		EspaciosComunes
 	}
 	
 	//-----------------------------------------------------------------------
@@ -29,7 +28,7 @@ public class Sala {
 	public double getPvp() {
 		return pvp;
 	}
-	public void setPvp(double num) {
+	public void setPvp(double pvp) {
 		this.pvp = pvp;
 	}
 	
@@ -57,6 +56,12 @@ public class Sala {
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
+	public tSala getTSala() {
+		return tipo;
+	}
+	public void setTSala(tSala tipo) {
+		this.tipo = tipo;
+	}
 	
 	//-----------------------------------------------------------------------
 	
@@ -68,10 +73,46 @@ public class Sala {
 		this.tlfno = tlfno;
 		this.pvp = pvp;
 		this.hotel = hotel;
+		printTipo();
+	}
+	
+	public Sala(int num, int capacidad, String tlfno, double pvp, Hotel hotel, tSala tipo) {
+		super();
+		this.num = num;
+		this.capacidad = capacidad;
+		this.tlfno = tlfno;
+		this.pvp = pvp;
+		this.hotel = hotel;
+		this.tipo = tipo;
+	}
+	
+	public Sala(int num, int capacidad, String tlfno, double pvp, Hotel hotel, String tipo) {
+		super();
+		this.num = num;
+		this.capacidad = capacidad;
+		this.tlfno = tlfno;
+		this.pvp = pvp;
+		this.hotel = hotel;
+		this.tipo = tSalaStringToTSala(tipo);
 	}
 	
 	//-----------------------------------------------------------------------
 	
+	private tSala tSalaStringToTSala(String tipo) {
+		ArrayList<String> t = new ArrayList<>();
+		t.add("Habitacion");
+		t.add("SalaReuniones");
+		t.add("EspaciosComunes");
+		
+		// Comparo lo que me pasan con el array de arriba y lo transformo en el enumerado
+		switch (t.indexOf(tipo)) {
+			case 0: return tSala.Habitacion;
+			case 1:	return tSala.SalaReuniones;
+			case 2:	return tSala.EspaciosComunes;
+			default: return null;
+		}
+		
+	}
 	// Metodos propios
 	@Override
 	public String toString() {
@@ -82,7 +123,7 @@ public class Sala {
 				"Telefono: " + hotel.getTlfno();
 	}
 	
-	public static void printTipo() {
+	public void printTipo() {
 		// Menu de seleccion
 		System.out.print(
 				"¿Que tipo de sala es?\n"
@@ -91,10 +132,20 @@ public class Sala {
 				+ "3. Espacio comun\n"
 				+ "Selecciona el tipo: "
 		);
+		selectorTipo(Input.inOpc());
 	}
 	
-	public static tSala selectorTipo(int opc) {
-		return null;
+	public void selectorTipo(int opc) {
+		switch (opc) {
+		case 1:
+			this.tipo = tSala.Habitacion;
+		case 2:
+			this.tipo = tSala.SalaReuniones;
+		case 3:
+			this.tipo = tSala.EspaciosComunes;
+		default:
+			this.tipo = null;
+		}
 	}
 	
 }

@@ -1,6 +1,5 @@
 package menu;
 
-import auxi.Input;
 import conectores.*;
 import model.*;
 import model.Reserva;
@@ -13,18 +12,32 @@ public class MenuReserva {
 				"\n\n~~~ Reserva ~~~\n"
 				+ "------------------------------\n"
 				);
-		RepoReserva rR = new RepoReserva();
-		RepoSala rS = new RepoSala();
 		RepoHabitacion rH = new RepoHabitacion();
+		Habitacion h = rH.getByTypeAndFirstDate(tipoDeHab);
+		RepoReserva rR = new RepoReserva();
 		Reserva r = new Reserva(
 			rR.getNewID(), 
-			Input.inFecIni(), 
-			Input.inFecFin(), 
+			MenuProductos.fecIni, 
+			MenuProductos.fecFin, 
 			Login.user, 
-			rH.getByTypeAndFirstDate(tipoDeHab)
+			h,
+			Login.user.aplicarDcto(h.getPvp())
 		);
-		
 		MenuCarrito.addCarrito(r);
+		for(Reserva c : MenuCarrito.carrito) {
+			System.out.print(
+					".....................................\n" + 
+					/* Get IdHotel				 		   NumSala				 Imprime
+					   --- ------------------------------  --------------------  --------- */
+					rH.get(c.getSala().getHotel().getID(), c.getSala().getNum()).toString() + 
+					"\nDesde el " + c.getFecIni().toString() + " hasta el " + c.getFecFin().toString() +
+					"\nPrecio con descuento aplicado: " + c.getPrecioTotal() + 
+					"\n.....................................\n");
+		}
+		System.out.print(""
+				+ "\nAñadida al carrito correctamente\n\n"
+				+ "------------------------------\n");
+
 		MenuPrincipal.print();
 		
 	}

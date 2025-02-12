@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
   DNI Char(9) Primary Key,
   nom varchar(50) NOT NULL,
   ape varchar(50) NOT NULL,
-  tlfno int NOT NULL,
+  tlfno varchar(15) NOT NULL,
   email varchar(80) NOT NULL,
   btrabajador BOOLEAN NOT NULL,  
   tarifa enum ("estandar",
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
 -- Tabla de Hotel
 CREATE TABLE  IF NOT EXISTS Hotel (
   ID tinyint unsigned AUTO_INCREMENT PRIMARY KEY,
-  nom varchar(50) NOT NULL,
+  nom varchar(50) NOT NULL unique,
   ciu varchar(50) NOT NULL,
   dir varchar(80) NOT NULL,
   tlfno varchar(15) NOT NULL,
@@ -82,7 +82,8 @@ CREATE TABLE IF NOT EXISTS Reserva (
   num smallint unsigned not null,
   FecIni date NOT NULL,
   FecFin date NOT NULL,
-  PrecioTotal decimal NOT NULL
+  PrecioTotal decimal NOT NULL DEFAULT 0,
+  bPagada boolean NOT NULL DEFAULT false
 );
 
 -- Relaciones foreign keys
@@ -104,12 +105,12 @@ ALTER TABLE Sala
 	ADD CONSTRAINT Sala_ID_fk FOREIGN KEY (ID) REFERENCES Hotel(ID) ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- Tabla Hotel
-INSERT INTO Hotel (nom, ciu, dir, tlfno, email) VALUES
-('Hotel Central', 'Madrid', 'Calle Mayor, 1', 911234567, 'central@hotel.com'),
-('Hotel Sur', 'Sevilla', 'Avenida del Sol, 22', 950123456, 'sur@hotel.com'),
-('Hotel Norte', 'Donostia', 'Calle Fría, 10', 945678912, 'norte@hotel.com'),
-('Hotel Este', 'Lleida', 'Paseo del Este, 45', 934567891, 'este@hotel.com'),
-('Hotel Oeste', 'Salamanca', 'Avenida del Oeste, 78', 923456789, 'oeste@hotel.com');
+INSERT INTO Hotel VALUES
+(1, 'Hotel Central', 'Madrid', 'Calle Mayor, 1', 911234567, 'central@hotel.com'),
+(2, 'Hotel Sur', 'Sevilla', 'Avenida del Sol, 22', 950123456, 'sur@hotel.com'),
+(3, 'Hotel Norte', 'Donostia', 'Calle Fría, 10', 945678912, 'norte@hotel.com'),
+(4, 'Hotel Este', 'Lleida', 'Paseo del Este, 45', 934567891, 'este@hotel.com'),
+(5, 'Hotel Oeste', 'Salamanca', 'Avenida del Oeste, 78', 923456789, 'oeste@hotel.com');
 
 -- Tabla Sala
 INSERT INTO Sala (ID, num, capacidad, tlfno, pvp, subtipo) VALUES
@@ -205,36 +206,37 @@ INSERT INTO SalaReuniones (ID, num, servicios) VALUES
 
 -- Tabla Clientes
 INSERT INTO Cliente (DNI, nom, ape, tlfno, email, btrabajador, tarifa, pass) VALUES
-('12345678A', 'Laura', 'García', 611223344, 'laura.garcia@mail.com', FALSE, 'estandar', SHA2('password1', 256)),
-('23456789B', 'Carlos', 'Martínez', 622334455, 'carlos.martinez@mail.com', TRUE, 'dctoTrabajador', SHA2('password2', 256)),
-('34567890C', 'Ana', 'López', 633445566, 'ana.lopez@mail.com', FALSE, 'dcto5', SHA2('password3', 256)),
-('45678901D', 'David', 'Hernández', 644556677, 'david.hernandez@mail.com', FALSE, 'dcto10', SHA2('password4', 256)),
-('56789012E', 'Marta', 'Pérez', 655667788, 'marta.perez@mail.com', TRUE, 'dcto5por', SHA2('password5', 256)),
-('67890123F', 'Jorge', 'Gómez', 666778899, 'jorge.gomez@mail.com', FALSE, 'dcto10por', SHA2('password6', 256)),
-('78901234G', 'Sara', 'Ruiz', 677889900, 'sara.ruiz@mail.com', FALSE, 'dctoNewCliente', SHA2('password7', 256)),
-('89012345H', 'Luis', 'Díaz', 688990011, 'luis.diaz@mail.com', TRUE, 'estandar', SHA2('password8', 256)),
-('90123456I', 'Elena', 'Moreno', 699001122, 'elena.moreno@mail.com', FALSE, 'dcto5', SHA2('password9', 256)),
-('01234567J', 'Pedro', 'Vega', 611112223, 'pedro.vega@mail.com', TRUE, 'dcto10', SHA2('password10', 256)),
-('04627062Z', 'Pablo', 'Fernandez', 626140550, 'pfalonso@gmail.com', TRUE, 'dctoTrabajador', SHA2('Pepe6', 256));
+('12345678A', 'Laura', 'García', 611223344, 'laura.garcia@mail.com', FALSE, 'estandar', SHA2('Contraseña1', 256)),
+('23456789D', 'Carlos', 'Martínez', 622334455, 'carlos.martinez@mail.com', TRUE, 'dctoTrabajador', SHA2('Contraseña1', 256)),
+('34567890C', 'Ana', 'López', 633445566, 'ana.lopez@mail.com', FALSE, 'dcto5', SHA2('Contraseña1', 256)),
+('45678901D', 'David', 'Hernández', 644556677, 'david.hernandez@mail.com', FALSE, 'dcto10', SHA2('Contraseña1', 256)),
+('56789012E', 'Marta', 'Pérez', 655667788, 'marta.perez@mail.com', TRUE, 'dcto5por', SHA2('Contraseña1', 256)),
+('67890123F', 'Jorge', 'Gómez', 666778899, 'jorge.gomez@mail.com', FALSE, 'dcto10por', SHA2('Contraseña1', 256)),
+('78901234G', 'Sara', 'Ruiz', 677889900, 'sara.ruiz@mail.com', FALSE, 'dctoNewCliente', SHA2('Contraseña1', 256)),
+('89012345H', 'Luis', 'Díaz', 688990011, 'luis.diaz@mail.com', TRUE, 'estandar', SHA2('Contraseña1', 256)),
+('90123456I', 'Elena', 'Moreno', 699001122, 'elena.moreno@mail.com', FALSE, 'dcto5', SHA2('Contraseña1', 256)),
+('01234567J', 'Pedro', 'Vega', 611112223, 'pedro.vega@mail.com', TRUE, 'dcto10', SHA2('Contraseña1', 256)),
+('04627062Z', 'Pablo', 'Fernandez', 626140550, 'pfalonso@gmail.com', TRUE, 'dctoTrabajador', SHA2('@6966olbaP', 256));
 
 -- Tabla Reserva
 INSERT INTO Reserva (DNI, ID, num, fecini, fecfin) VALUES
 -- Reservas para llenar el Hotel Central del 28-01-2025 al 20-02-2025
 ('12345678A', 1, 1, '2025-02-28', '2025-03-20'),
-('23456789B', 1, 2, '2025-01-28', '2025-02-20'),
+('23456789D', 1, 2, '2025-01-28', '2025-02-20'),
 ('34567890C', 1, 3, '2025-02-02', '2025-02-20'),
 ('45678901D', 1, 4, '2025-01-28', '2025-02-20'),
 ('56789012E', 1, 5, '2025-01-13', '2025-01-29'),
 ('12345678A', 1, 6, '2025-02-28', '2025-03-20'),
-('23456789B', 1, 7, '2025-01-28', '2025-02-02'),
+('23456789D', 1, 7, '2025-01-28', '2025-02-02'),
 ('34567890C', 1, 8, '2025-04-20', '2025-05-20'),
 ('45678901D', 1, 9, '2025-01-28', '2025-02-20'),
 ('56789012E', 1, 10, '2025-01-28', '2025-02-20'),
 ('12345678A', 1, 11, '2025-02-28', '2025-03-20'),
-('23456789B', 1, 12, '2025-01-28', '2025-02-20'),
+('23456789D', 1, 12, '2025-01-28', '2025-02-20'),
 ('34567890C', 1, 13, '2025-01-28', '2025-02-20'),
 ('45678901D', 1, 14, '2025-01-28', '2025-02-20'),
 ('56789012E', 1, 15, '2025-01-28', '2025-02-20'),
+('04627062Z', 1, 1, '2025-02-05', '2025-02-15'),
 
 
 -- Reservas para otros hoteles en las mismas fechas y adicionales

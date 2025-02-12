@@ -3,8 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import auxi.Input;
+import menu.Login;
 
+/**
+ * Objeto que almacena los datos de cliente
+ */
 public class Cliente {
 	
 	// Enumerado de tarifas
@@ -24,7 +27,7 @@ public class Cliente {
 	private String DNI;
 	private String nombre;
 	private String apellidos;
-	private int telefono;
+	private String telefono;
 	private String email;
 	private tarifas tarifa;
 	private boolean bTrabajador;
@@ -34,7 +37,7 @@ public class Cliente {
 	
 	// Constructor/es
 	/**
-	 * 	
+	 * Constructor de cliente en el que la tarifa se pone automaticamente
 	 * @param DNI
 	 * @param nombre
 	 * @param apellidos
@@ -43,7 +46,7 @@ public class Cliente {
 	 * @param bTrabajador
 	 * @param pass
 	 */
-	public Cliente(String DNI, String nombre, String apellidos, int telefono, String email,
+	public Cliente(String DNI, String nombre, String apellidos, String telefono, String email,
 			boolean bTrabajador, String pass) {
 		super();
 		this.DNI = DNI;
@@ -56,7 +59,18 @@ public class Cliente {
 		this.tarifa = selectorTarifa();
 	}
 	
-	public Cliente(String DNI, String nombre, String apellidos, int telefono, String email,
+	/**
+	 * Constructor de cliente en el que la tarifa se da en String
+	 * @param DNI
+	 * @param nombre
+	 * @param apellidos
+	 * @param telefono
+	 * @param email
+	 * @param bTrabajador
+	 * @param tarifa
+	 * @param pass
+	 */
+	public Cliente(String DNI, String nombre, String apellidos, String telefono, String email,
 			boolean bTrabajador, String tarifa, String pass) {
 		super();
 		this.DNI = DNI;
@@ -97,11 +111,11 @@ public class Cliente {
 		this.apellidos = apellidos;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
@@ -139,8 +153,43 @@ public class Cliente {
 
 	//-----------------------------------------------------------------------
 	
-	// Metodos propios
+	//Metodos basicos
+	@Override
+	public int hashCode() {
+		return Objects.hash(DNI);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(DNI, other.DNI);
+	}
+
+	@Override
+	public String toString() {
+		return "\n------ Cliente ------\n"
+				+ "DNI: \t\t" + DNI + "\n"
+				+ "Nombre: \t" + nombre + " " + apellidos + "\n"
+				+ "Telefono: \t" + telefono + "\n"
+				+ "Email: \t\t" + email + "\n"
+				+ "Tarifa: \t" + tarifa + "\n"
+				+ "---------------------";
+	}
 	
+	//-----------------------------------------------------------------------
+		
+	// Metodos propios
+	/**
+	 * Verifica si un DNI es correcto o no
+	 * @param DNI
+	 * @return
+	 */
 	public static boolean verificacionDNI(String DNI) {
         // Verificar que el DNI tenga 9 caracteres
         if (DNI == null || DNI.length() != 9) {
@@ -165,11 +214,10 @@ public class Cliente {
         return letra == letraCorrecta;
 	}
 	
-
+    /**
+     * Funcion que comprueba que haya numeros en un string
+     */
     public static boolean tieneNumeros(String pass) {
-        /**
-         * Funcion que comprueba que haya numeros en un string
-         */
     	
     	// Comprueba que pass no este vacio
     	if (pass == null) {
@@ -184,12 +232,12 @@ public class Cliente {
         }
         return false;
     }
-
+	
+    /**
+     * Funcion que comprueba que haya mayusculas en un string
+     */
     public static boolean tieneMayus(String pass) {
-    	/**
-         * Funcion que comprueba que haya mayusculas en un string
-         */
-    	
+
     	// Comprueba que pass no este vacio
     	if (pass == null) {
             return false;
@@ -204,11 +252,10 @@ public class Cliente {
         return false;
     }
 
+	/**
+     * Funcion que comprueba que haya minusculas en un string
+     */
     public static boolean tieneMinus(String pass) {
-    	/**
-         * Funcion que comprueba que haya minusculas en un string
-         */
-    	
     	
     	// Comprueba que pass no este vacio
     	if (pass == null) {
@@ -223,34 +270,37 @@ public class Cliente {
         }
         return false;
     }
-
-    public static boolean verificacionPass(String pass) {
-    	/**
-    	 * Comprueba que se cumplan todas las condiciones de la contraseña
-    	 */
-        return tieneNumeros(pass) && tieneMayus(pass) && tieneMinus(pass);
+    
+    /**
+     * Comprueba que la contraseña tenga al menos 8 caracteres
+     * @param pass
+     * @return
+     */
+    public static boolean tiene8caracteres(String pass) {
+    	
+    	// Comprueba que pass no este vacio
+    	if (pass == null) {
+            return false;
+        }
+    	
+    	// Revisa caracter a caracter si hay una minuscula, si llega al final y no la hay devuelva false
+    	return pass.length()>=8;
     }
-		
-	public static boolean verificacionExistencia() {
-		/*
-		 * WIP
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
-		return false;
-	}
-		
+
+	/**
+	 * Comprueba que se cumplan todas las condiciones de la contraseña
+	 */
+    public static boolean verificacionPass(String pass) {
+
+        return tieneNumeros(pass) && tieneMayus(pass) && tieneMinus(pass) && tiene8caracteres(pass) ;
+    }
+
+    /**
+	 * Al construir un nuevo cliente le asigna su tarifa
+	 * segun si es trabajador o nuevo cliente.
+	 */
     private tarifas selectorTarifa() {
-    	/**
-    	 * Dependiendo de si el es o no trabajador tendra el descuento pertinente.
-    	 */
+    	
         if (bTrabajador) {
             return tarifas.dctoTrabajador;
         } else {
@@ -258,6 +308,11 @@ public class Cliente {
         }
     }
     
+    /**
+     * Transforma una tarifa en string en una tarifa en enum.
+     * @param tarifa
+     * @return
+     */
 	private tarifas selectorTarifa(String tarifa) {
 		ArrayList<String> t = new ArrayList<>();
 		t.add("estandar");
@@ -289,40 +344,39 @@ public class Cliente {
 		}
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(DNI);
+	/**
+	 * Transforma una tarifa en un descuento sobre el pvp
+	 * @param pvp
+	 * @return
+	 */
+	public double aplicarDcto(double pvp) {
+		ArrayList<String> t = new ArrayList<>();
+		t.add("estandar");
+		t.add("dctoTrabajador");
+		t.add("dcto5");
+		t.add("dcto10");
+		t.add("dcto5por");
+		t.add("dcto10por");
+		t.add("dctoNewCliente");
+		
+		// Comparto lo que me pasan con el array de arriba y lo transformo en el enumerado
+		switch (t.indexOf(Login.user.getTarifa().toString())) {
+		case 0:
+			return pvp;
+		case 1:
+			return pvp*0.8;
+		case 2:
+			return pvp-5;
+		case 3:
+			return pvp-10;
+		case 4:
+			return pvp*0.95;
+		case 5:
+			return pvp*0.9;
+		case 6:
+			return pvp*0.85;
+		default:
+			return pvp;
+		}
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(DNI, other.DNI);
-	}
-
-	@Override
-	public String toString() {
-		return "--Cliente--\n"
-				+ "DNI: " + DNI + "\n"
-				+ "Nombre: " + nombre + " " + apellidos + "\n"
-				+ "Telefono: " + telefono + "\n"
-				+ "Email: " + email + "\n"
-				+ "Tarifa: " + tarifa + "\n"
-				+ ((bTrabajador)?"Trabajador":"Cliente") + "\n"
-				+ "Contraseña: " + pass + "\n"
-				+ "--------------------";
-	}
-    
-	public static void main(String[] args) {
-		Cliente c = new Cliente("464532", "Pepe", "Martin", 943486532, "pepe@pepe.pepe", true, "pepe6");
-		System.out.print(c.toString());
-	}
-    
-	
 }

@@ -1,8 +1,6 @@
 package menu;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import auxi.*;
 import conectores.*;
 import model.Hotel;
@@ -36,7 +34,12 @@ public class MenuPrincipal {
 		int opc = Input.inOpc();
 		
 		if (opc == 0) {
-			MenuCarrito.print();
+			System.out.print("¿Quieres deslogearte? ");
+			if (Input.inYesNo()) {
+				MenuCarrito.print();
+			} else {
+				print();
+			}
 		} else if (opc == -1 && Login.user.isbTrabajador()) {
 			MenuAdmin.print();
 		} else if (opc <= i && opc > 0) {

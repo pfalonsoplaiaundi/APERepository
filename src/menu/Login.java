@@ -14,8 +14,17 @@ public class Login {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Conecta con permisos minimos para poder revisar usuarios
-		ConectMySQL.conectar();		
+
+		// Conecta con permisos minimos para poder revisar usuarios, en caso de que falle lo intenta 5 veces y luego termina.
+		int i = 0;
+		boolean conecta = false;
+		
+		do {
+			i++;
+			conecta = (!ConectMySQL.conectar()) && (i <= 5);
+		} while(conecta);
+		
+		if (i > 5) System.exit(0);
 		
 		// Bienvenida y pregunta si hay cuenta.
 		System.out.print(
@@ -35,6 +44,7 @@ public class Login {
 		
 		// Entra en el programa.
 		MenuPrincipal.print();
+		
 	}
 	
 	/**

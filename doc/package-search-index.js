@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"APEHoteles","l":"menu"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"APEHoteles","l":"auxi"},{"m":"APEHoteles","l":"conectores"},{"m":"APEHoteles","l":"menu"},{"m":"APEHoteles","l":"model"}];updateSearchResults();

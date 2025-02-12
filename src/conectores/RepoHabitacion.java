@@ -5,10 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import menu.MenuCarrito;
 import menu.MenuPrincipal;
+import menu.MenuProductos;
 import model.Cliente;
+import model.HabDisponible;
 import model.Habitacion;
-import model.Sala;
+import model.Reserva;
 
 public class RepoHabitacion {
 	
@@ -48,18 +51,29 @@ public class RepoHabitacion {
 				);
 		
 		// Otros
-		// Recuperar la habitacion libre mas cercana de un tipo 6
-		this.SQLScripts.add("select s.num, s.capacidad, s.tlfno, s.pvp, h.tipohab\r\n"
-				+ "from habitacion h\r\n"
-				+ "	natural join sala s\r\n"
-				+ "    left join reserva r on \r\n"
-				+ "		r.id = s.id and\r\n"
-				+ "        r.num = s.num and\r\n"
-				+ "        current_date() between r.FecIni and r.FecFin\r\n"
-				+ "where\r\n"
-				+ "	r.id is null and\r\n"
-				+ "    h.tipohab = ? and\r\n"
-				+ "    h.id = ?;");
+		// Recuperar la habitacion libre mas cercana de un tipo 5
+		this.SQLScripts.add(
+				"SELECT "
+					+ "s.num, "
+					+ "s.capacidad, "
+					+ "s.tlfno, "
+					+ "s.pvp, "
+					+ "h.tipohab "
+				+ "FROM "
+					+ "habitacion h "
+					+ "JOIN sala s USING(id, num) "
+					+ "LEFT JOIN reserva r ON "
+						+ "r.id = s.id AND "
+						+ "r.num = s.num AND "
+						+ "? BETWEEN r.FecIni AND r.FecFin AND"
+						+ "? BETWEEN r.fecini and r.fecfin "
+				+ "WHERE "
+					+ "r.id IS null AND "
+					+ "h.tipohab = ? AND "
+					+ "h.id = ? "
+				+ "ORDER BY "
+					+ "s.pvp ASC;"
+				);
 	}
 	
 	/**
@@ -79,7 +93,7 @@ public class RepoHabitacion {
 	        try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(0))) {
 	            preparedStatement.setInt(1, nuevo.getNum());
 	            preparedStatement.setInt(2, nuevo.getCapacidad());
-	            preparedStatement.setInt(3, nuevo.getTlfno());
+	            preparedStatement.setString(3, nuevo.getTlfno());
 	            preparedStatement.setString(4, nuevo.getTipo().toString());
 	            preparedStatement.executeUpdate();
 		        
@@ -103,7 +117,6 @@ public class RepoHabitacion {
 		//Si el cliente existe antes de la insercion devuelve false. 
 		System.out.println("El usuario ya existe");
 		return true;
-		delete();
 	}
 
 	/**
@@ -121,22 +134,15 @@ public class RepoHabitacion {
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(1))) {
-		        preparedStatement.setString(1, aBorrar.getDNI());
-		        preparedStatement.setString(2, aBorrar.getNombre());
-		        preparedStatement.setString(3, aBorrar.getApellidos());
-		        preparedStatement.setInt(4, aBorrar.getTelefono());
-		        preparedStatement.setString(5, aBorrar.getEmail());
-		        preparedStatement.setBoolean(6, aBorrar.isbTrabajador());
-		        preparedStatement.setString(9, aBorrar.getTarifa().toString());
-		        preparedStatement.setString(8, aBorrar.getPass());
-		        preparedStatement.executeUpdate();
+	            preparedStatement.setInt(1, aBorrar.getNum());
+	            preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la insercion se ha producido y devuelve lo contrario en funcion de esta
 		        return !check(aBorrar);
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
-				System.out.println("Error al eliminar el cliente");
+				System.out.println("Error al eliminar la habitacion");
 				return false;
 			}
 		}
@@ -149,28 +155,28 @@ public class RepoHabitacion {
 	 * Esta funcion modifica un cliente nuevo en la tabla cliente con todos los parametros de cliente
 	 */
 	public boolean update(Habitacion modificaciones) {
-				
+	/*
+	 * WIP
+	 */
 		// Comprueba que los scrpits estan en el array y si no esta lo inicializa
 		if (SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
 		//Inicializo un cliente que va a recibir los datos del cliente original, lo hago fuera del if para poder usarlo despues.
-		Cliente original = new Cliente( "", "", "", 0, "", false, "");
+		Habitacion original = new Habitacion(null, 0, 0, "", 0, "");
 		
-		// Copruebo que me han pasado el DNI correcto
-		if (!modificaciones.getNum().equals("")) {
+		// Copruebo que me han pasado el Primary Key correcto
+		if (!((modificaciones.getNum() != 0) && (modificaciones.getHotel() == null))) {
 			
 			// Meto los datos del cliente original en el cliente creado anterior
-			original = get(modificaciones.getNum());
+			original = get(modificaciones.getHotel().getID(), modificaciones.getNum());
 			
 			// Reviso si un dato esta por defecto y en caso de que no lo este en modificaciones lo tomo como una modificacion del original y lo seteo.
-			if (!modificaciones.getNombre().equals("")) original.setNombre(modificaciones.getNombre());
-			if (!modificaciones.getApellidos().equals("")) original.setApellidos(modificaciones.getApellidos());
-			if (!(modificaciones.getTelefono() == 0)) original.setTelefono(modificaciones.getTelefono());
-			if (!modificaciones.getEmail().equals("")) original.setEmail(modificaciones.getEmail());
-			if (!modificaciones.getTarifa().toString().equals("estandar")) original.setTarifa(modificaciones.getTarifa());
-			if (!modificaciones.getPass().equals("")) original.setPass(modificaciones.getPass());
+			if (modificaciones.getCapacidad() != 0) original.setCapacidad(modificaciones.getCapacidad());
+			if (!modificaciones.getTlfno().equals("")) original.setTlfno(modificaciones.getTlfno());
+			if (modificaciones.getPvp() != 0) original.setPvp(modificaciones.getPvp());
+			if (!modificaciones.getTipo().equals(Habitacion.tipoHab.desconocido)) original.setTipo(modificaciones.getTipo());
 		
 		// En caso de no tener el DNI correcto devuelvo error
 		} else {
@@ -183,18 +189,16 @@ public class RepoHabitacion {
 			
 			//Si existe el cliente, ejecuta el borrado en la BBDD
 			try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(2))) {
-		        preparedStatement.setString(1, original.getDNI());
-		        preparedStatement.setString(2, original.getNombre());
-		        preparedStatement.setString(3, original.getApellidos());
-		        preparedStatement.setInt(4, original.getTelefono());
-		        preparedStatement.setString(5, original.getEmail());
-		        preparedStatement.setBoolean(6, original.isbTrabajador());
-		        preparedStatement.setString(9, original.getTarifa().toString());
-		        preparedStatement.setString(8, original.getPass());
+		        preparedStatement.setInt(1, original.getHotel().getID());
+		        preparedStatement.setInt(2, original.getNum());
+		        preparedStatement.setInt(3, original.getCapacidad());
+		        preparedStatement.setString(4, original.getTlfno());
+		        preparedStatement.setDouble(5, original.getPvp());
+		        preparedStatement.setString(6, original.getTipo().toString());
 		        preparedStatement.executeUpdate();
 		        
 		        //Comprueba si la modificacion se ha producido y devuelve lo contrario en funcion de esta
-		        return !checkEquals(original);
+		        return !check(original);
 
 			//En caso de que haya algun error en la base lo coge aqui
 			} catch (SQLException e) {
@@ -208,13 +212,15 @@ public class RepoHabitacion {
 	}
 	
 
-	public boolean check(Cliente cliente) {
+	public boolean check(Habitacion habitacion) {
+		
 		if (this.SQLScripts.isEmpty()) {
 			inicializarArray();
 		}
 		
 		try (PreparedStatement preparedStatement = ConectMySQL.conexion.prepareStatement(SQLScripts.get(3))) {
-	        preparedStatement.setString(1, cliente.getDNI());
+	        preparedStatement.setInt(1, habitacion.getHotel().getID());
+			preparedStatement.setInt(2, habitacion.getNum());
 	        ResultSet rS = preparedStatement.executeQuery();
 	        if (rS.next()) {
 	        	return true;
@@ -249,7 +255,7 @@ public class RepoHabitacion {
 					rH.get(rS.getInt(1)),
 					rS.getInt(2),
 					rS.getInt(4),
-					rS.getInt(5),
+					rS.getString(5),
 					rS.getDouble(6),
 					rS.getString(3)
 				);
@@ -269,16 +275,56 @@ public class RepoHabitacion {
 			inicializarArray();
 		}
 		
-		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(this.SQLScripts.get(6))) {
-			pS.setString(1, tipoDeHab);
-			pS.setInt(2, MenuPrincipal.hotel.getID());
+		String query = "SELECT "
+					+ "s.num, "
+					+ "s.capacidad, "
+					+ "s.tlfno, "
+					+ "s.pvp, "
+					+ "h.tipohab "
+				+ "FROM "
+					+ "habitacion h "
+					+ "JOIN sala s USING(id, num) "
+					+ "LEFT JOIN reserva r ON "
+						+ "r.id = s.id AND "
+						+ "r.num = s.num AND "
+						+ "? BETWEEN r.FecIni AND r.FecFin AND"
+						+ "? BETWEEN r.fecini and r.fecfin "
+				+ "WHERE "
+					+ "r.id IS null AND "
+					+ "h.tipohab = ? AND "
+					+ "h.id = ? AND "
+					+ "h.num not in (";
+		if(MenuCarrito.carrito.isEmpty()) {
+			query += "\"\"";
+		} else {
+			for (int i = 0 ; i < MenuCarrito.carrito.size(); i++) {
+				query += (i == MenuCarrito.carrito.size()) ? "? " : "?, ";
+				
+			}
+		}	
+		query	+= ") ORDER BY "
+					+ "s.pvp ASC;"
+				;
+		
+		try (PreparedStatement pS = ConectMySQL.conexion.prepareStatement(query)) {
+			pS.setDate(1, MenuProductos.fecIni);
+			pS.setDate(2, MenuProductos.fecFin);
+			pS.setString(3, tipoDeHab);
+			pS.setInt(4, MenuPrincipal.hotel.getID());
+			if(!MenuCarrito.carrito.isEmpty()) {
+		    	int i = 0;
+		    	for (Reserva r : MenuCarrito.carrito) {
+		    		i++;
+		    		pS.setInt(i+4, r.getSala().getNum());
+		    	}
+			}
 			ResultSet rS = pS.executeQuery();
 			if (rS.next()) {
 				Habitacion h = new Habitacion(
 					MenuPrincipal.hotel,
 					rS.getInt(1),
 					rS.getInt(2),
-					rS.getInt(3),
+					rS.getString(3),
 					rS.getDouble(4),
 					rS.getString(5)	
 				);
@@ -290,6 +336,12 @@ public class RepoHabitacion {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public ArrayList<HabDisponible> getListaFiltrada(Habitacion filtro, int disponible) {
+		//ArrayList<HabDisponible> lista = new ArrayList<>();
+		
+		return null;
 	}
 
 

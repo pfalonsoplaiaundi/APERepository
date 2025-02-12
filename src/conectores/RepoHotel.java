@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import model.*;
-import model.Cliente.tarifas;
 
 public class RepoHotel {
 
@@ -56,7 +55,7 @@ public class RepoHotel {
 		SQLScripts.add("SELECT nom FROM hotel;");
 		
 		// Obtener el PK de un hotel mediante el nombre del hotel 7
-		SQLScripts.add("SELECT id FROM hotel WHERE nom = ?;");
+		SQLScripts.add("SELECT id FROM hotel WHERE nom like ?;");
 	}
 
 	
